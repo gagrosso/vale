@@ -1043,6 +1043,61 @@ color-scheme:light;
 .re-mvp-rotulo{margin:0;font-size:var(--fs-12);line-height:var(--lh-12);font-weight:700;letter-spacing:var(--etq-espaciado);text-transform:uppercase;color:var(--ink-3)}
 .re-mvp-texto{margin:0;font-size:var(--fs-20);line-height:var(--lh-20);font-weight:700;color:var(--ink)}
 .re-mvp-campos{display:grid;grid-template-columns:repeat(auto-fill, minmax(min(100%, 15rem), 26rem));gap:var(--esp-6);align-items:start}
+.re-mvp-nota{margin:0;max-width:var(--ancho-lectura);font-size:var(--fs-14);line-height:var(--lh-14);color:var(--ink-2)}
+.re-mvp-obj > .re-mvp-rotulo:not(:first-child){margin-top:var(--esp-2)}
+.re-mvp-objetivo{font-size:var(--fs-18);line-height:var(--lh-18)}
+.re-mvp-obj > .verdad{align-self:stretch}
+.re-plan-tabla{width:100%;border-collapse:collapse}
+.re-plan-tabla th,.re-plan-tabla td{padding:var(--esp-2) var(--esp-3) var(--esp-2) 0;border-bottom:var(--borde);font-size:var(--fs-14);line-height:var(--lh-14);text-align:left;vertical-align:top}
+.re-plan-tabla thead th{font-size:var(--fs-12);line-height:var(--lh-12);font-weight:700;letter-spacing:var(--etq-espaciado);text-transform:uppercase;color:var(--ink-3);border-bottom:var(--borde-2)}
+.re-plan-tabla tbody th{font-weight:700;letter-spacing:0;text-transform:none;color:var(--ink)}
+.re-plan-tabla td{color:var(--ink-2)}
+.re-plan-tabla .re-plan-num{text-align:right;white-space:nowrap;font-variant-numeric:tabular-nums}
+.re-plan-tabla tbody tr:last-child > *{border-bottom:0}
+.re-plan-tabla .verdad-umbral{min-width:0;justify-self:start}
+@container re (max-width:719px){
+.re-plan-tabla thead{position:absolute;width:1px;height:1px;margin:-1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
+.re-plan-tabla,.re-plan-tabla tbody,.re-plan-tabla tr,.re-plan-tabla th,.re-plan-tabla td{display:block;width:100%}
+.re-plan-tabla tr{padding:var(--esp-3) 0;border-bottom:var(--borde)}
+.re-plan-tabla tbody tr:last-child{border-bottom:0}
+.re-plan-tabla th,.re-plan-tabla td{padding:var(--esp-1) 0;border-bottom:0}
+.re-plan-tabla td[data-etq]{display:grid;grid-template-columns:minmax(7.5em, 2fr) minmax(0, 5fr);gap:var(--esp-3)}
+.re-plan-tabla td[data-etq]::before{content:attr(data-etq);font-weight:700;color:var(--ink-3)}
+.re-plan-tabla .re-plan-num{text-align:left;white-space:normal}
+}
+.re-plataforma{border-left:4px solid var(--accent)}
+.re-ia{border-left:4px solid var(--ink)}
+.re-ia-mencion{display:flex;gap:var(--esp-2);align-items:flex-start;margin:0;font-size:var(--fs-14);line-height:var(--lh-14);color:var(--ink-2)}
+.re-ia-texto{display:flex;flex-direction:column;gap:var(--esp-3);max-width:var(--ancho-lectura)}
+.re-ia-texto p{margin:0;font-size:var(--fs-16);line-height:var(--lh-16);color:var(--ink)}
+.re-ia-estado{margin:0;font-size:var(--fs-14);line-height:var(--lh-14);font-weight:700;color:var(--ink-2)}
+.re-ia-conv{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:var(--esp-3);max-width:var(--ancho-lectura)}
+.re-ia-conv li{display:flex;flex-direction:column;gap:var(--esp-1);padding:var(--esp-3) var(--esp-4);border:var(--borde);border-radius:var(--radio-2)}
+.re-ia-conv .re-ia-preg{background:var(--surface-2)}
+.re-ia-conv p{margin:0;font-size:var(--fs-14);line-height:var(--lh-14);color:var(--ink)}
+.re-ia-quien{font-size:var(--fs-12);line-height:var(--lh-12);font-weight:700;letter-spacing:var(--etq-espaciado);text-transform:uppercase;color:var(--ink-3)}
+.re-ia-preguntar{display:flex;flex-wrap:wrap;align-items:flex-end;gap:var(--esp-4);max-width:var(--ancho-lectura)}
+.re-ia-campo{flex:1 1 18rem;min-width:0}
+.re-ia-boton{flex:0 0 auto;margin-bottom:var(--esp-6)}
+@container re (max-width:479px){
+.re-ia-boton{flex:1 1 100%;margin-bottom:0}
+}
+.re-ia-mini{align-self:flex-start;min-height:var(--toque);padding:0 var(--esp-4)}
+.re-mvp-siconfirma{margin:0;max-width:var(--ancho-lectura);font-size:var(--fs-14);line-height:var(--lh-14);font-weight:700;color:var(--ink)}
+.re-inf-siconfirma{margin:0}
+.re-contacto{border-left:4px solid var(--line-2)}
+.re-ct-form{display:flex;flex-direction:column;gap:var(--esp-4);max-width:var(--ancho-lectura)}
+.re-ct-rejilla{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:var(--esp-4)}
+.re-ct-campo{min-width:0}
+.re-ct-caja-area{align-items:stretch;padding:var(--esp-2) var(--esp-3)}
+.campo-caja textarea{flex:1 1 auto;width:100%;min-width:0;min-height:5.5rem;padding:0;margin:0;border:0;border-radius:0;background:transparent;color:var(--ink);font-family:var(--font);font-size:var(--fs-16);line-height:var(--lh-16);resize:vertical;outline:none}
+.re-ct-trampa{position:absolute;left:-10000px;top:auto;width:1px;height:1px;overflow:hidden}
+.re-ct-legal{margin:0;font-size:var(--fs-14);line-height:var(--lh-14);color:var(--ink-2)}
+.re-ct-legal a{color:var(--accent-ink);text-decoration:underline}
+@container re (max-width:559px){
+.re-ct-rejilla{grid-template-columns:minmax(0,1fr)}
+}
+.re-resumen-riesgo{margin:0 0 var(--esp-2);font-size:var(--fs-14);line-height:var(--lh-14);color:var(--ink)}
 .re-avisos{align-content:start}
 @container re (min-width:880px){
 .re-avisos.re-ancho-12{display:grid;grid-template-columns:repeat(2, minmax(0, 1fr));align-items:start}
@@ -1236,9 +1291,14 @@ color-scheme:light;
 .re-inf-sup-tabla th,.re-inf-sup-tabla td{padding:0.5pt 3pt;text-align:left;vertical-align:top;border-bottom:1px solid var(--line);font-size:7pt;line-height:1.25}
 .re-inf-sup-tabla th{width:42%;font-weight:400;color:var(--ink-2)}
 .re-inf-sup-tabla td{font-weight:700}
+.re-inf-plan th,.re-inf-plan td{width:auto}
+.re-inf-plan thead th{font-weight:700;color:var(--ink-3)}
+.re-inf-plan tbody th{width:22%;color:var(--ink)}
+.re-inf-plan td{font-weight:400}
 .re-inf-peq{display:inline;font-size:6.5pt;font-weight:400;color:var(--ink-2)}
 .re-inf-peq::before{content:" · "}
 .re-inf-fijo{margin-top:2pt;font-size:7pt;color:var(--ink-2)}
+.re-inf-sub{margin:6pt 0 2pt;font-size:9pt;font-weight:700;color:var(--ink)}
 .re-inf-avisos li{position:relative;padding-left:8pt;font-size:7.5pt}
 .re-inf-avisos li::before{content:"";position:absolute;left:0;top:3.5pt;width:3pt;height:3pt;border-radius:var(--radio-redondo);background:var(--ink-2)}
 .re-informe .comentario{max-width:none;padding:4pt 6pt;border:1px solid var(--line);border-radius:var(--radio-2);font-size:7.5pt;line-height:1.3}
@@ -1255,6 +1315,16 @@ color-scheme:light;
 .re-inf-firmas{margin-top:6pt;display:grid;grid-template-columns:repeat(2, minmax(0, 1fr));gap:12pt}
 .re-inf-pie{margin-top:4pt;padding-top:2pt;border-top:1px solid var(--line-2);font-size:7pt;color:var(--ink-3)}
 }
+.re-cte-cifras{display:flex;flex-wrap:wrap;align-items:flex-end;gap:var(--esp-4) var(--esp-8)}
+.re-cte-cifra{margin:0;display:flex;flex-direction:column;gap:var(--esp-1)}
+.re-cte-etq{font-size:var(--fs-14);line-height:var(--lh-14);font-weight:700;color:var(--ink-2)}
+.re-cte-val{font-size:var(--fs-32);line-height:var(--lh-32);font-weight:700;color:var(--ink);font-variant-numeric:tabular-nums}
+.re-cte-dif{margin:0;font-size:var(--fs-20);line-height:var(--lh-20);font-weight:700;color:var(--ok)}
+.re-cte-dif.neg{color:var(--bad)}
+.re-cte-dif.igual{color:inherit}
+.re-cte-desglose{display:flex;flex-direction:column;gap:var(--esp-2);max-width:var(--ancho-lectura)}
+.re-cte-consumo{margin:0;padding-inline-start:var(--esp-4);font-size:var(--fs-14);line-height:var(--lh-14);color:var(--ink-2)}
+.re-cte-nota{margin:0;max-width:var(--ancho-lectura);font-size:var(--fs-14);line-height:var(--lh-14);color:var(--ink-2)}
 html.pr-activo,
 html.pr-activo body {
 overflow: hidden;
@@ -1961,7 +2031,7 @@ display: none !important;
             <li class="ap-proceso-paso"><span class="ap-proceso-marca" aria-hidden="true">A</span><span class="ap-proceso-nom">A · Ajuste</span><span class="ap-proceso-desc">Probabilidad de éxito</span></li>
             <li class="ap-proceso-paso"><span class="ap-proceso-marca" aria-hidden="true">L</span><span class="ap-proceso-nom">L · Lo que cuesta</span><span class="ap-proceso-desc">Inversión inicial y coste recurrente, supervisión incluida</span></li>
             <li class="ap-proceso-paso"><span class="ap-proceso-marca" aria-hidden="true">E</span><span class="ap-proceso-nom">E · Equilibrio</span><span class="ap-proceso-desc">Periodo de recuperación</span></li>
-            <li class="ap-proceso-paso ap-proceso-fin"><span class="ap-proceso-marca" aria-hidden="true"><span class="i i-ya"></span></span><span class="ap-proceso-nom">¿Vale? · Recomendación</span><span class="ap-proceso-desc">Aprobar, Aprobar el MVP, Aplazar o Rechazar, con sus umbrales críticos.</span></li>
+            <li class="ap-proceso-paso ap-proceso-fin"><span class="ap-proceso-marca" aria-hidden="true"><span class="i i-ya"></span></span><span class="ap-proceso-nom">¿Vale? · Recomendación</span><span class="ap-proceso-desc">Aprobar, Aprobar el MVP, Aplazar o Rediseñar, con sus umbrales críticos o sus condiciones de paso.</span></li>
           </ol>
         </section>
       </div>
@@ -2007,7 +2077,7 @@ display: none !important;
           <div class="ap-exportar-cuerpo">
             <ul class="acciones">
               <li class="ac-pagina"><button type="button" data-accion="imprimir"><span class="ac-txt"><strong>Imprimir informe para el comité</strong><span>Una página imprimible</span></span></button></li>
-              <li class="ac-enlace"><button type="button" data-accion="copiar-enlace"><span class="ac-txt"><strong>Copiar enlace</strong><span>Los datos van en el propio enlace y no se envían al servidor</span></span></button></li>
+              <li class="ac-enlace"><button type="button" data-accion="copiar-enlace"><span class="ac-txt"><strong>Copiar enlace</strong><span>Los datos van en el propio enlace; su contenido no se envía a ningún servidor</span></span></button></li>
               <li class="ac-borrar"><button type="button" data-accion="borrar" aria-haspopup="dialog" aria-controls="ap-confirmar"><span class="ac-txt"><strong>Borrar datos</strong><span>Elimina los datos guardados en este navegador y vuelve a la portada</span></span></button></li>
             </ul>
             <div class="ap-exportar-opciones">
@@ -2030,7 +2100,7 @@ display: none !important;
 
 <footer id="ap-pie" class="pie"><div class="ap-pie-in">
   <p>Diseñada para el comité de inversiones · Método VALE · Acevedo Enterprise IA</p>
-  <p class="ap-version">Versión de prueba · 10-nov-2026</p>
+  <p class="ap-version">Versión 1.4 · 18-nov-2026</p>
   <p class="ap-pie-aviso">El resultado es orientativo y no sustituye al comité de inversiones.</p>
 </div></footer>
 
@@ -2041,7 +2111,7 @@ display: none !important;
 
 <dialog id="ap-glosario" class="cajon" aria-labelledby="ap-glosario-tit">
   <div class="cajon-cab">
-    <div><p class="etq">Ayuda</p><h2 id="ap-glosario-tit" class="cajon-tit" tabindex="-1">Glosario</h2><p class="ap-glosario-num">18 términos</p></div>
+    <div><p class="etq">Ayuda</p><h2 id="ap-glosario-tit" class="cajon-tit" tabindex="-1">Glosario</h2><p class="ap-glosario-num">22 términos</p></div>
     <button type="button" class="btn icono secundario" data-accion="cerrar-dialogo" aria-label="Cerrar"><span class="i i-x" aria-hidden="true"></span></button>
   </div>
   <div class="cajon-cuerpo">
@@ -2053,14 +2123,18 @@ display: none !important;
       <div id="ap-g-p-exito" tabindex="-1"><dt>Probabilidad de éxito</dt><dd>Probabilidad estimada de que el proyecto alcance el valor previsto. Se elige entre cuatro niveles (30, 50, 70 y 90&nbsp;%), cada uno con su criterio escrito.</dd></div>
       <div id="ap-g-p-equilibrio" tabindex="-1"><dt>Probabilidad de equilibrio</dt><dd>Probabilidad de éxito mínima con la que el VAN es cero; por encima de ella, el VAN es positivo.</dd></div>
       <div id="ap-g-linea-base" tabindex="-1"><dt>Línea base</dt><dd>Medición de partida del indicador que el proyecto quiere mejorar (por ejemplo, minutos por documento). Sin línea base medida, la probabilidad de éxito máxima es del 50&nbsp;%.</dd></div>
-      <div id="ap-g-recomendacion" tabindex="-1"><dt>Recomendación</dt><dd>Resultado de la herramienta en cuatro estados: Aprobar, Aprobar el MVP, Aplazar y Rechazar. La determina una regla fija del cálculo, no la IA.</dd></div>
-      <div id="ap-g-mvp" tabindex="-1"><dt>MVP</dt><dd>Producto mínimo viable: prueba acotada, del 20&nbsp;% de la inversión inicial, para medir la línea base y el efecto real antes de comprometer el resto.</dd></div>
+      <div id="ap-g-recomendacion" tabindex="-1"><dt>Recomendación</dt><dd>Resultado de la herramienta en cuatro estados: Aprobar, Aprobar el MVP, Aplazar y Rediseñar. Sin línea base medida no se rediseña: se aprueba el MVP para medirla. La determina una regla fija del cálculo.</dd></div>
+      <div id="ap-g-mvp" tabindex="-1"><dt>MVP</dt><dd>Producto mínimo viable: prueba acotada, del 20&nbsp;% de la inversión inicial salvo que se informe su coste, para medir la línea base y el efecto real antes de comprometer el resto.</dd></div>
       <div id="ap-g-objetivo-mvp" tabindex="-1"><dt>Objetivo mínimo del MVP</dt><dd>Valor que el MVP tiene que demostrar para que el proyecto cumpla los criterios de aprobación con una probabilidad de éxito del 70&nbsp;%.</dd></div>
+      <div id="ap-g-condiciones-paso" tabindex="-1"><dt>Condiciones de paso del MVP</dt><dd>Valores que el MVP tiene que confirmar para aprobar la fase completa, calculados con la línea base medida, el responsable de la medición asignado y una probabilidad de éxito de al menos el 70&nbsp;%. El riesgo máximo es el coste del MVP.</dd></div>
+      <div id="ap-g-plan-medicion" tabindex="-1"><dt>Plan de medición</dt><dd>Indicadores que se registran durante el MVP, con el supuesto declarado, el umbral de paso, cómo se mide y con qué frecuencia. Es la base del caso de estudio que se presenta al comité.</dd></div>
       <div id="ap-g-umbrales" tabindex="-1"><dt>Umbrales críticos</dt><dd>Valores de los supuestos a partir de los cuales cambia la recomendación o el signo del VAN ajustado por riesgo; los calcula el código.</dd></div>
       <div id="ap-g-inversion-maxima" tabindex="-1"><dt>Inversión máxima admisible</dt><dd>Inversión inicial con la que el VAN es cero.</dd></div>
+      <div id="ap-g-plataforma" tabindex="-1"><dt>Plataforma reutilizable</dt><dd>Parte de la inversión y del coste recurrente que sirve a varios casos de uso en el horizonte de 36 meses. Se imputa a cada caso su parte; la herramienta muestra también la cuenta cargando toda la plataforma a este caso.</dd></div>
       <div id="ap-g-supervision" tabindex="-1"><dt>Supervisión humana</dt><dd>Trabajo de las personas que controlan la IA: revisión de casos dudosos, excepciones, control por muestreo y responsable del sistema. Siempre entra en el cálculo: reduce las horas liberadas o se imputa al coste recurrente.</dd></div>
       <div id="ap-g-horas-impacto" tabindex="-1"><dt>Horas con impacto económico</dt><dd>Horas liberadas ponderadas por su destino: reducción de gasto y absorción del crecimiento, al 100&nbsp;%; reasignación, al 50&nbsp;%; sin destino asignado, al 0&nbsp;%. En A, 4.200 de las 7.000 horas liberadas.</dd></div>
       <div id="ap-g-valor-horas" tabindex="-1"><dt>Valor del ahorro de horas</dt><dd>Combina ahorro de caja (reducción de gasto y absorción del crecimiento, al 100&nbsp;%) y capacidad reasignada, valorada al 50&nbsp;% del coste laboral, que no es caja. En A, la reasignación aporta la mayor parte del valor.</dd></div>
+      <div id="ap-g-coste-tarea" tabindex="-1"><dt>Coste por tarea</dt><dd>Cuánto cuesta cada unidad de trabajo (un documento, una tarea) hoy y con IA, sumando personas, supervisión, tecnología y la inversión repartida en 36&nbsp;meses. Mide la eficiencia del proceso; la recomendación se decide con el VAN ajustado por riesgo.</dd></div>
       <div id="ap-g-etc" tabindex="-1"><dt>ETC</dt><dd>Equivalente a tiempo completo: 1.529 horas efectivas al año (INE, ETCL).</dd></div>
       <div id="ap-g-contingencia" tabindex="-1"><dt>Contingencia</dt><dd>Recargo sobre el coste recurrente: 0&nbsp;% por defecto y 20&nbsp;% en la prueba de estrés.</dd></div>
       <div id="ap-g-valor-ejemplo" tabindex="-1"><dt>Valor de ejemplo</dt><dd>Supuesto propio, editable y rotulado como tal en la herramienta.</dd></div>
@@ -2108,6 +2182,7 @@ display: none !important;
     CONTINGENCIA_ESTRES: 0.20,
     PRESUPUESTO_CARTERA: 250000,
     SUP_H_MES_EJEMPLO: 16,
+    ALCANZABLE: 3,
     TOL_PLAZO: 1e-9
   });
 
@@ -2118,15 +2193,17 @@ display: none !important;
     }),
     vale_en_pequeno: Object.freeze({
       codigo: 'vale_en_pequeno', rotulo: 'Aprobar el MVP', clase: 'pequeno', icono: '--i-mitad', icono_semaforo: '--i-mitad',
-      siguiente_paso: 'disenar_mvp', texto_siguiente_paso: 'Siguiente paso: diseñar el MVP y medir la línea base.'
+      siguiente_paso: 'disenar_mvp',
+      texto_siguiente_paso: 'Siguiente paso: lanzar el MVP para medir la línea base y comprobar las condiciones de paso.'
     }),
     todavia_no: Object.freeze({
       codigo: 'todavia_no', rotulo: 'Aplazar', clase: 'todavia', icono: '--i-reloj', icono_semaforo: '--i-reloj',
       siguiente_paso: 'revisar_en_fecha', texto_siguiente_paso: 'Siguiente paso: revisar el proyecto en la fecha fijada.'
     }),
     no_vale: Object.freeze({
-      codigo: 'no_vale', rotulo: 'Rechazar', clase: 'no', icono: '--i-no', icono_semaforo: '--i-x',
-      siguiente_paso: 'descartar', texto_siguiente_paso: 'Siguiente paso: rechazar o aplicar un control sin IA.'
+      codigo: 'no_vale', rotulo: 'Rediseñar', clase: 'no', icono: '--i-no', icono_semaforo: '--i-x',
+      siguiente_paso: 'redisenar',
+      texto_siguiente_paso: 'Siguiente paso: rediseñar el alcance con las condiciones que se indican y volver a evaluar.'
     })
   });
 
@@ -2242,7 +2319,8 @@ display: none !important;
       contingencia: 0,
       c_sup: null,
       simple: { Vb: null, I: null, R_sin_sup: null, R_sup: null },
-      mvp: { linea_base: '', fecha_decision: '', responsable: '' },
+      mvp: { linea_base: '', fecha_decision: '', responsable: '', coste: null },
+      plataforma: { reutilizable: false, pct_inversion: null, pct_recurrente: null, casos: 3 },
       fecha_revision: '',
       incluir_textos_en_enlace: false
     };
@@ -2356,7 +2434,7 @@ display: none !important;
     const va_costes = o.I + R * DR;
     const pl = plazo(o.I, Va, R, o.m, o.T, o.t, false);
     let codigo;
-    if (VAN100 <= 0) codigo = 'no_vale';
+    if (VAN100 <= 0 && o.medido) codigo = 'no_vale';
     else if (VAN > 0 && pl !== null && pl <= o.plazo_max + C.TOL_PLAZO && p_ef >= o.p_verde && o.medido && o.dueno) codigo = 'vale_ya';
     else if (o.depende_fuera) codigo = 'todavia_no';
     else codigo = 'vale_en_pequeno';
@@ -2541,6 +2619,26 @@ display: none !important;
     const dCrec = nz(destino.crecimiento);
     const dReas = nz(destino.reasignacion);
 
+    const pl = esObjeto(pr.plataforma) ? pr.plataforma : {};
+    const plI = num(pl.pct_inversion);
+    const plR = num(pl.pct_recurrente);
+    const plCasos = num(pl.casos);
+    const fraccion = (v) => v === null || (v >= 0 && v <= 1);
+    const platActiva = pl.reutilizable === true && plCasos !== null && Number.isInteger(plCasos) && plCasos >= 2 &&
+      fraccion(plI) && fraccion(plR) && (nz(plI) > 0 || nz(plR) > 0);
+    const plat = {
+      activa: platActiva,
+      casos: platActiva ? plCasos : null,
+      pct_inversion: platActiva ? nz(plI) : null,
+      pct_recurrente: platActiva ? nz(plR) : null
+    };
+    const I_total = sI !== null ? sI : nz(partidasI[0]) + nz(partidasI[1]) + nz(partidasI[2]) + nz(partidasI[3]);
+    const I_imputada = platActiva
+      ? I_total * (1 - plat.pct_inversion) + I_total * plat.pct_inversion / plat.casos
+      : I_total;
+    const mvpDatos = esObjeto(pr.mvp) ? pr.mvp : {};
+    const mvpCoste = num(mvpDatos.coste);
+
     const P = {
       origen_valor: origen,
       tipo_beneficio: tipo,
@@ -2570,7 +2668,13 @@ display: none !important;
       R_sup_sin_horas,
       s_R_sup: sRsup,
       s_R_sin_sup: sRsin,
-      I: sI !== null ? sI : nz(partidasI[0]) + nz(partidasI[1]) + nz(partidasI[2]) + nz(partidasI[3]),
+      I: I_imputada,
+      I_total,
+      plat,
+      mvp_coste: mvpCoste !== null && mvpCoste >= 0 ? mvpCoste : null,
+      mvp_fecha_decision: typeof mvpDatos.fecha_decision === 'string' ? mvpDatos.fecha_decision : '',
+      mvp_responsable: typeof mvpDatos.responsable === 'string' ? mvpDatos.responsable : '',
+      mvp_linea_base: typeof mvpDatos.linea_base === 'string' ? mvpDatos.linea_base : '',
       p,
       medido: !!pr.medido,
       dueno: !!pr.dueno,
@@ -2604,7 +2708,7 @@ display: none !important;
     let R_variable;
     if (P.usa_horas) {
       const V = g('V');
-      const t0 = P.t0;
+      const t0 = g('t0');
       c = g('c');
       let s = P.s;
       let r = P.r;
@@ -2622,7 +2726,7 @@ display: none !important;
       const quien = g('quien');
       c_sup = P.c_sup === null ? c : P.c_sup;
       hb = horas(V, t0, s, r, x, tr, tx, nm, tm, P.hd, P.k, P.u, quien, C.H_FTE);
-      ef = { s, r, x, tr, tx, nm, tm, V, quien };
+      ef = { s, r, x, tr, tx, nm, tm, V, t0, quien };
 
       let fg = P.fg;
       const fc = P.fc;
@@ -2665,18 +2769,24 @@ display: none !important;
       R_fijo = P.s_R_sin_sup;
       R_variable = 0;
     }
+    const sinReparto = !!cb.sin_reparto;
+    const R_fijo_total = R_fijo;
+    if (P.plat.activa && !sinReparto) {
+      const pR = P.plat.pct_recurrente;
+      R_fijo = R_fijo * (1 - pR) + R_fijo * pR / P.plat.casos;
+    }
     const colchon = g('colchon');
     let R = (R_fijo + R_variable + R_sup) * (1 + colchon);
     if (tiene(cb, 'Vb')) Vb = cb.Vb;
     if (tiene(cb, 'R')) R = cb.R;
-    const I = g('I');
+    const I = tiene(cb, 'I') ? cb.I : (sinReparto ? P.I_total : P.I);
     const p = g('p');
     const res = vale({
       Vb, p, I, R, m: g('m'), T: g('T'), t: g('t'),
       medido: g('medido'), dueno: g('dueno'), depende_fuera: P.depende_fuera
     });
     return {
-      res, Vb, I, R, R_fijo, R_variable, R_sup, colchon, p, kap, c, c_sup, hb, kinfo, ef,
+      res, Vb, I, R, R_fijo, R_fijo_total, R_variable, R_sup, colchon, p, kap, c, c_sup, hb, kinfo, ef,
       m: g('m'), T: g('T'), t: g('t'), medido: g('medido'), dueno: g('dueno')
     };
   }
@@ -2862,9 +2972,6 @@ display: none !important;
       'responsable de la medición asignado y periodo de recuperación de 24 meses o menos';
     if (o === 'ventas' && P.ventas_margen) supuestos += ', con el margen de contribución actual (' + fmt.pct(P.ventas_margen) + ')';
     supuestos += '.';
-    if (r.p < C.P_VERDE) {
-      supuestos += ' Los umbrales críticos, en cambio, se calculan con la probabilidad de éxito actual (' + fmt.pct(r.p) + ').';
-    }
     objetivo.supuestos = supuestos.replace(/ %/g, NBSP + '%');
     return {
       importe: r.MVP,
@@ -2876,6 +2983,7 @@ display: none !important;
   const FINAL_VAN100 = 'el VAN sin ajuste por riesgo pasa a ser positivo';
   const DEJA = 'el proyecto deja de cumplir los criterios de aprobación';
   const FINAL_NEG = 'el VAN ajustado por riesgo pasa a ser negativo';
+  const PASA = 'el proyecto pasa a cumplir los criterios de aprobación';
 
   function margenDe(clave, umbral, x0) {
     if (clave === 'm') return (umbral - x0) / Math.max(x0, 1);
@@ -2889,6 +2997,10 @@ display: none !important;
     const x0 = u.x0;
     const r = redondearUmbral;
     switch (u.clave) {
+      case 't0': {
+        const v = r(X, 1, !desfav);
+        return { v, txt: fmt.minutosLargo(v), ins: fmt.minutos(v) };
+      }
       case 'tr': {
         const v = r(X, 1, desfav);
         return { v, txt: fmt.minutosLargo(v), ins: fmt.minutos(v), van: u.umbral_van !== null ? r(u.umbral_van, 1, true) : null };
@@ -2935,16 +3047,27 @@ display: none !important;
     }
   }
 
+  function sufijoImputado(P, clave) {
+    if (!P.plat || !P.plat.activa) return '';
+    if (clave === 'I' && P.plat.pct_inversion > 0) return ' imputada a este caso';
+    if (clave === 'R' && P.plat.pct_recurrente > 0) return ' imputado a este caso';
+    return '';
+  }
+
   function fraseUmbral(P, u, k) {
     const uni = UNIDADES[P.unidad];
+    const imp = sufijoImputado(P, u.clave);
     const obj = u.objetivo;
     let fin;
     if (obj === 'aprobacion') fin = DEJA;
+    else if (obj === 'aprobacion_alcanzar') fin = PASA;
     else if (obj === 'van_negativo') fin = FINAL_NEG;
     else fin = obj === 'van' ? FINAL_VAN : FINAL_VAN100;
     const desfav = obj === 'aprobacion' || obj === 'van_negativo';
     const ap = obj === 'aprobacion';
     switch (u.clave) {
+      case 't0':
+        return 'Con un tiempo actual por ' + uni.singular + ' de ' + k.txt + (desfav ? ' o menos, ' : ' o más, ') + fin + '.';
       case 'tr':
         return desfav
           ? 'Si la revisión de cada ' + uni.singular + ' alcanza ' + k.txt + ', ' + fin +
@@ -2964,13 +3087,13 @@ display: none !important;
           : 'Con un coste laboral por hora superior a ' + k.txt + ', ' + fin + '.';
       case 'R':
         return desfav
-          ? 'Con un coste recurrente anual superior a ' + k.txt + ', ' + fin + '.'
-          : 'Con un coste recurrente anual inferior a ' + k.txt + ' (supuesto actual: ' + fmt.eur(u.x0) + '), ' + fin + '.';
+          ? 'Con un coste recurrente anual' + imp + ' superior a ' + k.txt + ', ' + fin + '.'
+          : 'Con un coste recurrente anual' + imp + ' inferior a ' + k.txt + ' (supuesto actual: ' + fmt.eur(u.x0) + '), ' + fin + '.';
       case 'I':
         return desfav
-          ? 'Con una inversión inicial superior a ' + k.txt + ', ' + fin +
+          ? 'Con una inversión inicial' + imp + ' superior a ' + k.txt + ', ' + fin +
             (ap && k.van !== null ? '; por encima de ' + fmt.eur(k.van) + ', el VAN pasa a ser negativo.' : '.')
-          : 'Con una inversión inicial inferior a ' + k.txt + ', ' + fin + '.';
+          : 'Con una inversión inicial' + imp + ' inferior a ' + k.txt + ', ' + fin + '.';
       case 'm':
         return desfav
           ? 'Con la puesta en marcha en el mes ' + k.txt + ' o posterior, ' + fin + '.'
@@ -2996,10 +3119,50 @@ display: none !important;
     }
   }
 
-  function trVanNulo(P, d) {
+  function condicionUmbral(P, u, k) {
+    const uni = UNIDADES[P.unidad];
+    const imp = sufijoImputado(P, u.clave);
+    const desfav = u.objetivo === 'aprobacion' || u.objetivo === 'van_negativo';
+    switch (u.clave) {
+      case 't0':
+        return desfav
+          ? 'Tiempo actual por ' + uni.singular + ' superior a ' + k.txt
+          : 'Tiempo actual por ' + uni.singular + ' de ' + k.txt + ' o más';
+      case 'tr':
+        return 'Revisión de cada ' + uni.singular + ' inferior a ' + k.txt;
+      case 'kap':
+        return desfav
+          ? 'Horas liberadas con impacto económico de al menos el ' + k.txt
+          : 'Horas liberadas con impacto económico superiores al ' + k.txt;
+      case 'V':
+        return 'Más de ' + k.txt + ' ' + uni.plural + ' al año';
+      case 'c':
+        return desfav
+          ? 'Coste laboral por hora de al menos ' + k.txt
+          : 'Coste laboral por hora superior a ' + k.txt;
+      case 'R':
+        return desfav ? 'Coste recurrente anual' + imp + ' de ' + k.txt + ' o menos' : 'Coste recurrente anual' + imp + ' inferior a ' + k.txt;
+      case 'I':
+        return desfav ? 'Inversión inicial' + imp + ' de ' + k.txt + ' o menos' : 'Inversión inicial' + imp + ' inferior a ' + k.txt;
+      case 'm':
+        return desfav ? 'Puesta en marcha antes del mes ' + k.txt : 'Puesta en marcha en el mes ' + k.txt + ' o antes';
+      case 'Vb': {
+        const q = desfav ? 'de al menos ' : 'superior a ';
+        if (k.unidad === 'ventas') return 'Ventas adicionales ' + (desfav ? 'de al menos ' : 'superiores a ') + k.txt + ' al año';
+        if (k.unidad === 'perdidas') return 'Reducción de las pérdidas ' + (desfav ? 'de al menos el ' : 'superior al ') + k.txt;
+        if (k.unidad === 'gasto') return 'Gasto evitado ' + q + k.txt + ' al año';
+        return 'Valor anual potencial ' + q + k.txt;
+      }
+      default:
+        return '';
+    }
+  }
+
+  function trVanNulo(P, d, ev) {
     if (!d.ef) return null;
+    const evalua = ev || ((cb) => evaluar(P, cb));
     const x0 = d.ef.tr;
-    const vanPos = (x) => evaluar(P, { tr: x }).VAN > 0;
+    const vanPos = (x) => evalua({ tr: x }).VAN > 0;
     const p0 = vanPos(x0);
     const extremo = p0 ? Math.max(5 * P.t0, 2 * x0) : 0;
     if (vanPos(extremo) === p0) return null;
@@ -3007,46 +3170,63 @@ display: none !important;
     return u > 0 ? u : null;
   }
 
-  function umbrales(P, d) {
+  function alcanzable(umbral, x0) {
+    if (!(x0 > 0) || !(umbral > 0)) return false;
+    return Math.max(umbral / x0, x0 / umbral) <= C.ALCANZABLE + 1e-9;
+  }
+
+  function hipotesisMvp(d) {
+    return { medido: true, dueno: true, p: Math.max(d.p, C.P_VERDE) };
+  }
+
+  function umbrales(P, d, opciones) {
+    const hip = opciones && opciones.hipotesis ? opciones.hipotesis : null;
+    const ev = (cb) => evaluar(P, hip ? Object.assign({}, hip, cb) : cb);
     const base = d.res;
+    const ref = hip ? ev({}) : base;
     const codigo = base.codigo;
     let objetivo;
-    if (codigo === 'vale_ya') objetivo = 'aprobacion';
+    if (hip) objetivo = ref.codigo === 'vale_ya' ? 'aprobacion' : 'aprobacion_alcanzar';
+    else if (codigo === 'vale_ya') objetivo = 'aprobacion';
     else if (codigo === 'no_vale') objetivo = 'van100';
     else objetivo = base.VAN > 0 ? 'van_negativo' : 'van';
     const desfavorable = objetivo === 'aprobacion' || objetivo === 'van_negativo';
+    const aprob = objetivo === 'aprobacion' || objetivo === 'aprobacion_alcanzar';
     const pred = (cb) => {
-      const e = evaluar(P, cb);
-      if (objetivo === 'aprobacion') return e.codigo === 'vale_ya';
+      const e = ev(cb);
+      if (aprob) return e.codigo === 'vale_ya';
       if (objetivo === 'van' || objetivo === 'van_negativo') return e.VAN > 0;
       return e.VAN100 > 0;
     };
     const p0 = pred({});
     const conHoras = P.origen_valor === 'horas';
-    const claves = conHoras ? ['tr', 'kap', 'V', 'c', 'R', 'I', 'm'] : ['Vb', 'R', 'I', 'm'];
-    const desfavorableSube = { tr: true, R: true, I: true, m: true, kap: false, V: false, c: false, Vb: false };
+    let claves;
+    if (hip) claves = conHoras ? ['t0', 'tr', 'kap', 'V', 'R'] : ['Vb', 'R'];
+    else claves = conHoras ? ['tr', 'kap', 'V', 'c', 'R', 'I', 'm'] : ['Vb', 'R', 'I', 'm'];
+    const desfavorableSube = { t0: false, tr: true, R: true, I: true, m: true, kap: false, V: false, c: false, Vb: false };
     const DV = base.DV;
     const DR = base.DR;
-    const Va = base.Va;
+    const Va = ref.Va;
     const analitico = (clave, obj) => {
       const usarVb = obj === 'van100';
       const valorDV = (usarVb ? d.Vb : Va) * DV;
       if (clave === 'R') return DR > 0 ? (valorDV - d.I) / DR : null;
       if (clave === 'I') return valorDV - d.R * DR;
       if (clave === 'Vb') {
-        const pe = usarVb ? 1 : base.p;
+        const pe = usarVb ? 1 : ref.p;
         return pe * DV !== 0 ? (d.I + d.R * DR) / (pe * DV) : null;
       }
       return null;
     };
     const candidatos = [];
     let trInfo = { aprobacion: null, van: null };
-    const trVan = conHoras ? trVanNulo(P, d) : null;
+    const trVan = conHoras ? trVanNulo(P, d, ev) : null;
     trInfo.van = trVan;
 
     for (const clave of claves) {
       let x0;
       if (clave === 'tr') x0 = d.ef.tr;
+      else if (clave === 't0') x0 = d.ef.t0;
       else if (clave === 'kap') x0 = d.kap;
       else if (clave === 'V') x0 = d.ef.V;
       else if (clave === 'c') x0 = d.c;
@@ -3061,15 +3241,15 @@ display: none !important;
       if (!desfavorable && p0) continue;
       if (desfavorable && !p0) continue;
 
-      if (clave === 'R' || clave === 'I' || clave === 'Vb') {
+      const cambia = (x) => {
+        const cb = {};
+        cb[clave] = x;
+        return pred(cb);
+      };
+      if ((clave === 'R' || clave === 'I' || clave === 'Vb') && objetivo !== 'aprobacion_alcanzar') {
         const nulo = analitico(clave, objetivo === 'van100' ? 'van100' : 'van');
         if (nulo === null || !isFinite(nulo)) continue;
         if (objetivo === 'aprobacion') {
-          const cambia = (x) => {
-            const cb = {};
-            cb[clave] = x;
-            return pred(cb);
-          };
           if (cambia(nulo) === p0) continue;
           umbral = biseccion((x) => (cambia(x) ? 1 : -1), x0, nulo, 200);
           umbral_van = nulo;
@@ -3090,12 +3270,10 @@ display: none !important;
         let extremo;
         if (clave === 'tr') extremo = sube ? Math.max(5 * P.t0, 2 * x0) : 0;
         else if (clave === 'kap') extremo = sube ? 1 : 0;
-        else extremo = sube ? 10 * x0 : 0;
-        const cambia = (x) => {
-          const cb = {};
-          cb[clave] = x;
-          return pred(cb);
-        };
+        else if (clave === 'Vb') {
+          const vbRef = DV > 0 ? (d.I + d.R * DR) / (C.P_VERDE * DV) : 0;
+          extremo = sube ? Math.max(10 * x0, 10 * vbRef) : 0;
+        } else extremo = sube ? 10 * x0 : 0;
         if (cambia(extremo) === p0) continue;
         umbral = biseccion((x) => (cambia(x) ? 1 : -1), x0, extremo, 200);
         if (clave === 'tr' && objetivo === 'aprobacion') umbral_van = trVan;
@@ -3104,16 +3282,19 @@ display: none !important;
       if (clave === 'I' && umbral < 0) continue;
       if (clave === 'R' && umbral < 0) continue;
       if (clave === 'tr' && umbral <= 0) continue;
+      if (clave === 't0' && umbral <= 0) continue;
       if (clave === 'kap' && umbral > 1) continue;
       if (clave === 'Vb' && P.origen_valor === 'perdidas' && !desfavorable) {
         const red = umbral / (P.perdidas_frecuencia * P.perdidas_impacto);
         if (!(red <= 1)) continue;
       }
+      if (objetivo === 'aprobacion_alcanzar' && clave !== 'kap' && !alcanzable(umbral, x0)) continue;
       const u = { clave, objetivo, x0, umbral, umbral_van, margen: margenDe(clave, umbral, x0) };
       const k = cifrasUmbral(P, u);
       u.cifra = k.v;
       u.insignia = k.ins;
       u.frase = fraseUmbral(P, u, k);
+      u.condicion = condicionUmbral(P, u, k);
       candidatos.push(u);
       if (clave === 'tr' && objetivo === 'aprobacion') trInfo.aprobacion = umbral;
     }
@@ -3126,14 +3307,15 @@ display: none !important;
     };
     let seleccion = [];
     if (conHoras) {
-      const tr = candidatos.find((u) => u.clave === 'tr');
-      if (tr) seleccion.push(tr);
-      const resto = candidatos.filter((u) => u.clave !== 'tr').sort(orden);
+      const primera = hip ? 't0' : 'tr';
+      const u1 = candidatos.find((u) => u.clave === primera);
+      if (u1) seleccion.push(u1);
+      const resto = candidatos.filter((u) => u.clave !== primera).sort(orden);
       seleccion = seleccion.concat(resto).slice(0, 3);
     } else {
       seleccion = candidatos.slice().sort(orden).slice(0, 3);
     }
-    return { objetivo, candidatos, seleccion, tr_max: conHoras ? trInfo : null };
+    return { objetivo, candidatos, seleccion, tr_max: conHoras ? trInfo : null, hipotesis: hip, cumple_hipotesis: hip ? p0 : null };
   }
 
   function resumenEscenario(e) {
@@ -3329,9 +3511,177 @@ display: none !important;
     if (r.codigo === 'vale_ya' && P.depende_fuera) add('APROBACION_CONDICIONADA', 'A', 'Condiciones pendientes fuera del control de la empresa: la aprobación queda sujeta a su cumplimiento.', 'Método VALE');
     if (r.codigo === 'todavia_no') add('DEPENDE_DE_FUERA', 'A', 'Condiciones pendientes fuera del control de la empresa: recomendación Aplazar hasta la fecha de revisión.', 'Método VALE');
     if (P.decide_personas) add('DECIDE_SOBRE_PERSONAS', 'L', 'Decisiones sobre personas físicas (alto riesgo, anexo III del Reglamento de IA): añadir una partida de cumplimiento normativo.', 'Reglamento (UE) 2024/1689, anexo III');
+    const pla = extra.plataforma;
+    if (pla && pla.activa) {
+      lista.push({
+        codigo: 'PLATAFORMA_REPARTIDA', paso: 'L', nivel: 'info',
+        texto: 'La inversión y el coste de la plataforma se reparten entre ' + pla.casos + ' casos de uso; cargando toda la ' +
+          'plataforma a este caso, la recomendación sería ' + pla.sin_reparto.rotulo + ' y el VAN ajustado por riesgo ' +
+          fmt.eurSigno(pla.sin_reparto.VAN) + '.',
+        fuente: 'Método VALE'
+      });
+    }
     const top = extra.sensibilidad.length ? extra.sensibilidad[0].etiqueta : '';
     add('TORNADO_TOP', 'vale', 'Variable con mayor impacto en el VAN: ' + top + '.', 'Método VALE');
     return lista;
+  }
+
+  function bloquePlataforma(P, d) {
+    if (!P.plat.activa) return { activa: false };
+    const s0 = derivar(P, { sin_reparto: true });
+    const e = ESTADOS[s0.res.codigo];
+    return {
+      activa: true,
+      casos: P.plat.casos,
+      pct_inversion: P.plat.pct_inversion,
+      pct_recurrente: P.plat.pct_recurrente,
+      I_total: P.I_total,
+      I_imputada: d.I,
+      R_fijo_total: d.R_fijo_total,
+      R_fijo_imputado: d.R_fijo,
+      sin_reparto: {
+        codigo: s0.res.codigo,
+        rotulo: e.rotulo,
+        VAN: s0.res.VAN,
+        VAN100: s0.res.VAN100,
+        plazo_meses: s0.res.plazo === null ? null : Math.ceil(s0.res.plazo - 1e-9)
+      }
+    };
+  }
+
+  function planMedicion(P, d, umb, ruta) {
+    const conUmbral = umb.objetivo === 'aprobacion' || umb.objetivo === 'aprobacion_alcanzar';
+    const cand = {};
+    if (conUmbral) for (const u of umb.candidatos) cand[u.clave] = u;
+    if (ruta && !cand.t0) {
+      cand.t0 = ruta;
+      if (!cand.kap) cand.kap = { cifra: 1 };
+    }
+    const SENTIDO = { t0: 'minimo', V: 'minimo', kap: 'minimo', Vb: 'minimo', c: 'minimo', tr: 'maximo', R: 'maximo', I: 'maximo' };
+    const plan = [];
+    const add = (id, indicador, unidad, supuesto, clave, conv, formato, como_medir, frecuencia) => {
+      const u = clave ? cand[clave] : null;
+      const umbral = u ? (conv ? conv(u.cifra) : u.cifra) : null;
+      const sentido = u ? SENTIDO[clave] : null;
+      plan.push({
+        id, indicador, unidad, supuesto,
+        supuesto_texto: supuesto === null || supuesto === undefined || supuesto === '' ? 'Pendiente de introducir' : formato(supuesto),
+        umbral_paso: umbral,
+        umbral_texto: umbral === null ? '' : (sentido === 'minimo' ? 'Mínimo ' : 'Máximo ') + formato(umbral),
+        sentido,
+        como_medir, frecuencia
+      });
+    };
+    const id = (x) => x;
+    const o = P.origen_valor;
+    if (o === 'horas' && d.hb) {
+      const uni = UNIDADES[P.unidad];
+      const ef = d.ef;
+      const Us = uni.plural.charAt(0).toUpperCase() + uni.plural.slice(1);
+      add('volumen', 'Volumen de ' + uni.plural + ' al mes', uni.plural + ' al mes', ef.V / 12, 'V',
+        (v) => Math.ceil(v / 12 - 1e-9), fmt.entero,
+        'Registro del sistema de origen durante 4 semanas, extrapolado al mes', 'Semanal durante el MVP');
+      add('tiempo_actual', 'Tiempo actual por ' + uni.singular, 'minutos', ef.t0, 't0', null, (x) => fmt.minutos(x),
+        'Cronometraje o registro de actividad de una muestra de al menos 30 ' + uni.plural + ' antes de activar la IA',
+        'Una vez, al inicio del MVP');
+      add('automatico', Us + ' que la IA resuelve sin intervención', '%', ef.s, null, null, fmt.pct,
+        'Registro del sistema de los casos cerrados sin intervención, validados con el control por muestreo', 'Semanal durante el MVP');
+      add('revisado', Us + ' con revisión', '%', ef.r, null, null, fmt.pct,
+        'Registro del sistema de los casos enviados a revisión', 'Semanal durante el MVP');
+      add('tiempo_revision', 'Tiempo de revisión por ' + uni.singular, 'minutos', ef.tr, 'tr', null, (x) => fmt.minutos(x),
+        'Registro de actividad de los revisores sobre una muestra de casos revisados', 'Semanal durante el MVP');
+      add('excepciones', 'Excepciones', '%', ef.x, null, null, fmt.pct,
+        'Registro del sistema de los casos devueltos al tratamiento manual', 'Semanal durante el MVP');
+      add('horas_liberadas', 'Horas liberadas al mes', 'horas al mes', d.hb.H_libera / 12, null, null, fmt.horas,
+        'Diferencia entre las horas de la línea base y las registradas con la IA', 'Mensual');
+      add('destino', 'Destino de las horas liberadas (gasto evitado real)', '%', d.kap, 'kap', null, fmt.pct,
+        'Conciliación con la partida de gasto que se reduce o con el crecimiento absorbido sin nuevas contrataciones',
+        'Mensual, con el cierre contable');
+    } else if (o === 'ventas') {
+      add('ventas_adicionales', 'Ventas adicionales atribuibles', '€ al año', P.ventas_importe, 'Vb', null, fmt.eur,
+        'Comparación con un grupo de control sin la IA en el mismo periodo', 'Mensual durante el MVP');
+      add('margen', 'Margen de contribución de las ventas adicionales', '%', P.ventas_margen, null, null, fmt.pct,
+        'Contabilidad analítica de las ventas atribuidas', 'Mensual');
+    } else if (o === 'perdidas') {
+      add('incidencias', 'Incidencias al año', 'veces al año', P.perdidas_frecuencia, null, null, (x) => fmt.decimal(x, 1),
+        'Registro de incidencias de los 3 últimos ejercicios', 'Una vez, al inicio del MVP');
+      add('impacto', 'Impacto medio por incidencia', '€', P.perdidas_impacto, null, null, fmt.eur,
+        'Contabilidad de las pérdidas registradas por incidencia', 'Una vez, al inicio del MVP');
+      add('reduccion', 'Reducción de las pérdidas', '%', P.perdidas_reduccion, 'Vb', null, fmt.pct,
+        'Casos detectados por la IA frente a los detectados por el control actual en el mismo periodo', 'Mensual durante el MVP');
+    } else if (o === 'gasto') {
+      add('gasto_evitado', 'Gasto evitado real', '€ al año', d.Vb, 'Vb', null, fmt.eur,
+        'Partida contable que se reduce, comparada con el mismo periodo del ejercicio anterior', 'Mensual, con el cierre contable');
+    } else {
+      add('valor', 'Valor anual potencial', '€ al año', d.Vb, 'Vb', null, fmt.eur,
+        'Contraste del valor obtenido en el MVP con la contabilidad', 'Mensual durante el MVP');
+    }
+    const repartoR = P.plat.activa && P.plat.pct_recurrente > 0;
+    const R_sin = repartoR ? derivar(P, { sin_reparto: true }).R : null;
+    add('coste_recurrente', repartoR ? 'Coste recurrente real imputado a este caso' : 'Coste recurrente real', '€ al año', d.R, 'R', null, fmt.eur,
+      repartoR
+        ? 'Facturas de licencias y servicios en la nube con la parte de plataforma (' + fmt.pct(P.plat.pct_recurrente) +
+          ' del coste fijo) repartida entre ' + P.plat.casos + ' casos de uso, más las horas de supervisión registradas, anualizadas'
+        : 'Facturas de licencias y servicios en la nube, más las horas de supervisión registradas, anualizadas', 'Mensual');
+    if (repartoR) {
+      const fila = plan[plan.length - 1];
+      fila.supuesto_sin_reparto = R_sin;
+      fila.supuesto_texto = fmt.eur(d.R) + ' imputados (' + fmt.eur(R_sin) + ' sin reparto)';
+    }
+    add('fecha_decision', 'Fecha de la decisión sobre la fase completa', 'fecha', P.mvp_fecha_decision || null, null, null, id,
+      'Comité de inversiones con los resultados del MVP', 'Una vez, al cierre del MVP');
+    return plan;
+  }
+
+  function rutaImpactoTotal(P, d, umb) {
+    if (P.origen_valor !== 'horas' || !d.ef || d.kap === null || !(d.kap < 1 - 1e-9)) return null;
+    if (umb.cumple_hipotesis || umb.candidatos.some((u) => u.clave === 'kap')) return null;
+    const u2 = umbrales(P, d, { hipotesis: Object.assign(hipotesisMvp(d), { kap: 1 }) });
+    const t = u2.candidatos.find((u) => u.clave === 't0');
+    if (!t) return null;
+    const uni = UNIDADES[P.unidad];
+    const k = cifrasUmbral(P, t);
+    return Object.assign({}, t, {
+      ruta: 'impacto_total',
+      condicion: 'Tiempo actual por ' + uni.singular + ' de ' + k.txt + ' o más, con todas las horas liberadas con impacto económico',
+      frase: 'Con un tiempo actual por ' + uni.singular + ' de ' + k.txt + ' o más y todas las horas liberadas con impacto ' +
+        'económico (gasto evitado o crecimiento absorbido sin nuevas contrataciones), el proyecto pasa a cumplir los criterios ' +
+        'de aprobación.'
+    });
+  }
+
+  function resultadoMvp(P, d, objetivo, umb, importe, ruta) {
+    if (!objetivo) return null;
+    const hip = umb.hipotesis;
+    const sel = ruta ? [ruta].concat(umb.seleccion).slice(0, 3) : umb.seleccion;
+    const condiciones = sel.map((u) => u.frase);
+    let sin_condiciones = null;
+    if (!condiciones.length) {
+      sin_condiciones = umb.cumple_hipotesis
+        ? 'Con la línea base medida y una probabilidad de éxito del ' + fmt.pct(hip.p) + ', el proyecto cumple los criterios ' +
+          'de aprobación con los supuestos actuales: el MVP debe confirmarlos.'
+        : 'Ninguna de las variables analizadas permite cumplir los criterios de aprobación dentro de los rangos estudiados: ' +
+          'conviene rediseñar el alcance antes de lanzar el MVP.';
+    }
+    return Object.assign({}, objetivo, {
+      importe,
+      coste: importe,
+      coste_informado: P.mvp_coste !== null,
+      riesgo_maximo: importe,
+      condiciones,
+      condiciones_detalle: sel.map((u) => ({
+        clave: u.clave, objetivo: u.objetivo, x0: u.x0, umbral: u.umbral, cifra: u.cifra, insignia: u.insignia,
+        condicion: u.condicion, frase: u.frase, ruta: u.ruta || null
+      })),
+      condiciones_supuestos: ('Condiciones calculadas con la línea base medida, responsable de la medición asignado y una ' +
+        'probabilidad de éxito del ' + fmt.pct(hip.p) + '.'),
+      cumple_con_supuestos: umb.cumple_hipotesis,
+      redisenar_alcance: !condiciones.length && !umb.cumple_hipotesis,
+      sin_condiciones,
+      linea_base: P.mvp_linea_base,
+      fecha_decision: P.mvp_fecha_decision,
+      responsable: P.mvp_responsable
+    });
   }
 
   function bloqueHoras(P, d) {
@@ -3356,6 +3706,57 @@ display: none !important;
     });
   }
 
+  function inversionMaxima(P, van, aprobacion) {
+    const o = { van, aprobacion, base: 'total', factor_reparto: 1, van_total: van, aprobacion_total: aprobacion };
+    if (P.plat.activa && P.plat.pct_inversion > 0) {
+      const f = 1 - P.plat.pct_inversion + P.plat.pct_inversion / P.plat.casos;
+      o.base = 'imputada';
+      o.factor_reparto = f;
+      o.van_total = van / f;
+      o.aprobacion_total = aprobacion === null ? null : aprobacion / f;
+    }
+    return o;
+  }
+
+  function resultadoSiConfirma(P, d) {
+    const hip = hipotesisMvp(d);
+    const e = evaluar(P, hip);
+    const est = ESTADOS[e.codigo];
+    if (!est) return null;
+    return {
+      codigo: e.codigo,
+      rotulo: est.rotulo,
+      VAN: e.VAN,
+      plazo_meses: e.plazo === null ? null : Math.ceil(e.plazo - 1e-9),
+      p: hip.p
+    };
+  }
+
+  function costeTarea(P, d) {
+    if (P.tipo_beneficio !== 'horas' || P.origen_valor !== 'horas' || !d.hb) return null;
+    const V = d.ef.V;
+    if (!(V > 0)) return null;
+    const hb = d.hb;
+    const c = d.c;
+    const hoy = c * hb.H0 / V;
+    const trabajo = Math.max(0, c * (hb.H1 - hb.H_coste) / V);
+    const supervision = d.R_sup * (1 + d.colchon) / V;
+    const tecnologia = (d.R - d.R_sup * (1 + d.colchon)) / V;
+    const con_ia = trabajo + supervision + tecnologia;
+    const inversion = d.I / ((C.H / 12) * V);
+    const con_ia_total = con_ia + inversion;
+    const ahorro = hoy - con_ia_total;
+    const consumoUnidad = d.R_variable > 0 ? d.R_variable * (1 + d.colchon) / V : 0;
+    const uni = UNIDADES[P.unidad];
+    return {
+      V, hoy, trabajo, supervision, tecnologia, con_ia, inversion, con_ia_total, ahorro,
+      ahorro_pct: hoy !== 0 ? ahorro / hoy : null,
+      unidad_singular: uni.singular,
+      unidad_plural: uni.plural,
+      consumo: consumoUnidad > 0 ? consumoUnidad : null
+    };
+  }
+
   function calcular(proyecto) {
     const n = normalizar(proyecto);
     const P = n.P;
@@ -3374,8 +3775,14 @@ display: none !important;
     const r = d.res;
     const esc = escenarios(P, d);
     const sens = sensibilidad(P, d);
-    const umb = umbrales(P, d);
+    const umbReal = umbrales(P, d);
+    const esMvp = r.codigo === 'vale_en_pequeno';
+    const umb = esMvp ? umbrales(P, d, { hipotesis: hipotesisMvp(d) }) : umbReal;
     const fl = flujos(d);
+    const plataforma = bloquePlataforma(P, d);
+    const mvpEstimado = P.plat.activa ? C.MVP * P.I_total : r.MVP;
+    const mvpImporte = esMvp ? (P.mvp_coste !== null ? P.mvp_coste : mvpEstimado) : null;
+    const ruta = esMvp ? rutaImpactoTotal(P, d, umb) : null;
     const margenReducido = r.codigo === 'vale_ya' &&
       (esc.prudente.codigo !== 'vale_ya' || esc.contingencia.codigo !== 'vale_ya');
     const plazo_meses = r.plazo === null ? null : Math.ceil(r.plazo - 1e-9);
@@ -3425,11 +3832,17 @@ display: none !important;
       Vb_min: r.p * r.DV !== 0 ? (d.I + d.R * r.DR) / (r.p * r.DV) : null,
       I_max: r.I_max,
       I_max_verde: r.I_max_verde,
-      inversion_maxima: { van: r.I_max, aprobacion: iAprob },
-      tr_max: umb.tr_max,
-      MVP: r.MVP,
+      inversion_maxima: inversionMaxima(P, r.I_max, iAprob),
+      tr_max: umbReal.tr_max,
+      MVP: mvpImporte,
       mvp: null,
-      umbrales: { objetivo: umb.objetivo, candidatos: umb.candidatos, seleccion: umb.seleccion },
+      umbrales: {
+        objetivo: umb.objetivo, candidatos: umb.candidatos,
+        seleccion: ruta ? [ruta].concat(umb.seleccion).slice(0, 3) : umb.seleccion,
+        hipotesis: umb.hipotesis, cumple_hipotesis: umb.cumple_hipotesis
+      },
+      plataforma,
+      plan_medicion: null,
       cascada: {
         valor_3a: d.Vb * r.DV,
         coste_3a: d.R * r.DR,
@@ -3446,8 +3859,11 @@ display: none !important;
       van_criterio_bruto: P.origen_valor === 'horas' ? evaluar(P, { quien: 'bruta' }).VAN : null,
       avisos: []
     };
-    res.mvp = objetivoMvp(P, d);
-    res.avisos = avisos(P, d, { tr_max: umb.tr_max, escenarios: esc, sensibilidad: sens });
+    res.mvp = resultadoMvp(P, d, objetivoMvp(P, d), umb, mvpImporte, ruta);
+    res.plan_medicion = planMedicion(P, d, umb, ruta);
+    res.mvp = res.mvp ? Object.assign(res.mvp, { si_confirma: resultadoSiConfirma(P, d) }) : res.mvp;
+    res.coste_tarea = costeTarea(P, d);
+    res.avisos = avisos(P, d, { tr_max: umbReal.tr_max, escenarios: esc, sensibilidad: sens, plataforma });
     return res;
   }
 
@@ -3547,7 +3963,7 @@ display: none !important;
     textoFaltan: (faltan) => (faltan || []).map((k) => TEXTOS_FALTAN[k] || k),
     interno: {
       acumuladoValor, tabla, factores, plazo, vale, horas, kappa, biseccion, proyectoHoras,
-      derivar, evaluar, umbrales, escenarios, sensibilidad, nivelesP
+      derivar, evaluar, umbrales, hipotesisMvp, escenarios, sensibilidad, nivelesP, planMedicion
     }
   };
 })(globalThis.VALE = globalThis.VALE || {});
@@ -3555,6 +3971,8 @@ display: none !important;
 (function (VALE) {
   'use strict';
 
+
+  VALE.config = Object.assign({ ia_url: '', politica_url: 'https://acevedocorp.com/politica-de-privacidad/' }, VALE.config || {});
 
   const CLAVE = 'vale.prueba.v1';
   const IDS = ['A', 'B', 'C', 'nuevo'];
@@ -3573,7 +3991,11 @@ display: none !important;
     borrado: 'Datos borrados.',
     copiado: 'Enlace copiado.',
     noCopiado: 'No se ha podido copiar el enlace. Seleccionar y copiar el texto.',
-    parteFallida: 'No se ha podido cargar esta parte de la herramienta en este navegador.'
+    parteFallida: 'No se ha podido cargar esta parte de la herramienta en este navegador.',
+    confianzaIa: 'Sin alta de usuario ni cookies. El cálculo se realiza en el dispositivo. ' +
+      'Al pedir la explicación de la IA se envían las cifras del proyecto, sin nombres ni textos, y no se conservan. ' +
+      'El uso se registra de forma anónima (fecha, paso y recomendación). ' +
+      'Los datos de contacto solo se envían si se solicita una reunión.'
   };
 
   const OPC_UNIDAD = ['tarea', 'documento', 'factura', 'operacion', 'consulta', 'expediente', 'pedido'];
@@ -3647,6 +4069,11 @@ display: none !important;
     e('mvp.linea_base', 'txt', { texto: true }),
     e('mvp.fecha_decision', 'txt', { texto: true }),
     e('mvp.responsable', 'txt', { texto: true }),
+    e('mvp.coste', 'num', { nulo: true }),
+    e('plataforma.reutilizable', 'bool'),
+    e('plataforma.pct_inversion', 'frac', { nulo: true }),
+    e('plataforma.pct_recurrente', 'frac', { nulo: true }),
+    e('plataforma.casos', 'ent', { min: 1, max: 50 }),
     e('fecha_revision', 'txt', { texto: true })
   ];
 
@@ -4751,6 +5178,7 @@ display: none !important;
     carteraEjemplo,
     carteraFrase,
     anunciar,
+    anunciarDiscreto: (texto) => anunciarCon(texto, false),
     conservarFoco,
     copiar,
     reducirMovimiento
@@ -4905,6 +5333,7 @@ display: none !important;
     copiar(url).then((ok) => {
       if (ok) {
         anunciar(MSG.copiado);
+        registrar('enlace_copiado', contextoRegistro());
         return;
       }
       if (ui.vista === 'analisis' && ui.paso !== 'R') ir('analisis', { paso: 'R' });
@@ -5036,9 +5465,116 @@ display: none !important;
     armazon.alDesplazar();
   };
 
+  const EVENTOS_REGISTRO = ['visita', 'calculo', 'enlace_copiado', 'informe_impreso', 'paso', 'contacto_abierto'];
+  const RECOMENDACIONES_REGISTRO = ['vale_ya', 'vale_en_pequeno', 'todavia_no', 'no_vale'];
+  const BENEFICIOS_REGISTRO = ['horas', 'ventas', 'perdidas', 'gasto'];
+  const ALFABETO_REGISTRO = 'abcdefghijklmnopqrstuvwxyz0123456789';
+
+  function idVisita() {
+    let bytes = null;
+    try {
+      if (globalThis.crypto && typeof globalThis.crypto.getRandomValues === 'function') {
+        bytes = globalThis.crypto.getRandomValues(new Uint8Array(8));
+      }
+    } catch (err) {
+      bytes = null;
+    }
+    let s = '';
+    for (let i = 0; i < 8; i++) {
+      const b = bytes ? bytes[i] : Math.floor(Math.random() * 256);
+      s += ALFABETO_REGISTRO[b % ALFABETO_REGISTRO.length];
+    }
+    return s;
+  }
+
+  const registro = { id: idVisita(), enviados: new Set() };
+
+  function registroDePrueba() {
+    try {
+      if (typeof location === 'undefined' || !location) return false;
+      if (location.protocol === 'file:') return true;
+      const h = String(location.hostname || '');
+      if (h === 'localhost' || h === '127.0.0.1' || h === '[::1]' || /\.localhost$/.test(h)) return true;
+      return new URLSearchParams(location.search || '').get('prueba') === '1';
+    } catch (err) {
+      return false;
+    }
+  }
+
+  function baliza() {
+    if (typeof VALE.config.baliza === 'function') return VALE.config.baliza;
+    return (url, cuerpo) => navigator.sendBeacon(url, cuerpo);
+  }
+
+  function cuerpoRegistro(evento, campos) {
+    const c = campos || {};
+    const cuerpo = { evento, sesion: registro.id };
+    if (esPaso(c.paso)) cuerpo.paso = c.paso;
+    if (IDS.indexOf(c.ejemplo) >= 0) cuerpo.ejemplo = c.ejemplo;
+    if (BENEFICIOS_REGISTRO.indexOf(c.tipo_beneficio) >= 0) cuerpo.tipo_beneficio = c.tipo_beneficio;
+    if (RECOMENDACIONES_REGISTRO.indexOf(c.recomendacion) >= 0) cuerpo.recomendacion = c.recomendacion;
+    if (registroDePrueba()) cuerpo.prueba = true;
+    return cuerpo;
+  }
+
+  function registrar(evento, campos, clave) {
+    try {
+      const base = String((VALE.config && VALE.config.ia_url) || '').trim().replace(/\/+$/, '');
+      if (!base || EVENTOS_REGISTRO.indexOf(evento) < 0) return false;
+      if (clave) {
+        if (registro.enviados.has(clave)) return false;
+        registro.enviados.add(clave);
+      }
+      const url = base + '/evento';
+      const cuerpo = JSON.stringify(cuerpoRegistro(evento, campos));
+      const r = baliza()(url, cuerpo);
+      if (r && typeof r.catch === 'function') r.catch(() => false);
+      return true;
+    } catch (err) {
+      return false;
+    }
+  }
+
+  function contextoRegistro() {
+    const p = proyecto();
+    const res = resultado();
+    return {
+      ejemplo: datos.activo,
+      tipo_beneficio: p ? p.tipo_beneficio : null,
+      recomendacion: res && res.completo ? res.codigo : null
+    };
+  }
+
+  function registroAlCambiar(evento) {
+    if (!evento || ui.vista !== 'analisis') return;
+    if (evento.tipo === 'ui' && evento.clave !== 'paso') return;
+    const c = contextoRegistro();
+    if (esPaso(ui.paso)) registrar('paso', Object.assign({ paso: ui.paso }, c), 'paso:' + ui.paso);
+    if (c.recomendacion) registrar('calculo', c, 'calculo:' + c.ejemplo + ':' + c.recomendacion);
+  }
+
+  VALE.registro = {
+    EVENTOS: EVENTOS_REGISTRO,
+    id: () => registro.id,
+    registrar,
+    alCambiar: registroAlCambiar,
+    cuerpo: cuerpoRegistro,
+    contexto() {
+      const c = cuerpoRegistro('', Object.assign({ paso: 'R' }, contextoRegistro()));
+      delete c.evento;
+      return c;
+    },
+    reiniciar() {
+      registro.id = idVisita();
+      registro.enviados.clear();
+    }
+  };
+
   let informeMontadoAqui = false;
 
   function antesDeImprimir() {
+    const c = contextoRegistro();
+    registrar('informe_impreso', c, 'informe:' + c.ejemplo + ':' + (c.recomendacion || ''));
     const inf = porId('re-informe');
     if (!inf || inf.innerHTML.trim() !== '') return;
     if (!VALE.resultados || typeof VALE.resultados.informeHtml !== 'function') return;
@@ -5163,8 +5699,21 @@ display: none !important;
     });
 
     seguro('ap-tarjetas', () => {
+      if (!VALE.config.ia_url) return;
+      document.querySelectorAll('.app-confianza > span:last-child').forEach((confianza) => {
+        confianza.textContent = MSG.confianzaIa;
+      });
+    });
+
+    seguro('ap-tarjetas', () => {
       alCambiar(armazon.alCambiar);
       armazon.montar();
+    });
+
+    seguro('ap-principal', () => {
+      if (!VALE.config.ia_url) return;
+      registrar('visita');
+      alCambiar(registroAlCambiar);
     });
 
     seguro('re-raiz', () => {
@@ -5252,7 +5801,11 @@ display: none !important;
     p_eq: 'p-equilibrio',
     ROI: 'roi',
     umbrales: 'umbrales',
-    inversion_maxima: 'inversion-maxima'
+    inversion_maxima: 'inversion-maxima',
+    condiciones: 'condiciones-paso',
+    plan: 'plan-medicion',
+    plataforma: 'plataforma',
+    coste_tarea: 'coste-tarea'
   };
   const TERMINOS = {
     VAN: 'VAN ajustado por riesgo',
@@ -5260,7 +5813,11 @@ display: none !important;
     p_eq: 'Probabilidad de equilibrio',
     ROI: 'ROI',
     umbrales: 'Umbrales críticos',
-    inversion_maxima: 'Inversión máxima admisible'
+    inversion_maxima: 'Inversión máxima admisible',
+    condiciones: 'Condiciones de paso del MVP',
+    plan: 'Plan de medición',
+    plataforma: 'Plataforma reutilizable',
+    coste_tarea: 'Coste por tarea'
   };
   const NOMBRES_PASO = { V: 'V · Valor', A: 'A · Ajuste', L: 'L · Lo que cuesta' };
 
@@ -5447,10 +6004,11 @@ display: none !important;
       const que = res.entradas.medido ? 'el efecto real' : 'la línea base y el efecto real';
       return 'Aprobar el MVP. VAN ajustado por riesgo: ' + eurSigno(res.VAN) +
         '; sin ajuste por riesgo: ' + eurSigno(res.VAN100) + '. ' +
-        'Antes de comprometer ' + eur(res.I) + ', MVP de ' + eur(mvp ? mvp.importe : res.MVP) +
-        ' para medir ' + que + '. ' +
+        'Antes de comprometer ' + eur(inversionTotal(res)) + ', MVP de ' + eur(mvp ? mvp.importe : res.MVP) +
+        ' para medir ' + que + '; el riesgo máximo es el coste del MVP. ' +
         'Objetivo mínimo del MVP: ' + (mvp ? mvp.objetivo.texto +
           ', con una probabilidad de éxito del 70' + NBSP + '% una vez medida la línea base' : 'pendiente de calcular') + '. ' +
+        textoCondiciones(mvp) +
         'Pregunta para el comité: ' + preguntaMvp(res);
     }
     if (codigo === 'todavia_no') {
@@ -5460,10 +6018,30 @@ display: none !important;
         'Fecha de revisión: ' + (f || 'pendiente de introducir') + '. ' +
         'Pregunta para el comité: ¿en qué fecha se revisa y qué condición tiene que cumplirse?';
     }
-    return 'Rechazar. ' + (res.VAN100 === 0 ? 'VAN nulo' : 'VAN negativo') +
+    const sel = umbralesSeleccion(res);
+    return 'Rediseñar. ' + (res.VAN100 === 0 ? 'VAN nulo' : 'VAN negativo') +
       ' incluso sin ajuste por riesgo: ' + eurSigno(res.VAN100) + '. ' +
       'VAN ajustado por riesgo: ' + eurSigno(res.VAN) + '; ' + textoPlazoRechazo(res) + '. ' +
-      'Pregunta para el comité: ¿cubre un control sin IA el mismo objetivo con menor coste?';
+      (sel.length ? 'Condición para volver a evaluar: ' + sel[0].frase + ' ' : '') +
+      'Pregunta para el comité: ' + (sel.length
+        ? '¿qué alcance o qué arquitectura del caso de uso permite cumplir esa condición?'
+        : '¿qué alcance del caso de uso permitiría un VAN positivo con la línea base medida?');
+  }
+
+  function inversionTotal(res) {
+    return res.plataforma && res.plataforma.activa ? res.plataforma.I_total : res.I;
+  }
+
+  function textoCondiciones(mvp) {
+    if (!mvp) return '';
+    const det = Array.isArray(mvp.condiciones_detalle) ? mvp.condiciones_detalle : [];
+    if (det.length) {
+      const c = det.map((x) => String(x.condicion || '').charAt(0).toLowerCase() + String(x.condicion || '').slice(1));
+      return 'Condiciones de paso a la fase completa (' +
+        (mvp.cumple_con_supuestos ? 'el MVP tiene que confirmarlas' : 'basta con que el MVP demuestre una de ellas') + '): ' +
+        c.join('; ') + '. ';
+    }
+    return mvp.sin_condiciones ? mvp.sin_condiciones + ' ' : '';
   }
 
 
@@ -5689,8 +6267,15 @@ display: none !important;
     let resultado = '= ' + eur(res.inversion_maxima.van);
     if (res.inversion_maxima.van <= 0) resultado += ' (no existe inversión admisible)';
     let nota = '';
-    if (res.codigo === 'vale_ya' && res.inversion_maxima.aprobacion !== null && res.inversion_maxima.aprobacion !== undefined) {
-      nota = 'Para mantener la aprobación (periodo de recuperación ≤ 24 meses): ' + eur(res.inversion_maxima.aprobacion) + '.';
+    const im = res.inversion_maxima;
+    if (res.codigo === 'vale_ya' && im.aprobacion !== null && im.aprobacion !== undefined) {
+      nota = 'Para mantener la aprobación (periodo de recuperación ≤ 24 meses): ' + eur(im.aprobacion) + '.';
+    }
+    if (im.base === 'imputada' && im.van > 0) {
+      nota = (nota ? nota + ' ' : '') + 'Cifras sobre la inversión imputada a este caso; con el reparto de la plataforma equivalen a una ' +
+        'inversión total de ' + eur(im.van_total) +
+        (res.codigo === 'vale_ya' && im.aprobacion_total !== null && im.aprobacion_total !== undefined
+          ? ' (VAN nulo) y ' + eur(im.aprobacion_total) + ' (aprobación).' : '.');
     }
     return { titulo: 'Inversión máxima admisible', lineas, resultado, nota };
   }
@@ -5925,7 +6510,7 @@ display: none !important;
         if (v !== null) s += filaBarra('gris', id + ' · Aplazado', v, total);
       } else if (f.estado === 'rechazado') {
         const v = importe(f, c.rechazado, ['rechazado']);
-        if (v !== null) s += filaBarra('rojo', id + ' · Rechazado', v, total);
+        if (v !== null) s += filaBarra('rojo', id + ' · A rediseñar', v, total);
       }
     });
     return s + '</div>';
@@ -6083,6 +6668,7 @@ display: none !important;
 
   function rotuloUmbral(u, res) {
     const c = u.clave;
+    if (c === 't0') return 'Tiempo actual por ' + unidadSingular(res);
     if (c === 'tr') return 'Tiempo de revisión por ' + unidadSingular(res);
     if (c === 'kap') return 'Horas con impacto económico';
     if (c === 'V') return 'Volumen anual';
@@ -6120,8 +6706,16 @@ display: none !important;
 
   function umbralesResumenHtml(res) {
     const sel = umbralesSeleccion(res);
-    let s = '<div class="re-resumen-umbrales">' + titulo('Umbrales críticos', 'umbrales', 're-resumen-umbrales-tit');
-    if (!sel.length) {
+    const mvp = res.codigo === 'vale_en_pequeno';
+    let s = '<div class="re-resumen-umbrales">' + (mvp
+      ? titulo('Condiciones de paso del MVP', 'condiciones', 're-resumen-umbrales-tit')
+      : titulo('Umbrales críticos', 'umbrales', 're-resumen-umbrales-tit'));
+    if (mvp && res.mvp) {
+      s += '<p class="re-resumen-riesgo">Riesgo máximo: <strong>' + esc(eur(res.mvp.riesgo_maximo)) + '</strong></p>';
+    }
+    if (!sel.length && mvp && res.mvp && res.mvp.sin_condiciones) {
+      s += '<p class="re-sin-umbral">' + esc(res.mvp.sin_condiciones) + '</p>';
+    } else if (!sel.length) {
       s += '<p class="re-sin-umbral">No se identifican umbrales críticos dentro de los rangos analizados.</p>';
     } else {
       s += '<table class="tabla-datos re-umbrales-tabla" aria-labelledby="re-resumen-umbrales-tit"><thead><tr>' +
@@ -6144,12 +6738,18 @@ display: none !important;
       s += '<p class="app-aviso info re-sin-limite">Inversión máxima admisible: no existe; el VAN es negativo incluso sin inversión inicial.</p>';
     } else {
       const fila = (rotulo, valor) => '<tr><th scope="row">' + esc(rotulo) + '</th><td class="num">' + esc(valor) + '</td></tr>';
-      s += '<table class="tabla-datos re-limites-tabla"><tbody>' + fila('Inversión máxima admisible (VAN nulo)', eur(im.van));
-      if (res.codigo === 'vale_ya' && im.aprobacion !== null && im.aprobacion !== undefined) {
-        s += fila('Inversión máxima para mantener la aprobación', eur(im.aprobacion));
+      const imp = im.base === 'imputada';
+      const aprob = res.codigo === 'vale_ya' && im.aprobacion !== null && im.aprobacion !== undefined;
+      s += '<table class="tabla-datos re-limites-tabla"><tbody>' +
+        fila(imp ? 'Inversión imputada máxima admisible (VAN nulo)' : 'Inversión máxima admisible (VAN nulo)', eur(im.van));
+      if (imp) s += fila('Equivale a una inversión total de', eur(im.van_total));
+      if (aprob) {
+        s += fila(imp ? 'Inversión imputada máxima para mantener la aprobación' : 'Inversión máxima para mantener la aprobación', eur(im.aprobacion));
+        if (imp) s += fila('Equivale a una inversión total de', eur(im.aprobacion_total));
       }
+      const plR = res.plataforma && res.plataforma.activa && res.plataforma.pct_recurrente > 0;
       if (res.R_max !== null && res.R_max !== undefined && res.R_max >= 0) {
-        s += fila('Coste recurrente máximo admisible', eur(res.R_max));
+        s += fila(plR ? 'Coste recurrente imputado máximo admisible' : 'Coste recurrente máximo admisible', eur(res.R_max));
       } else {
         s += fila('Coste recurrente máximo admisible', 'No existe');
       }
@@ -6160,21 +6760,93 @@ display: none !important;
   }
 
 
+  function campoNumero(ruta, etiqueta, valor, ayuda) {
+    const id = idCampo(ruta);
+    const v = valor === null || valor === undefined ? '' : ent(valor);
+    return '<div class="campo' + (v === '' ? ' vacio' : '') + '"><label class="campo-etq" for="' + id + '">' + esc(etiqueta) + '</label>' +
+      '<span class="campo-caja"><input type="text" class="campo-val" inputmode="decimal" id="' + id + '" data-ruta="' + esc(ruta) +
+      '" data-tipo="num" autocomplete="off" value="' + esc(v) + '"' + (ayuda ? ' aria-describedby="' + id + '-ayuda"' : '') + '>' +
+      '<span class="campo-ud">€</span></span>' +
+      (ayuda ? '<span class="campo-notas"><span class="campo-ayuda" id="' + id + '-ayuda">' + esc(ayuda) + '</span></span>' : '') + '</div>';
+  }
+
+  function textoSiConfirma(res) {
+    const sc = res && res.mvp ? res.mvp.si_confirma : null;
+    if (!sc) return '';
+    const rec = sc.plazo_meses === null || sc.plazo_meses === undefined ? 'sin recuperación dentro del horizonte' : 'recuperación en ' + VALE.fmt.meses(sc.plazo_meses);
+    return 'Si el MVP confirma los supuestos (línea base medida, responsable asignado y probabilidad de éxito del ' + pct(sc.p) +
+      '): VAN ajustado por riesgo de ' + eurSigno(sc.VAN) + ', ' + rec + ' · ' + sc.rotulo;
+  }
+
   function fichaMvp(res, proyecto) {
     const m = proyecto && proyecto.mvp ? proyecto.mvp : {};
     const mvp = res.mvp;
     const importe = mvp ? mvp.importe : res.MVP;
+    const det = mvp && Array.isArray(mvp.condiciones_detalle) ? mvp.condiciones_detalle : [];
     let s = '<div class="panel re-bloque re-mvp re-ancho-12" id="re-mvp">' +
-      '<div class="re-tit">' + ico('mitad') + '<h3>MVP de ' + esc(eur(importe)) + '</h3></div><div class="re-mvp-cuerpo">' +
-      '<div class="re-mvp-obj"><p class="re-mvp-rotulo">Objetivo mínimo</p><p class="re-mvp-texto">' +
-      esc(mvp ? mvp.objetivo.texto : PENDIENTE) + '</p>';
-    if (mvp && mvp.objetivo.supuestos) s += '<p class="app-aviso info">' + esc(mvp.objetivo.supuestos) + '</p>';
+      '<div class="re-tit">' + ico('mitad') + '<h3>Condiciones de paso del MVP</h3>' + botonDef('condiciones') + '</div>' +
+      '<div class="re-mvp-cuerpo"><div class="re-mvp-obj">' +
+      '<p class="re-mvp-rotulo">Riesgo máximo · coste del MVP</p><p class="re-mvp-texto">' + esc(eur(importe)) + '</p>' +
+      '<p class="re-mvp-nota">' + esc('Antes de comprometer ' + eur(inversionTotal(res)) + '. ' +
+        (mvp && mvp.coste_informado ? 'Coste del MVP informado.' : 'Coste estimado: el 20' + NBSP + '% de la inversión inicial.')) + '</p>';
+    s += '<p class="re-mvp-rotulo">' + (mvp && mvp.cumple_con_supuestos
+      ? 'Para aprobar la fase completa, el MVP tiene que confirmar'
+      : 'Para aprobar la fase completa, basta con que el MVP demuestre una de estas condiciones') + '</p>';
+    if (det.length) {
+      s += '<div class="verdad"><ul class="re-condiciones">';
+      det.forEach((u) => {
+        s += '<li><span class="verdad-umbral">' + esc(u.insignia) + '</span><span>' + esc(u.condicion) + '</span></li>';
+      });
+      s += '</ul></div>';
+    } else if (mvp && mvp.sin_condiciones) {
+      s += '<p class="app-aviso' + (mvp.redisenar_alcance ? '' : ' info') + '">' + esc(mvp.sin_condiciones) + '</p>';
+    }
+    if (mvp && mvp.condiciones_supuestos) s += '<p class="re-mvp-nota">' + esc(mvp.condiciones_supuestos) + '</p>';
+    if (textoSiConfirma(res)) s += '<p class="re-mvp-siconfirma" id="re-mvp-siconfirma">' + esc(textoSiConfirma(res)) + '</p>';
+    s += '<p class="re-mvp-rotulo">Objetivo mínimo</p><p class="re-mvp-texto re-mvp-objetivo">' + esc(mvp ? mvp.objetivo.texto : PENDIENTE) + '</p>';
+    if (mvp && mvp.objetivo.supuestos) s += '<p class="re-mvp-nota">' + esc(mvp.objetivo.supuestos) + '</p>';
     s += '</div><div class="re-mvp-campos">' +
+      campoNumero('mvp.coste', 'Coste del MVP (opcional)', m.coste, 'Sin importe, el 20' + NBSP + '% de la inversión inicial.') +
       campoTexto('mvp.linea_base', 'Línea base', m.linea_base) +
       campoTexto('mvp.fecha_decision', 'Fecha de decisión', m.fecha_decision) +
       campoTexto('mvp.responsable', 'Responsable', m.responsable) +
       '</div></div></div>';
     return s;
+  }
+
+  function planHtml(res) {
+    const plan = Array.isArray(res.plan_medicion) ? res.plan_medicion : [];
+    if (!plan.length) return '';
+    let s = '<div class="panel re-bloque re-plan re-ancho-12" id="re-plan">' + titulo('Plan de medición', 'plan', 're-plan-tit') +
+      '<p class="app-txt">Indicadores que se registran durante el MVP y en la fase completa; con ellos se documenta el caso de estudio para el comité.</p>' +
+      '<table class="tabla-datos re-plan-tabla" aria-labelledby="re-plan-tit"><thead><tr>' +
+      '<th scope="col">Indicador</th><th scope="col">Supuesto</th><th scope="col">Umbral de paso</th>' +
+      '<th scope="col">Cómo se mide</th><th scope="col">Frecuencia</th></tr></thead><tbody>';
+    plan.forEach((x) => {
+      s += '<tr><th scope="row">' + esc(x.indicador) + '</th>' +
+        '<td data-etq="Supuesto">' + esc(x.supuesto_texto) + '</td>' +
+        '<td data-etq="Umbral de paso">' + (x.umbral_texto ? '<span class="verdad-umbral">' + esc(x.umbral_texto) + '</span>' : 'Sin umbral') + '</td>' +
+        '<td data-etq="Cómo se mide">' + esc(x.como_medir) + '</td>' +
+        '<td data-etq="Frecuencia">' + esc(x.frecuencia) + '</td></tr>';
+    });
+    return s + '</tbody></table></div>';
+  }
+
+  function plataformaHtml(res) {
+    const pl = res.plataforma;
+    if (!pl || !pl.activa) return '';
+    const sr = pl.sin_reparto;
+    const fila = (rotulo, rec, van, inv) => '<tr><th scope="row">' + esc(rotulo) + '</th><td data-etq="Recomendación">' + esc(rec) +
+      '</td><td class="re-plan-num" data-etq="Inversión">' + esc(inv) + '</td><td class="re-plan-num" data-etq="VAN ajustado por riesgo">' + esc(van) + '</td></tr>';
+    return '<div class="panel re-bloque re-plataforma re-ancho-12" id="re-plataforma">' +
+      titulo('Plataforma reutilizable', 'plataforma', 're-plataforma-tit') +
+      '<p class="app-txt">' + esc('La plataforma se reparte entre ' + pl.casos + ' casos de uso en el horizonte de 36 meses: ' +
+        pct(pl.pct_inversion) + ' de la inversión y ' + pct(pl.pct_recurrente) + ' del coste recurrente fijo son plataforma.') + '</p>' +
+      '<table class="tabla-datos re-plan-tabla re-plataforma-tabla" aria-labelledby="re-plataforma-tit"><thead><tr><th scope="col">Cuenta</th>' +
+      '<th scope="col">Recomendación</th><th scope="col" class="re-plan-num">Inversión</th><th scope="col" class="re-plan-num">VAN ajustado por riesgo</th></tr></thead><tbody>' +
+      fila('Con el reparto entre ' + pl.casos + ' casos de uso', res.recomendacion.rotulo, eurSigno(res.VAN), eur(pl.I_imputada)) +
+      fila('Cargando toda la plataforma a este caso', sr.rotulo, eurSigno(sr.VAN), eur(pl.I_total)) +
+      '</tbody></table></div>';
   }
 
   function fichaRevision(proyecto) {
@@ -6190,7 +6862,7 @@ display: none !important;
     if (!av.length) return '';
     let s = '<div class="panel re-bloque re-avisos re-ancho-' + ancho + '">' + titulo('Avisos');
     av.forEach((a) => {
-      const info = a.codigo === 'UMBRAL_REVISION' || a.codigo === 'TORNADO_TOP' || a.codigo === 'DEPENDE_DE_FUERA';
+      const info = a.nivel === 'info' || a.codigo === 'UMBRAL_REVISION' || a.codigo === 'TORNADO_TOP' || a.codigo === 'DEPENDE_DE_FUERA';
       s += '<p class="app-aviso' + (info ? ' info' : '') + '">' + esc(a.texto);
       if (a.fuente) s += '<span class="re-fuente">Fuente: ' + esc(a.fuente) + '</span>';
       s += '</p>';
@@ -6220,6 +6892,831 @@ display: none !important;
   }
 
 
+  const IA_MENCION = 'Explicación generada por IA a partir de las cifras calculadas; las cifras mandan.';
+  const IA_ENVIO = 'Al pulsar se envían solo las cifras del resultado, sin el nombre del proyecto ni los textos introducidos.';
+  const IA_CARGANDO = 'Preparando la explicación…';
+  const IA_RESPONDIENDO = 'Preparando la respuesta…';
+  const IA_ERROR = 'No se ha podido obtener la explicación en este momento. Las cifras, las condiciones y el comentario estándar del resultado siguen siendo válidos.';
+  const IA_ERROR_PREGUNTA = 'No se ha podido responder a la pregunta en este momento. Puede intentarse de nuevo.';
+  const IA_VOZ_CARGANDO = 'Preparando la voz…';
+  const IA_SIN_VOZ = 'La lectura en voz alta no está disponible en este navegador.';
+  const IA_MAX_PREGUNTA = 500;
+  const IA_MAX_PREGUNTAS = 6;
+  const IA_MAX_RESUMEN = 18000;
+  const TIPOS_IA = { horas: 'ahorro de horas', ventas: 'ventas adicionales', perdidas: 'pérdidas evitadas', gasto: 'gasto evitado', directo: 'valor anual potencial declarado' };
+
+  function datosCosteTarea(res) {
+    const t = res && res.coste_tarea;
+    if (!t) return null;
+    const F = VALE.fmt;
+    const e2 = (x) => F.eurDec(x, 2);
+    const sing = t.unidad_singular;
+    const cHoy = Math.round(t.hoy * 100);
+    const cIa = Math.round(t.con_ia_total * 100);
+    const igual = cHoy === cIa || (t.ahorro > 0 && t.ahorro_pct !== null && Math.round(t.ahorro_pct * 100) === 0);
+    const perdida = !igual && !(t.ahorro > 0);
+    const dif = igual
+      ? 'Con IA cada ' + sing + ' cuesta prácticamente lo mismo que hoy'
+      : perdida
+        ? 'Con IA cada ' + sing + ' cuesta ' + e2(Math.abs(t.ahorro)) + ' más que hoy'
+        : (t.ahorro_pct === null ? '' : F.pctSigno(-t.ahorro_pct) + ' por ' + sing);
+    const imp = !!(res.plataforma && res.plataforma.activa);
+    const impTec = imp && res.plataforma.pct_recurrente > 0;
+    const desglose = [
+      { clave: 'trabajo', clase: '', etiqueta: 'Trabajo de personas', valor: t.trabajo },
+      { clave: 'supervision', clase: 'sup', etiqueta: 'Supervisión', valor: t.supervision },
+      { clave: 'tecnologia', clase: 'ambar', etiqueta: impTec ? 'Tecnología (imputada a este caso)' : 'Tecnología', valor: t.tecnologia },
+      { clave: 'inversion', clase: 'gris', etiqueta: imp ? 'Inversión imputada a este caso, repartida en 36 meses' : 'Inversión repartida en 36 meses', valor: t.inversion }
+    ].map((x) => Object.assign(x, { texto: e2(x.valor) }));
+    return {
+      titulo: 'Coste por ' + sing,
+      hoy: e2(t.hoy),
+      con_ia: e2(t.con_ia_total),
+      diferencia: dif,
+      perdida,
+      igual,
+      imputada: imp,
+      imputada_tecnologia: impTec,
+      desglose,
+      consumo: t.consumo === null ? '' : 'de ellos, ' + e2(t.consumo) + ' de consumo variable por ' + sing,
+      nota: 'El coste por ' + sing + ' mide la eficiencia del proceso. La recomendación se decide con el VAN ajustado por riesgo, ' +
+        'que cuenta solo la parte del ahorro que llega a la cuenta de resultados. La inversión se reparte entre el volumen de los 36 meses ' +
+        'del horizonte, sin descontar los meses previos a la puesta en marcha.',
+      total: t.con_ia_total
+    };
+  }
+
+  function costeTareaHtml(res) {
+    const c = datosCosteTarea(res);
+    if (!c) return '';
+    let s = '<section class="panel re-bloque re-coste-tarea re-ancho-12" id="re-coste-tarea" aria-labelledby="re-ct-tit">' +
+      '<div class="re-tit">' + ico('reloj') + '<h3 id="re-ct-tit">' + esc(c.titulo) + '</h3>' + botonDef('coste_tarea') + '</div>' +
+      '<div class="re-cte-cifras">' +
+      '<p class="re-cte-cifra"><span class="re-cte-etq">Hoy</span><span class="re-cte-val">' + esc(c.hoy) + '</span></p>' +
+      '<p class="re-cte-cifra"><span class="re-cte-etq">Con IA</span><span class="re-cte-val">' + esc(c.con_ia) + '</span></p>' +
+      (c.diferencia ? '<p class="re-cte-dif' + (c.perdida ? ' neg' : c.igual ? ' igual' : '') + '">' + esc(c.diferencia) + '</p>' : '') +
+      '</div>' +
+      '<div class="re-cte-desglose" role="group" aria-label="Desglose del coste con IA por ' + esc(res.coste_tarea.unidad_singular) + '">';
+    c.desglose.forEach((x) => {
+      s += '<div class="barra-fila ' + x.clase + '" style="--v:' + css(c.total > 0 ? acotar((x.valor / c.total) * 100, 0, 100) : 0) +
+        '"><span>' + esc(x.etiqueta) + '</span><span class="barra-pista" aria-hidden="true"></span><span class="barra-val">' + esc(x.texto) + '</span></div>';
+      if (x.clave === 'tecnologia' && c.consumo) s += '<p class="re-cte-consumo">' + esc(c.consumo) + '</p>';
+    });
+    s += '</div><p class="re-cte-nota">' + esc(c.nota) + '</p></section>';
+    return s;
+  }
+
+  function costeTareaInforme(res) {
+    const c = datosCosteTarea(res);
+    if (!c) return '';
+    let s = '<p><strong>Hoy:</strong> ' + esc(c.hoy) + ' · <strong>Con IA:</strong> ' + esc(c.con_ia) +
+      (c.diferencia ? ' · ' + esc(c.diferencia) : '') + '</p><ul class="re-inf-limites">';
+    c.desglose.forEach((x) => {
+      s += '<li>' + esc(x.etiqueta) + ': <strong>' + esc(x.texto) + '</strong>' +
+        (x.clave === 'tecnologia' && c.consumo ? ' (' + esc(c.consumo) + ')' : '') + '</li>';
+    });
+    return s + '</ul><p class="re-inf-fijo">' + esc(c.nota) + '</p>';
+  }
+
+  function iaInicial() {
+    return {
+      clave: null, estado: 'inicial', texto: '', error: '',
+      historial: [], borrador: '', preguntando: false, errorPregunta: '',
+      voz: 'parada', vozDe: null, ticket: 0, errorVoz: '', audio: null, urlAudio: null, locucion: null
+    };
+  }
+
+  let ia = iaInicial();
+  let iaAlCambiar = null;
+
+  function iaActiva() {
+    return !!(VALE.config && typeof VALE.config.ia_url === 'string' && VALE.config.ia_url.trim());
+  }
+
+  function sinNbsp(t) {
+    return String(t === null || t === undefined ? '' : t).replace(/[\u00a0\u202f]/g, ' ');
+  }
+
+  function resumenIa(res, proyecto) {
+    if (!completo(res)) return null;
+    const F = VALE.fmt;
+    const m = proyecto && proyecto.mvp ? proyecto.mvp : {};
+    const proyectoSinTextos = Object.assign({}, proyecto || {}, {
+      fecha_revision: proyecto && proyecto.fecha_revision && String(proyecto.fecha_revision).trim() ? 'fijada' : ''
+    });
+    const r = {
+      tipo_beneficio: TIPOS_IA[res.origen_valor] || 'valor anual potencial',
+      recomendacion: res.recomendacion.rotulo,
+      siguiente_paso: res.recomendacion.texto_siguiente_paso || '',
+      motivo: fraseEstado(res),
+      valor_anual_potencial: eur(res.Vb),
+      probabilidad_exito: pct(res.p_ef),
+      linea_base_medida: sino(res.entradas.medido),
+      responsable_medicion_asignado: sino(res.entradas.dueno),
+      inversion_inicial: eur(res.I),
+      coste_recurrente_anual: eur(res.R),
+      van_ajustado_por_riesgo: eurSigno(res.VAN),
+      van_sin_ajuste: eurSigno(res.VAN100),
+      recuperacion: F.recuperacion(res),
+      probabilidad_equilibrio: F.pEquilibrio(res),
+      roi: res.ROI === null || res.ROI === undefined ? 'no aplica' : F.pctSigno(res.ROI),
+      criterios_aprobacion: 'VAN ajustado por riesgo positivo, recuperación en 24 meses o menos, probabilidad de éxito de al menos el 70 %, línea base medida y responsable de la medición asignado',
+      umbrales: umbralesSeleccion(res).map((u) => u.frase),
+      avisos: (res.avisos || []).map((a) => a.texto),
+      comentario_estandar: comentario(res, proyectoSinTextos)
+    };
+    if (res.plataforma && res.plataforma.activa) {
+      r.inversion_inicial = eur(res.plataforma.I_total);
+      r.inversion_imputada_a_este_caso = eur(res.I);
+      if (res.plataforma.pct_recurrente > 0) {
+        delete r.coste_recurrente_anual;
+        r.coste_recurrente_anual_imputado_a_este_caso = eur(res.R);
+      }
+    }
+    const cte = datosCosteTarea(res);
+    if (cte) {
+      r.coste_tarea = {
+        unidad: res.coste_tarea.unidad_singular,
+        hoy_por_unidad: cte.hoy,
+        con_ia_por_unidad: cte.con_ia,
+        diferencia: cte.diferencia,
+        trabajo_de_personas: cte.desglose[0].texto,
+        supervision: cte.desglose[1].texto,
+        inversion_repartida_en_36_meses: cte.desglose[3].texto
+      };
+      r.coste_tarea[cte.imputada_tecnologia ? 'tecnologia_imputada_a_este_caso' : 'tecnologia'] = cte.desglose[2].texto;
+      if (cte.imputada) {
+        r.coste_tarea.inversion_imputada_repartida_en_36_meses = r.coste_tarea.inversion_repartida_en_36_meses;
+        delete r.coste_tarea.inversion_repartida_en_36_meses;
+      }
+      if (cte.consumo) r.coste_tarea.consumo_variable_por_unidad = F.eurDec(res.coste_tarea.consumo, 2);
+    }
+    if (res.mvp) {
+      const mv = res.mvp;
+      r.mvp = {
+        coste: eur(mv.coste !== undefined ? mv.coste : mv.importe),
+        riesgo_maximo: eur(mv.riesgo_maximo !== undefined ? mv.riesgo_maximo : mv.importe),
+        coste_informado: sino(!!mv.coste_informado),
+        objetivo_minimo: mv.objetivo ? mv.objetivo.texto : '',
+        condiciones_de_paso: (mv.condiciones_detalle || []).map((x) => x.condicion),
+        condiciones_ya_cumplidas_con_la_medicion: sino(!!mv.cumple_con_supuestos),
+        supuestos_de_las_condiciones: mv.condiciones_supuestos || '',
+        sin_condiciones: mv.sin_condiciones || '',
+        fecha_de_decision_fijada: sino(!!(m.fecha_decision && String(m.fecha_decision).trim())),
+        responsable_designado: sino(!!(m.responsable && String(m.responsable).trim()))
+      };
+      if (mv.si_confirma) {
+        const sc = mv.si_confirma;
+        r.mvp.si_confirma = {
+          recomendacion: sc.rotulo,
+          van_ajustado_por_riesgo: eurSigno(sc.VAN),
+          recuperacion: sc.plazo_meses === null || sc.plazo_meses === undefined
+            ? 'sin recuperación dentro del horizonte'
+            : VALE.fmt.recuperacion({ plazo_meses: sc.plazo_meses, fuera_horizonte: false }),
+          probabilidad_de_exito: pct(sc.p)
+        };
+      }
+    }
+    if (Array.isArray(res.plan_medicion) && res.plan_medicion.length) {
+      r.plan_medicion = res.plan_medicion.map((x) => ({
+        indicador: x.indicador,
+        supuesto: x.id === 'fecha_decision' ? (x.supuesto ? 'fijada' : 'pendiente') : x.supuesto_texto,
+        umbral_de_paso: x.umbral_texto || 'sin umbral',
+        como_medir: x.como_medir,
+        frecuencia: x.frecuencia
+      }));
+    }
+    if (res.plataforma && res.plataforma.activa) {
+      const pl = res.plataforma;
+      r.plataforma = {
+        casos_de_uso: String(pl.casos),
+        parte_de_la_inversion_que_es_plataforma: pct(pl.pct_inversion),
+        parte_del_coste_fijo_que_es_plataforma: pct(pl.pct_recurrente),
+        inversion_total: eur(pl.I_total),
+        inversion_imputada: eur(pl.I_imputada),
+        coste_fijo_total: eur(pl.R_fijo_total),
+        coste_fijo_imputado: eur(pl.R_fijo_imputado),
+        cargando_toda_la_plataforma: { recomendacion: pl.sin_reparto.rotulo, van_ajustado_por_riesgo: eurSigno(pl.sin_reparto.VAN) }
+      };
+    }
+    let texto = JSON.stringify(r);
+    if (texto.length > IA_MAX_RESUMEN && r.plan_medicion) {
+      r.plan_medicion = r.plan_medicion.map((x) => ({ indicador: x.indicador, supuesto: x.supuesto, umbral_de_paso: x.umbral_de_paso }));
+      texto = JSON.stringify(r);
+    }
+    if (texto.length > IA_MAX_RESUMEN) delete r.avisos;
+    return JSON.parse(sinNbsp(JSON.stringify(r)));
+  }
+
+  function claveIa(res, proyecto) {
+    const r = resumenIa(res, proyecto);
+    return r ? JSON.stringify(r) : null;
+  }
+
+  function avisarIa() {
+    if (typeof iaAlCambiar === 'function') iaAlCambiar();
+  }
+
+  function detenerVoz() {
+    if (ia.audio) {
+      try {
+        ia.audio.pause();
+      } catch (err) {
+        ia.audio = null;
+      }
+    }
+    if (ia.urlAudio && typeof URL !== 'undefined' && typeof URL.revokeObjectURL === 'function') URL.revokeObjectURL(ia.urlAudio);
+    if (ia.locucion && typeof speechSynthesis !== 'undefined') {
+      try {
+        speechSynthesis.cancel();
+      } catch (err) {
+        ia.locucion = null;
+      }
+    }
+    ia.audio = null;
+    ia.urlAudio = null;
+    ia.locucion = null;
+    ia.voz = 'parada';
+    ia.vozDe = null;
+    ia.ticket += 1;
+  }
+
+  function sincronizarIa(res, proyecto) {
+    const clave = iaActiva() ? claveIa(res, proyecto) : null;
+    if (clave === ia.clave) return false;
+    detenerVoz();
+    const borrador = ia.borrador;
+    ia = iaInicial();
+    ia.clave = clave;
+    ia.borrador = borrador;
+    return true;
+  }
+
+  function transporte() {
+    if (VALE.config && typeof VALE.config.transporte === 'function') return VALE.config.transporte;
+    return (url, opciones) => globalThis.fetch(url, opciones);
+  }
+
+  function contextoUso() {
+    try {
+      const c = VALE.registro && typeof VALE.registro.contexto === 'function' ? VALE.registro.contexto() : null;
+      return c && typeof c === 'object' ? c : {};
+    } catch (err) {
+      return {};
+    }
+  }
+
+  async function pedir(ruta, cuerpo, audio) {
+    const base = String(VALE.config.ia_url || '').trim().replace(/\/+$/, '');
+    const url = base + ruta;
+    const opciones = { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify(cuerpo) };
+    let r;
+    try {
+      r = await transporte()(url, opciones);
+    } catch (err) {
+      return { ok: false, estado: null, error: '' };
+    }
+    if (!r || typeof r.status !== 'number') return { ok: false, estado: null, error: '' };
+    if (r.ok && audio) {
+      try {
+        return { ok: true, estado: r.status, audio: await r.blob() };
+      } catch (err) {
+        return { ok: false, estado: r.status, error: '' };
+      }
+    }
+    let datos = null;
+    try {
+      datos = await r.json();
+    } catch (err) {
+      datos = null;
+    }
+    const error = datos && typeof datos.error === 'string' && (r.status === 400 || r.status === 429) ? datos.error : '';
+    return { ok: !!r.ok, estado: r.status, datos, error };
+  }
+
+  function pedirIa(ruta, cuerpo, audio) {
+    return pedir(ruta, Object.assign(contextoUso(), cuerpo), audio);
+  }
+
+  async function explicarIa(res, proyecto) {
+    if (!iaActiva() || !completo(res)) return ia;
+    sincronizarIa(res, proyecto);
+    if (ia.estado === 'cargando') return ia;
+    const clave = ia.clave;
+    ia.estado = 'cargando';
+    ia.error = '';
+    avisarIa();
+    const r = await pedirIa('/explicar', { resumen: resumenIa(res, proyecto) });
+    if (ia.clave !== clave) return ia;
+    if (r.ok && r.datos && typeof r.datos.texto === 'string' && r.datos.texto.trim()) {
+      ia.estado = 'lista';
+      ia.texto = r.datos.texto.trim();
+    } else {
+      ia.estado = 'error';
+      ia.error = r.error || IA_ERROR;
+    }
+    avisarIa();
+    return ia;
+  }
+
+  async function preguntarIa(res, proyecto, pregunta) {
+    if (!iaActiva() || !completo(res)) return ia;
+    sincronizarIa(res, proyecto);
+    const q = String(pregunta === undefined ? ia.borrador : pregunta).trim().slice(0, IA_MAX_PREGUNTA);
+    const hechas = ia.historial.filter((h) => h.rol === 'usuario').length;
+    if (!q || ia.preguntando || hechas >= IA_MAX_PREGUNTAS) return ia;
+    const clave = ia.clave;
+    const historial = ia.historial.slice();
+    if (ia.texto) historial.unshift({ rol: 'ia', texto: ia.texto.slice(0, 2500) });
+    ia.preguntando = true;
+    ia.errorPregunta = '';
+    avisarIa();
+    const r = await pedirIa('/preguntar', { resumen: resumenIa(res, proyecto), historial, pregunta: q });
+    if (ia.clave !== clave) return ia;
+    ia.preguntando = false;
+    if (r.ok && r.datos && typeof r.datos.texto === 'string' && r.datos.texto.trim()) {
+      ia.historial.push({ rol: 'usuario', texto: q }, { rol: 'ia', texto: r.datos.texto.trim() });
+      ia.borrador = '';
+    } else {
+      ia.errorPregunta = r.error || IA_ERROR_PREGUNTA;
+    }
+    avisarIa();
+    return ia;
+  }
+
+  function vozNavegador(texto) {
+    if (typeof speechSynthesis === 'undefined' || typeof SpeechSynthesisUtterance === 'undefined') return false;
+    try {
+      const u = new SpeechSynthesisUtterance(texto);
+      u.lang = 'es-ES';
+      const voces = typeof speechSynthesis.getVoices === 'function' ? speechSynthesis.getVoices() : [];
+      const voz = voces.find((v) => /^es[-_]ES$/i.test(v.lang)) || voces.find((v) => /^es\b/i.test(v.lang));
+      if (voz) u.voice = voz;
+      u.onend = () => {
+        if (ia.locucion !== u) return;
+        ia.locucion = null;
+        ia.voz = 'parada';
+        ia.vozDe = null;
+        avisarIa();
+      };
+      u.onerror = u.onend;
+      speechSynthesis.cancel();
+      ia.locucion = u;
+      ia.voz = 'sonando';
+      speechSynthesis.speak(u);
+      return true;
+    } catch (err) {
+      return false;
+    }
+  }
+
+  async function escucharTexto(texto, de) {
+    if (!iaActiva() || !texto) return ia;
+    detenerVoz();
+    const clave = ia.clave;
+    let ticket = ia.ticket;
+    ia.voz = 'cargando';
+    ia.vozDe = de;
+    ia.errorVoz = '';
+    avisarIa();
+    const r = await pedirIa('/voz', { texto: String(texto).slice(0, 2500) }, true);
+    if (ia.clave !== clave || ia.ticket !== ticket || ia.voz !== 'cargando') return ia;
+    let sonando = false;
+    if (r.ok && r.audio && typeof Audio !== 'undefined' && typeof URL !== 'undefined' && typeof URL.createObjectURL === 'function') {
+      try {
+        const url = URL.createObjectURL(r.audio);
+        const audio = new Audio(url);
+        audio.addEventListener('ended', () => {
+          if (ia.audio !== audio) return;
+          detenerVoz();
+          avisarIa();
+        });
+        ia.audio = audio;
+        ia.urlAudio = url;
+        ia.voz = 'sonando';
+        await audio.play();
+        sonando = true;
+      } catch (err) {
+        if (ia.ticket !== ticket) return ia;
+        detenerVoz();
+        ia.voz = 'cargando';
+        ia.vozDe = de;
+        ticket = ia.ticket;
+        sonando = false;
+      }
+    }
+    if (!sonando) {
+      ia.voz = 'parada';
+      if (!vozNavegador(texto)) {
+        ia.vozDe = null;
+        ia.errorVoz = IA_SIN_VOZ;
+      }
+    }
+    avisarIa();
+    return ia;
+  }
+
+  function escucharIa() {
+    return escucharTexto(ia.texto, 'explicacion');
+  }
+
+  async function escucharExplicacion(res, proyecto) {
+    if (!iaActiva() || !completo(res)) return ia;
+    sincronizarIa(res, proyecto);
+    if (ia.estado === 'cargando') return ia;
+    if (ia.estado !== 'lista') {
+      const clave = ia.clave;
+      await explicarIa(res, proyecto);
+      if (ia.clave !== clave || ia.estado !== 'lista') return ia;
+    }
+    return escucharIa();
+  }
+
+  function escucharRespuesta(indice) {
+    const h = ia.historial[indice];
+    if (!h || h.rol !== 'ia') return ia;
+    if (ia.vozDe === indice && ia.voz !== 'parada') return detenerIa();
+    return escucharTexto(h.texto, indice);
+  }
+
+  function pausarIa() {
+    if (ia.voz !== 'sonando') return ia;
+    try {
+      if (ia.audio) ia.audio.pause();
+      else if (ia.locucion && typeof speechSynthesis !== 'undefined') speechSynthesis.pause();
+      else return ia;
+    } catch (err) {
+      return ia;
+    }
+    ia.voz = 'pausada';
+    avisarIa();
+    return ia;
+  }
+
+  function continuarIa() {
+    if (ia.voz !== 'pausada') return ia;
+    const ticket = ia.ticket;
+    try {
+      if (ia.audio) {
+        const r = ia.audio.play();
+        if (r && typeof r.catch === 'function') {
+          r.catch(() => {
+            if (ia.ticket !== ticket) return;
+            detenerVoz();
+            avisarIa();
+          });
+        }
+      } else if (ia.locucion && typeof speechSynthesis !== 'undefined') {
+        speechSynthesis.resume();
+      } else {
+        return ia;
+      }
+    } catch (err) {
+      return ia;
+    }
+    ia.voz = 'sonando';
+    avisarIa();
+    return ia;
+  }
+
+  function detenerIa() {
+    detenerVoz();
+    avisarIa();
+    return ia;
+  }
+
+  function parrafos(texto) {
+    return String(texto).split(/\n\s*\n/).map((t) => t.trim()).filter(Boolean)
+      .map((t) => '<p>' + esc(t) + '</p>').join('');
+  }
+
+  function botonesVozHtml() {
+    const v = ia.vozDe === 'explicacion' ? ia.voz : 'parada';
+    if (v === 'cargando') {
+      return '<button type="button" class="btn secundario" data-accion="ia-detener" id="re-ia-voz">Detener</button>';
+    }
+    if (v === 'sonando' || v === 'pausada') {
+      return '<button type="button" class="btn" data-accion="' + (v === 'sonando' ? 'ia-pausar' : 'ia-continuar') + '" id="re-ia-voz">' +
+        (v === 'sonando' ? 'Pausar' : 'Continuar') + '</button>' +
+        '<button type="button" class="btn secundario" data-accion="ia-detener" id="re-ia-detener">Detener</button>';
+    }
+    return '<button type="button" class="btn" data-accion="ia-escuchar" id="re-ia-voz">Escuchar la explicación</button>';
+  }
+
+  function iaPanelHtml(res) {
+    if (!iaActiva() || !completo(res)) return '';
+    const cargando = ia.estado === 'cargando';
+    let s = '<section class="panel re-bloque re-ia re-ancho-12" id="re-ia" aria-labelledby="re-ia-tit">' +
+      '<div class="re-tit">' + ico('comentario') + '<h3 id="re-ia-tit">Explicación</h3></div>' +
+      '<p class="re-ia-mencion">' + ico('info') + '<span>' + esc(IA_MENCION) + '</span></p>';
+    if (ia.estado === 'lista') {
+      s += '<div class="re-ia-texto" id="re-ia-texto" tabindex="-1">' + parrafos(ia.texto) + '</div>';
+      s += '<div class="botones re-ia-botones">' + botonesVozHtml() + '</div>';
+    } else {
+      s += '<p class="app-txt">' + esc(IA_ENVIO) + '</p>';
+      if (ia.estado === 'error') s += '<p class="app-aviso" role="alert">' + esc(ia.error) + '</p>';
+      if (cargando) s += '<p class="re-ia-estado">' + esc(IA_CARGANDO) + '</p>';
+      const dis = cargando ? ' aria-disabled="true"' : '';
+      s += '<div class="botones re-ia-botones">' +
+        '<button type="button" class="btn" data-accion="ia-escuchar" id="re-ia-voz"' + dis + '>Escuchar la explicación</button>' +
+        '<button type="button" class="btn secundario" data-accion="ia-explicar" id="re-ia-explicar"' + dis + '>Leer la explicación</button></div>';
+    }
+    if (ia.historial.length) {
+      s += '<ol class="re-ia-conv" aria-label="Preguntas y respuestas">';
+      ia.historial.forEach((h, i) => {
+        s += '<li class="re-ia-' + (h.rol === 'ia' ? 'resp' : 'preg') + '"><span class="re-ia-quien">' + (h.rol === 'ia' ? 'Respuesta' : 'Pregunta') +
+          '</span>' + parrafos(h.texto);
+        if (h.rol === 'ia') {
+          const suena = ia.vozDe === i && ia.voz !== 'parada';
+          s += '<button type="button" class="btn secundario re-ia-mini" data-accion="' + (suena ? 'ia-detener' : 'ia-escuchar-respuesta') +
+            '" data-indice="' + i + '" id="re-ia-resp-voz-' + i + '">' + (suena ? 'Detener' : 'Escuchar') + '</button>';
+        }
+        s += '</li>';
+      });
+      s += '</ol>';
+    }
+    if (ia.voz === 'cargando') s += '<p class="re-ia-estado">' + esc(IA_VOZ_CARGANDO) + '</p>';
+    if (ia.errorVoz) s += '<p class="app-aviso info">' + esc(ia.errorVoz) + '</p>';
+    const hechas = ia.historial.filter((h) => h.rol === 'usuario').length;
+    const quedan = IA_MAX_PREGUNTAS - hechas;
+    if (quedan > 0) {
+      s += '<div class="re-ia-preguntar"><div class="campo re-ia-campo"><label class="campo-etq" for="re-ia-pregunta">Preguntar sobre este resultado</label>' +
+        '<span class="campo-caja"><input type="text" id="re-ia-pregunta" maxlength="' + IA_MAX_PREGUNTA + '" autocomplete="off" value="' +
+        esc(ia.borrador) + '" aria-describedby="re-ia-pregunta-ayuda"></span>' +
+        '<span class="campo-notas"><span class="campo-ayuda" id="re-ia-pregunta-ayuda">' +
+        esc(quedan === 1 ? 'Queda 1 pregunta sobre este resultado.' : 'Quedan ' + quedan + ' preguntas sobre este resultado.') +
+        '</span></span></div>' +
+        '<button type="button" class="btn secundario re-ia-boton" data-accion="ia-preguntar" id="re-ia-preguntar"' +
+        (ia.preguntando ? ' aria-disabled="true"' : '') + '>Preguntar</button></div>';
+    } else {
+      s += '<p class="app-txt">Se ha alcanzado el máximo de ' + IA_MAX_PREGUNTAS + ' preguntas sobre este resultado.</p>';
+    }
+    if (ia.preguntando) s += '<p class="re-ia-estado">' + esc(IA_RESPONDIENDO) + '</p>';
+    if (ia.errorPregunta) s += '<p class="app-aviso" role="alert">' + esc(ia.errorPregunta) + '</p>';
+    return s + '</section>';
+  }
+
+  VALE.ia = {
+    activa: iaActiva,
+    resumen: resumenIa,
+    estado: () => ia,
+    sincronizar: sincronizarIa,
+    explicar: explicarIa,
+    preguntar: preguntarIa,
+    escuchar: escucharIa,
+    escucharExplicacion,
+    escucharRespuesta,
+    pausar: pausarIa,
+    continuar: continuarIa,
+    detener: detenerIa,
+    panelHtml: iaPanelHtml,
+    reiniciar: () => {
+      detenerVoz();
+      ia = iaInicial();
+    },
+    alCambiar: (fn) => {
+      iaAlCambiar = fn;
+    },
+    MENSAJES: { IA_MENCION, IA_ENVIO, IA_CARGANDO, IA_ERROR, IA_ERROR_PREGUNTA, IA_SIN_VOZ, IA_VOZ_CARGANDO }
+  };
+
+
+  const CT_VERSION_TEXTO = '2026-11-17';
+  const CT_CAMPOS = ['nombre', 'empresa', 'cargo', 'correo', 'telefono', 'mensaje'];
+  const CT_MAX = { nombre: 80, empresa: 100, cargo: 80, correo: 120, telefono: 25, mensaje: 500 };
+  const CT_ENVIADO = 'Solicitud enviada. El área de IA de Acevedo responderá al correo indicado.';
+  const CT_ERROR = 'No se ha podido enviar la solicitud. Puede intentarse de nuevo en unos minutos.';
+  const CT_ENVIANDO = 'Enviando la solicitud…';
+  const CT_REVISAR = 'Revisar los campos señalados.';
+  const CT_TITULO = 'Hablar de este resultado con el área de IA de Acevedo';
+  const CT_LINEA = 'Una reunión para revisar el caso con el método VALE. Opcional: la herramienta funciona igual sin dejar ningún dato.';
+  const CT_INCLUIR = 'Incluir en la solicitud la recomendación obtenida y el tipo de beneficio (sin cifras), para preparar la reunión.';
+  const CT_COMUNICACIONES = 'Acepto recibir comunicaciones de Acevedo sobre IA en finanzas. Baja disponible en cada envío.';
+  const CT_LEGAL_1 = 'Responsable: Acevedo Technology & Consulting Corporation, S.L. Finalidad: atender la solicitud de reunión y, solo si se marca la casilla, ' +
+    'enviar comunicaciones sobre IA en finanzas. Base: el consentimiento de quien envía el formulario. Los datos no se ceden a terceros, salvo obligación legal. ' +
+    'Derechos de acceso, rectificación, supresión y oposición: compliance@acevedocorp.com. Más información en la ';
+  const CT_ETIQUETAS = {
+    nombre: 'Nombre', empresa: 'Empresa', cargo: 'Cargo (opcional)', correo: 'Correo electrónico profesional',
+    telefono: 'Teléfono (opcional)', mensaje: 'Comentario (opcional)'
+  };
+  const CT_MENSAJES = {
+    nombre: 'Indicar el nombre (entre 2 y 80 caracteres).',
+    empresa: 'Indicar la empresa (entre 2 y 100 caracteres).',
+    correo: 'Indicar un correo electrónico válido (como máximo 120 caracteres).',
+    cargo: 'El cargo admite como máximo 80 caracteres.',
+    telefono: 'El teléfono admite solo dígitos, espacios y el signo + (como máximo 25 caracteres).',
+    mensaje: 'El comentario admite como máximo 500 caracteres.'
+  };
+  const CT_FORMA_CORREO = /^[^\s@<>"',;:()[\]\\]+@[^\s@<>"',;:()[\]\\]+\.[^\s@<>"',;:()[\]\\]{2,}$/u;
+  const CT_FORMA_TELEFONO = /^[0-9+ ]+$/;
+  const CT_FORMA_HTTPS = /^https:\/\/[^\s"'<>]+$/;
+
+  function contactoInicial() {
+    return {
+      abierto: false, estado: 'inicial', error: '', errores: {}, foco: '',
+      valores: { nombre: '', empresa: '', cargo: '', correo: '', telefono: '', mensaje: '', web: '' },
+      incluir: false, comunicaciones: false
+    };
+  }
+
+  let contacto = contactoInicial();
+  let contactoAlCambiar = null;
+
+  function avisarContacto() {
+    if (typeof contactoAlCambiar === 'function') contactoAlCambiar();
+  }
+
+  function limpiarTextoContacto(t) {
+    return String(t === null || t === undefined ? '' : t).replace(/[\u0000-\u001f\u007f]+/g, ' ').trim();
+  }
+
+  function politicaUrl() {
+    const u = VALE.config && typeof VALE.config.politica_url === 'string' ? VALE.config.politica_url.trim() : '';
+    return CT_FORMA_HTTPS.test(u) ? u : '';
+  }
+
+  function validarContacto(v) {
+    const e = {};
+    const n = limpiarTextoContacto(v.nombre);
+    const em = limpiarTextoContacto(v.empresa);
+    const co = limpiarTextoContacto(v.correo);
+    const ca = limpiarTextoContacto(v.cargo);
+    const te = limpiarTextoContacto(v.telefono);
+    const me = limpiarTextoContacto(v.mensaje);
+    if (n.length < 2 || n.length > CT_MAX.nombre) e.nombre = CT_MENSAJES.nombre;
+    if (em.length < 2 || em.length > CT_MAX.empresa) e.empresa = CT_MENSAJES.empresa;
+    if (!CT_FORMA_CORREO.test(co) || co.length > CT_MAX.correo) e.correo = CT_MENSAJES.correo;
+    if (ca.length > CT_MAX.cargo) e.cargo = CT_MENSAJES.cargo;
+    if (te && (te.length > CT_MAX.telefono || !CT_FORMA_TELEFONO.test(te))) e.telefono = CT_MENSAJES.telefono;
+    if (me.length > CT_MAX.mensaje) e.mensaje = CT_MENSAJES.mensaje;
+    return e;
+  }
+
+  function origenContacto() {
+    try {
+      if (typeof location !== 'undefined' && location && new URLSearchParams(location.search || '').get('origen') === 'stand') return 'stand';
+    } catch (err) {
+      return 'web';
+    }
+    return 'web';
+  }
+
+  function contactoDePrueba() {
+    return contextoUso().prueba === true;
+  }
+
+  function cuerpoContacto(res) {
+    const v = contacto.valores;
+    const incluir = !!contacto.incluir && !!res && !!res.recomendacion;
+    return {
+      nombre: limpiarTextoContacto(v.nombre),
+      empresa: limpiarTextoContacto(v.empresa),
+      cargo: limpiarTextoContacto(v.cargo),
+      correo: limpiarTextoContacto(v.correo),
+      telefono: limpiarTextoContacto(v.telefono),
+      mensaje: limpiarTextoContacto(v.mensaje),
+      incluir_resultado: incluir,
+      resultado: incluir ? { recomendacion: res.recomendacion.rotulo, tipo_beneficio: TIPOS_IA[res.origen_valor] || 'valor anual potencial' } : null,
+      comunicaciones: !!contacto.comunicaciones,
+      version_texto: CT_VERSION_TEXTO,
+      origen: origenContacto(),
+      prueba: contactoDePrueba(),
+      web: String(v.web || '')
+    };
+  }
+
+  function alternarContacto() {
+    if (!iaActiva() || contacto.estado === 'enviado') return contacto;
+    contacto.abierto = !contacto.abierto;
+    contacto.foco = contacto.abierto ? 're-ct-nombre' : '';
+    if (contacto.abierto) {
+      try {
+        if (VALE.registro && typeof VALE.registro.registrar === 'function') {
+          VALE.registro.registrar('contacto_abierto', Object.assign({ paso: 'R' }, contextoUso()), 'contacto_abierto');
+        }
+      } catch (err) {
+        contacto.abierto = true;
+      }
+    }
+    avisarContacto();
+    return contacto;
+  }
+
+  function fijarCampoContacto(nombre, valor) {
+    if (nombre === 'incluir' || nombre === 'comunicaciones') {
+      contacto[nombre] = !!valor;
+      return;
+    }
+    if (CT_CAMPOS.indexOf(nombre) < 0 && nombre !== 'web') return;
+    contacto.valores[nombre] = String(valor === null || valor === undefined ? '' : valor).slice(0, nombre === 'web' ? 200 : CT_MAX[nombre] + 40);
+    if (contacto.errores[nombre]) delete contacto.errores[nombre];
+  }
+
+  async function enviarContacto(res) {
+    if (!iaActiva() || contacto.estado === 'enviando' || contacto.estado === 'enviado') return contacto;
+    const errores = validarContacto(contacto.valores);
+    const claves = Object.keys(errores);
+    contacto.errores = errores;
+    contacto.error = '';
+    if (claves.length) {
+      contacto.estado = 'inicial';
+      contacto.foco = 're-ct-' + CT_CAMPOS.filter((c) => errores[c])[0];
+      avisarContacto();
+      return contacto;
+    }
+    contacto.estado = 'enviando';
+    avisarContacto();
+    const r = await pedir('/contacto', cuerpoContacto(res), false);
+    if (r.ok) {
+      contacto = contactoInicial();
+      contacto.estado = 'enviado';
+      contacto.abierto = true;
+    } else {
+      const campo = r.estado === 400 && r.datos && typeof r.datos.campo === 'string' ? r.datos.campo : '';
+      if (CT_CAMPOS.indexOf(campo) >= 0) {
+        contacto.estado = 'inicial';
+        contacto.errores = {};
+        contacto.errores[campo] = CT_MENSAJES[campo];
+        contacto.foco = 're-ct-' + campo;
+      } else {
+        contacto.estado = 'error';
+        contacto.error = r.estado === 429 && r.error ? r.error : CT_ERROR;
+      }
+    }
+    avisarContacto();
+    return contacto;
+  }
+
+  function campoContactoHtml(nombre, tipo, extra) {
+    const id = 're-ct-' + nombre;
+    const err = contacto.errores[nombre];
+    const atrib = (extra && extra.atributos) || '';
+    const entrada = nombre === 'mensaje'
+      ? '<textarea id="' + id + '" data-contacto="' + nombre + '" rows="3" maxlength="' + CT_MAX[nombre] + '" autocomplete="off"' + atrib +
+        (err ? ' aria-invalid="true" aria-describedby="' + id + '-error"' : '') + '>' + esc(contacto.valores[nombre]) + '</textarea>'
+      : '<input type="' + tipo + '" id="' + id + '" data-contacto="' + nombre + '" maxlength="' + CT_MAX[nombre] + '"' + atrib +
+        ' value="' + esc(contacto.valores[nombre]) + '"' + (err ? ' aria-invalid="true" aria-describedby="' + id + '-error"' : '') + '>';
+    return '<div class="campo re-ct-campo">' +
+      '<label class="campo-etq" for="' + id + '">' + esc(CT_ETIQUETAS[nombre]) + '</label>' +
+      '<span class="campo-caja' + (nombre === 'mensaje' ? ' re-ct-caja-area' : '') + '">' + entrada + '</span>' +
+      (err ? '<span class="campo-notas"><span class="campo-error" id="' + id + '-error">' + esc(err) + '</span></span>' : '') + '</div>';
+  }
+
+  function contactoPanelHtml(res) {
+    if (!iaActiva() || !completo(res)) return '';
+    let s = '<section class="panel re-bloque re-contacto re-ancho-12" id="re-contacto" aria-labelledby="re-ct-tit">' +
+      '<div class="re-tit">' + ico('comentario') + '<h3 id="re-ct-tit">' + esc(CT_TITULO) + '</h3></div>';
+    if (contacto.estado === 'enviado') {
+      return s + '<p class="app-aviso info" id="re-ct-hecho" tabindex="-1">' + esc(CT_ENVIADO) + '</p></section>';
+    }
+    s += '<p class="app-txt">' + esc(CT_LINEA) + '</p>';
+    s += '<div class="botones re-ct-botones"><button type="button" class="btn secundario" data-accion="contacto-alternar" id="re-ct-alternar" ' +
+      'aria-expanded="' + (contacto.abierto ? 'true' : 'false') + '" aria-controls="re-ct-form">Solicitar reunión</button></div>';
+    if (!contacto.abierto) return s + '</section>';
+    s += '<form class="re-ct-form" id="re-ct-form" novalidate aria-labelledby="re-ct-tit">' +
+      '<div class="re-ct-rejilla">' +
+      campoContactoHtml('nombre', 'text', { atributos: ' autocomplete="name"' }) +
+      campoContactoHtml('empresa', 'text', { atributos: ' autocomplete="organization"' }) +
+      campoContactoHtml('cargo', 'text', { atributos: ' autocomplete="organization-title"' }) +
+      campoContactoHtml('correo', 'email', { atributos: ' autocomplete="email" inputmode="email"' }) +
+      campoContactoHtml('telefono', 'tel', { atributos: ' autocomplete="tel" inputmode="tel"' }) +
+      '</div>' + campoContactoHtml('mensaje', 'text') +
+      '<div class="re-ct-trampa" aria-hidden="true"><input type="text" id="re-ct-web" name="web" data-contacto="web" tabindex="-1" autocomplete="off" value="' +
+      esc(contacto.valores.web) + '"></div>' +
+      '<label class="ap-casilla"><input type="checkbox" id="re-ct-incluir" data-contacto="incluir"' + (contacto.incluir ? ' checked' : '') + '> <span>' +
+      esc(CT_INCLUIR) + '</span></label>' +
+      '<label class="ap-casilla"><input type="checkbox" id="re-ct-comunicaciones" data-contacto="comunicaciones"' + (contacto.comunicaciones ? ' checked' : '') + '> <span>' +
+      esc(CT_COMUNICACIONES) + '</span></label>';
+    const url = politicaUrl();
+    s += '<p class="re-ct-legal">' + esc(CT_LEGAL_1) + (url
+      ? '<a href="' + esc(url) + '" target="_blank" rel="noopener">política de privacidad</a>'
+      : 'política de privacidad') + '.</p>';
+    if (contacto.estado === 'error') s += '<p class="app-aviso" role="alert">' + esc(contacto.error) + '</p>';
+    if (contacto.estado === 'enviando') s += '<p class="re-ia-estado">' + esc(CT_ENVIANDO) + '</p>';
+    s += '<div class="botones re-ct-botones"><button type="submit" class="btn" id="re-ct-enviar"' +
+      (contacto.estado === 'enviando' ? ' aria-disabled="true"' : '') + '>Enviar solicitud</button></div></form>';
+    return s + '</section>';
+  }
+
+  VALE.contacto = {
+    VERSION_TEXTO: CT_VERSION_TEXTO,
+    estado: () => contacto,
+    panelHtml: contactoPanelHtml,
+    alternar: alternarContacto,
+    fijar: fijarCampoContacto,
+    validar: () => validarContacto(contacto.valores),
+    enviar: enviarContacto,
+    cuerpo: cuerpoContacto,
+    reiniciar: () => {
+      contacto = contactoInicial();
+    },
+    alCambiar: (fn) => {
+      contactoAlCambiar = fn;
+    },
+    MENSAJES: { CT_ENVIADO, CT_ERROR, CT_REVISAR, CT_ENVIANDO }
+  };
+
+
   function html(res, proyecto, ui) {
     const u = ui || {};
     let s = '<header class="re-cab"><div><p class="etq">Resultado</p>' +
@@ -6233,22 +7730,36 @@ display: none !important;
       return s + pie;
     }
     const est = estado(res, proyecto);
+    const mvp = res.codigo === 'vale_en_pequeno';
+    sincronizarIa(res, proyecto);
     s += '<div class="re-rejilla">';
     s += '<div class="panel re-bloque re-recomendacion re-ancho-7">' + semaforoHtml(est) + orientativoHtml();
     if (est.siguiente) s += '<p class="re-siguiente">' + esc(est.siguiente) + '</p>';
     s += '</div>';
     s += '<div class="panel re-bloque re-indicadores re-ancho-5">' + titulo('Indicadores principales') +
       indicadoresHtml(res, u, 're-vc-') + '</div>';
-    s += umbralesHtml(res);
-    s += limitesHtml(res, u);
-    if (res.codigo === 'vale_en_pequeno') s += fichaMvp(res, proyecto);
+    s += costeTareaHtml(res);
+    s += iaPanelHtml(res);
+    s += contactoPanelHtml(res);
+    if (mvp) {
+      s += fichaMvp(res, proyecto);
+    } else {
+      s += umbralesHtml(res);
+      s += limitesHtml(res, u);
+    }
     if (res.codigo === 'todavia_no') s += fichaRevision(proyecto);
+    s += planHtml(res);
+    s += plataformaHtml(res);
+    if (mvp) s += limitesHtml(res, u);
     s += cascadaHtml(res, 7);
     if (res.horas) {
       s += balanceHtml(res);
       const avisos = avisosHtml(res, 7);
       s += avisos;
-      s += comentarioHtml(res, proyecto, avisos ? 5 : 12);
+      s += comentarioHtml(res, proyecto, mvp ? (avisos ? 12 : 7) : (avisos ? 5 : 12));
+    } else if (mvp) {
+      s += comentarioHtml(res, proyecto, 12);
+      s += avisosHtml(res, 12);
     } else {
       s += comentarioHtml(res, proyecto, 5);
       s += avisosHtml(res, 12);
@@ -6392,7 +7903,7 @@ display: none !important;
       return {
         rotulo: 'Ficha del MVP',
         html: '<table class="re-inf-sup-tabla"><tbody>' +
-          '<tr><th scope="row">Importe del MVP</th><td>' + esc(eur(res.mvp ? res.mvp.importe : res.MVP)) + '</td></tr>' +
+          '<tr><th scope="row">Importe del MVP (riesgo máximo)</th><td>' + esc(eur(res.mvp ? res.mvp.importe : res.MVP)) + '</td></tr>' +
           '<tr><th scope="row">Línea base</th><td>' + esc(m.linea_base || PENDIENTE) + '</td></tr>' +
           '<tr><th scope="row">Objetivo mínimo</th><td>' + esc(res.mvp ? res.mvp.objetivo.texto : PENDIENTE) +
           (res.mvp && res.mvp.objetivo.supuestos ? '<span class="re-inf-peq">' + esc(res.mvp.objetivo.supuestos) + '</span>' : '') +
@@ -6437,26 +7948,38 @@ display: none !important;
       s += '<p class="re-inf-orient">' + esc(ORIENTATIVO) + '</p></section>';
 
       s += '<section class="re-inf-sec">' + etq('Indicadores principales') + indicadoresInforme(res, proyecto) +
-        '<p class="re-inf-fijo">' + esc(BASE_INDICADORES + ' ' + REDONDEO) + '</p></section>';
+        '<p class="re-inf-fijo">' + esc(BASE_INDICADORES + ' ' + REDONDEO) + '</p>' +
+        (res.coste_tarea ? '<h3 class="re-inf-sub">Coste por ' + esc(res.coste_tarea.unidad_singular) + '</h3>' + costeTareaInforme(res) : '') +
+        '</section>';
 
       const im = res.inversion_maxima;
       const sel = umbralesSeleccion(res);
-      s += '<section class="re-inf-sec">' + etq('Umbrales críticos e inversión máxima');
+      s += '<section class="re-inf-sec">' + etq(res.codigo === 'vale_en_pequeno' ? 'Condiciones de paso del MVP e inversión máxima' : 'Umbrales críticos e inversión máxima');
+      if (res.codigo === 'vale_en_pequeno' && res.mvp) {
+        s += '<p>Riesgo máximo (coste del MVP): <strong>' + esc(eur(res.mvp.riesgo_maximo)) + '</strong>. ' +
+          esc(res.mvp.condiciones_supuestos || '') + '</p>';
+        if (!sel.length && res.mvp.sin_condiciones) s += '<p>' + esc(res.mvp.sin_condiciones) + '</p>';
+        if (textoSiConfirma(res)) s += '<p class="re-inf-siconfirma">' + esc(textoSiConfirma(res)) + '</p>';
+      }
       if (sel.length) {
         s += '<ul class="re-inf-umbrales">';
         sel.forEach((u) => {
           s += '<li><span class="re-inf-insignia">' + esc(u.insignia) + '</span><span>' + esc(u.frase) + '</span></li>';
         });
         s += '</ul>';
-      } else {
+      } else if (!(res.codigo === 'vale_en_pequeno' && res.mvp && res.mvp.sin_condiciones)) {
         s += '<p>No se identifican umbrales críticos dentro de los rangos analizados.</p>';
       }
       s += '<ul class="re-inf-limites">';
       s += '<li>VAN sin ajuste por riesgo: <strong>' + esc(eurSigno(res.VAN100)) + '</strong></li>';
       if (im.van > 0) {
-        s += '<li>Inversión máxima admisible (VAN nulo): <strong>' + esc(eur(im.van)) + '</strong></li>';
+        const imp = im.base === 'imputada';
+        const tot = (x) => (imp ? ' (inversión total equivalente: ' + eur(x) + ')' : '');
+        s += '<li>' + (imp ? 'Inversión imputada máxima admisible' : 'Inversión máxima admisible') + ' (VAN nulo): <strong>' +
+          esc(eur(im.van)) + '</strong>' + esc(tot(im.van_total)) + '</li>';
         if (res.codigo === 'vale_ya' && im.aprobacion !== null && im.aprobacion !== undefined) {
-          s += '<li>Inversión máxima para mantener la aprobación: <strong>' + esc(eur(im.aprobacion)) + '</strong></li>';
+          s += '<li>' + (imp ? 'Inversión imputada máxima' : 'Inversión máxima') + ' para mantener la aprobación: <strong>' +
+            esc(eur(im.aprobacion)) + '</strong>' + esc(tot(im.aprobacion_total)) + '</li>';
         }
       } else {
         s += '<li>Inversión máxima admisible: no existe; el VAN es negativo incluso sin inversión inicial.</li>';
@@ -6464,7 +7987,25 @@ display: none !important;
       if (res.R_max !== null && res.R_max !== undefined && res.R_max >= 0) {
         s += '<li>Coste recurrente máximo admisible: <strong>' + esc(eur(res.R_max)) + '</strong></li>';
       }
+      if (res.plataforma && res.plataforma.activa) {
+        const pl = res.plataforma;
+        s += '<li>Plataforma repartida entre ' + pl.casos + ' casos de uso: inversión imputada <strong>' + esc(eur(pl.I_imputada)) +
+          '</strong> de ' + esc(eur(pl.I_total)) + '. Cargando toda la plataforma a este caso: ' + esc(pl.sin_reparto.rotulo) +
+          ', VAN ajustado por riesgo <strong>' + esc(eurSigno(pl.sin_reparto.VAN)) + '</strong>.</li>';
+      }
       s += '</ul></section>';
+
+      const plan = Array.isArray(res.plan_medicion) ? res.plan_medicion : [];
+      if (plan.length) {
+        s += '<section class="re-inf-sec">' + etq('Plan de medición') + '<table class="re-inf-sup-tabla re-inf-plan"><thead><tr>' +
+          '<th scope="col">Indicador</th><th scope="col">Supuesto</th><th scope="col">Umbral de paso</th><th scope="col">Cómo se mide</th>' +
+          '<th scope="col">Frecuencia</th></tr></thead><tbody>';
+        plan.forEach((x) => {
+          s += '<tr><th scope="row">' + esc(x.indicador) + '</th><td>' + esc(x.supuesto_texto) + '</td><td>' + esc(x.umbral_texto || 'Sin umbral') +
+            '</td><td>' + esc(x.como_medir) + '</td><td>' + esc(x.frecuencia) + '</td></tr>';
+        });
+        s += '</tbody></table></section>';
+      }
 
       const ficha = fichaInforme(res, proyecto);
       const cascadaInf = cascada(res, { id: 're-inf-cascada' }) + leyendaCascada();
@@ -6509,7 +8050,7 @@ display: none !important;
     }
     s += '<section class="re-inf-sec re-inf-firmas"><p>Responsable del indicador: ____________________</p>' +
       '<p>Fecha de revisión: ____________________</p></section>';
-    s += '<footer class="re-inf-pie">Diseñada para el comité de inversiones · Método VALE · Acevedo Enterprise IA · Versión de prueba · 10-nov-2026</footer>';
+    s += '<footer class="re-inf-pie">Diseñada para el comité de inversiones · Método VALE · Acevedo Enterprise IA · Versión 1.4 · 18-nov-2026</footer>';
     return s + '</article>';
   }
 
@@ -6609,18 +8150,154 @@ display: none !important;
     contenedores.forEach((c) => {
       c.addEventListener('click', (ev) => {
         const b = ev.target && ev.target.closest ? ev.target.closest('[data-accion="formula"]') : null;
-        if (!b || !c.contains(b)) return;
-        origen = b;
-        E.fijarUi('formula', b.getAttribute('data-clave'));
+        if (b && c.contains(b)) {
+          origen = b;
+          E.fijarUi('formula', b.getAttribute('data-clave'));
+          return;
+        }
+        if (c === raiz) accionIa(ev);
       });
     });
     raiz.addEventListener('input', (ev) => {
       const t = ev.target;
+      if (t && t.id === 're-ia-pregunta') {
+        ia.borrador = String(t.value || '').slice(0, IA_MAX_PREGUNTA);
+        return;
+      }
+      if (alCambiarCampoContacto(t)) return;
       if (!t || !t.getAttribute || !t.hasAttribute('data-ruta')) return;
       const ruta = t.getAttribute('data-ruta');
-      const ok = E.fijar(ruta, t.value, { origen: 're:' + ruta });
+      let valor = t.value;
+      if (t.getAttribute('data-tipo') === 'num') {
+        valor = VALE.fmt.leerNumero(t.value);
+        if (typeof valor === 'number' && isNaN(valor)) {
+          t.setAttribute('aria-invalid', 'true');
+          return;
+        }
+      }
+      const ok = E.fijar(ruta, valor, { origen: 're:' + ruta });
       if (ok === false) t.setAttribute('aria-invalid', 'true');
       else t.removeAttribute('aria-invalid');
+    });
+    raiz.addEventListener('change', (ev) => {
+      const t = ev.target;
+      if (alCambiarCampoContacto(t)) return;
+      if (t && t.getAttribute && t.getAttribute('data-tipo') === 'num' && t.hasAttribute('data-ruta')) repintar();
+    });
+
+    function pintarIa() {
+      if (!doc) return;
+      const panel = doc.getElementById('re-ia');
+      if (!panel) return;
+      const activo = doc.activeElement;
+      const dentro = !!(activo && panel.contains(activo));
+      const hacer = () => {
+        panel.outerHTML = iaPanelHtml(E.resultado());
+      };
+      if (VALE.ui && VALE.ui.conservarFoco) VALE.ui.conservarFoco(hacer);
+      else hacer();
+      if (dentro && (!doc.activeElement || doc.activeElement === doc.body)) {
+        const destino = doc.getElementById('re-ia-texto') || doc.getElementById('re-ia-voz') ||
+          doc.getElementById('re-ia-explicar') || doc.getElementById('re-ia-pregunta');
+        if (destino) {
+          try {
+            destino.focus({ preventScroll: true });
+          } catch (err) {
+            destino.focus();
+          }
+        }
+      }
+    }
+    let iaAnunciado = '';
+    function anunciarEstadoIa() {
+      const t = ia.estado === 'cargando' ? IA_CARGANDO
+        : ia.voz === 'cargando' ? IA_VOZ_CARGANDO
+          : ia.preguntando ? IA_RESPONDIENDO : '';
+      if (t && t !== iaAnunciado && VALE.ui && VALE.ui.anunciarDiscreto) VALE.ui.anunciarDiscreto(t);
+      iaAnunciado = t;
+    }
+    iaAlCambiar = () => {
+      const antes = ia.estado;
+      pintarIa();
+      anunciarEstadoIa();
+      if (antes === 'lista' && VALE.ui && VALE.ui.anunciar && !ia.preguntando && ia.voz === 'parada' && ia.texto && !ia.anunciada) {
+        ia.anunciada = true;
+        VALE.ui.anunciar('Explicación disponible.');
+      }
+    };
+    function pintarContacto() {
+      if (!doc) return;
+      const tarjeta = doc.getElementById('re-contacto');
+      if (!tarjeta) return;
+      const foco = contacto.foco;
+      contacto.foco = '';
+      const hacer = () => {
+        tarjeta.outerHTML = contactoPanelHtml(E.resultado());
+      };
+      if (VALE.ui && VALE.ui.conservarFoco) VALE.ui.conservarFoco(hacer);
+      else hacer();
+      let destino = foco ? doc.getElementById(foco) : null;
+      if (!destino && contacto.estado === 'enviado') destino = doc.getElementById('re-ct-hecho');
+      if (destino) {
+        try {
+          destino.focus({ preventScroll: foco === 're-ct-nombre' ? false : true });
+        } catch (err) {
+          destino.focus();
+        }
+      } else if (!doc.activeElement || doc.activeElement === doc.body) {
+        const alt = doc.getElementById('re-ct-alternar');
+        if (alt && typeof alt.focus === 'function') alt.focus();
+      }
+    }
+    let contactoAnunciado = '';
+    contactoAlCambiar = () => {
+      pintarContacto();
+      const t = contacto.estado === 'enviando' ? CT_ENVIANDO
+        : contacto.estado === 'enviado' ? CT_ENVIADO
+          : contacto.estado === 'error' ? CT_ERROR
+            : Object.keys(contacto.errores).length ? CT_REVISAR : '';
+      if (t && t !== contactoAnunciado && VALE.ui && VALE.ui.anunciarDiscreto) VALE.ui.anunciarDiscreto(t);
+      contactoAnunciado = t;
+    };
+    function alCambiarCampoContacto(t) {
+      const id = t && typeof t.id === 'string' ? t.id : '';
+      if (id.indexOf('re-ct-') !== 0) return false;
+      const campo = id.slice(6);
+      const marca = t.type === 'checkbox';
+      fijarCampoContacto(campo, marca ? !!t.checked : t.value);
+      if (!marca && t.removeAttribute) t.removeAttribute('aria-invalid');
+      return true;
+    }
+    function accionIa(ev) {
+      const c = ev.target && ev.target.closest ? ev.target.closest('[data-accion="contacto-alternar"]') : null;
+      if (c && raiz.contains(c)) {
+        alternarContacto();
+        return;
+      }
+      const b = ev.target && ev.target.closest ? ev.target.closest('[data-accion^="ia-"]') : null;
+      if (!b || !raiz.contains(b) || b.getAttribute('aria-disabled') === 'true') return;
+      const accion = b.getAttribute('data-accion');
+      const res = E.resultado();
+      const p = E.proyecto();
+      if (accion === 'ia-explicar') explicarIa(res, p);
+      else if (accion === 'ia-preguntar') preguntarIa(res, p);
+      else if (accion === 'ia-escuchar') escucharExplicacion(res, p);
+      else if (accion === 'ia-escuchar-respuesta') escucharRespuesta(Number(b.getAttribute('data-indice')));
+      else if (accion === 'ia-pausar') pausarIa();
+      else if (accion === 'ia-continuar') continuarIa();
+      else if (accion === 'ia-detener') detenerIa();
+    }
+    raiz.addEventListener('submit', (ev) => {
+      const f = ev.target;
+      if (!f || f.id !== 're-ct-form') return;
+      if (typeof ev.preventDefault === 'function') ev.preventDefault();
+      enviarContacto(E.resultado());
+    });
+    raiz.addEventListener('keydown', (ev) => {
+      const t = ev.target;
+      if (!t || t.id !== 're-ia-pregunta' || ev.key !== 'Enter') return;
+      ev.preventDefault();
+      preguntarIa(E.resultado(), E.proyecto());
     });
     if (calculo && typeof calculo.addEventListener === 'function') {
       calculo.addEventListener('close', () => {
@@ -6628,6 +8305,7 @@ display: none !important;
       });
     }
     VALE.alCambiar((ev) => {
+      if ((ev.tipo === 'vista' || (ev.tipo === 'ui' && ev.clave === 'paso')) && ia.voz !== 'parada') detenerIa();
       if (ev.tipo === 'vista') return;
       if (ev.tipo === 'ui') {
         if (ev.clave === 'formula') alCambiarFormula();
@@ -6767,7 +8445,10 @@ display: none !important;
     'simple.Vb': { formato: 'ent', ud: '€', nulo: true },
     'simple.I': { formato: 'ent', ud: '€', nulo: true },
     'simple.R_sin_sup': { formato: 'ent', ud: '€', nulo: true },
-    'simple.R_sup': { formato: 'ent', ud: '€', nulo: true }
+    'simple.R_sup': { formato: 'ent', ud: '€', nulo: true },
+    'plataforma.pct_inversion': { formato: 'num5', escala: 100, ud: '%', nulo: true },
+    'plataforma.pct_recurrente': { formato: 'num5', escala: 100, ud: '%', nulo: true },
+    'plataforma.casos': { formato: 'ent' }
   };
 
   function formatear(valor, formato, escala) {
@@ -7114,7 +8795,7 @@ display: none !important;
     const INFO = { UMBRAL_REVISION: 1, TORNADO_TOP: 1, DEPENDE_DE_FUERA: 1 };
     return cx.res.avisos
       .filter((a) => pasos.indexOf(a.paso) >= 0)
-      .map((a) => '<p class="app-aviso' + (INFO[a.codigo] ? ' info' : '') + '">' + esc(a.texto) + '</p>')
+      .map((a) => '<p class="app-aviso' + (INFO[a.codigo] || a.nivel === 'info' ? ' info' : '') + '">' + esc(a.texto) + '</p>')
       .join('');
   }
 
@@ -7243,7 +8924,41 @@ display: none !important;
   function derivadoInversion(cx) {
     const F = FMT();
     const hay = cx.faltan.indexOf('inversion') < 0 && finito(cx.I);
+    const pl = plataformaActiva(cx);
+    if (hay && pl) {
+      return '<ul class="lineas"><li><span>Inversión inicial total</span><span>' + F.eur(pl.I_total) + '</span></li>' +
+        '<li class="total"><span>Inversión imputada a este caso</span><span>' + F.eur(cx.I) + '</span></li></ul>';
+    }
     return '<ul class="lineas"><li class="total"><span>Inversión inicial</span><span>' + (hay ? F.eur(cx.I) : '—') + '</span></li></ul>';
+  }
+
+  function plataformaActiva(cx) {
+    const pl = cx.completo && cx.res ? cx.res.plataforma : null;
+    return pl && pl.activa ? pl : null;
+  }
+
+  function derivadoPlataforma(cx) {
+    const F = FMT();
+    const p = cx.p;
+    const pl = p.plataforma || {};
+    if (!pl.reutilizable) return '';
+    const activa = plataformaActiva(cx);
+    if (!activa) {
+      if (cx.completo) {
+        return '<p class="app-txt">Para repartir la plataforma: indicar qué parte de la inversión o del coste recurrente es plataforma y al menos dos casos de uso.</p>';
+      }
+      return '<p class="app-txt">El reparto se muestra al completar los datos del proyecto.</p>';
+    }
+    const fila = (txt, val, cls) => '<li' + (cls ? ' class="' + cls + '"' : '') + '><span>' + esc(txt) + '</span><span>' + esc(val) + '</span></li>';
+    const sr = activa.sin_reparto;
+    return '<ul class="lineas">' +
+      fila('Inversión inicial total', F.eur(activa.I_total)) +
+      fila('Inversión imputada a este caso', F.eur(activa.I_imputada), 'total') +
+      fila('Coste recurrente fijo total', F.eur(activa.R_fijo_total)) +
+      fila('Coste recurrente fijo imputado a este caso', F.eur(activa.R_fijo_imputado), 'total') + '</ul>' +
+      '<p class="app-txt">Con el reparto entre ' + activa.casos + ' casos de uso: ' + esc(cx.res.recomendacion.rotulo) +
+      ', VAN ajustado por riesgo ' + esc(F.eurSigno(cx.res.VAN)) + '. Cargando toda la plataforma a este caso: ' + esc(sr.rotulo) +
+      ', VAN ajustado por riesgo ' + esc(F.eurSigno(sr.VAN)) + '.</p>';
   }
 
   function derivadoEtiquetaCostes(p) {
@@ -7339,6 +9054,7 @@ display: none !important;
       'en-d-plazo': '',
       'en-d-avisos-E': '',
       'en-d-avisos-S': '',
+      'en-d-plataforma': derivadoPlataforma(cx),
       'en-d-supuestos-meta': derivadoSupuestosMeta(p)
     };
     if (completoModo) {
@@ -7490,6 +9206,25 @@ display: none !important;
       interruptorHtml('dueno', 'Responsable de la medición asignado', p.dueno) +
       interruptorHtml('control_empresa', 'Condiciones pendientes bajo control de la empresa', p.control_empresa,
         'No: hay requisitos que dependen de terceros (proveedor, regulador u otra entidad).');
+  }
+
+  function plataformaHtml(p, der) {
+    const pl = p.plataforma || {};
+    const simple = p.modo === 'simplificado';
+    let c = interruptorHtml('plataforma.reutilizable', 'Parte del proyecto es una plataforma que reutilizarán otros casos de uso', !!pl.reutilizable,
+      'La parte de plataforma se reparte entre los casos de uso que la compartirán en el horizonte de 36' + NBSP + 'meses.',
+      ['plataforma', 'Plataforma reutilizable']);
+    if (pl.reutilizable) {
+      c += camposHtml([
+        campoHtml('plataforma.pct_inversion', '% de la inversión que es plataforma', p),
+        campoHtml('plataforma.pct_recurrente', '% del coste recurrente que es plataforma', p, {
+          ayuda: simple ? 'Sobre el coste recurrente sin supervisión.' : 'Sobre licencias, mantenimiento y cumplimiento normativo.'
+        }),
+        campoHtml('plataforma.casos', 'Casos de uso que la compartirán (36 meses)', p, { ayuda: 'Incluido este proyecto.' })
+      ]);
+    }
+    c += contenedor('en-d-plataforma', der, 'en-derivado');
+    return grupoHtml('plataforma', 'Plataforma reutilizable', c);
   }
 
   function medicionHtml(p) {
@@ -7730,6 +9465,7 @@ display: none !important;
     rec += contenedor('en-d-costes', der, 'en-derivado');
     rec += interruptorHtml('decide_personas', 'Decisiones sobre personas físicas: solvencia de particulares, empleo, seguros de vida o salud', p.decide_personas);
     o += grupoHtml('recurrente', '<span id="en-d-costes-etq">' + esc(der['en-d-costes-etq'] || '') + '</span>', rec);
+    o += plataformaHtml(p, der);
     o += contenedor('en-d-avisos-L', der, 'en-avisos');
     return o;
   }
@@ -7833,6 +9569,7 @@ display: none !important;
       })
     ], true);
     o += grupoHtml('calendario', 'Calendario', bloqueMadurezHtml(p));
+    o += plataformaHtml(p, der);
     o += medicionHtml(p);
     o += contenedor('en-d-avisos-S', der, 'en-avisos');
     o += supuestosHtml(p, ui, der);
@@ -7862,7 +9599,7 @@ display: none !important;
       fila('Periodo de recuperación máximo para aprobar', F.meses(C.PLAZO_MAX)) +
       fila('Probabilidad de éxito mínima para aprobar', F.pct(C.P_VERDE)) +
       fila('Probabilidad máxima sin línea base', F.pct(C.TECHO)) +
-      fila('Importe del MVP', F.pct(C.MVP) + ' de la inversión inicial') +
+      fila('Importe del MVP', F.pct(C.MVP) + ' de la inversión inicial, salvo que se informe su coste') +
       fila('Horas anuales por ETC', F.horas(C.H_FTE)) + '</ul>';
     o += '</div></details>';
     return o;
