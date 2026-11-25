@@ -7,7 +7,15 @@
 <meta name="color-scheme" content="light dark">
 <meta name="description" content="Análisis previo al comité de inversiones en cuatro pasos: valor, probabilidad de éxito, coste y periodo de recuperación.">
 <title>¿Vale? · Evaluación financiera de proyectos de IA</title>
-<link rel="icon" href="data:,">
+<meta name="theme-color" content="#FFFFFF" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#101010" media="(prefers-color-scheme: dark)">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="default">
+<meta name="apple-mobile-web-app-title" content="¿Vale?">
+<link rel="manifest" href="manifest.webmanifest">
+<link rel="apple-touch-icon" href="apple-touch-icon.png">
+<link rel="icon" type="image/png" sizes="192x192" href="icono-192.png">
 <style>:root{
 --ground:#EEF0EF;
 --surface:#FFFFFF;
@@ -508,6 +516,10 @@ inset:auto 0 0 0;width:100%;max-width:100%;max-height:85dvh;border-radius:var(--
 .resbar-boton{gap:var(--esp-2)}
 .resbar-boton > .sem{white-space:normal;max-width:96px}
 }
+@media (max-width:767px){
+.resbar-redundante{position:absolute;width:1px;height:1px;margin:-1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
+.resbar-ir-larga{flex:0 1 auto;text-align:right}
+}
 @media (min-width:768px){
 .resbar-boton{gap:var(--esp-6);padding-inline:max(var(--margen), calc((100% - var(--ancho-max)) / 2))}
 .resbar-val{font-size:var(--fs-20);line-height:var(--lh-20)}
@@ -526,6 +538,8 @@ inset:auto 0 0 0;width:100%;max-width:100%;max-height:85dvh;border-radius:var(--
 .ap-pie-in > p{max-width:90ch}
 .ap-pie-aviso{flex-basis:100%}
 .ap-version{color:var(--ink-2)}
+.ap-instalar{flex-basis:100%;display:flex;flex-wrap:wrap;align-items:center;gap:0 var(--esp-2)}
+.ap-instalar[hidden]{display:none}
 .ap-con-resbar body{padding-bottom:calc(var(--resbar-h) + env(safe-area-inset-bottom, 0px))}
 .ap-barra-in,
 .ap-cabecera-in,
@@ -801,7 +815,7 @@ color-scheme:light;
 .en-barra-rotulo{font-size:var(--fs-14);line-height:var(--lh-14);font-weight:700;color:var(--ink-2)}
 .en-restablecer{align-self:center}
 .en-modo{display:inline-flex;gap:var(--esp-1);max-width:100%;padding:var(--esp-1);background:var(--surface);border:var(--borde-2);border-radius:var(--radio-2)}
-.en-modo-op{display:inline-flex;align-items:center;justify-content:center;gap:var(--esp-2);min-height:36px;padding:0 var(--esp-3);border:1px solid transparent;border-radius:var(--radio-1);background:transparent;color:var(--ink-2);font-size:var(--fs-14);line-height:var(--lh-14);font-weight:700;text-align:center;cursor:pointer;transition:background-color var(--mov-1) var(--curva),color var(--mov-1) var(--curva)}
+.en-modo-op{display:inline-flex;align-items:center;justify-content:center;gap:var(--esp-2);min-height:var(--toque);padding:0 var(--esp-3);border:1px solid transparent;border-radius:var(--radio-1);background:transparent;color:var(--ink-2);font-size:var(--fs-14);line-height:var(--lh-14);font-weight:700;text-align:center;cursor:pointer;transition:background-color var(--mov-1) var(--curva),color var(--mov-1) var(--curva)}
 .en-modo-op:hover{background:var(--surface-3)}
 .en-modo-op[aria-pressed="true"]{background:var(--accent-tint);border-color:var(--accent-ink);color:var(--ink)}
 .en-modo-op[aria-pressed="true"]::before{content:"";flex:0 0 auto;width:16px;height:16px;background:var(--accent-ink);-webkit-mask:var(--i-check) center / contain no-repeat;mask:var(--i-check) center / contain no-repeat}
@@ -1325,6 +1339,182 @@ color-scheme:light;
 .re-cte-desglose{display:flex;flex-direction:column;gap:var(--esp-2);max-width:var(--ancho-lectura)}
 .re-cte-consumo{margin:0;padding-inline-start:var(--esp-4);font-size:var(--fs-14);line-height:var(--lh-14);color:var(--ink-2)}
 .re-cte-nota{margin:0;max-width:var(--ancho-lectura);font-size:var(--fs-14);line-height:var(--lh-14);color:var(--ink-2)}
+.ac-puerta{position:relative;isolation:isolate;display:flex;justify-content:center;align-items:flex-start;min-height:30rem;padding:var(--esp-6) var(--esp-4);overflow:hidden;border-radius:var(--radio-2);background:var(--surface-2)}
+.ac-ficha{position:relative;width:min(100%, 40rem);box-shadow:var(--sombra-2)}
+.ac-fondo{position:absolute;inset:0;z-index:-1;display:flex;flex-direction:column;gap:var(--esp-4);padding:var(--esp-6);opacity:.7;filter:blur(9px);pointer-events:none;user-select:none}
+.ac-fondo i{display:block;background:var(--surface-3);border-radius:var(--radio-2)}
+.ac-f-reco{flex:none;height:7rem;background:var(--line-2);border-radius:var(--radio-2)}
+.ac-f-cifras{flex:none;display:grid;grid-template-columns:repeat(4, minmax(0, 1fr));gap:var(--esp-4)}
+.ac-f-cifras i{height:5rem}
+.ac-f-bloques{flex:none;display:grid;grid-template-columns:repeat(2, minmax(0, 1fr));gap:var(--esp-4)}
+.ac-f-bloques i{height:8rem}
+.ac-f-barras{flex:none;display:flex;align-items:flex-end;gap:var(--esp-4);height:7rem}
+.ac-f-barras i{flex:1 1 0;height:60%;background:var(--line-2)}
+.ac-f-barras i:nth-child(2){height:85%}
+.ac-f-barras i:nth-child(3){height:45%}
+.ac-f-barras i:nth-child(4){height:70%}
+.ac-f-barras i:nth-child(5){height:35%}
+.ac-form{display:flex;flex-direction:column;gap:var(--esp-4);min-width:0}
+.ac-linea{margin:0;font-size:var(--fs-16);line-height:var(--lh-16);color:var(--ink-2)}
+.ac-tit{margin:0;font-size:var(--fs-16);line-height:var(--lh-16);font-weight:700;color:var(--ink)}
+.ac-fila{display:grid;grid-template-columns:repeat(2, minmax(0, 1fr));gap:var(--esp-4)}
+.ac-campo{min-width:0}
+.ac-pista{margin:calc(-1 * var(--esp-2)) 0 0;font-size:var(--fs-14);line-height:var(--lh-14);color:var(--ink-2)}
+.ac-error-grupo{margin:calc(-1 * var(--esp-2)) 0 0}
+.ac-trampa{position:absolute;left:-10000px;top:auto;width:1px;height:1px;overflow:hidden}
+.ac-legal{margin:0;font-size:var(--fs-14);line-height:var(--lh-14);color:var(--ink-2)}
+.ac-legal a{color:var(--accent-ink);text-decoration:underline}
+.ac-botones{margin-block-start:var(--esp-2)}
+@media (max-width:599px){
+.ac-puerta{padding:var(--esp-4) 0;background:transparent}
+.ac-fila{grid-template-columns:minmax(0, 1fr)}
+.ac-f-cifras{grid-template-columns:repeat(2, minmax(0, 1fr))}
+}
+.ac-compacta{display:block}
+.ac-compacta .ac-form{padding:var(--esp-4);border:var(--borde);border-radius:var(--radio-2);background:var(--surface-2)}
+.ac-compacta .ac-fila{grid-template-columns:minmax(0, 1fr)}
+.ac-resumen{display:flex;flex-direction:column;gap:var(--esp-3)}
+.ac-resumen-tit{display:flex;align-items:center;gap:var(--esp-2);margin:0;font-size:var(--fs-20);line-height:var(--lh-20);font-weight:700;color:var(--ink)}
+.ac-candado{display:inline-flex;flex:none;color:var(--ink-2)}
+.ac-resumen-txt{margin:0;font-size:var(--fs-16);line-height:var(--lh-16);color:var(--ink-2)}
+.ac-informe{margin:0;padding:var(--esp-6);font-size:var(--fs-16);line-height:var(--lh-16);color:var(--ink)}
+:root{
+--cv-ancho:max(var(--ancho-panel), 360px);
+--cv-alto:min(78vh, 640px);
+--cv-i-micro:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='currentColor' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Crect x='9' y='3' width='6' height='11' rx='3'/%3E%3Cpath d='M5.5 11a6.5 6.5 0 0 0 13 0M12 17.5V21M9 21h6'/%3E%3C/svg%3E");
+}
+@supports (height:1dvh){
+:root{--cv-alto:min(78dvh, 640px)}
+}
+.btn.cv-hablar{background:var(--ink);color:var(--surface);border-color:var(--ink)}
+.btn.cv-hablar:hover{background:var(--ink-2);border-color:var(--ink-2)}
+.btn.cv-hablar:active{background:var(--ink-3);border-color:var(--ink-3)}
+.cv-hablar-cab .cv-micro-ico{width:20px;height:20px}
+.cv-micro-ico{display:inline-block;flex:none;width:24px;height:24px;background-color:currentColor;-webkit-mask:var(--cv-i-micro) center / contain no-repeat;mask:var(--cv-i-micro) center / contain no-repeat}
+.cv-panel{position:fixed;z-index:45;left:0;right:0;bottom:var(--cv-teclado, 0px);height:var(--cv-alto);height:min(var(--cv-alto), calc(100dvh - var(--cv-teclado, 0px) - 8px));display:flex;flex-direction:column;min-height:0;background:var(--surface);color:var(--ink);border:var(--borde);border-radius:var(--radio-2) var(--radio-2) 0 0;box-shadow:var(--sombra-2);padding-bottom:env(safe-area-inset-bottom, 0px)}
+html.cv-abierto body{padding-bottom:var(--cv-alto)}
+@media (min-width:1024px){
+.cv-panel{left:auto;right:0;top:var(--barra-h);bottom:0 !important;height:auto;width:var(--cv-ancho);border-radius:0;border-top:0;border-bottom:0;border-right:0}
+html.cv-abierto body{padding-bottom:0}
+}
+.cv-cab{flex:none;display:flex;align-items:flex-start;justify-content:space-between;gap:var(--esp-3);padding:var(--esp-3) var(--esp-4);border-bottom:var(--borde)}
+.cv-cab-txt{min-width:0}
+.cv-tit{font-size:var(--fs-20);line-height:var(--lh-20)}
+.cv-cuerpo{flex:1 1 auto;min-height:0;overflow-y:auto;overscroll-behavior:contain;display:flex;flex-direction:column;gap:var(--esp-4);padding:var(--esp-4)}
+.cv-nota{font-size:var(--fs-14);line-height:var(--lh-14);color:var(--ink-2)}
+.cv-mensajes{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:var(--esp-3)}
+.cv-msg{max-width:92%;min-width:0;padding:var(--esp-3) var(--esp-4);border:var(--borde);border-radius:var(--radio-2)}
+.cv-msg-ia{align-self:flex-start;background:var(--surface-2)}
+.cv-msg-usuario{align-self:flex-end;background:var(--accent-tint);border-color:var(--accent-ink)}
+.cv-quien{display:block;margin-bottom:var(--esp-1);font-size:var(--fs-12);line-height:var(--lh-12);font-weight:700;letter-spacing:var(--etq-espaciado);text-transform:uppercase;color:var(--ink-2)}
+.cv-texto{margin:0;font-size:var(--fs-16);line-height:var(--lh-16);white-space:pre-wrap;overflow-wrap:anywhere}
+.cv-aviso{margin:0;flex-wrap:wrap;align-items:center}
+.cv-datos{display:flex;flex-direction:column;gap:var(--esp-2)}
+.cv-sub{font-size:var(--fs-16);line-height:var(--lh-16)}
+.cv-ayuda,.cv-vacio{margin:0;font-size:var(--fs-14);line-height:var(--lh-14);color:var(--ink-2)}
+.cv-fichas{list-style:none;margin:0;padding:0;display:flex;flex-wrap:wrap;gap:var(--esp-2)}
+.cv-ficha{min-height:var(--toque);padding:var(--esp-2) var(--esp-3);border:var(--borde-2);border-radius:var(--radio-2);background:var(--surface);color:var(--ink);font-size:var(--fs-14);line-height:var(--lh-14);text-align:left;cursor:pointer;transition:background-color var(--mov-1) var(--curva),border-color var(--mov-1) var(--curva)}
+.cv-ficha:hover{background:var(--surface-3)}
+.cv-ficha-activa{border-color:var(--accent-ink);background:var(--accent-tint)}
+.cv-ficha-etq{color:var(--ink-2)}
+.cv-ficha-val{font-weight:700}
+.cv-editor{display:flex;flex-direction:column;gap:var(--esp-2);padding:var(--esp-3);border:var(--borde);border-radius:var(--radio-2);background:var(--surface-2)}
+.cv-tarjeta{display:flex;flex-direction:column;gap:var(--esp-3);padding:var(--esp-4);border:var(--borde);border-left:var(--barra-acento) solid var(--accent);border-radius:var(--radio-2);background:var(--surface-2)}
+.cv-reco{margin:0}
+.cv-cifras{display:flex;flex-wrap:wrap;gap:var(--esp-2) var(--esp-6);margin:0}
+.cv-cifras dt{font-size:var(--fs-12);line-height:var(--lh-12);font-weight:700;letter-spacing:var(--etq-espaciado);text-transform:uppercase;color:var(--ink-2)}
+.cv-cifras dd{margin:0;font-size:var(--fs-20);line-height:var(--lh-20);font-weight:700}
+.cv-pie{flex:none;display:flex;flex-direction:column;gap:var(--esp-3);padding:var(--esp-3) var(--esp-4) var(--esp-4);border-top:var(--borde);background:var(--surface)}
+.cv-estado-fila{display:flex;align-items:center;gap:var(--esp-3);min-height:48px}
+.cv-estado{flex:1 1 auto;min-width:0;margin:0;font-size:var(--fs-14);line-height:var(--lh-14);font-weight:700;color:var(--ink-2)}
+.cv-prov{margin:0;font-size:var(--fs-14);line-height:var(--lh-14);font-style:italic;color:var(--ink-2)}
+.cv-prov:empty{display:none}
+.cv-micro{display:flex;align-items:center;justify-content:center;gap:var(--esp-3);width:100%;min-height:56px;padding:0 var(--esp-4);border:1px solid transparent;border-radius:var(--radio-2);background:var(--ink);color:var(--surface);font-size:var(--fs-18);line-height:var(--lh-18);font-weight:700;cursor:pointer;transition:background-color var(--mov-1) var(--curva),color var(--mov-1) var(--curva)}
+.cv-micro:hover{background:var(--ink-2)}
+.cv-micro-activo,.cv-micro-activo:hover{background:var(--accent);color:var(--on-accent)}
+.cv-micro[aria-disabled="true"]{background:var(--surface-2);color:var(--ink-3);border-color:var(--line);cursor:not-allowed}
+.cv-form{display:flex;align-items:stretch;gap:var(--esp-2)}
+.cv-caja{flex:1 1 auto}
+.cv-orbe{position:relative;flex:none;display:inline-flex;align-items:center;justify-content:center;gap:3px;width:48px;height:48px;border:var(--borde-2);border-radius:var(--radio-redondo);background:var(--surface-2)}
+.cv-orbe > i{display:block;width:4px;height:8px;border-radius:var(--radio-1);background:var(--ink-3);transform-origin:center}
+.cv-orbe[data-estado="escuchando"]{border-color:var(--accent-ink);background:var(--accent-tint);animation:cv-latido 1.4s ease-in-out infinite}
+.cv-orbe[data-estado="escuchando"] > i{background:var(--accent-ink);animation:cv-onda .9s ease-in-out infinite}
+.cv-orbe[data-estado="escuchando"] > i:nth-child(1),.cv-orbe[data-estado="hablando"] > i:nth-child(1){height:10px}
+.cv-orbe[data-estado="escuchando"] > i:nth-child(2),.cv-orbe[data-estado="hablando"] > i:nth-child(2){height:18px}
+.cv-orbe[data-estado="escuchando"] > i:nth-child(3),.cv-orbe[data-estado="hablando"] > i:nth-child(3){height:24px}
+.cv-orbe[data-estado="escuchando"] > i:nth-child(4),.cv-orbe[data-estado="hablando"] > i:nth-child(4){height:18px}
+.cv-orbe[data-estado="escuchando"] > i:nth-child(5),.cv-orbe[data-estado="hablando"] > i:nth-child(5){height:10px}
+.cv-orbe[data-estado="hablando"]{border-color:var(--ok);background:var(--ok-tint)}
+.cv-orbe[data-estado="hablando"] > i{background:var(--ok);animation:cv-onda .7s ease-in-out infinite}
+.cv-orbe[data-estado="pensando"]{border-color:var(--line-control);animation:cv-latido 2s ease-in-out infinite}
+.cv-orbe[data-estado="pensando"] > i{background:var(--ink-2);animation:cv-punto 1.2s ease-in-out infinite}
+.cv-orbe > i:nth-child(2){animation-delay:.12s}
+.cv-orbe > i:nth-child(3){animation-delay:.24s}
+.cv-orbe > i:nth-child(4){animation-delay:.36s}
+.cv-orbe > i:nth-child(5){animation-delay:.48s}
+@keyframes cv-onda{
+0%,100%{transform:scaleY(.45)}
+50%{transform:scaleY(1)}
+}
+@keyframes cv-punto{
+0%,100%{opacity:.35}
+50%{opacity:1}
+}
+@keyframes cv-latido{
+0%,100%{box-shadow:0 0 0 0 var(--accent-tint)}
+50%{box-shadow:0 0 0 6px var(--accent-tint)}
+}
+.cv-vv{display:flex;flex-direction:column;align-items:center;gap:var(--esp-3);padding:var(--esp-1) 0 var(--esp-2)}
+.cv-vv[hidden]{display:none}
+.cv-vv-orbe{--cv-n1:0;--cv-n2:0;--cv-n3:0;--cv-tono:var(--ink-3);--cv-tinte:var(--surface-2);position:relative;flex:none;width:128px;height:128px;margin:var(--esp-4) 0;border-radius:var(--radio-redondo);animation:cv-respira 4.4s ease-in-out infinite}
+.cv-vv-orbe::after{content:"";position:absolute;inset:-8px;border-radius:var(--radio-redondo);border:2px solid transparent;border-top-color:var(--cv-tono);opacity:0;transition:opacity var(--mov-2, .24s) var(--curva)}
+.cv-vv-aro,.cv-vv-nucleo{position:absolute;border-radius:var(--radio-redondo);pointer-events:none}
+.cv-vv-aro{inset:0;border:1.5px solid var(--cv-tono);background:radial-gradient(circle, transparent 52%, var(--cv-tinte) 100%);will-change:transform,opacity;transition:border-color var(--mov-2, .24s) var(--curva)}
+.cv-vv-aro-1{transform:scale(calc(.72 + var(--cv-n1) * .24));opacity:calc(.6 + var(--cv-n1) * .4)}
+.cv-vv-aro-2{transform:scale(calc(.86 + var(--cv-n2) * .3));opacity:calc(.32 + var(--cv-n2) * .4)}
+.cv-vv-aro-3{transform:scale(calc(1 + var(--cv-n3) * .36));opacity:calc(.14 + var(--cv-n3) * .36)}
+.cv-vv-nucleo{inset:31%;background:radial-gradient(circle at 36% 30%, var(--cv-tinte), var(--cv-tono));box-shadow:0 2px 14px var(--cv-tinte);will-change:transform;transform:scale(calc(.92 + var(--cv-n1) * .2));transition:background-color var(--mov-2, .24s) var(--curva)}
+.cv-vv-orbe[data-estado="conectando"]{--cv-tono:var(--ink-3);animation-duration:1.8s}
+.cv-vv-orbe[data-estado="conectando"]::after,.cv-vv-orbe[data-estado="pensando"]::after{opacity:.9;animation:cv-gira 1.5s linear infinite}
+.cv-vv-orbe[data-estado="escuchando"]{--cv-tono:var(--accent-ink);--cv-tinte:var(--accent-tint)}
+.cv-vv-orbe[data-estado="pensando"]{--cv-tono:var(--ink-2);--cv-tinte:var(--surface-3)}
+.cv-vv-orbe[data-estado="hablando"]{--cv-tono:var(--ok);--cv-tinte:var(--ok-tint)}
+.cv-vv-subs{margin:0;min-height:calc(var(--lh-16) * 2);max-width:36ch;text-align:center;font-size:var(--fs-16);line-height:var(--lh-16);color:var(--ink);overflow-wrap:anywhere}
+.cv-vv-subs[data-rol="usuario"]{color:var(--ink-2);font-style:italic}
+.cv-vv-mando{display:flex;flex-wrap:wrap;justify-content:center;gap:var(--esp-2)}
+.cv-vv-boton[aria-pressed="true"]{background:var(--accent-tint);border-color:var(--accent-ink)}
+.cv-vv-boton[aria-disabled="true"]{color:var(--ink-3);cursor:not-allowed}
+.cv-msg-vivo{border-style:dashed}
+.cv-panel[data-vv="1"] .cv-estado-fila .cv-orbe,.cv-panel[data-vv="1"] .cv-micro,.cv-panel[data-vv="1"] .cv-form{display:none}
+.cv-panel[data-vv="1"] .cv-estado-fila{min-height:0;justify-content:center}
+.cv-panel[data-vv="1"] .cv-estado{flex:0 1 auto;text-align:center}
+@media (max-height:700px){
+.cv-vv-orbe{width:100px;height:100px;margin:var(--esp-3) 0}
+.cv-vv-subs{min-height:var(--lh-16)}
+}
+@keyframes cv-respira{
+0%,100%{transform:scale(1)}
+50%{transform:scale(1.03)}
+}
+@keyframes cv-gira{
+to{transform:rotate(360deg)}
+}
+.cv-resalte{outline:2px solid var(--accent-ink);outline-offset:2px;animation:cv-resalte 2.4s ease-out}
+@keyframes cv-resalte{
+0%{box-shadow:0 0 0 6px var(--accent-tint)}
+100%{box-shadow:0 0 0 0 var(--accent-tint)}
+}
+@media (prefers-reduced-motion:reduce){
+.cv-orbe,.cv-orbe > i,.cv-resalte{animation:none !important}
+.cv-vv-orbe,.cv-vv-orbe::after{animation:none !important}
+.cv-vv-aro,.cv-vv-nucleo{transform:none !important;will-change:auto}
+.cv-vv-aro-1{opacity:calc(.5 + var(--cv-n1) * .5)}
+.cv-vv-aro-2{opacity:calc(.25 + var(--cv-n2) * .4)}
+.cv-vv-aro-3{opacity:calc(.1 + var(--cv-n3) * .3)}
+}
+@media print{
+.cv-panel,.btn.cv-hablar,.cv-hablar-cab{display:none !important}
+}
 html.pr-activo,
 html.pr-activo body {
 overflow: hidden;
@@ -2013,7 +2203,7 @@ display: none !important;
             <button type="button" class="btn" data-accion="abrir" data-id="nuevo">Evaluar un proyecto<span class="i i-flecha" aria-hidden="true"></span></button>
             <button type="button" class="btn secundario" data-accion="abrir" data-id="A" data-paso="R">Ver el ejemplo</button>
           </div>
-          <p class="app-confianza"><span class="i i-escudo" aria-hidden="true"></span><span>Sin alta de usuario ni cookies. El cálculo se realiza en el propio dispositivo: los datos introducidos se guardan solo en este navegador y no se envían a ningún servidor.</span></p>
+          <p class="app-confianza"><span class="i i-escudo" aria-hidden="true"></span><span>El cálculo se realiza en el propio dispositivo: los datos introducidos se guardan solo en este navegador y no se envían a ningún servidor.</span></p>
         </div>
         <section id="ap-ejemplos" class="panel ap-ejemplos" aria-labelledby="ap-ejemplos-tit">
           <p class="etq">Proyectos de ejemplo</p>
@@ -2086,7 +2276,7 @@ display: none !important;
                 <label class="campo-etq" for="ap-enlace">Enlace del análisis</label>
                 <span class="campo-caja"><input id="ap-enlace" class="ap-enlace-input" type="text" readonly></span>
               </div>
-              <p class="app-confianza"><span class="i i-escudo" aria-hidden="true"></span><span>Sin alta de usuario ni cookies. El cálculo se realiza en el propio dispositivo: los datos introducidos se guardan solo en este navegador y no se envían a ningún servidor.</span></p>
+              <p class="app-confianza"><span class="i i-escudo" aria-hidden="true"></span><span>El cálculo se realiza en el propio dispositivo: los datos introducidos se guardan solo en este navegador y no se envían a ningún servidor.</span></p>
             </div>
           </div>
         </section>
@@ -2100,8 +2290,9 @@ display: none !important;
 
 <footer id="ap-pie" class="pie"><div class="ap-pie-in">
   <p>Diseñada para el comité de inversiones · Método VALE · Acevedo Enterprise IA</p>
-  <p class="ap-version">Versión 1.4 · 18-nov-2026</p>
+  <p class="ap-version">Versión 1.7 · 26-nov-2026</p>
   <p class="ap-pie-aviso">El resultado es orientativo y no sustituye al comité de inversiones.</p>
+  <p id="ap-instalar" class="ap-instalar" hidden><span id="ap-instalar-txt"></span> <button type="button" id="ap-instalar-btn" class="btn texto compacto" hidden>Instalar la aplicación</button></p>
 </div></footer>
 
 <div id="ap-aviso" class="oculto" role="status" aria-live="polite"></div>
@@ -3972,7 +4163,7 @@ display: none !important;
   'use strict';
 
 
-  VALE.config = Object.assign({ ia_url: '', politica_url: 'https://acevedocorp.com/politica-de-privacidad/' }, VALE.config || {});
+  VALE.config = Object.assign({ ia_url: 'https://vale-ia.gabrielgrosso.workers.dev', politica_url: 'https://acevedocorp.com/politica-de-privacidad/', registro: 'obligatorio', voz_viva: true }, VALE.config || {});
 
   const CLAVE = 'vale.prueba.v1';
   const IDS = ['A', 'B', 'C', 'nuevo'];
@@ -3992,10 +4183,29 @@ display: none !important;
     copiado: 'Enlace copiado.',
     noCopiado: 'No se ha podido copiar el enlace. Seleccionar y copiar el texto.',
     parteFallida: 'No se ha podido cargar esta parte de la herramienta en este navegador.',
-    confianzaIa: 'Sin alta de usuario ni cookies. El cálculo se realiza en el dispositivo. ' +
+    confianzaIa: 'El cálculo se realiza en el dispositivo. ' +
       'Al pedir la explicación de la IA se envían las cifras del proyecto, sin nombres ni textos, y no se conservan. ' +
+      'En la conversación con ¿Vale?, lo que se dice o se escribe se envía a la IA para responder y no se guarda; ' +
+      'el servicio de voz del navegador convierte la voz en texto. ' +
       'El uso se registra de forma anónima (fecha, paso y recomendación). ' +
-      'Los datos de contacto solo se envían si se solicita una reunión.'
+      'Los datos de contacto solo se envían si se solicita una reunión.',
+    confianzaVozViva: ' Con la voz en directo, el audio se envía a un servicio de IA para mantener la conversación y no se guarda.',
+    confianzaRegistro: 'El cálculo se realiza en el dispositivo. ' +
+      'Al pedir la explicación de la IA se envían las cifras del proyecto, sin nombres ni textos, y no se conservan. ' +
+      'En la conversación con ¿Vale?, lo que se dice o se escribe se envía a la IA para responder y no se guarda; ' +
+      'el servicio de voz del navegador convierte la voz en texto. ' +
+      'El uso se registra de forma anónima (fecha, paso y recomendación). ' +
+      'Para ver el resultado de un proyecto propio se pide un nombre y un correo o teléfono. Los ejemplos se ven sin registrarse. ' +
+      'Tras indicar los datos, este navegador recuerda durante 30 días que ya se indicaron, sin guardar los datos; «Borrar datos» lo elimina. ' +
+      'Los datos de contacto solo se envían al registrarse o al solicitar una reunión.',
+    confianzaRegistroOpcional: 'El cálculo se realiza en el dispositivo. ' +
+      'Al pedir la explicación de la IA se envían las cifras del proyecto, sin nombres ni textos, y no se conservan. ' +
+      'En la conversación con ¿Vale?, lo que se dice o se escribe se envía a la IA para responder y no se guarda; ' +
+      'el servicio de voz del navegador convierte la voz en texto. ' +
+      'El uso se registra de forma anónima (fecha, paso y recomendación). ' +
+      'Para ver el resultado de un proyecto propio se puede indicar un nombre y un correo o teléfono; no es obligatorio. ' +
+      'Tras indicar los datos, este navegador recuerda durante 30 días que ya se indicaron, sin guardar los datos; «Borrar datos» lo elimina. ' +
+      'Los datos de contacto solo se envían si se indican o si se solicita una reunión.'
   };
 
   const OPC_UNIDAD = ['tarea', 'documento', 'factura', 'operacion', 'consulta', 'expediente', 'pedido'];
@@ -4679,6 +4889,7 @@ display: none !important;
     const simple = esSimplificado(proy);
     const actual = pasoVisible(proy, estadoUi);
     const completo = !!(res && res.completo);
+    const reservado = completo && accesoPendiente(proy, res);
     const letras = simple ? ['V', 'R'] : LETRAS;
     let hechos = 0;
     let rotulo = '';
@@ -4693,9 +4904,10 @@ display: none !important;
       let resumen;
       if (esR) {
         nombre = 'Resultado';
-        marca = icono(ICONO_ESTADO[claseRecomendacion(res)] || 'pregunta');
-        resumen = completo ? sem(res.codigo) + ' VAN ajustado por riesgo ' + esc(VALE.fmt.eurSigno(res.VAN)) : sem('faltan');
-        rotulo = letra === actual ? 'Resultado · ' + (completo ? motor().ESTADOS[res.codigo].rotulo : 'Faltan datos') : rotulo;
+        marca = reservado ? icono('candado') : icono(ICONO_ESTADO[claseRecomendacion(res)] || 'pregunta');
+        resumen = reservado ? sem('faltan', { texto: 'Resultado reservado' })
+          : (completo ? sem(res.codigo) + ' VAN ajustado por riesgo ' + esc(VALE.fmt.eurSigno(res.VAN)) : sem('faltan'));
+        rotulo = letra === actual ? 'Resultado · ' + (reservado ? 'Resultado reservado' : (completo ? motor().ESTADOS[res.codigo].rotulo : 'Faltan datos')) : rotulo;
       } else if (simple) {
         nombre = PASO_CIFRAS.nombre;
         marca = '1';
@@ -4903,6 +5115,22 @@ display: none !important;
     return '<span class="ap-logo" role="img" aria-label="Acevedo"></span>';
   }
 
+  function accesoPendiente(proy, res) {
+    try {
+      return !!(VALE.acceso && typeof VALE.acceso.pendiente === 'function' && VALE.acceso.pendiente(proy, res));
+    } catch (err) {
+      return false;
+    }
+  }
+
+  function exigirRegistro(accion) {
+    try {
+      return !!(VALE.acceso && typeof VALE.acceso.exigir === 'function' && VALE.acceso.exigir(accion) === true);
+    } catch (err) {
+      return false;
+    }
+  }
+
   function resbarHtml(res, proy, opciones) {
     const f = VALE.fmt;
     const completo = !!(res && res.completo);
@@ -4931,13 +5159,14 @@ display: none !important;
     const o = opciones || {};
     const f = VALE.fmt;
     const completo = !!(res && res.completo);
-    const estado = '<div class="proy-estado">' + sem(completo ? res.codigo : 'faltan') +
+    const reservado = !!o.reservado;
+    const estado = '<div class="proy-estado">' + (reservado ? sem('faltan', { texto: 'Resultado reservado' }) : sem(completo ? res.codigo : 'faltan')) +
       (o.modificado ? '<span class="chip neutro">Con cambios</span>' : '') + '</div>';
-    const van = completo ? f.eurSigno(res.VAN) : '—';
-    const claseVan = completo ? (res.VAN > 0 ? ' class="pos"' : (res.VAN < 0 ? ' class="neg"' : '')) : '';
-    const rec = completo ? f.recuperacion(res, { corta: true }) : '—';
+    const van = completo && !reservado ? f.eurSigno(res.VAN) : '—';
+    const claseVan = completo && !reservado ? (res.VAN > 0 ? ' class="pos"' : (res.VAN < 0 ? ' class="neg"' : '')) : '';
+    const rec = completo && !reservado ? f.recuperacion(res, { corta: true }) : '—';
     let fe = '';
-    if (completo) {
+    if (completo && !reservado) {
       if (res.VAN <= 0 && res.VAN100 > 0) {
         fe += '<p class="proy-fe">VAN sin ajuste por riesgo: ' + esc(f.eurSigno(res.VAN100)) + '.</p>';
       }
@@ -5203,7 +5432,7 @@ display: none !important;
     if (!cont) return;
     let h = '';
     for (const id of ['A', 'B', 'C']) {
-      h += tarjetaHtml(id, proyecto(id), resultado(id), { modificado: modificado(id) });
+      h += tarjetaHtml(id, proyecto(id), resultado(id), { modificado: modificado(id), reservado: accesoPendiente(proyecto(id), resultado(id)) });
     }
     if (h === armazon.ultimasTarjetas) return;
     armazon.ultimasTarjetas = h;
@@ -5277,7 +5506,7 @@ display: none !important;
     const visible = ui.vista === 'analisis' && ui.paso !== 'R';
     barra.hidden = !visible;
     document.documentElement.classList.toggle('ap-con-resbar', visible);
-    const h = resbarHtml(resultado(), proyecto());
+    const h = accesoPendiente() ? VALE.acceso.barraHtml() : resbarHtml(resultado(), proyecto());
     if (h === armazon.ultimaBarra) return;
     armazon.ultimaBarra = h;
     barra.innerHTML = h;
@@ -5295,7 +5524,7 @@ display: none !important;
     const res = resultado();
     const codigo = res.completo ? res.codigo : 'faltan';
     const mismo = armazon.ultimoId === datos.activo;
-    if (mismo && evento.tipo === 'datos' && codigo !== armazon.ultimoCodigo && res.completo) {
+    if (mismo && evento.tipo === 'datos' && codigo !== armazon.ultimoCodigo && res.completo && !accesoPendiente()) {
       anunciarCon('Recomendación: ' + motor().ESTADOS[res.codigo].rotulo + '.', !ui.escritorio);
     }
     armazon.ultimoId = datos.activo;
@@ -5329,6 +5558,7 @@ display: none !important;
   };
 
   armazon.copiarEnlace = function () {
+    if (exigirRegistro('enlace')) return;
     const url = VALE.estado.enlace();
     copiar(url).then((ok) => {
       if (ok) {
@@ -5350,8 +5580,13 @@ display: none !important;
   };
 
   armazon.imprimir = function () {
+    if (exigirRegistro('imprimir')) return;
     if (VALE.resultados && typeof VALE.resultados.imprimir === 'function') VALE.resultados.imprimir();
     else window.print();
+  };
+
+  VALE.imprimirInforme = function () {
+    armazon.imprimir();
   };
 
   armazon.abrirGlosario = function (boton) {
@@ -5465,7 +5700,7 @@ display: none !important;
     armazon.alDesplazar();
   };
 
-  const EVENTOS_REGISTRO = ['visita', 'calculo', 'enlace_copiado', 'informe_impreso', 'paso', 'contacto_abierto'];
+  const EVENTOS_REGISTRO = ['visita', 'calculo', 'enlace_copiado', 'informe_impreso', 'paso', 'contacto_abierto', 'conversacion_abierta', 'conversacion_completa', 'registro_mostrado', 'registro_enviado'];
   const RECOMENDACIONES_REGISTRO = ['vale_ya', 'vale_en_pequeno', 'todavia_no', 'no_vale'];
   const BENEFICIOS_REGISTRO = ['horas', 'ventas', 'perdidas', 'gasto'];
   const ALFABETO_REGISTRO = 'abcdefghijklmnopqrstuvwxyz0123456789';
@@ -5574,7 +5809,7 @@ display: none !important;
 
   function antesDeImprimir() {
     const c = contextoRegistro();
-    registrar('informe_impreso', c, 'informe:' + c.ejemplo + ':' + (c.recomendacion || ''));
+    if (!accesoPendiente()) registrar('informe_impreso', c, 'informe:' + c.ejemplo + ':' + (c.recomendacion || ''));
     const inf = porId('re-informe');
     if (!inf || inf.innerHTML.trim() !== '') return;
     if (!VALE.resultados || typeof VALE.resultados.informeHtml !== 'function') return;
@@ -5700,8 +5935,16 @@ display: none !important;
 
     seguro('ap-tarjetas', () => {
       if (!VALE.config.ia_url) return;
+      let modo = 'no';
+      try {
+        modo = VALE.acceso && typeof VALE.acceso.modo === 'function' ? VALE.acceso.modo() : 'no';
+      } catch (err) {
+        modo = 'no';
+      }
+      const base = modo === 'obligatorio' ? MSG.confianzaRegistro : (modo === 'opcional' ? MSG.confianzaRegistroOpcional : MSG.confianzaIa);
+      const texto = VALE.config.voz_viva === true ? base + MSG.confianzaVozViva : base;
       document.querySelectorAll('.app-confianza > span:last-child').forEach((confianza) => {
-        confianza.textContent = MSG.confianzaIa;
+        confianza.textContent = texto;
       });
     });
 
@@ -5718,6 +5961,22 @@ display: none !important;
 
     seguro('re-raiz', () => {
       if (VALE.resultados) VALE.resultados.montar(document.getElementById('re-raiz'));
+    });
+
+    seguro('ap-principal', () => {
+      if (!VALE.config.ia_url || !VALE.acceso) return;
+      VALE.acceso.montar();
+      VALE.acceso.alCambiar((tipo) => {
+        if (tipo !== 'liberado') return;
+        armazon.pintarTarjetas();
+        armazon.pintarBarra();
+        armazon.ultimosPasos = '';
+        armazon.pintarPasos();
+      });
+      VALE.acceso.alContinuar((accion) => {
+        if (accion === 'imprimir') armazon.imprimir();
+        else if (accion === 'enlace') armazon.copiarEnlace();
+      });
     });
 
     seguro('en-raiz', () => {
@@ -5752,6 +6011,10 @@ display: none !important;
         if (r.avisos.length) anunciar(r.avisos.join(' '));
       });
     }
+
+    seguro('cv-panel', () => {
+      if (VALE.conversacion && typeof VALE.conversacion.montar === 'function') VALE.conversacion.montar();
+    });
 
     seguro('ap-principal', () => {
       window.addEventListener('popstate', (ev) => {
@@ -7166,10 +7429,11 @@ display: none !important;
     }
   }
 
-  async function pedir(ruta, cuerpo, audio) {
+  async function pedirBase(ruta, cuerpo, audio, senal) {
     const base = String(VALE.config.ia_url || '').trim().replace(/\/+$/, '');
     const url = base + ruta;
     const opciones = { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify(cuerpo) };
+    if (senal) opciones.signal = senal;
     let r;
     try {
       r = await transporte()(url, opciones);
@@ -7190,8 +7454,37 @@ display: none !important;
     } catch (err) {
       datos = null;
     }
-    const error = datos && typeof datos.error === 'string' && (r.status === 400 || r.status === 429) ? datos.error : '';
+    const frase = (t) => (typeof t === 'string' && t.trim() && /\s/.test(t.trim()) ? t.trim() : '');
+    const error = datos && (r.status === 400 || r.status === 429) ? frase(datos.mensaje) || frase(datos.error) : '';
     return { ok: !!r.ok, estado: r.status, datos, error };
+  }
+
+  async function pedir(ruta, cuerpo, audio, plazoMs) {
+    const limite = Number(plazoMs) > 0 ? Number(plazoMs) : 0;
+    if (!limite) return pedirBase(ruta, cuerpo, audio, null);
+    let abortador = null;
+    try {
+      if (typeof AbortController === 'function') abortador = new AbortController();
+    } catch (err) {
+      abortador = null;
+    }
+    let reloj = null;
+    const vencido = new Promise((resolver) => {
+      reloj = setTimeout(() => {
+        if (abortador) {
+          try {
+            abortador.abort();
+          } catch (err) {
+          }
+        }
+        resolver({ ok: false, estado: null, error: '', plazo: true });
+      }, limite);
+    });
+    try {
+      return await Promise.race([pedirBase(ruta, cuerpo, audio, abortador ? abortador.signal : null), vencido]);
+    } finally {
+      clearTimeout(reloj);
+    }
   }
 
   function pedirIa(ruta, cuerpo, audio) {
@@ -7477,6 +7770,9 @@ display: none !important;
     alCambiar: (fn) => {
       iaAlCambiar = fn;
     },
+    transporte,
+    pedir: pedirIa,
+    pedirSinContexto: pedir,
     MENSAJES: { IA_MENCION, IA_ENVIO, IA_CARGANDO, IA_ERROR, IA_ERROR_PREGUNTA, IA_SIN_VOZ, IA_VOZ_CARGANDO }
   };
 
@@ -7504,11 +7800,12 @@ display: none !important;
     empresa: 'Indicar la empresa (entre 2 y 100 caracteres).',
     correo: 'Indicar un correo electrónico válido (como máximo 120 caracteres).',
     cargo: 'El cargo admite como máximo 80 caracteres.',
-    telefono: 'El teléfono admite solo dígitos, espacios y el signo + (como máximo 25 caracteres).',
+    telefono: 'Indicar un teléfono válido: dígitos y espacios, con el signo + solo al principio (entre 7 y 15 dígitos).',
     mensaje: 'El comentario admite como máximo 500 caracteres.'
   };
-  const CT_FORMA_CORREO = /^[^\s@<>"',;:()[\]\\]+@[^\s@<>"',;:()[\]\\]+\.[^\s@<>"',;:()[\]\\]{2,}$/u;
-  const CT_FORMA_TELEFONO = /^[0-9+ ]+$/;
+  const CT_FORMA_CORREO = /^[^\s@<>"\\]+@[^\s@<>"',;:()[\]\\]+\.[^\s@<>"',;:()[\]\\]{2,}$/u;
+  const CT_FORMA_TELEFONO = /^\+?[0-9 ]+$/;
+  const CT_DIGITOS_TELEFONO = { min: 7, max: 15 };
   const CT_FORMA_HTTPS = /^https:\/\/[^\s"'<>]+$/;
 
   function contactoInicial() {
@@ -7535,6 +7832,11 @@ display: none !important;
     return CT_FORMA_HTTPS.test(u) ? u : '';
   }
 
+  function digitosTelefonoValidos(t) {
+    const n = String(t).replace(/\D/g, '').length;
+    return n >= CT_DIGITOS_TELEFONO.min && n <= CT_DIGITOS_TELEFONO.max;
+  }
+
   function validarContacto(v) {
     const e = {};
     const n = limpiarTextoContacto(v.nombre);
@@ -7547,7 +7849,7 @@ display: none !important;
     if (em.length < 2 || em.length > CT_MAX.empresa) e.empresa = CT_MENSAJES.empresa;
     if (!CT_FORMA_CORREO.test(co) || co.length > CT_MAX.correo) e.correo = CT_MENSAJES.correo;
     if (ca.length > CT_MAX.cargo) e.cargo = CT_MENSAJES.cargo;
-    if (te && (te.length > CT_MAX.telefono || !CT_FORMA_TELEFONO.test(te))) e.telefono = CT_MENSAJES.telefono;
+    if (te && (te.length > CT_MAX.telefono || !CT_FORMA_TELEFONO.test(te) || !digitosTelefonoValidos(te))) e.telefono = CT_MENSAJES.telefono;
     if (me.length > CT_MAX.mensaje) e.mensaje = CT_MENSAJES.mensaje;
     return e;
   }
@@ -7581,8 +7883,21 @@ display: none !important;
       version_texto: CT_VERSION_TEXTO,
       origen: origenContacto(),
       prueba: contactoDePrueba(),
-      web: String(v.web || '')
+      web: String(v.web || ''),
+      motivo: 'reunion'
     };
+  }
+
+  function prerrellenarContacto() {
+    try {
+      const m = VALE.acceso && typeof VALE.acceso.memoria === 'function' ? VALE.acceso.memoria() : null;
+      if (!m) return;
+      for (const campo of ['nombre', 'empresa', 'correo', 'telefono']) {
+        if (m[campo] && !contacto.valores[campo]) contacto.valores[campo] = String(m[campo]).slice(0, CT_MAX[campo]);
+      }
+    } catch (err) {
+      return;
+    }
   }
 
   function alternarContacto() {
@@ -7590,6 +7905,7 @@ display: none !important;
     contacto.abierto = !contacto.abierto;
     contacto.foco = contacto.abierto ? 're-ct-nombre' : '';
     if (contacto.abierto) {
+      prerrellenarContacto();
       try {
         if (VALE.registro && typeof VALE.registro.registrar === 'function') {
           VALE.registro.registrar('contacto_abierto', Object.assign({ paso: 'R' }, contextoUso()), 'contacto_abierto');
@@ -7716,6 +8032,17 @@ display: none !important;
     MENSAJES: { CT_ENVIADO, CT_ERROR, CT_REVISAR, CT_ENVIANDO }
   };
 
+  function accesoBloque(metodo, res, proyecto) {
+    try {
+      const A = VALE.acceso;
+      if (!A || typeof A.pendiente !== 'function' || typeof A[metodo] !== 'function' || !A.pendiente(proyecto, res)) return '';
+      const h = A[metodo]();
+      return typeof h === 'string' ? h : '';
+    } catch (err) {
+      return '';
+    }
+  }
+
 
   function html(res, proyecto, ui) {
     const u = ui || {};
@@ -7729,6 +8056,8 @@ display: none !important;
         orientativoHtml() + '</div></div>';
       return s + pie;
     }
+    const puerta = accesoBloque('puertaHtml', res, proyecto);
+    if (puerta) return puerta;
     const est = estado(res, proyecto);
     const mvp = res.codigo === 'vale_en_pequeno';
     sincronizarIa(res, proyecto);
@@ -7774,6 +8103,8 @@ display: none !important;
     if (!completo(res)) {
       return s + vacioHtml(res, proyecto, false) + orientativoHtml() + '</div>';
     }
+    const reservado = accesoBloque('resumenHtml', res, proyecto);
+    if (reservado) return reservado;
     const est = estado(res, proyecto);
     s += semaforoHtml(est);
     s += indicadoresHtml(res, u, 're-rs-vc-');
@@ -7924,6 +8255,8 @@ display: none !important;
   }
 
   function informeHtml(res, proyecto, opciones) {
+    const bloqueado = accesoBloque('informeBloqueadoHtml', res, proyecto);
+    if (bloqueado) return bloqueado;
     const fecha = opciones && opciones.fecha ? opciones.fecha : VALE.fmt.fecha(new Date());
     const nombre = proyecto && proyecto.nombre ? proyecto.nombre : 'Nuevo proyecto';
     let n = 0;
@@ -7933,7 +8266,7 @@ display: none !important;
     };
     let s = '<article class="re-inf">';
     s += '<header class="re-inf-cab"><div class="re-inf-fila"><span class="re-inf-logo">' + logo() + '</span>' +
-      '<p class="re-inf-meta"><span class="re-inf-sup">Informe para el comité</span><span>Fecha: ' + esc(fecha) + '</span></p></div>' +
+      '<p class="re-inf-meta"><span class="re-inf-sup">Informe para el comité de decisión</span><span>Fecha: ' + esc(fecha) + '</span></p></div>' +
       '<div class="re-inf-fila"><h1 class="re-inf-tit">' + esc(nombre) + '</h1><p class="re-inf-prod">¿Vale? · Método VALE</p></div></header>';
     if (!completo(res)) {
       s += '<section class="re-inf-sec">' + etq('Recomendación') + '<p class="nota">' + esc(faltan(res, proyecto)) + '</p>';
@@ -8050,7 +8383,7 @@ display: none !important;
     }
     s += '<section class="re-inf-sec re-inf-firmas"><p>Responsable del indicador: ____________________</p>' +
       '<p>Fecha de revisión: ____________________</p></section>';
-    s += '<footer class="re-inf-pie">Diseñada para el comité de inversiones · Método VALE · Acevedo Enterprise IA · Versión 1.4 · 18-nov-2026</footer>';
+    s += '<footer class="re-inf-pie">Informe para el comité de decisión · Método VALE · Acevedo Enterprise IA · Versión 1.7 · 26-nov-2026</footer>';
     return s + '</article>';
   }
 
@@ -8064,8 +8397,16 @@ display: none !important;
     }
     cont.innerHTML = informeHtml(E.resultado(), E.proyecto(), { fecha: VALE.fmt.fecha(new Date()) });
     cont.hidden = false;
+    const tituloAntes = document.title;
+    try {
+      const p = E.proyecto();
+      document.title = 'Informe para el comité de decisión' + (p && p.nombre ? ' · ' + p.nombre : '');
+    } catch (err) {
+      document.title = tituloAntes;
+    }
     const limpiar = () => {
       window.removeEventListener('afterprint', limpiar);
+      document.title = tituloAntes;
       cont.hidden = true;
       cont.innerHTML = '';
     };
@@ -8314,6 +8655,21 @@ display: none !important;
       if (ev.origen && String(ev.origen).indexOf('re:') === 0) return;
       repintar();
     });
+    if (VALE.acceso && typeof VALE.acceso.alCambiar === 'function') {
+      VALE.acceso.alCambiar((tipo) => {
+        if (tipo !== 'liberado') return;
+        repintar();
+        if (!doc || (doc.activeElement && doc.activeElement !== doc.body)) return;
+        const t = doc.getElementById('re-titulo');
+        if (t && typeof t.focus === 'function' && E.ui.vista === 'analisis' && E.ui.paso === 'R') {
+          try {
+            t.focus({ preventScroll: true });
+          } catch (err) {
+            t.focus();
+          }
+        }
+      });
+    }
   }
 
   VALE.resultados = {
@@ -8322,6 +8678,699 @@ display: none !important;
     informeHtml,
     imprimir,
     montar
+  };
+})(globalThis.VALE = globalThis.VALE || {});
+
+(function (VALE) {
+  'use strict';
+
+
+  const VERSION_TEXTO = '2026-11-25';
+  const DIAS_RECUERDO = 30;
+  const MS_DIA = 86400000;
+  const CLAVE_RECUERDO = 'vale.registro.v1';
+  const REINTENTO_MS = 8000;
+  const PLAZO_ENVIO_MS = 7000;
+  const MAX = { nombre: 80, correo: 120, telefono: 25, empresa: 100 };
+  const DIGITOS = { min: 7, max: 15 };
+  const CODIGOS = ['vale_ya', 'vale_en_pequeno', 'todavia_no', 'no_vale'];
+  const TIPOS = ['horas', 'ventas', 'perdidas', 'gasto', 'directo'];
+  const CAMPOS = ['nombre', 'correo', 'telefono', 'empresa'];
+
+  const TXT = {
+    titulo: '¿A quién preparamos el resultado?',
+    tituloCompacto: 'A quién va dirigido el resultado',
+    linea: 'El resultado está calculado. Para verlo, indicar a quién va dirigido.',
+    pista: 'Basta con indicar un correo o un teléfono.',
+    nombre: 'Nombre',
+    correo: 'Correo profesional',
+    telefono: 'Teléfono',
+    empresa: 'Empresa (opcional)',
+    comunicaciones: 'Acepto recibir comunicaciones de Acevedo sobre IA en finanzas. Baja disponible en cada envío.',
+    ver: 'Ver el resultado',
+    enviando: 'Enviando…',
+    continuar: 'Continuar sin indicar datos',
+    revisar: 'Revisar los campos señalados.',
+    fallo: 'No se ha podido registrar el envío. El resultado se muestra igualmente.',
+    reservado: 'Resultado reservado',
+    disponible: 'Resultado disponible.',
+    resumen: 'Resultado calculado.',
+    resumenTxt: 'Para verlo, indicar a quién va dirigido.',
+    resumenIr: 'Ver el resultado',
+    barra: 'Resultado calculado',
+    barraIr: 'Indicar a quién va dirigido',
+    informe: 'El informe se genera al ver el resultado. Indicar antes a quién va dirigido.',
+    revisarDatos: 'Revisar los datos'
+  };
+
+  const MSG = {
+    nombre: 'Indicar el nombre (entre 2 y 80 caracteres).',
+    correo: 'Indicar un correo electrónico válido (como máximo 120 caracteres).',
+    telefono: 'Indicar un teléfono válido: dígitos y espacios, con el signo + solo al principio (entre 7 y 15 dígitos).',
+    empresa: 'La empresa admite entre 2 y 100 caracteres.',
+    contacto: 'Indicar un correo o un teléfono.'
+  };
+
+  const LEGAL_1 = 'Responsable: Acevedo Technology & Consulting Corporation, S.L. Finalidad: entregar el resultado de la evaluación y que el área de IA ' +
+    'de Acevedo pueda contactar para comentarlo; solo si se marca la casilla, enviar comunicaciones sobre IA en finanzas. ' +
+    'Base: el consentimiento de quien envía el formulario. Junto al contacto se guardan la recomendación obtenida y el tipo de beneficio, ' +
+    'sin las cifras del proyecto. Los datos no se ceden a terceros, salvo obligación legal. ' +
+    'Derechos de acceso, rectificación, supresión y oposición: compliance@acevedocorp.com. Más información en la ';
+
+  const FORMA_CORREO = /^[^\s@<>"\\]+@[^\s@<>"',;:()[\]\\]+\.[^\s@<>"',;:()[\]\\]{2,}$/u;
+  const FORMA_TELEFONO = /^\+?[0-9 ]+$/;
+  const FORMA_HTTPS = /^https:\/\/[^\s"'<>]+$/;
+
+  function estadoInicial() {
+    return {
+      valores: { nombre: '', correo: '', telefono: '', empresa: '', web: '' },
+      comunicaciones: false,
+      errores: {},
+      estado: 'inicial',
+      foco: '',
+      liberado: false,
+      registrado: false,
+      memoria: null,
+      proyecto: null,
+      despues: null,
+      reintento: null,
+      temporizador: null
+    };
+  }
+
+  let ac = estadoInicial();
+  let montado = false;
+  const escuchas = [];
+  let alContinuarFn = null;
+
+  function hayDocumento() {
+    return typeof document !== 'undefined' && document && typeof document.getElementById === 'function';
+  }
+
+  function porId(id) {
+    return hayDocumento() ? document.getElementById(id) : null;
+  }
+
+  function esc(t) {
+    return VALE.ui.esc(t);
+  }
+
+  function ahora() {
+    return Date.now();
+  }
+
+  function urlIa() {
+    return VALE.config && typeof VALE.config.ia_url === 'string' ? VALE.config.ia_url.trim() : '';
+  }
+
+  function modo() {
+    if (!urlIa()) return 'no';
+    const m = VALE.config.registro;
+    return m === 'no' || m === 'opcional' ? m : 'obligatorio';
+  }
+
+  function activo() {
+    return modo() !== 'no';
+  }
+
+  function politicaUrl() {
+    const u = VALE.config && typeof VALE.config.politica_url === 'string' ? VALE.config.politica_url.trim() : '';
+    return FORMA_HTTPS.test(u) ? u : '';
+  }
+
+  function almacen() {
+    try {
+      return globalThis.localStorage || null;
+    } catch (err) {
+      return null;
+    }
+  }
+
+  function enStand() {
+    return origenWeb() === 'stand';
+  }
+
+  function recordado() {
+    if (ac.registrado) return true;
+    if (enStand()) return false;
+    try {
+      const ls = almacen();
+      if (!ls) return false;
+      const t = ls.getItem(CLAVE_RECUERDO);
+      if (!t) return false;
+      const d = JSON.parse(t);
+      if (!d || d.registrado !== true || typeof d.fecha !== 'string') return false;
+      const ms = Date.parse(d.fecha);
+      if (!isFinite(ms)) return false;
+      const edad = ahora() - ms;
+      return edad >= -MS_DIA && edad < DIAS_RECUERDO * MS_DIA;
+    } catch (err) {
+      return false;
+    }
+  }
+
+  function recordar() {
+    ac.registrado = true;
+    if (enStand()) return;
+    try {
+      const ls = almacen();
+      if (ls) ls.setItem(CLAVE_RECUERDO, JSON.stringify({ registrado: true, fecha: new Date(ahora()).toISOString() }));
+    } catch (err) {
+      ac.registrado = true;
+    }
+  }
+
+  function olvidar() {
+    try {
+      const ls = almacen();
+      if (ls) ls.removeItem(CLAVE_RECUERDO);
+    } catch (err) {
+      ac.registrado = false;
+    }
+  }
+
+  function esEjemploIntacto(proyecto) {
+    const E = VALE.estado;
+    if (!proyecto || !E || !E.serializar) return false;
+    const id = proyecto.id;
+    if (id !== 'A' && id !== 'B' && id !== 'C') return false;
+    return E.serializar(proyecto, { textos: true }) === 'vale=1&b=' + id;
+  }
+
+  function pendiente(proyecto, res) {
+    try {
+      if (!activo()) return false;
+      const E = VALE.estado;
+      const p = proyecto || (E && E.proyecto ? E.proyecto() : null);
+      const r = res || (E && E.resultado ? E.resultado() : null);
+      if (!p || !r || !r.completo) return false;
+      if (ac.liberado) return false;
+      if (esEjemploIntacto(p)) return false;
+      if (recordado()) return false;
+      return true;
+    } catch (err) {
+      return false;
+    }
+  }
+
+  function limpiar(t) {
+    return String(t === null || t === undefined ? '' : t).replace(/[\u0000-\u001f\u007f]+/g, ' ').trim();
+  }
+
+  function telefonoValido(t) {
+    if (!FORMA_TELEFONO.test(t)) return false;
+    const n = t.replace(/\D/g, '').length;
+    return n >= DIGITOS.min && n <= DIGITOS.max;
+  }
+
+  function validar(v) {
+    const e = {};
+    const nombre = limpiar(v.nombre);
+    const correo = limpiar(v.correo);
+    const telefono = limpiar(v.telefono);
+    const empresa = limpiar(v.empresa);
+    if (nombre.length < 2 || nombre.length > MAX.nombre) e.nombre = MSG.nombre;
+    if (correo && (correo.length > MAX.correo || !FORMA_CORREO.test(correo))) e.correo = MSG.correo;
+    if (telefono && (telefono.length > MAX.telefono || !telefonoValido(telefono))) e.telefono = MSG.telefono;
+    if (empresa && (empresa.length < 2 || empresa.length > MAX.empresa)) e.empresa = MSG.empresa;
+    if (!correo && !telefono) e.contacto = MSG.contacto;
+    return e;
+  }
+
+  function fijar(campo, valor) {
+    if (campo === 'comunicaciones') {
+      ac.comunicaciones = !!valor;
+      return;
+    }
+    if (CAMPOS.indexOf(campo) < 0 && campo !== 'web') return;
+    ac.valores[campo] = String(valor === null || valor === undefined ? '' : valor).slice(0, campo === 'web' ? 200 : MAX[campo] + 40);
+    if (ac.errores[campo]) delete ac.errores[campo];
+    if ((campo === 'correo' || campo === 'telefono') && ac.errores.contacto) delete ac.errores.contacto;
+  }
+
+  function avisar(tipo) {
+    for (const fn of escuchas.slice()) {
+      try {
+        fn(tipo);
+      } catch (err) {
+        if (typeof console !== 'undefined') console.error(err);
+      }
+    }
+  }
+
+  function alCambiar(fn) {
+    escuchas.push(fn);
+    return function cancelar() {
+      const i = escuchas.indexOf(fn);
+      if (i >= 0) escuchas.splice(i, 1);
+    };
+  }
+
+  function origenWeb() {
+    try {
+      if (typeof location !== 'undefined' && location && new URLSearchParams(location.search || '').get('origen') === 'stand') return 'stand';
+    } catch (err) {
+      return 'web';
+    }
+    return 'web';
+  }
+
+  function esPrueba() {
+    try {
+      const c = VALE.registro && typeof VALE.registro.contexto === 'function' ? VALE.registro.contexto() : null;
+      return !!(c && c.prueba === true);
+    } catch (err) {
+      return false;
+    }
+  }
+
+  function resultadoParaEnvio() {
+    try {
+      const res = VALE.estado.resultado();
+      if (!res || !res.completo || CODIGOS.indexOf(res.codigo) < 0) return null;
+      return { recomendacion: res.codigo, tipo_beneficio: TIPOS.indexOf(res.origen_valor) >= 0 ? res.origen_valor : 'directo' };
+    } catch (err) {
+      return null;
+    }
+  }
+
+  function cuerpoEnvio(motivo) {
+    const v = ac.valores;
+    const resultado = resultadoParaEnvio();
+    return {
+      nombre: limpiar(v.nombre),
+      empresa: limpiar(v.empresa),
+      cargo: '',
+      correo: limpiar(v.correo),
+      telefono: limpiar(v.telefono),
+      mensaje: '',
+      incluir_resultado: !!resultado,
+      resultado,
+      comunicaciones: !!ac.comunicaciones,
+      version_texto: VERSION_TEXTO,
+      origen: origenWeb(),
+      prueba: esPrueba(),
+      web: String(v.web || ''),
+      motivo
+    };
+  }
+
+  function registrarEvento(evento) {
+    try {
+      if (VALE.registro && typeof VALE.registro.registrar === 'function') VALE.registro.registrar(evento, { paso: 'R' }, evento);
+    } catch (err) {
+      return false;
+    }
+    return true;
+  }
+
+  function mostrado() {
+    return registrarEvento('registro_mostrado');
+  }
+
+  function plazoEnvioMs() {
+    const n = VALE.config && Number(VALE.config.registro_plazo_ms);
+    return isFinite(n) && n > 0 ? n : PLAZO_ENVIO_MS;
+  }
+
+  function pedirContacto(cuerpo) {
+    return VALE.ia.pedirSinContexto('/contacto', cuerpo, false, plazoEnvioMs());
+  }
+
+  function guardarMemoria() {
+    ac.memoria = {
+      nombre: limpiar(ac.valores.nombre),
+      correo: limpiar(ac.valores.correo),
+      telefono: limpiar(ac.valores.telefono),
+      empresa: limpiar(ac.valores.empresa)
+    };
+  }
+
+  function descartarValores() {
+    ac.valores = { nombre: '', correo: '', telefono: '', empresa: '', web: '' };
+    ac.comunicaciones = false;
+    ac.errores = {};
+  }
+
+  function liberar() {
+    ac.liberado = true;
+    const despues = ac.despues;
+    ac.despues = null;
+    avisar('liberado');
+    if (despues && typeof alContinuarFn === 'function') {
+      try {
+        alContinuarFn(despues);
+      } catch (err) {
+        if (typeof console !== 'undefined') console.error(err);
+      }
+    }
+  }
+
+  function reintentoMs() {
+    const n = VALE.config && Number(VALE.config.registro_reintento_ms);
+    return isFinite(n) && n >= 0 ? n : REINTENTO_MS;
+  }
+
+  function programarReintento(cuerpo) {
+    ac.reintento = cuerpo;
+    if (ac.temporizador) clearTimeout(ac.temporizador);
+    const t = setTimeout(async () => {
+      ac.temporizador = null;
+      const c = ac.reintento;
+      ac.reintento = null;
+      if (!c) return;
+      try {
+        const r = await pedirContacto(c);
+        if (r && r.ok) {
+          recordar();
+          registrarEvento('registro_enviado');
+        }
+      } catch (err) {
+        return;
+      }
+    }, reintentoMs());
+    if (t && typeof t.unref === 'function') t.unref();
+    ac.temporizador = t;
+  }
+
+  function idCampo(ambito, nombre) {
+    return 'ac-' + ambito + '-' + nombre;
+  }
+
+  async function enviar(ambito) {
+    if (!activo() || ac.estado === 'enviando') return ac;
+    const lugar = ambito === 'conversacion' ? 'conversacion' : 'pagina';
+    const errores = validar(ac.valores);
+    ac.errores = errores;
+    const primero = ['nombre', 'correo', 'telefono', 'empresa'].filter((c) => errores[c])[0] || (errores.contacto ? 'correo' : '');
+    if (primero) {
+      ac.estado = 'inicial';
+      ac.foco = idCampo(lugar, primero);
+      avisar('estado');
+      anunciar(TXT.revisar);
+      return ac;
+    }
+    const cuerpo = cuerpoEnvio(lugar === 'conversacion' ? 'conversacion' : 'registro');
+    ac.estado = 'enviando';
+    ac.foco = '';
+    avisar('estado');
+    anunciar(TXT.enviando);
+    let r = null;
+    try {
+      r = await pedirContacto(cuerpo);
+    } catch (err) {
+      r = null;
+    }
+    if (r && r.ok) {
+      guardarMemoria();
+      descartarValores();
+      ac.estado = 'enviado';
+      recordar();
+      registrarEvento('registro_enviado');
+      if (VALE.ui && typeof VALE.ui.anunciarDiscreto === 'function') VALE.ui.anunciarDiscreto(TXT.disponible);
+      liberar();
+      return ac;
+    }
+    const campo = r && r.estado === 400 && r.datos && typeof r.datos.campo === 'string' ? r.datos.campo : '';
+    if (campo && (CAMPOS.indexOf(campo) >= 0 || campo === 'contacto')) {
+      ac.estado = 'inicial';
+      ac.errores = {};
+      ac.errores[campo] = MSG[campo];
+      ac.foco = idCampo(lugar, campo === 'contacto' ? 'correo' : campo);
+      avisar('estado');
+      return ac;
+    }
+    guardarMemoria();
+    descartarValores();
+    ac.estado = 'inicial';
+    programarReintento(cuerpo);
+    anunciar(TXT.fallo);
+    liberar();
+    return ac;
+  }
+
+  function continuar() {
+    if (modo() !== 'opcional') return false;
+    liberar();
+    return true;
+  }
+
+  function anunciar(texto) {
+    try {
+      if (VALE.ui && typeof VALE.ui.anunciar === 'function') VALE.ui.anunciar(texto);
+    } catch (err) {
+      return;
+    }
+  }
+
+  function exigir(accion) {
+    try {
+      if (!pendiente()) return false;
+      const despues = accion === 'imprimir' || accion === 'enlace' ? accion : null;
+      if (VALE.ui && VALE.estado && VALE.estado.ui && VALE.estado.ui.vista === 'analisis' && VALE.estado.ui.paso === 'R') {
+        ac.despues = despues;
+        ac.foco = idCampo('pagina', 'nombre');
+        pintarZonas();
+      } else {
+        if (typeof VALE.ir === 'function') VALE.ir('analisis', { paso: 'R' });
+        ac.despues = despues;
+      }
+      return true;
+    } catch (err) {
+      return false;
+    }
+  }
+
+  function campoHtml(ambito, nombre, tipo, extra) {
+    const id = idCampo(ambito, nombre);
+    const err = ac.errores[nombre];
+    const grupo = (nombre === 'correo' || nombre === 'telefono') && ac.errores.contacto;
+    const invalido = !!(err || grupo);
+    const descrito = err ? id + '-error' : (grupo ? idCampo(ambito, 'contacto-error') : '');
+    return '<div class="campo ac-campo ac-campo-' + nombre + '">' +
+      '<label class="campo-etq" for="' + id + '">' + esc(TXT[nombre]) + '</label>' +
+      '<span class="campo-caja"><input type="' + tipo + '" id="' + id + '" data-ac="' + nombre + '" maxlength="' + MAX[nombre] + '"' + (extra || '') +
+      ' value="' + esc(ac.valores[nombre]) + '"' + (invalido ? ' aria-invalid="true"' : '') + (descrito ? ' aria-describedby="' + descrito + '"' : '') + '></span>' +
+      (err ? '<span class="campo-notas"><span class="campo-error" id="' + id + '-error">' + esc(err) + '</span></span>' : '') + '</div>';
+  }
+
+  function legalHtml() {
+    const url = politicaUrl();
+    return '<p class="ac-legal">' + esc(LEGAL_1) + (url
+      ? '<a href="' + esc(url) + '" target="_blank" rel="noopener">política de privacidad</a>'
+      : 'política de privacidad') + '.</p>';
+  }
+
+  function formularioHtml(ambito) {
+    const compacto = ambito === 'conversacion';
+    const enviando = ac.estado === 'enviando';
+    const tit = compacto ? idCampo(ambito, 'tit') : 're-titulo';
+    let s = '<form class="ac-form" id="ac-form-' + ambito + '" data-ac-form="' + ambito + '" novalidate aria-labelledby="' + tit + '">';
+    if (compacto) s += '<h3 class="ac-tit" id="' + tit + '">' + esc(TXT.tituloCompacto) + '</h3>';
+    else s += '<p class="ac-linea">' + esc(TXT.linea) + '</p>';
+    s += campoHtml(ambito, 'nombre', 'text', ' autocomplete="name"');
+    s += '<div class="ac-fila">' +
+      campoHtml(ambito, 'correo', 'email', ' autocomplete="email" inputmode="email"') +
+      campoHtml(ambito, 'telefono', 'tel', ' autocomplete="tel" inputmode="tel"') + '</div>';
+    s += '<p class="ac-pista" id="' + idCampo(ambito, 'pista') + '">' + esc(TXT.pista) + '</p>';
+    if (ac.errores.contacto) {
+      s += '<p class="campo-error ac-error-grupo" id="' + idCampo(ambito, 'contacto-error') + '" role="alert">' + esc(ac.errores.contacto) + '</p>';
+    }
+    s += campoHtml(ambito, 'empresa', 'text', ' autocomplete="organization"');
+    s += '<div class="ac-trampa" aria-hidden="true"><input type="text" id="' + idCampo(ambito, 'web') + '" name="web" data-ac="web" tabindex="-1" autocomplete="off" value="' +
+      esc(ac.valores.web) + '"></div>';
+    s += '<label class="ap-casilla"><input type="checkbox" id="' + idCampo(ambito, 'comunicaciones') + '" data-ac="comunicaciones"' +
+      (ac.comunicaciones ? ' checked' : '') + '> <span>' + esc(TXT.comunicaciones) + '</span></label>';
+    s += legalHtml();
+    s += '<div class="botones ac-botones"><button type="submit" class="btn" id="' + idCampo(ambito, 'enviar') + '"' + (enviando ? ' aria-disabled="true"' : '') + '>' +
+      esc(enviando ? TXT.enviando : TXT.ver) + '</button>';
+    if (modo() === 'opcional') {
+      s += '<button type="button" class="btn texto ac-continuar" data-ac-accion="continuar" id="' + idCampo(ambito, 'continuar') + '">' + esc(TXT.continuar) + '</button>';
+    }
+    return s + '</div></form>';
+  }
+
+  function fondoHtml() {
+    return '<div class="ac-fondo" aria-hidden="true">' +
+      '<div class="ac-f-reco"></div>' +
+      '<div class="ac-f-cifras"><i></i><i></i><i></i><i></i></div>' +
+      '<div class="ac-f-bloques"><i></i><i></i></div>' +
+      '<div class="ac-f-barras"><i></i><i></i><i></i><i></i><i></i></div></div>';
+  }
+
+  function zonaHtml(ambito) {
+    const lugar = ambito === 'conversacion' ? 'conversacion' : 'pagina';
+    if (lugar === 'conversacion') {
+      return '<div class="ac-zona ac-compacta" id="ac-zona-conversacion" data-ac-zona="conversacion">' + formularioHtml('conversacion') + '</div>';
+    }
+    return '<div class="ac-zona ac-puerta" id="ac-zona-pagina" data-ac-zona="pagina">' + fondoHtml() +
+      '<div class="panel ac-ficha">' + formularioHtml('pagina') + '</div></div>';
+  }
+
+  function puertaHtml() {
+    return '<header class="re-cab"><div><p class="etq">Resultado</p>' +
+      '<h2 id="re-titulo" class="re-titulo" tabindex="-1" data-titulo-paso>' + esc(TXT.titulo) + '</h2></div></header>' +
+      zonaHtml('pagina') +
+      '<div class="re-pie"><button type="button" class="btn secundario" data-accion="ir-paso" data-paso="V">' +
+      VALE.ui.icono('flecha-izq') + esc(TXT.revisarDatos) + '</button></div>';
+  }
+
+  function resumenHtml() {
+    return '<div class="panel re-resumen-panel"><h2 id="re-resumen-tit" class="etq">¿Vale? · Recomendación</h2>' +
+      '<div class="ac-resumen"><p class="ac-resumen-tit"><span class="ac-candado">' + VALE.ui.icono('candado') + '</span><span>' + esc(TXT.resumen) + '</span></p>' +
+      '<p class="ac-resumen-txt">' + esc(TXT.resumenTxt) + '</p>' +
+      '<button type="button" class="btn ancho" data-accion="ir-paso" data-paso="R">' + esc(TXT.resumenIr) + '</button></div></div>';
+  }
+
+  function barraHtml() {
+    return '<button type="button" class="resbar-boton" data-accion="ir-paso" data-paso="R">' +
+      '<span class="sem faltan">' + esc(TXT.reservado) + '</span>' +
+      '<span class="resbar-dato resbar-pend resbar-redundante"><span class="resbar-val">' + esc(TXT.barra) + '</span></span>' +
+      '<span class="resbar-ir resbar-ir-larga">' + esc(TXT.barraIr) + VALE.ui.icono('chevron') + '</span></button>';
+  }
+
+  function informeBloqueadoHtml() {
+    return '<p class="ac-informe">' + esc(TXT.informe) + '</p>';
+  }
+
+  function pintarZonas() {
+    if (!hayDocumento() || typeof document.querySelectorAll !== 'function') return;
+    const zonas = document.querySelectorAll('[data-ac-zona]');
+    if (!zonas.length) return;
+    const hacer = () => {
+      zonas.forEach((z) => {
+        z.outerHTML = zonaHtml(z.getAttribute('data-ac-zona'));
+      });
+    };
+    if (VALE.ui && VALE.ui.conservarFoco) VALE.ui.conservarFoco(hacer);
+    else hacer();
+    const destino = ac.foco ? porId(ac.foco) : null;
+    ac.foco = '';
+    if (destino && typeof destino.focus === 'function') {
+      try {
+        destino.focus({ preventScroll: false });
+      } catch (err) {
+        destino.focus();
+      }
+    }
+  }
+
+  function memoria() {
+    if (enStand()) return null;
+    return ac.memoria ? Object.assign({}, ac.memoria) : null;
+  }
+
+  function reiniciarSesion() {
+    ac.memoria = null;
+    if (!enStand()) return;
+    ac.liberado = false;
+    ac.registrado = false;
+    ac.despues = null;
+    if (ac.estado === 'enviado') ac.estado = 'inicial';
+  }
+
+  function alEscribir(ev) {
+    const t = ev && ev.target;
+    const campo = t && t.getAttribute ? t.getAttribute('data-ac') : '';
+    if (!campo) return;
+    fijar(campo, t.type === 'checkbox' ? !!t.checked : t.value);
+    if (t.type !== 'checkbox' && t.removeAttribute) t.removeAttribute('aria-invalid');
+  }
+
+  function alEnviarFormulario(ev) {
+    const f = ev && ev.target;
+    const ambito = f && f.getAttribute ? f.getAttribute('data-ac-form') : '';
+    if (!ambito) return;
+    if (typeof ev.preventDefault === 'function') ev.preventDefault();
+    if (ev.stopPropagation) ev.stopPropagation();
+    enviar(ambito);
+  }
+
+  function alClic(ev) {
+    const b = ev && ev.target && ev.target.closest ? ev.target.closest('[data-ac-accion]') : null;
+    if (!b) return;
+    if (b.getAttribute('data-ac-accion') === 'continuar') continuar();
+  }
+
+  function alCambiarEstadoApp(ev) {
+    if (!ev) return;
+    if (ev.tipo === 'borrar') {
+      if (ac.temporizador) clearTimeout(ac.temporizador);
+      olvidar();
+      ac = estadoInicial();
+      return;
+    }
+    const E = VALE.estado;
+    if (!E || !E.ui) return;
+    if (ev.tipo === 'restablecer') reiniciarSesion();
+    if ((ev.tipo === 'proyecto' || ev.tipo === 'carga') && typeof ev.id === 'string') {
+      if (ac.proyecto !== null && ac.proyecto !== ev.id) reiniciarSesion();
+      ac.proyecto = ev.id;
+    }
+    if (ev.tipo === 'vista' && ev.clave === 'portada' && enStand()) reiniciarSesion();
+    if (ev.tipo === 'vista' || ev.tipo === 'proyecto' || ev.tipo === 'carga' || (ev.tipo === 'ui' && ev.clave === 'paso')) {
+      const enResultado = E.ui.vista === 'analisis' && E.ui.paso === 'R';
+      if (enResultado && pendiente()) mostrado();
+      if (!enResultado) ac.despues = null;
+    }
+  }
+
+  function montar() {
+    if (montado) return;
+    montado = true;
+    try {
+      const E = VALE.estado;
+      if (E && E.datos && typeof E.datos.activo === 'string') ac.proyecto = E.datos.activo;
+    } catch (err) {
+      ac.proyecto = null;
+    }
+    VALE.alCambiar(alCambiarEstadoApp);
+    alCambiar((tipo) => {
+      if (tipo === 'estado') pintarZonas();
+    });
+    if (!hayDocumento() || typeof document.addEventListener !== 'function') return;
+    document.addEventListener('input', alEscribir);
+    document.addEventListener('change', alEscribir);
+    document.addEventListener('submit', alEnviarFormulario);
+    document.addEventListener('click', alClic);
+  }
+
+  function reiniciar() {
+    if (ac.temporizador) clearTimeout(ac.temporizador);
+    ac = estadoInicial();
+    olvidar();
+  }
+
+  VALE.acceso = {
+    VERSION_TEXTO,
+    DIAS_RECUERDO,
+    CLAVE_RECUERDO,
+    TXT,
+    MSG,
+    modo,
+    activo,
+    pendiente,
+    esEjemploIntacto,
+    estado: () => ac,
+    fijar,
+    validar: () => validar(ac.valores),
+    enviar,
+    continuar,
+    exigir,
+    mostrado,
+    memoria,
+    zonaHtml,
+    puertaHtml,
+    resumenHtml,
+    barraHtml,
+    informeBloqueadoHtml,
+    pintarZonas,
+    alCambiar,
+    alContinuar: (fn) => {
+      alContinuarFn = fn;
+    },
+    montar,
+    reiniciar
   };
 })(globalThis.VALE = globalThis.VALE || {});
 
@@ -8509,6 +9558,14 @@ display: none !important;
   }
 
 
+  function reservado(p, res) {
+    try {
+      return !!(VALE.acceso && typeof VALE.acceso.pendiente === 'function' && VALE.acceso.pendiente(p, res));
+    } catch (err) {
+      return false;
+    }
+  }
+
   function contexto(p, res) {
     const r = res || { completo: false, faltan: [], parcial: null };
     const faltan = Array.isArray(r.faltan) ? r.faltan : [];
@@ -8516,6 +9573,7 @@ display: none !important;
       p,
       res: r,
       completo: !!r.completo,
+      reservado: !!r.completo && reservado(p, res),
       parcial: r.parcial || null,
       faltan,
       horas: null,
@@ -8613,7 +9671,7 @@ display: none !important;
     const inicio = p.m === 0 ? 'puesta en marcha inmediata' : 'puesta en marcha en el mes ' + p.m;
     const madurez = p.T > 0 ? 'con un periodo de maduración de ' + F.meses(p.T) : 'sin periodo de maduración';
     const cola = inicio + ', ' + madurez;
-    if (cx.completo) {
+    if (cx.completo && !cx.reservado) {
       const rec = F.recuperacion(cx.res, { corta: true });
       const hayPlazo = cx.res.plazo_meses !== null && cx.res.plazo_meses !== undefined;
       return (hayPlazo ? 'Recuperación en ' + rec : rec) + ' · ' + cola;
@@ -8951,14 +10009,14 @@ display: none !important;
     }
     const fila = (txt, val, cls) => '<li' + (cls ? ' class="' + cls + '"' : '') + '><span>' + esc(txt) + '</span><span>' + esc(val) + '</span></li>';
     const sr = activa.sin_reparto;
+    const conclusion = cx.reservado ? '' : '<p class="app-txt">Con el reparto entre ' + activa.casos + ' casos de uso: ' + esc(cx.res.recomendacion.rotulo) +
+      ', VAN ajustado por riesgo ' + esc(F.eurSigno(cx.res.VAN)) + '. Cargando toda la plataforma a este caso: ' + esc(sr.rotulo) +
+      ', VAN ajustado por riesgo ' + esc(F.eurSigno(sr.VAN)) + '.</p>';
     return '<ul class="lineas">' +
       fila('Inversión inicial total', F.eur(activa.I_total)) +
       fila('Inversión imputada a este caso', F.eur(activa.I_imputada), 'total') +
       fila('Coste recurrente fijo total', F.eur(activa.R_fijo_total)) +
-      fila('Coste recurrente fijo imputado a este caso', F.eur(activa.R_fijo_imputado), 'total') + '</ul>' +
-      '<p class="app-txt">Con el reparto entre ' + activa.casos + ' casos de uso: ' + esc(cx.res.recomendacion.rotulo) +
-      ', VAN ajustado por riesgo ' + esc(F.eurSigno(cx.res.VAN)) + '. Cargando toda la plataforma a este caso: ' + esc(sr.rotulo) +
-      ', VAN ajustado por riesgo ' + esc(F.eurSigno(sr.VAN)) + '.</p>';
+      fila('Coste recurrente fijo imputado a este caso', F.eur(activa.R_fijo_imputado), 'total') + '</ul>' + conclusion;
   }
 
   function derivadoEtiquetaCostes(p) {
@@ -9030,6 +10088,13 @@ display: none !important;
     return 'Tasa de descuento ' + FMT().pct(p.t) + ' · horizonte de ' + MOT().C.H + NBSP + 'meses';
   }
 
+  function derivadoReservado() {
+    const A = VALE.acceso;
+    const t = A && A.TXT ? A.TXT.linea : 'El resultado está calculado. Para verlo, indicar a quién va dirigido.';
+    return '<p class="app-txt en-reservado">' + esc(t) + ' <button type="button" class="btn texto compacto" data-accion="ir-paso" data-paso="R">' +
+      esc(A && A.TXT ? A.TXT.resumenIr : 'Ver el resultado') + '</button></p>';
+  }
+
   function derivados(proyecto, res, ui) {
     const p = proyecto;
     const u = ui || {};
@@ -9057,18 +10122,19 @@ display: none !important;
       'en-d-plataforma': derivadoPlataforma(cx),
       'en-d-supuestos-meta': derivadoSupuestosMeta(p)
     };
+    const sinVeredicto = cx.reservado ? derivadoReservado() : null;
     if (completoModo) {
       d['en-d-valor'] = derivadoValor(cx, u);
       d['en-d-avisos-V'] = avisosHtml(cx, ['V']);
-      d['en-d-escala'] = derivadoEscala(cx);
-      d['en-d-pe'] = derivadoPe(cx);
-      d['en-d-avisos-A'] = avisosHtml(cx, ['A']);
+      d['en-d-escala'] = sinVeredicto ? '' : derivadoEscala(cx);
+      d['en-d-pe'] = sinVeredicto || derivadoPe(cx);
+      d['en-d-avisos-A'] = sinVeredicto ? '' : avisosHtml(cx, ['A']);
       d['en-d-inversion'] = derivadoInversion(cx);
       d['en-d-costes-etq'] = derivadoEtiquetaCostes(p);
       d['en-d-costes'] = derivadoCostes(cx, u);
-      d['en-d-avisos-L'] = avisosHtml(cx, ['L']);
-      d['en-d-plazo'] = derivadoPlazo(cx);
-      d['en-d-avisos-E'] = avisosHtml(cx, ['E']);
+      d['en-d-avisos-L'] = sinVeredicto ? '' : avisosHtml(cx, ['L']);
+      d['en-d-plazo'] = sinVeredicto || derivadoPlazo(cx);
+      d['en-d-avisos-E'] = sinVeredicto ? '' : avisosHtml(cx, ['E']);
       if (conHoras) {
         d['en-d-balance'] = derivadoBalance(cx);
         d['en-d-balance-meta'] = derivadoBalanceMeta(cx);
@@ -9077,7 +10143,7 @@ display: none !important;
         d['en-d-destino-etq'] = derivadoEtiquetaDestino(cx);
       }
     } else {
-      d['en-d-avisos-S'] = avisosHtml(cx, ['V', 'A', 'L', 'E']);
+      d['en-d-avisos-S'] = sinVeredicto || avisosHtml(cx, ['V', 'A', 'L', 'E']);
     }
     return d;
   }
@@ -9889,6 +10955,11 @@ display: none !important;
     raiz.addEventListener('change', alCambiarControl);
     raiz.addEventListener('toggle', alPlegar, true);
     VALE.alCambiar(alCambiar);
+    if (VALE.acceso && typeof VALE.acceso.alCambiar === 'function') {
+      VALE.acceso.alCambiar((tipo) => {
+        if (tipo === 'liberado') pintar();
+      });
+    }
   }
 
   VALE.entradas = {
@@ -9901,6 +10972,3087 @@ display: none !important;
     nuevoDestino,
     formatear
   };
+})(globalThis.VALE = globalThis.VALE || {});
+
+(function (VALE) {
+  'use strict';
+
+
+  const TASA_ENTRADA = 16000;
+  const TASA_SALIDA = 24000;
+  const MS_TROZO = 40;
+  const ESPERA_CONFIGURACION_MS = 6000;
+  const ESPERA_APERTURA_MS = 14000;
+  const ESPERA_REANUDAR_MS = 1500;
+  const ESPERA_RESPUESTA_MS = 15000;
+  const MARGEN_DESPEDIDA_MS = 20000;
+  const MARGEN_CORTE_MS = 5000;
+  const COLCHON_S = 0.06;
+  const PREFIJO_WS = 'wss://generativelanguage.googleapis.com/ws/';
+
+  const TEXTOS = {
+    abrir: 'Empieza la conversación: saluda en una frase, di que vas a ir haciendo preguntas y pregunta qué tipo de beneficio se espera del proyecto.',
+    despedida: 'El tiempo de la conversación se acaba. Despídete en una sola frase breve, sin hacer más preguntas.',
+    registroHecho: 'El registro está hecho. Llama ahora a pedir_resultado y explica el resultado.'
+  };
+
+  function ajuste(nombre, defecto) {
+    const v = VALE.config && VALE.config[nombre];
+    return typeof v === 'number' && v >= 0 ? v : defecto;
+  }
+
+  function hayDocumento() {
+    return typeof document !== 'undefined' && document && typeof document.createElement === 'function';
+  }
+
+  function hayWs() {
+    return typeof WebSocket === 'function';
+  }
+
+  function abrirSocket(url) {
+    try {
+      return hayWs() ? new WebSocket(url) : null;
+    } catch (err) {
+      return null;
+    }
+  }
+
+  function constructorAudio() {
+    return globalThis.AudioContext || globalThis.webkitAudioContext || null;
+  }
+
+  function hayMicro() {
+    try {
+      return !!(globalThis.navigator && navigator.mediaDevices && typeof navigator.mediaDevices.getUserMedia === 'function');
+    } catch (err) {
+      return false;
+    }
+  }
+
+  function soportado() {
+    return !!constructorAudio() && hayMicro() && hayWs();
+  }
+
+  function aBase64(bytes) {
+    let t = '';
+    for (let i = 0; i < bytes.length; i += 0x8000) t += String.fromCharCode.apply(null, bytes.subarray(i, i + 0x8000));
+    return btoa(t);
+  }
+
+  function deBase64(texto) {
+    const t = atob(texto);
+    const bytes = new Uint8Array(t.length);
+    for (let i = 0; i < t.length; i++) bytes[i] = t.charCodeAt(i);
+    return bytes;
+  }
+
+  function aPcm16(f32) {
+    const salida = new Uint8Array(f32.length * 2);
+    const vista = new DataView(salida.buffer);
+    for (let i = 0; i < f32.length; i++) {
+      const s = Math.max(-1, Math.min(1, f32[i]));
+      vista.setInt16(i * 2, s < 0 ? s * 0x8000 : s * 0x7fff, true);
+    }
+    return salida;
+  }
+
+  function remuestrear(x, desde) {
+    if (!desde || desde === TASA_ENTRADA) return x;
+    const r = desde / TASA_ENTRADA;
+    const n = Math.max(1, Math.round(x.length / r));
+    const y = new Float32Array(n);
+    if (r > 1) {
+      for (let i = 0; i < n; i++) {
+        const a = Math.floor(i * r);
+        const b = Math.min(x.length, Math.max(a + 1, Math.floor((i + 1) * r)));
+        let suma = 0;
+        for (let k = a; k < b; k++) suma += x[k];
+        y[i] = suma / (b - a);
+      }
+    } else {
+      for (let i = 0; i < n; i++) {
+        const p = i * r;
+        const a = Math.floor(p);
+        const b = Math.min(a + 1, x.length - 1);
+        const f = p - a;
+        y[i] = x[Math.min(a, x.length - 1)] * (1 - f) + x[b] * f;
+      }
+    }
+    return y;
+  }
+
+  function nivelDe(analizador, memoria) {
+    if (!analizador || typeof analizador.getFloatTimeDomainData !== 'function') return 0;
+    try {
+      analizador.getFloatTimeDomainData(memoria);
+    } catch (err) {
+      return 0;
+    }
+    let suma = 0;
+    for (let i = 0; i < memoria.length; i++) suma += memoria[i] * memoria[i];
+    const rms = Math.sqrt(suma / Math.max(1, memoria.length));
+    return Math.min(1, Math.sqrt(rms) * 1.8);
+  }
+
+  const CODIGO_CAPTURA = [
+    'class CapturaVale extends AudioWorkletProcessor {',
+    '  constructor() {',
+    '    super();',
+    '    this.n = Math.round(sampleRate * ' + (MS_TROZO / 1000) + ');',
+    '    this.b = new Float32Array(this.n);',
+    '    this.i = 0;',
+    '  }',
+    '  process(entradas) {',
+    '    const c = entradas[0] && entradas[0][0];',
+    '    if (c) {',
+    '      for (let k = 0; k < c.length; k++) {',
+    '        this.b[this.i++] = c[k];',
+    '        if (this.i >= this.n) {',
+    '          this.port.postMessage(this.b.slice(0));',
+    '          this.i = 0;',
+    '        }',
+    '      }',
+    '    }',
+    '    return true;',
+    '  }',
+    '}',
+    "registerProcessor('vale-captura', CapturaVale);"
+  ].join('\n');
+
+  function temporizador(fn, ms) {
+    const t = setTimeout(fn, ms);
+    if (t && typeof t.unref === 'function') t.unref();
+    return t;
+  }
+
+  function crear(anfitrion) {
+    const A = anfitrion || {};
+    const L = {
+      fase: 'nueva',
+      ws: null,
+      ctxEntrada: null,
+      ctxSalida: null,
+      flujo: null,
+      nodoCaptura: null,
+      analizadorEntrada: null,
+      analizadorSalida: null,
+      memoriaEntrada: null,
+      memoriaSalida: null,
+      urlCaptura: null,
+      proximo: 0,
+      fuentes: new Set(),
+      turnoModelo: false,
+      esperaRespuesta: false,
+      herramientas: 0,
+      canceladas: new Set(),
+      silenciado: false,
+      estado: '',
+      suave: 0,
+      cuadro: null,
+      cola: Promise.resolve(),
+      temporizadores: [],
+      despedida: false,
+      despedidaHablada: false,
+      cerradoPorNosotros: false,
+      plazoEspera: null,
+      plazoConfiguracion: null,
+      plazoApertura: null,
+      esperaTurnoPrevio: false
+    };
+
+    function avisar(nombre) {
+      const f = A[nombre];
+      if (typeof f !== 'function') return undefined;
+      try {
+        return f.apply(A, Array.prototype.slice.call(arguments, 1));
+      } catch (err) {
+        if (typeof console !== 'undefined') console.error(err);
+        return undefined;
+      }
+    }
+
+    function plazo(fn, ms) {
+      const t = temporizador(fn, ms);
+      L.temporizadores.push(t);
+      return t;
+    }
+
+    function enviar(objeto) {
+      const ws = L.ws;
+      if (!ws || ws.readyState !== 1) return false;
+      try {
+        ws.send(JSON.stringify(objeto));
+        return true;
+      } catch (err) {
+        return false;
+      }
+    }
+
+    function enviarTexto(texto) {
+      return enviar({ realtimeInput: { text: texto } });
+    }
+
+    function actualizarEstado() {
+      if (L.fase === 'cerrada') return;
+      let e = 'escuchando';
+      if (L.fase !== 'activa') e = 'conectando';
+      else if (L.fuentes.size > 0 || L.turnoModelo) e = 'hablando';
+      else if (L.herramientas > 0 || L.esperaRespuesta) e = 'pensando';
+      if (e === L.estado) return;
+      L.estado = e;
+      avisar('estado', e);
+    }
+
+    function esperarRespuesta(si) {
+      L.esperaRespuesta = !!si;
+      limpiarPlazo(L.plazoEspera);
+      L.plazoEspera = null;
+      if (si) {
+        L.plazoEspera = plazo(() => {
+          if (L.esperaRespuesta && L.fuentes.size === 0 && L.herramientas === 0) {
+            L.esperaRespuesta = false;
+            actualizarEstado();
+          }
+        }, ESPERA_RESPUESTA_MS);
+      }
+      actualizarEstado();
+    }
+
+    function reproducir(base64) {
+      const ctx = L.ctxSalida;
+      if (!ctx || L.fase === 'cerrada') return;
+      let bytes;
+      try {
+        bytes = deBase64(base64);
+      } catch (err) {
+        return;
+      }
+      const n = bytes.length >> 1;
+      if (n < 1) return;
+      const vista = new DataView(bytes.buffer, bytes.byteOffset, n * 2);
+      const buffer = ctx.createBuffer(1, n, TASA_SALIDA);
+      const canal = buffer.getChannelData(0);
+      for (let i = 0; i < n; i++) canal[i] = vista.getInt16(i * 2, true) / 32768;
+      const fuente = ctx.createBufferSource();
+      fuente.buffer = buffer;
+      fuente.connect(L.analizadorSalida || ctx.destination);
+      const ahora = ctx.currentTime;
+      if (L.fuentes.size === 0) L.proximo = Math.max(L.proximo, ahora + COLCHON_S);
+      else L.proximo = Math.max(L.proximo, ahora);
+      fuente.onended = () => {
+        L.fuentes.delete(fuente);
+        comprobarFinDeAudio();
+      };
+      L.fuentes.add(fuente);
+      fuente.start(L.proximo);
+      L.proximo += buffer.duration;
+      L.turnoModelo = true;
+      L.esperaRespuesta = false;
+      if (L.despedida && !L.esperaTurnoPrevio) L.despedidaHablada = true;
+      actualizarEstado();
+    }
+
+    function callar() {
+      for (const f of L.fuentes) {
+        f.onended = null;
+        try {
+          f.stop();
+        } catch (err) {
+          continue;
+        }
+      }
+      L.fuentes.clear();
+      L.proximo = L.ctxSalida ? L.ctxSalida.currentTime : 0;
+    }
+
+    function comprobarFinDeAudio() {
+      if (L.fase === 'cerrada') return;
+      actualizarEstado();
+      if (L.despedida && L.despedidaHablada && !L.turnoModelo && L.fuentes.size === 0) terminar('tiempo');
+    }
+
+    function enviarAudio(trozo) {
+      if (L.silenciado || L.fase !== 'activa' || !L.ctxEntrada) return;
+      const pcm = aPcm16(remuestrear(trozo, L.ctxEntrada.sampleRate));
+      enviar({ realtimeInput: { audio: { data: aBase64(pcm), mimeType: 'audio/pcm;rate=' + TASA_ENTRADA } } });
+    }
+
+    async function crearCapturaWorklet(ctx) {
+      if (typeof AudioWorkletNode === 'undefined' || !ctx.audioWorklet || typeof ctx.audioWorklet.addModule !== 'function') return null;
+      const url = URL.createObjectURL(new Blob([CODIGO_CAPTURA], { type: 'text/javascript' }));
+      L.urlCaptura = url;
+      try {
+        await ctx.audioWorklet.addModule(url);
+      } finally {
+        URL.revokeObjectURL(url);
+        L.urlCaptura = null;
+      }
+      const nodo = new AudioWorkletNode(ctx, 'vale-captura');
+      nodo.port.onmessage = (ev) => enviarAudio(ev.data);
+      return nodo;
+    }
+
+    function crearCapturaClasica(ctx) {
+      if (typeof ctx.createScriptProcessor !== 'function') return null;
+      const nodo = ctx.createScriptProcessor(1024, 1, 1);
+      nodo.onaudioprocess = (ev) => enviarAudio(ev.inputBuffer.getChannelData(0).slice());
+      return nodo;
+    }
+
+    async function arrancarEntrada() {
+      const ctx = L.ctxEntrada;
+      const fuente = ctx.createMediaStreamSource(L.flujo);
+      const mudo = ctx.createGain();
+      mudo.gain.value = 0;
+      mudo.connect(ctx.destination);
+      const an = ctx.createAnalyser();
+      an.fftSize = 1024;
+      L.analizadorEntrada = an;
+      L.memoriaEntrada = new Float32Array(an.fftSize || 1024);
+      fuente.connect(an);
+      an.connect(mudo);
+      let nodo = null;
+      try {
+        nodo = await crearCapturaWorklet(ctx);
+      } catch (err) {
+        nodo = null;
+      }
+      if (L.fase === 'cerrada') return;
+      if (!nodo) nodo = crearCapturaClasica(ctx);
+      if (!nodo) throw new Error('sin captura');
+      L.nodoCaptura = nodo;
+      fuente.connect(nodo);
+      nodo.connect(mudo);
+    }
+
+    async function leerTexto(d) {
+      if (typeof d === 'string') return d;
+      if (d && typeof d.text === 'function') return d.text();
+      if (typeof ArrayBuffer !== 'undefined' && (d instanceof ArrayBuffer || ArrayBuffer.isView(d)) && typeof TextDecoder !== 'undefined') {
+        return new TextDecoder('utf-8').decode(d);
+      }
+      return '';
+    }
+
+    function alMensaje(ev) {
+      L.cola = L.cola.then(async () => {
+        const texto = await leerTexto(ev && ev.data);
+        if (!texto || L.fase === 'cerrada') return;
+        let m = null;
+        try {
+          m = JSON.parse(texto);
+        } catch (err) {
+          return;
+        }
+        if (m && typeof m === 'object') procesar(m);
+      }).catch((err) => {
+        if (typeof console !== 'undefined') console.error(err);
+      });
+    }
+
+    function procesar(m) {
+      if (m.setupComplete !== undefined && L.fase === 'esperando') alConfigurar();
+      if (L.fase === 'cerrada') return;
+      const sc = m.serverContent;
+      if (sc && typeof sc === 'object') {
+        if (sc.interrupted) {
+          callar();
+          L.turnoModelo = false;
+          L.esperaRespuesta = false;
+          L.esperaTurnoPrevio = false;
+          actualizarEstado();
+          avisar('interrumpido');
+        } else if (sc.modelTurn && Array.isArray(sc.modelTurn.parts)) {
+          for (const p of sc.modelTurn.parts) {
+            if (p && p.inlineData && typeof p.inlineData.data === 'string') reproducir(p.inlineData.data);
+          }
+        }
+        if (sc.inputTranscription && typeof sc.inputTranscription.text === 'string' && sc.inputTranscription.text) {
+          if (sc.inputTranscription.text.trim()) esperarRespuesta(true);
+          avisar('subtitulo', 'usuario', sc.inputTranscription.text);
+        }
+        if (sc.outputTranscription && typeof sc.outputTranscription.text === 'string' && sc.outputTranscription.text) {
+          avisar('subtitulo', 'ia', sc.outputTranscription.text);
+        }
+        if (sc.turnComplete) {
+          L.turnoModelo = false;
+          L.esperaRespuesta = false;
+          L.esperaTurnoPrevio = false;
+          avisar('turnoCompleto');
+          comprobarFinDeAudio();
+        }
+      }
+      if (m.toolCall && Array.isArray(m.toolCall.functionCalls)) atenderHerramientas(m.toolCall.functionCalls);
+      if (m.toolCallCancellation && Array.isArray(m.toolCallCancellation.ids)) {
+        for (const id of m.toolCallCancellation.ids) L.canceladas.add(id);
+      }
+      if (m.goAway) despedirse(MARGEN_CORTE_MS + 1000);
+    }
+
+    async function atenderHerramientas(llamadas) {
+      L.herramientas += 1;
+      L.esperaRespuesta = false;
+      actualizarEstado();
+      const respuestas = [];
+      try {
+        for (const fc of llamadas) {
+          if (!fc || L.canceladas.has(fc.id)) continue;
+          let resultado;
+          try {
+            resultado = await avisar('herramienta', String(fc.name || ''), fc.args && typeof fc.args === 'object' ? fc.args : {});
+          } catch (err) {
+            resultado = undefined;
+          }
+          if (resultado === undefined || resultado === null) resultado = { error: 'No se ha podido completar la operación.' };
+          respuestas.push({ id: fc.id, name: fc.name, response: { result: resultado } });
+        }
+      } finally {
+        L.herramientas = Math.max(0, L.herramientas - 1);
+      }
+      const vivas = respuestas.filter((r) => !L.canceladas.has(r.id));
+      if (vivas.length && L.fase !== 'cerrada') enviar({ toolResponse: { functionResponses: vivas } });
+      actualizarEstado();
+    }
+
+    function alConfigurar() {
+      L.fase = 'activa';
+      limpiarPlazo(L.plazoConfiguracion);
+      L.plazoConfiguracion = null;
+      actualizarEstado();
+      arrancarEntrada().then(() => {
+        if (L.fase !== 'activa') return;
+        enviarTexto(TEXTOS.abrir);
+        esperarRespuesta(true);
+      }).catch(() => {
+        fallar('microfono', 'captura');
+      });
+    }
+
+    function limpiarPlazo(t) {
+      if (t) clearTimeout(t);
+    }
+
+    function validarToken(d) {
+      if (!d || typeof d !== 'object') return null;
+      if (typeof d.token !== 'string' || !/^[A-Za-z0-9_\-/.=+]{8,600}$/.test(d.token)) return null;
+      if (typeof d.url_ws !== 'string' || d.url_ws.indexOf(PREFIJO_WS) !== 0 || /[?#\s]/.test(d.url_ws)) return null;
+      if (typeof d.modelo !== 'string' || !/^[A-Za-z0-9._/-]{1,80}$/.test(d.modelo)) return null;
+      let segundos = Number(d.segundos);
+      if (!isFinite(segundos) || segundos <= 0 || segundos > 3600) {
+        const ms = typeof d.caduca === 'string' ? Date.parse(d.caduca) - Date.now() : NaN;
+        segundos = isFinite(ms) && ms > 0 && ms <= 3600000 ? ms / 1000 : 300;
+      }
+      return { token: d.token, url: d.url_ws, modelo: d.modelo, segundos };
+    }
+
+    function nuevoContexto(Ctor, tasa) {
+      if (!tasa) return new Ctor();
+      try {
+        return new Ctor({ sampleRate: tasa });
+      } catch (err) {
+        return new Ctor();
+      }
+    }
+
+    function esperarHasta(promesa, ms) {
+      return new Promise((resolver) => {
+        const t = setTimeout(resolver, ms);
+        Promise.resolve(promesa).then(() => {
+          clearTimeout(t);
+          resolver();
+        }, () => {
+          clearTimeout(t);
+          resolver();
+        });
+      });
+    }
+
+    async function iniciar() {
+      if (L.fase !== 'nueva') return false;
+      L.fase = 'abriendo';
+      const Ctor = constructorAudio();
+      if (!Ctor || !hayMicro() || !hayWs()) return fallar('audio', 'sin soporte');
+      let reanudados = [];
+      try {
+        L.ctxSalida = nuevoContexto(Ctor, TASA_SALIDA);
+        L.ctxEntrada = nuevoContexto(Ctor, 0);
+        reanudados = [L.ctxSalida, L.ctxEntrada].map((c) => {
+          try {
+            return c.resume();
+          } catch (err) {
+            return null;
+          }
+        });
+        const an = L.ctxSalida.createAnalyser();
+        an.fftSize = 1024;
+        an.connect(L.ctxSalida.destination);
+        L.analizadorSalida = an;
+        L.memoriaSalida = new Float32Array(an.fftSize || 1024);
+      } catch (err) {
+        return fallar('audio', 'contexto');
+      }
+      avisar('estado', (L.estado = 'conectando'));
+      L.cuadro = pedirCuadro();
+      let flujo = null;
+      try {
+        flujo = await navigator.mediaDevices.getUserMedia({ audio: { channelCount: 1, echoCancellation: true, noiseSuppression: true, autoGainControl: true } });
+      } catch (err) {
+        return fallar('microfono', err && err.name ? String(err.name) : '');
+      }
+      if (L.fase !== 'abriendo') {
+        try {
+          flujo.getTracks().forEach((p) => p.stop());
+        } catch (err) {
+          return false;
+        }
+        return false;
+      }
+      L.flujo = flujo;
+      L.plazoApertura = plazo(() => {
+        if (L.fase === 'abriendo') fallar('token', 'tiempo');
+      }, ajuste('voz_viva_apertura_ms', ESPERA_APERTURA_MS));
+      await esperarHasta(Promise.all(reanudados).catch(() => null), ajuste('voz_viva_reanudar_ms', ESPERA_REANUDAR_MS));
+      if (L.fase !== 'abriendo') return false;
+      const pedidoEn = Date.now();
+      let r = null;
+      try {
+        r = await avisar('pedirToken');
+      } catch (err) {
+        r = null;
+      }
+      if (L.fase !== 'abriendo') return false;
+      if (!r || !r.ok) return fallar('token', r && r.estado ? String(r.estado) : '');
+      const t = validarToken(r.datos);
+      if (!t) return fallar('token', 'respuesta');
+      const ws = abrirSocket(t.url + '?access_token=' + t.token);
+      if (!ws) return fallar('socket', 'apertura');
+      L.ws = ws;
+      L.fase = 'esperando';
+      L.plazoConfiguracion = plazo(() => {
+        if (L.fase === 'esperando') fallar('setup', 'tiempo');
+      }, ajuste('voz_viva_setup_ms', ESPERA_CONFIGURACION_MS));
+      ws.onopen = () => {
+        if (L.ws !== ws) return;
+        enviar({ setup: { model: t.modelo.indexOf('models/') === 0 ? t.modelo : 'models/' + t.modelo, generationConfig: { responseModalities: ['AUDIO'] }, inputAudioTranscription: {}, outputAudioTranscription: {} } });
+      };
+      ws.onmessage = (ev) => {
+        if (L.ws === ws) alMensaje(ev);
+      };
+      ws.onerror = () => {
+      };
+      ws.onclose = (ev) => {
+        if (L.ws !== ws || L.fase === 'cerrada' || L.cerradoPorNosotros) return;
+        fallar(L.fase === 'esperando' ? 'setup' : 'socket', ev && ev.code ? String(ev.code) : '');
+      };
+      limpiarPlazo(L.plazoApertura);
+      L.plazoApertura = null;
+      programarTiempo(t.segundos - (Date.now() - pedidoEn) / 1000);
+      return true;
+    }
+
+    function programarTiempo(segundos) {
+      const total = Math.max(500, segundos * 1000 - Math.min(2000, segundos * 100));
+      const margenDespedida = Math.min(MARGEN_DESPEDIDA_MS, total * 0.5);
+      const margenCorte = Math.min(MARGEN_CORTE_MS, total * 0.2);
+      plazo(() => despedirse(0), total - margenDespedida);
+      plazo(() => terminar('tiempo'), total - margenCorte);
+    }
+
+    function despedirse(hastaElCorteMs) {
+      if (L.despedida || L.fase !== 'activa') return;
+      L.despedida = true;
+      L.esperaTurnoPrevio = L.turnoModelo || L.fuentes.size > 0;
+      enviarTexto(TEXTOS.despedida);
+      esperarRespuesta(true);
+      if (typeof hastaElCorteMs === 'number' && hastaElCorteMs > 0) plazo(() => terminar('tiempo'), hastaElCorteMs);
+    }
+
+    function liberar() {
+      for (const t of L.temporizadores) clearTimeout(t);
+      L.temporizadores.length = 0;
+      limpiarPlazo(L.plazoConfiguracion);
+      L.plazoConfiguracion = null;
+      limpiarPlazo(L.plazoApertura);
+      L.plazoApertura = null;
+      if (L.cuadro) {
+        if (L.cuadro.raf && typeof cancelAnimationFrame === 'function') cancelAnimationFrame(L.cuadro.id);
+        else clearTimeout(L.cuadro.id);
+        L.cuadro = null;
+      }
+      try {
+        callar();
+      } catch (err) {
+        L.fuentes.clear();
+      }
+      if (L.flujo) {
+        try {
+          L.flujo.getTracks().forEach((p) => p.stop());
+        } catch (err) {
+          L.flujo = null;
+        }
+        L.flujo = null;
+      }
+      if (L.nodoCaptura) {
+        try {
+          if (L.nodoCaptura.port) L.nodoCaptura.port.onmessage = null;
+          if (L.nodoCaptura.onaudioprocess) L.nodoCaptura.onaudioprocess = null;
+          L.nodoCaptura.disconnect();
+        } catch (err) {
+          L.nodoCaptura = null;
+        }
+        L.nodoCaptura = null;
+      }
+      if (L.urlCaptura && typeof URL !== 'undefined') {
+        try {
+          URL.revokeObjectURL(L.urlCaptura);
+        } catch (err) {
+          L.urlCaptura = null;
+        }
+        L.urlCaptura = null;
+      }
+      const ws = L.ws;
+      L.ws = null;
+      L.cerradoPorNosotros = true;
+      if (ws) {
+        ws.onopen = null;
+        ws.onmessage = null;
+        ws.onerror = null;
+        ws.onclose = null;
+        try {
+          if (ws.readyState === 1) ws.send(JSON.stringify({ realtimeInput: { audioStreamEnd: true } }));
+        } catch (err) {
+          L.ws = null;
+        }
+        try {
+          if (ws.readyState <= 1) ws.close(1000, 'fin');
+        } catch (err) {
+          L.ws = null;
+        }
+      }
+      for (const nombre of ['ctxEntrada', 'ctxSalida']) {
+        const c = L[nombre];
+        L[nombre] = null;
+        if (c && typeof c.close === 'function') {
+          try {
+            const p = c.close();
+            if (p && typeof p.catch === 'function') p.catch(() => null);
+          } catch (err) {
+            continue;
+          }
+        }
+      }
+      L.analizadorEntrada = null;
+      L.analizadorSalida = null;
+    }
+
+    function fallar(motivo, detalle) {
+      if (L.fase === 'cerrada') return false;
+      L.fase = 'cerrada';
+      liberar();
+      avisar('fallo', motivo, detalle || '');
+      return false;
+    }
+
+    function terminar(motivo) {
+      if (L.fase === 'cerrada') return false;
+      L.fase = 'cerrada';
+      liberar();
+      avisar('fin', motivo || 'usuario');
+      return true;
+    }
+
+    function cerrar() {
+      if (L.fase === 'cerrada') return;
+      L.fase = 'cerrada';
+      liberar();
+    }
+
+    function pedirCuadro() {
+      const f = typeof requestAnimationFrame === 'function' ? requestAnimationFrame : null;
+      const id = f ? f(cuadro) : temporizador(cuadro, 33);
+      return { id, raf: !!f };
+    }
+
+    function cuadro() {
+      if (L.fase === 'cerrada') return;
+      let n = 0;
+      if (L.estado === 'hablando') n = nivelDe(L.analizadorSalida, L.memoriaSalida);
+      else if (L.estado === 'escuchando' && !L.silenciado) n = nivelDe(L.analizadorEntrada, L.memoriaEntrada);
+      L.suave += (n - L.suave) * (n > L.suave ? 0.5 : 0.12);
+      avisar('nivel', L.suave < 0.005 ? 0 : L.suave, L.estado);
+      L.cuadro = pedirCuadro();
+    }
+
+    function silenciar(si) {
+      L.silenciado = !!si;
+      if (L.flujo) {
+        try {
+          L.flujo.getAudioTracks().forEach((p) => {
+            p.enabled = !L.silenciado;
+          });
+        } catch (err) {
+          L.silenciado = !!si;
+        }
+      }
+      if (L.silenciado) enviar({ realtimeInput: { audioStreamEnd: true } });
+      return L.silenciado;
+    }
+
+    return {
+      iniciar,
+      silenciar,
+      texto: (t) => {
+        const ok = enviarTexto(t);
+        if (ok) esperarRespuesta(true);
+        return ok;
+      },
+      terminar: () => terminar('usuario'),
+      cerrar,
+      fase: () => L.fase,
+      estado: () => L.estado,
+      silenciado: () => L.silenciado,
+      activa: () => L.fase === 'activa' || L.fase === 'esperando' || L.fase === 'abriendo'
+    };
+  }
+
+  VALE.vozViva = {
+    soportado,
+    crear,
+    TEXTOS,
+    PREFIJO_WS,
+    remuestrear,
+    aPcm16,
+    aBase64,
+    deBase64
+  };
+})(globalThis.VALE = globalThis.VALE || {});
+
+(function (VALE) {
+  'use strict';
+
+
+  const NB = ' ';
+  const MAX_TEXTO = 600;
+  const MAX_TURNOS = 16;
+  const MAX_BYTES = 11500;
+  const MAX_TEXTO_IA = 4000;
+  const TIEMPO_TURNO_MS = 20000;
+  const ESPERA_VOZ_IA_MS = 2500;
+  const RONDAS_EXTRA = 8;
+  const MAX_VECES_EXTRA = 2;
+  const RESALTE_MS = 2600;
+  const NIVELES = [0.3, 0.5, 0.7, 0.9];
+  const FRASE_RESULTADO = 'Ya están todos los datos. Explicar el resultado.';
+
+  const TXT = {
+    titulo: 'Hablar con ¿Vale?',
+    nota: 'El agente de Acevedo que ayuda a decidir si un proyecto de IA es rentable: pregunta, va completando el formulario con lo que se le cuenta y explica el resultado. El cálculo y la recomendación los hace la herramienta.',
+    entradillaAgente: 'El agente de Acevedo que ayuda a decidir si un proyecto de IA es rentable. Va completando el formulario con lo que se le cuenta y prepara el informe detallado para el comité de decisión.',
+    informe: 'Informe para el comité (PDF)',
+    informeAbierto: 'Se abre el informe para el comité de decisión. Si el navegador lo bloquea, usar el botón «Informe para el comité (PDF)».',
+    informeSinResultado: 'El informe estará disponible cuando haya un resultado.',
+    privacidad: 'Lo que se dice se convierte en texto con el servicio de voz del navegador y se envía a la IA para la conversación. No se guarda.',
+    privacidadEscrito: 'Lo que se escribe se envía a la IA para la conversación. No se guarda.',
+    reposo: 'Listo. Pulsar el micrófono para hablar o escribir un mensaje.',
+    reposoSinMicro: 'Listo. Escribir un mensaje para conversar.',
+    escuchando: 'Escuchando…',
+    pensando: 'Pensando…',
+    hablando: 'Hablando…',
+    sinDatos: 'Todavía no hay datos. Se irán anotando durante la conversación.',
+    corregir: 'Pulsar un dato para corregirlo.',
+    tarde: 'La respuesta está tardando más de lo previsto.',
+    red: 'No se ha podido conectar con el servicio de conversación. Se puede reintentar o rellenar el formulario a mano.',
+    limite: 'Se ha alcanzado el límite de uso de la conversación. El formulario sigue disponible.',
+    noDisponible: 'La conversación no está disponible en este momento. El formulario sigue disponible.',
+    mensajeMalo: 'No se ha podido procesar el mensaje. Probar con un mensaje más corto.',
+    interrumpida: 'La respuesta se ha interrumpido.',
+    cerrada: 'La conversación quedó interrumpida al cerrar el panel.',
+    sinMicro: 'El micrófono no está disponible o no se ha dado permiso. Se puede escribir en el campo de texto.',
+    sinVoz: 'No se ha oído nada. Pulsar el micrófono para intentarlo de nuevo.',
+    redVoz: 'El servicio de voz del navegador no responde. Se puede escribir en el campo de texto.',
+    invalido: 'Valor no válido.',
+    pedirRegistro: 'Ya tenemos lo necesario. Antes de dar la recomendación, ¿a quién se la preparamos?',
+    esperaRegistro: 'Para seguir, completar antes los datos de la ficha.',
+    vvPrivacidad: 'La voz se envía a un servicio de IA para mantener la conversación. No se guarda.',
+    vvReposo: 'Listo. Pulsar Hablar para conversar en directo o escribir un mensaje.',
+    vvConectando: 'Conectando la voz en directo…',
+    vvSilencio: 'Micrófono en silencio.',
+    vvPausaRegistro: 'Micrófono en pausa mientras se completa la ficha.',
+    vvRespaldo: 'La voz en directo no está disponible ahora. La conversación sigue por escrito y con la voz del navegador.',
+    vvCaida: 'Se ha perdido la conexión de la voz en directo. La conversación sigue por escrito y con la voz del navegador.',
+    vvTiempo: 'La conversación en directo ha llegado a su duración máxima. Se puede seguir por escrito.',
+    vvEspera: 'Esperar a que termine la respuesta en curso.',
+    vvSilenciar: 'Silenciar micrófono',
+    vvActivar: 'Activar micrófono',
+    vvTerminar: 'Terminar',
+    seguimos: 'Seguimos por escrito.'
+  };
+
+  const TIPOS = [['horas', 'Ahorro de horas'], ['ventas', 'Ventas adicionales'], ['perdidas', 'Pérdidas evitadas'], ['gasto', 'Gasto evitado']];
+  const TIPO_TXT = { horas: 'ahorro de horas', ventas: 'ventas adicionales', perdidas: 'pérdidas evitadas', gasto: 'gasto evitado' };
+  const SI_NO = [[true, 'Sí'], [false, 'No']];
+
+  function F() {
+    return VALE.fmt;
+  }
+
+  function eur(x) {
+    return F().eur(x);
+  }
+
+  function corto(x, n) {
+    return VALE.ui.numCorto(x, n === undefined ? 2 : n);
+  }
+
+  function unidadesTxt() {
+    return Object.keys(VALE.motor.UNIDADES).map((k) => [k, VALE.motor.UNIDADES[k].singular]);
+  }
+
+  const LISTA = [
+    { clave: 'tipo_beneficio', etq: 'Beneficio', tipo: 'opc', ruta: 'tipo_beneficio', opciones: TIPOS,
+      leer: (p) => p.tipo_beneficio, texto: (v) => TIPO_TXT[v] || '' },
+    { clave: 'volumen_anual', etq: 'Volumen', tipo: 'num', min: 1, max: 1e9, ruta: 'horas.V',
+      leer: (p) => p.horas.V, texto: (v, p) => F().entero(v) + NB + VALE.ui.unidad(p, true) + ' al año' },
+    { clave: 'minutos_por_tarea', etq: 'Tiempo actual', tipo: 'num', min: 0.1, max: 10000, ruta: 'horas.t0',
+      leer: (p) => p.horas.t0, texto: (v, p) => corto(v) + NB + 'minutos por ' + VALE.ui.unidad(p, false) },
+    { clave: 'coste_hora', etq: 'Coste por hora', tipo: 'num', min: 1, max: 1000, ruta: 'horas.c', soloTocado: true,
+      rutas: (v) => ({ 'horas.c_opcion': 'otro', 'horas.c': v }),
+      extra: true, final: true, aplica: (p) => p.tipo_beneficio === 'horas',
+      leer: (p) => p.horas.c, texto: (v) => corto(v) + NB + '€' },
+    { clave: 'unidad', etq: 'Unidad', tipo: 'opc', ruta: 'horas.unidad', soloTocado: true, sinFicha: true,
+      get opciones() { return unidadesTxt(); },
+      leer: (p) => p.horas.unidad, texto: (v) => (VALE.motor.UNIDADES[v] || { singular: '' }).singular },
+    { clave: 'ventas_importe', etq: 'Ventas adicionales', tipo: 'num', min: 0, max: 1e12, ruta: 'ventas.importe',
+      leer: (p) => p.ventas.importe, texto: (v) => eur(v) + ' al año' },
+    { clave: 'ventas_margen', etq: 'Margen de contribución', tipo: 'frac', min: 0, max: 1, ruta: 'ventas.margen',
+      leer: (p) => p.ventas.margen, texto: (v) => F().pct(v) },
+    { clave: 'perdidas_frecuencia', etq: 'Frecuencia de la pérdida', tipo: 'num', min: 0, max: 1000, ruta: 'perdidas.frecuencia',
+      leer: (p) => p.perdidas.frecuencia, texto: (v) => corto(v, 3) + NB + (v === 1 ? 'vez' : 'veces') + ' al año' },
+    { clave: 'perdidas_impacto', etq: 'Impacto medio', tipo: 'num', min: 0, max: 1e12, ruta: 'perdidas.impacto',
+      leer: (p) => p.perdidas.impacto, texto: (v) => eur(v) },
+    { clave: 'perdidas_reduccion', etq: 'Reducción de la pérdida', tipo: 'frac', min: 0, max: 1, ruta: 'perdidas.reduccion',
+      leer: (p) => p.perdidas.reduccion, texto: (v) => F().pct(v) },
+    { clave: 'gasto_evitado', etq: 'Gasto evitado', tipo: 'num', min: 0, max: 1e12, ruta: 'gasto.importe',
+      leer: (p) => p.gasto.importe, texto: (v) => eur(v) + ' al año' },
+    { clave: 'medido', etq: 'Situación actual medida', tipo: 'bool', ruta: 'medido', soloTocado: true, extra: true,
+      leer: (p) => p.medido, texto: (v) => (v ? 'Sí' : 'No') },
+    { clave: 'responsable', etq: 'Responsable del resultado', tipo: 'bool', ruta: 'dueno', soloTocado: true, extra: true,
+      leer: (p) => p.dueno, texto: (v) => (v ? 'Sí' : 'No') },
+    { clave: 'probabilidad', etq: 'Probabilidad de éxito', tipo: 'nivel', ruta: 'p',
+      opciones: NIVELES.map((n) => [n, String(Math.round(n * 100)) + NB + '%']),
+      leer: (p) => p.p, texto: (v) => F().pct(v) },
+    { clave: 'depende_de_terceros', etq: 'Depende de terceros', tipo: 'bool', ruta: 'control_empresa', soloTocado: true,
+      rutas: (v) => ({ control_empresa: !v }),
+      leer: (p) => !p.control_empresa, texto: (v) => (v ? 'Sí' : 'No') },
+    { clave: 'inversion', etq: 'Inversión inicial', tipo: 'num', min: 0, max: 1e12, ruta: 'simple.I',
+      leer: (p) => p.simple.I, texto: (v) => eur(v) },
+    { clave: 'coste_anual', etq: 'Coste anual', tipo: 'num', min: 0, max: 1e12, ruta: 'simple.R_sin_sup',
+      leer: (p) => p.simple.R_sin_sup, texto: (v) => eur(v) + ' al año' },
+    { clave: 'supervision_anual', etq: 'Supervisión', tipo: 'num', min: 0, max: 1e12, ruta: 'simple.R_sup',
+      extra: true, final: true, yaDado: (p) => p.simple.R_sup !== null && p.simple.R_sup !== undefined,
+      leer: (p) => p.simple.R_sup, texto: (v) => eur(v) + ' al año' },
+    { clave: 'meses_puesta_en_marcha', etq: 'Puesta en marcha', tipo: 'ent', min: 0, max: 12, ruta: 'm', soloTocado: true, extra: true,
+      leer: (p) => p.m, texto: (v) => F().meses(v) }
+  ];
+
+  const POR_CLAVE = {};
+  const POR_RUTA = {};
+  for (const d of LISTA) {
+    POR_CLAVE[d.clave] = d;
+    POR_RUTA[d.ruta] = d;
+    if (d.rutas) for (const r of Object.keys(d.rutas(d.tipo === 'bool' ? true : 1))) POR_RUTA[r] = d;
+  }
+
+  const MAPA_FALTAN = {
+    tipo_beneficio: 'tipo_beneficio', 'horas.V': 'volumen_anual', 'horas.t0': 'minutos_por_tarea', 'horas.c': 'coste_hora',
+    'ventas.importe': 'ventas_importe', 'ventas.margen': 'ventas_margen', 'perdidas.frecuencia': 'perdidas_frecuencia',
+    'perdidas.impacto': 'perdidas_impacto', 'perdidas.reduccion': 'perdidas_reduccion', 'gasto.importe': 'gasto_evitado',
+    p: 'probabilidad', inversion: 'inversion', costes: 'coste_anual', supervision: 'supervision_anual'
+  };
+
+  const RESALTE_ALTERNATIVO = {
+    tipo_beneficio: 'simple.Vb', 'horas.V': 'simple.Vb', 'horas.t0': 'simple.Vb', 'horas.c': 'simple.Vb', 'horas.c_opcion': 'simple.Vb',
+    'horas.unidad': 'simple.Vb', 'ventas.importe': 'simple.Vb', 'ventas.margen': 'simple.Vb', 'perdidas.frecuencia': 'simple.Vb',
+    'perdidas.impacto': 'simple.Vb', 'perdidas.reduccion': 'simple.Vb', 'gasto.importe': 'simple.Vb'
+  };
+
+  function nuevaConversacion(numero) {
+    return {
+      numero,
+      abierto: false,
+      mensajes: [],
+      historial: [],
+      tocados: new Set(),
+      pedidaP: null,
+      completa: false,
+      registro: null,
+      rondasExtra: 0,
+      vecesPedida: {},
+      ocupado: false,
+      estado: 'reposo',
+      provisional: '',
+      aviso: '',
+      avisoTipo: 'info',
+      pendiente: null,
+      limite: false,
+      editando: null,
+      errorEditor: '',
+      microNo: false,
+      abortar: null
+    };
+  }
+
+  function nuevaVoz() {
+    return {
+      id: 0,
+      activa: false,
+      llamada: null,
+      estado: 'reposo',
+      silenciado: false,
+      pausaRegistro: false,
+      fallado: false,
+      avisoVisto: false,
+      nota: '',
+      vivos: { usuario: null, ia: null },
+      sub: null,
+      n1: 0,
+      n2: 0,
+      n3: 0
+    };
+  }
+
+  let vv = nuevaVoz();
+  let conv = nuevaConversacion(1);
+  let contadorConversaciones = 1;
+  let generacion = 0;
+  let montado = false;
+  let panel = null;
+  let origenFoco = null;
+  let restableciendo = false;
+  const temporizadoresResalte = [];
+
+  function hayDocumento() {
+    return typeof document !== 'undefined' && document && typeof document.getElementById === 'function';
+  }
+
+  function porId(id) {
+    return hayDocumento() ? document.getElementById(id) : null;
+  }
+
+  function esc(t) {
+    return VALE.ui.esc(t);
+  }
+
+  function iaActiva() {
+    return !!(VALE.config && typeof VALE.config.ia_url === 'string' && VALE.config.ia_url.trim() &&
+      VALE.ia && typeof VALE.ia.transporte === 'function' && typeof VALE.ia.resumen === 'function' && VALE.estado && VALE.motor);
+  }
+
+  function tiempoMs() {
+    const t = VALE.config && VALE.config.tiempo_conversacion_ms;
+    return typeof t === 'number' && t > 0 ? t : TIEMPO_TURNO_MS;
+  }
+
+  function vozDeLaIa() {
+    return VALE.config && VALE.config.voz_conversacion === 'ia';
+  }
+
+  function registrarEvento(evento, clave) {
+    try {
+      if (VALE.registro && typeof VALE.registro.registrar === 'function') VALE.registro.registrar(evento, undefined, clave);
+    } catch (err) {
+      return;
+    }
+  }
+
+  function esPrueba() {
+    try {
+      const c = VALE.registro && typeof VALE.registro.contexto === 'function' ? VALE.registro.contexto() : null;
+      return !!(c && c.prueba === true);
+    } catch (err) {
+      return false;
+    }
+  }
+
+  function recortar(t, max) {
+    const s = String(t === null || t === undefined ? '' : t);
+    return s.length > max ? s.slice(0, max) : s;
+  }
+
+  function recortarFinal(t, max) {
+    const s = String(t === null || t === undefined ? '' : t);
+    return s.length > max ? '… ' + s.slice(-(max - 2)) : s;
+  }
+
+  function proyecto() {
+    return VALE.estado.proyecto('nuevo');
+  }
+
+  function resultado() {
+    return VALE.estado.resultado('nuevo');
+  }
+
+  function conocido(d, p) {
+    const v = d.leer(p);
+    if (v === null || v === undefined) return false;
+    if (d.soloTocado && !conv.tocados.has(d.clave)) return false;
+    return true;
+  }
+
+  function camposConocidos() {
+    const p = proyecto();
+    const salida = {};
+    for (const d of LISTA) {
+      if (conocido(d, p)) salida[d.clave] = d.leer(p);
+    }
+    return salida;
+  }
+
+  function extraPendiente(d, p) {
+    if (!d.extra || conv.tocados.has(d.clave)) return false;
+    if (d.aplica && !d.aplica(p)) return false;
+    if (d.yaDado && d.yaDado(p)) return false;
+    return (conv.vecesPedida[d.clave] || 0) < MAX_VECES_EXTRA;
+  }
+
+  function extrasPendientes() {
+    const p = proyecto();
+    return LISTA.filter((d) => extraPendiente(d, p)).map((d) => d.clave);
+  }
+
+  function faltanBlanca() {
+    const res = resultado();
+    const exigidas = new Set(((res && res.faltan) || []).map((k) => MAPA_FALTAN[k]).filter(Boolean));
+    const extras = !conv.completa;
+    const p = proyecto();
+    const entran = LISTA.filter((d) => exigidas.has(d.clave) || (extras && extraPendiente(d, p)));
+    return entran.filter((d) => !d.final).concat(entran.filter((d) => d.final)).map((d) => d.clave);
+  }
+
+  function normalizar(d, v) {
+    if (d.tipo === 'opc') {
+      return typeof v === 'string' && d.opciones.some((o) => o[0] === v) ? v : undefined;
+    }
+    if (d.tipo === 'bool') return typeof v === 'boolean' ? v : undefined;
+    if (typeof v !== 'number' || !isFinite(v)) return undefined;
+    if (d.tipo === 'nivel') {
+      const n = NIVELES.find((x) => Math.abs(x - v) < 1e-9);
+      return n === undefined ? undefined : n;
+    }
+    const x = d.tipo === 'ent' ? Math.round(v) : v;
+    return x >= d.min && x <= d.max ? x : undefined;
+  }
+
+  function rutasDe(d, v) {
+    return d.rutas ? d.rutas(v) : { [d.ruta]: v };
+  }
+
+  function claveOrigenTocada(rutas) {
+    for (const r of rutas) {
+      const d = POR_RUTA[r];
+      if (d && d.soloTocado) conv.tocados.add(d.clave);
+    }
+  }
+
+  function aplicarCampos(entrada, origen) {
+    const E = VALE.estado;
+    const aplicadas = [];
+    const descartadas = [];
+    const mapa = {};
+    const origenTxt = origen === 'usuario' ? 'cv:usuario' : 'cv:ia';
+    if (!entrada || typeof entrada !== 'object') return { aplicadas, descartadas };
+    for (const clave of Object.keys(entrada)) {
+      if (!Object.prototype.hasOwnProperty.call(POR_CLAVE, clave)) continue;
+      const d = POR_CLAVE[clave];
+      const v = normalizar(d, entrada[clave]);
+      if (v === undefined) {
+        descartadas.push(clave);
+        continue;
+      }
+      const rutas = rutasDe(d, v);
+      const bien = Object.keys(rutas).every((r) => E.validar(r, rutas[r]).ok);
+      if (!bien) {
+        descartadas.push(clave);
+        continue;
+      }
+      Object.assign(mapa, rutas);
+      aplicadas.push(clave);
+      if (clave === 'probabilidad') conv.pedidaP = v;
+    }
+    if (!aplicadas.length) return { aplicadas, descartadas };
+    if (E.datos.activo !== 'nuevo') E.seleccionar('nuevo');
+    const ok = E.fijarVarios(mapa, { origen: origenTxt });
+    if (!ok) {
+      return { aplicadas: [], descartadas: descartadas.concat(aplicadas) };
+    }
+    for (const c of aplicadas) conv.tocados.add(c);
+    const p = proyecto();
+    if (p.medido && conv.pedidaP !== null && conv.pedidaP > 0.5 && p.p !== null && p.p <= 0.5) {
+      E.fijar('p', conv.pedidaP, { origen: origenTxt });
+      resaltar(['p']);
+    }
+    resaltar(Object.keys(mapa));
+    return { aplicadas, descartadas };
+  }
+
+  function resaltar(rutas) {
+    if (!hayDocumento()) return;
+    const raiz = porId('en-raiz');
+    if (!raiz || typeof raiz.querySelectorAll !== 'function') return;
+    const vistas = new Set();
+    for (const ruta of rutas) {
+      let destino = ruta;
+      let nodos = raiz.querySelectorAll('[data-ruta="' + destino + '"]');
+      if (!nodos.length && RESALTE_ALTERNATIVO[ruta]) {
+        destino = RESALTE_ALTERNATIVO[ruta];
+        nodos = raiz.querySelectorAll('[data-ruta="' + destino + '"]');
+      }
+      nodos.forEach((n) => {
+        let el = n;
+        if (n.getAttribute('data-tipo') === 'nivel') {
+          if (n.getAttribute('aria-pressed') !== 'true') return;
+        } else if (n.tagName === 'INPUT' || n.tagName === 'SELECT') {
+          el = n.closest('.campo-caja') || n;
+        }
+        if (vistas.has(el)) return;
+        vistas.add(el);
+        el.classList.add('cv-resalte');
+        const t = setTimeout(() => {
+          el.classList.remove('cv-resalte');
+        }, RESALTE_MS);
+        temporizadoresResalte.push(t);
+      });
+    }
+  }
+
+  function crearAnalizador(alEvento) {
+    let resto = '';
+    function procesar(bloque) {
+      let evento = 'message';
+      const datos = [];
+      for (const linea of bloque.split('\n')) {
+        if (!linea || linea.charAt(0) === ':') continue;
+        const i = linea.indexOf(':');
+        const campo = i < 0 ? linea : linea.slice(0, i);
+        let valor = i < 0 ? '' : linea.slice(i + 1);
+        if (valor.charAt(0) === ' ') valor = valor.slice(1);
+        if (campo === 'event') evento = valor;
+        else if (campo === 'data') datos.push(valor);
+      }
+      if (!datos.length) return;
+      let obj = null;
+      try {
+        obj = JSON.parse(datos.join('\n'));
+      } catch (err) {
+        return;
+      }
+      if (obj && typeof obj === 'object') alEvento(evento, obj);
+    }
+    return {
+      empujar(trozo) {
+        resto += String(trozo).replace(/\r\n?/g, '\n');
+        let i = resto.indexOf('\n\n');
+        while (i >= 0) {
+          const bloque = resto.slice(0, i);
+          resto = resto.slice(i + 2);
+          procesar(bloque);
+          i = resto.indexOf('\n\n');
+        }
+      },
+      cerrar() {
+        if (resto.trim()) procesar(resto);
+        resto = '';
+      }
+    };
+  }
+
+  const AGOTADO = { agotado: true };
+
+  function esperar(promesa, ms) {
+    return new Promise((resolve, reject) => {
+      const t = setTimeout(() => reject(AGOTADO), ms);
+      promesa.then((v) => {
+        clearTimeout(t);
+        resolve(v);
+      }, (e) => {
+        clearTimeout(t);
+        reject(e);
+      });
+    });
+  }
+
+  function pausa(ms) {
+    return new Promise((resolve) => {
+      const t = setTimeout(() => resolve(null), ms);
+      if (t && typeof t.unref === 'function') t.unref();
+    });
+  }
+
+  function esperaVozIaMs() {
+    const t = VALE.config && VALE.config.espera_voz_ia_ms;
+    return typeof t === 'number' && t > 0 ? t : ESPERA_VOZ_IA_MS;
+  }
+
+  function bytesDe(texto) {
+    if (typeof TextEncoder !== 'undefined') return new TextEncoder().encode(texto).length;
+    return texto.length * 2;
+  }
+
+  function ajustarTamano(cuerpo) {
+    const medida = () => bytesDe(JSON.stringify(cuerpo));
+    while (medida() > MAX_BYTES && cuerpo.historial.length > 1) cuerpo.historial.shift();
+    const r = cuerpo.resultado;
+    if (r) {
+      for (const k of ['plan_medicion', 'avisos', 'umbrales', 'plataforma', 'coste_tarea', 'comentario_estandar']) {
+        if (medida() <= MAX_BYTES) break;
+        delete r[k];
+      }
+    }
+    return cuerpo;
+  }
+
+  function ventanaHistorial() {
+    return conv.historial.slice(-MAX_TURNOS).map((h) => ({ rol: h.rol, texto: h.rol === 'ia' ? recortarFinal(h.texto, MAX_TEXTO) : recortar(h.texto, MAX_TEXTO) }));
+  }
+
+  function resumenActual() {
+    if (!conv.completa) return null;
+    const res = resultado();
+    if (!res || !res.completo) return null;
+    try {
+      return VALE.ia.resumen(res, proyecto());
+    } catch (err) {
+      return null;
+    }
+  }
+
+  async function llamar(cuerpo, alEvento, gen) {
+    const base = String(VALE.config.ia_url || '').trim().replace(/\/+$/, '');
+    const flujo = typeof TextDecoder !== 'undefined' && typeof ReadableStream !== 'undefined';
+    const url = base + '/conversar' + (flujo ? '' : '?flujo=0');
+    const ctrl = typeof AbortController !== 'undefined' ? new AbortController() : null;
+    conv.abortar = ctrl;
+    const opciones = {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json', Accept: flujo ? 'text/event-stream' : 'application/json' },
+      body: JSON.stringify(cuerpo)
+    };
+    if (ctrl) opciones.signal = ctrl.signal;
+    const ms = Math.round(tiempoMs() * (cuerpo && cuerpo.resultado ? 1.5 : 1));
+    const limiteTotal = Date.now() + Math.max(ms * 3, 60000);
+    const abortar = () => {
+      if (ctrl) {
+        try {
+          ctrl.abort();
+        } catch (err) {
+          return;
+        }
+      }
+    };
+    let r;
+    try {
+      r = await esperar(Promise.resolve().then(() => VALE.ia.transporte()(url, opciones)), ms);
+    } catch (err) {
+      abortar();
+      return { fallo: err === AGOTADO ? 'tiempo' : 'red' };
+    }
+    if (!r || typeof r.status !== 'number') return { fallo: 'red' };
+    if (!r.ok) {
+      let datos = null;
+      try {
+        datos = typeof r.json === 'function' ? await esperar(r.json(), ms) : null;
+      } catch (err) {
+        datos = null;
+      }
+      return {
+        fallo: 'http',
+        estado: r.status,
+        mensaje: datos && typeof datos.mensaje === 'string' ? recortar(datos.mensaje, 300) : '',
+        codigo: datos && typeof datos.error === 'string' ? datos.error : ''
+      };
+    }
+    const tipo = r.headers && typeof r.headers.get === 'function' ? String(r.headers.get('content-type') || '') : '';
+    try {
+      if (/json/i.test(tipo) && !/event-stream/i.test(tipo) && typeof r.json === 'function') {
+        const d = await esperar(r.json(), ms);
+        if (d && typeof d === 'object') {
+          if (typeof d.texto === 'string' && d.texto) alEvento('texto', { d: d.texto });
+          if (d.campos && typeof d.campos === 'object') alEvento('campos', { campos: d.campos });
+          if (typeof d.accion === 'string') alEvento('accion', { accion: d.accion });
+          alEvento('fin', { motivo: typeof d.motivo === 'string' ? d.motivo : 'ok', mensaje: d.mensaje });
+        }
+        return { ok: true };
+      }
+      if (r.body && typeof r.body.getReader === 'function') {
+        const lector = r.body.getReader();
+        const dec = typeof TextDecoder !== 'undefined' ? new TextDecoder('utf-8') : null;
+        const an = crearAnalizador(alEvento);
+        try {
+          for (;;) {
+            if (Date.now() > limiteTotal) throw AGOTADO;
+            const paso = await esperar(lector.read(), ms);
+            if (gen !== generacion) {
+              try {
+                lector.cancel();
+              } catch (err) {
+                return { cancelado: true };
+              }
+              return { cancelado: true };
+            }
+            if (paso.done) break;
+            const v = paso.value;
+            an.empujar(typeof v === 'string' ? v : dec.decode(v, { stream: true }));
+          }
+          if (dec) an.empujar(dec.decode());
+          an.cerrar();
+        } catch (err) {
+          try {
+            lector.cancel();
+          } catch (err2) {
+            abortar();
+          }
+          abortar();
+          return { fallo: err === AGOTADO ? 'tiempo' : 'red' };
+        }
+        return { ok: true };
+      }
+      const texto = typeof r.text === 'function' ? await esperar(r.text(), ms) : '';
+      const an = crearAnalizador(alEvento);
+      an.empujar(texto + '\n\n');
+      an.cerrar();
+      return { ok: true };
+    } catch (err) {
+      abortar();
+      return { fallo: err === AGOTADO ? 'tiempo' : 'red' };
+    }
+  }
+
+  const voz = { id: 0, buffer: '', pendientes: 0, cerrado: true, audio: null, urlAudio: null, esperandoAudio: 0, cadena: Promise.resolve() };
+
+  function sintesisDisponible() {
+    return typeof speechSynthesis !== 'undefined' && typeof SpeechSynthesisUtterance !== 'undefined';
+  }
+
+  function elegirVoz() {
+    try {
+      const voces = typeof speechSynthesis.getVoices === 'function' ? speechSynthesis.getVoices() : [];
+      return voces.find((v) => /^es[-_]ES$/i.test(v.lang)) || voces.find((v) => /^es\b/i.test(v.lang)) || null;
+    } catch (err) {
+      return null;
+    }
+  }
+
+  function limpiarParaVoz(t) {
+    return String(t).replace(/[*_#`>~]/g, '').replace(/\s+/g, ' ').trim();
+  }
+
+  function partirFrases(texto, ultimo) {
+    const frases = [];
+    let ini = 0;
+    const re = /[.!?…]+(?=\s|$)|\n+/g;
+    let m = re.exec(texto);
+    while (m) {
+      const fin = m.index + m[0].length;
+      if (fin >= texto.length && !ultimo) break;
+      const f = texto.slice(ini, fin).trim();
+      if (f) frases.push(f);
+      ini = fin;
+      m = re.exec(texto);
+    }
+    return { frases, resto: texto.slice(ini) };
+  }
+
+  function comprobarFinVoz() {
+    if (voz.pendientes === 0 && voz.cerrado && voz.esperandoAudio === 0 && !voz.audio && conv.estado === 'hablando') ponerEstado('reposo');
+  }
+
+  function decir(frase) {
+    const t = limpiarParaVoz(frase);
+    if (!t || !sintesisDisponible()) return false;
+    try {
+      const u = new SpeechSynthesisUtterance(t);
+      u.lang = 'es-ES';
+      const v = elegirVoz();
+      if (v) u.voice = v;
+      const id = voz.id;
+      voz.pendientes += 1;
+      let hecho = false;
+      const fin = () => {
+        if (hecho) return;
+        hecho = true;
+        clearTimeout(guardia);
+        if (voz.id !== id) return;
+        voz.pendientes = Math.max(0, voz.pendientes - 1);
+        comprobarFinVoz();
+      };
+      const guardia = setTimeout(fin, 5000 + t.length * 120);
+      if (guardia && typeof guardia.unref === 'function') guardia.unref();
+      u.onend = fin;
+      u.onerror = fin;
+      speechSynthesis.speak(u);
+      if (conv.estado !== 'escuchando') ponerEstado('hablando');
+      return true;
+    } catch (err) {
+      return false;
+    }
+  }
+
+  function decirTodo(texto) {
+    const { frases, resto } = partirFrases(String(texto), true);
+    let alguna = false;
+    for (const f of frases.concat(resto.trim() ? [resto] : [])) alguna = decir(f) || alguna;
+    return alguna;
+  }
+
+  function hablarInicio() {
+    voz.buffer = '';
+    voz.cerrado = false;
+  }
+
+  function hablarAlimentar(d) {
+    if (vozDeLaIa()) return;
+    voz.buffer += d;
+    const { frases, resto } = partirFrases(voz.buffer, false);
+    voz.buffer = resto;
+    for (const f of frases) decir(f);
+  }
+
+  function liberarAudio() {
+    if (voz.audio) {
+      try {
+        voz.audio.pause();
+      } catch (err) {
+        voz.audio = null;
+      }
+    }
+    if (voz.urlAudio && typeof URL !== 'undefined' && typeof URL.revokeObjectURL === 'function') {
+      try {
+        URL.revokeObjectURL(voz.urlAudio);
+      } catch (err) {
+        voz.urlAudio = null;
+      }
+    }
+    voz.audio = null;
+    voz.urlAudio = null;
+  }
+
+  async function esperarNavegador(id) {
+    for (let i = 0; i < 300 && voz.id === id && voz.pendientes > 0; i++) await pausa(100);
+  }
+
+  function reproducir(blob, id) {
+    return new Promise((resolve) => {
+      if (typeof Audio === 'undefined' || typeof URL === 'undefined' || typeof URL.createObjectURL !== 'function') {
+        resolve(false);
+        return;
+      }
+      let url = null;
+      try {
+        url = URL.createObjectURL(blob);
+        const audio = new Audio(url);
+        const terminar = (ok) => {
+          if (voz.audio === audio) liberarAudio();
+          comprobarFinVoz();
+          resolve(ok);
+        };
+        audio.addEventListener('ended', () => terminar(true));
+        audio.addEventListener('error', () => terminar(false));
+        voz.audio = audio;
+        voz.urlAudio = url;
+        if (conv.estado !== 'escuchando') ponerEstado('hablando');
+        const r = audio.play();
+        if (r && typeof r.catch === 'function') {
+          r.catch(() => {
+            if (voz.audio !== audio || voz.id !== id) return;
+            terminar(false);
+          });
+        }
+      } catch (err) {
+        liberarAudio();
+        resolve(false);
+      }
+    });
+  }
+
+  async function hablarConVozIa(texto, id) {
+    voz.esperandoAudio += 1;
+    let r = null;
+    try {
+      r = await Promise.race([VALE.ia.pedir('/voz', { texto: recortar(limpiarParaVoz(texto), 2500) }, true), pausa(esperaVozIaMs())]);
+    } catch (err) {
+      r = null;
+    }
+    voz.esperandoAudio = Math.max(0, voz.esperandoAudio - 1);
+    if (voz.id !== id) return;
+    if (r && r.ok && r.audio) {
+      await esperarNavegador(id);
+      if (voz.id !== id) return;
+      const bien = await reproducir(r.audio, id);
+      if (bien || voz.id !== id) return;
+    }
+    decirTodo(texto);
+    comprobarFinVoz();
+  }
+
+  function hablarFin(textoCompleto) {
+    voz.cerrado = true;
+    if (vozDeLaIa()) {
+      const id = voz.id;
+      const t = String(textoCompleto || '');
+      if (t.trim()) voz.cadena = voz.cadena.then(() => (voz.id === id ? hablarConVozIa(t, id) : null)).catch(() => null);
+    } else {
+      const resto = voz.buffer;
+      voz.buffer = '';
+      if (resto.trim()) decir(resto);
+    }
+    comprobarFinVoz();
+  }
+
+  function detenerSalida() {
+    voz.id += 1;
+    voz.buffer = '';
+    voz.pendientes = 0;
+    voz.esperandoAudio = 0;
+    voz.cerrado = true;
+    voz.cadena = Promise.resolve();
+    liberarAudio();
+    if (sintesisDisponible()) {
+      try {
+        speechSynthesis.cancel();
+      } catch (err) {
+        voz.pendientes = 0;
+      }
+    }
+    if (conv.estado === 'hablando') ponerEstado('reposo');
+  }
+
+  function despertarSintesis() {
+    if (!sintesisDisponible()) return;
+    try {
+      speechSynthesis.speak(new SpeechSynthesisUtterance(''));
+    } catch (err) {
+      return;
+    }
+  }
+
+  const mic = { rec: null, finales: '', provisional: '', cancelado: false, avisoVisto: false };
+
+  function ctorReconocimiento() {
+    return globalThis.SpeechRecognition || globalThis.webkitSpeechRecognition || null;
+  }
+
+  function microDisponible() {
+    return !!ctorReconocimiento() && !conv.microNo;
+  }
+
+  function textoEscuchado() {
+    return (String(mic.finales) + ' ' + String(mic.provisional)).replace(/\s+/g, ' ').trim();
+  }
+
+  function finalizarEscucha(rec) {
+    if (mic.rec !== rec) return;
+    mic.rec = null;
+    const texto = textoEscuchado();
+    const cancelado = mic.cancelado;
+    mic.finales = '';
+    mic.provisional = '';
+    conv.provisional = '';
+    if (conv.estado === 'escuchando') ponerEstado('reposo');
+    pintarProvisional();
+    if (!cancelado && texto) enviar(texto);
+    else if (!cancelado && !conv.aviso) avisar(TXT.sinVoz, 'info');
+  }
+
+  function iniciarEscucha() {
+    const Ctor = ctorReconocimiento();
+    if (!Ctor || conv.microNo || mic.rec || conv.ocupado || conv.limite) return false;
+    detenerSalida();
+    let rec;
+    try {
+      rec = new Ctor();
+      rec.lang = 'es-ES';
+      rec.interimResults = true;
+      rec.continuous = false;
+      rec.maxAlternatives = 1;
+    } catch (err) {
+      conv.microNo = true;
+      avisar(TXT.sinMicro, 'info');
+      pintarPie();
+      return false;
+    }
+    mic.rec = rec;
+    mic.finales = '';
+    mic.provisional = '';
+    mic.cancelado = false;
+    mic.avisoVisto = true;
+    pintarAvisos();
+    rec.onresult = (ev) => {
+      if (mic.rec !== rec) return;
+      let fin = '';
+      let prov = '';
+      let hayFinal = false;
+      const lista = ev && ev.results ? ev.results : [];
+      for (let i = 0; i < lista.length; i++) {
+        const r = lista[i];
+        const t = r && r[0] && typeof r[0].transcript === 'string' ? r[0].transcript : '';
+        if (r && r.isFinal) {
+          fin += t;
+          hayFinal = true;
+        } else {
+          prov += t;
+        }
+      }
+      mic.finales = fin;
+      mic.provisional = prov;
+      conv.provisional = textoEscuchado();
+      pintarProvisional();
+      if (hayFinal && !prov) {
+        try {
+          rec.stop();
+        } catch (err) {
+          finalizarEscucha(rec);
+        }
+      }
+    };
+    rec.onerror = (ev) => {
+      const e = ev && ev.error ? String(ev.error) : '';
+      if (e === 'not-allowed' || e === 'service-not-allowed') {
+        conv.microNo = true;
+        mic.cancelado = true;
+        avisar(TXT.sinMicro, 'info');
+      } else if (e === 'network') {
+        mic.cancelado = true;
+        avisar(TXT.redVoz, 'info');
+      } else if (e === 'audio-capture') {
+        conv.microNo = true;
+        mic.cancelado = true;
+        avisar(TXT.sinMicro, 'info');
+      }
+    };
+    rec.onend = () => finalizarEscucha(rec);
+    try {
+      rec.start();
+    } catch (err) {
+      mic.rec = null;
+      conv.microNo = true;
+      avisar(TXT.sinMicro, 'info');
+      pintarPie();
+      return false;
+    }
+    avisarLimpiar();
+    ponerEstado('escuchando');
+    pintarPie();
+    return true;
+  }
+
+  function terminarEscucha(cancelar) {
+    const rec = mic.rec;
+    if (!rec) return;
+    mic.cancelado = !!cancelar;
+    try {
+      if (cancelar && typeof rec.abort === 'function') rec.abort();
+      else rec.stop();
+    } catch (err) {
+      finalizarEscucha(rec);
+      return;
+    }
+    if (cancelar) {
+      finalizarEscucha(rec);
+      return;
+    }
+    const t = setTimeout(() => finalizarEscucha(rec), 1500);
+    if (t && typeof t.unref === 'function') t.unref();
+  }
+
+  function alternarMicro() {
+    if (mic.rec) {
+      terminarEscucha(false);
+      return;
+    }
+    if (conv.ocupado || conv.limite) return;
+    iniciarEscucha();
+  }
+
+  function ponerEstado(nuevo) {
+    if (conv.estado === nuevo) return;
+    conv.estado = nuevo;
+    pintarEstado();
+  }
+
+  function avisar(texto, tipo) {
+    conv.aviso = texto;
+    conv.avisoTipo = tipo || 'info';
+    pintarAvisos();
+  }
+
+  function avisarLimpiar() {
+    if (!conv.aviso) return;
+    conv.aviso = '';
+    pintarAvisos();
+  }
+
+  function mensajeDeFallo(f) {
+    if (f.fallo === 'tiempo') return { texto: TXT.tarde, reintento: true };
+    if (f.fallo === 'red') return { texto: TXT.red, reintento: true };
+    const e = f.estado;
+    if (e === 429) return { texto: f.mensaje || TXT.limite, reintento: false, limite: true };
+    if (e === 400 || e === 413) return { texto: f.mensaje || TXT.mensajeMalo, reintento: false };
+    return { texto: f.mensaje || TXT.noDisponible, reintento: e !== 503 };
+  }
+
+  async function turno(opc) {
+    try {
+      return await turnoInterno(opc || {});
+    } catch (err) {
+      if (typeof console !== 'undefined') console.error(err);
+      conv.ocupado = false;
+      conv.abortar = null;
+      if (conv.pendiente) conv.pendiente.error = true;
+      ponerEstado('reposo');
+      avisar(TXT.noDisponible, 'riesgo');
+      pintarTodo();
+      return false;
+    }
+  }
+
+  async function turnoInterno(o) {
+    if (conv.ocupado || !iaActiva()) return false;
+    const gen = generacion;
+    const texto = o.texto ? recortar(String(o.texto).trim(), MAX_TEXTO) : '';
+    if (o.reintento) {
+      const ultima = conv.mensajes[conv.mensajes.length - 1];
+      if (ultima && ultima.rol === 'ia' && ultima.incompleto) conv.mensajes.pop();
+    } else if (texto) {
+      conv.historial.push({ rol: 'usuario', texto });
+      if (!o.sintetico) conv.mensajes.push({ rol: 'usuario', texto });
+    }
+    conv.ocupado = true;
+    conv.pendiente = { texto: o.texto || '', sintetico: !!o.sintetico, error: false };
+    avisarLimpiar();
+    if (!o.sinInterrumpir) detenerSalida();
+    ponerEstado('pensando');
+    const msg = { rol: 'ia', texto: '', incompleto: true };
+    let motivo = '';
+    let mensajeFin = '';
+    let empezo = false;
+    let pideInforme = false;
+    const descartadas = [];
+    hablarInicio();
+    pintarTodo();
+    const faltan = faltanBlanca();
+    if (!o.reintento && faltan.length && POR_CLAVE[faltan[0]] && POR_CLAVE[faltan[0]].extra) {
+      conv.vecesPedida[faltan[0]] = (conv.vecesPedida[faltan[0]] || 0) + 1;
+    }
+    const cuerpo = ajustarTamano({
+      historial: ventanaHistorial(),
+      campos: camposConocidos(),
+      faltan,
+      resultado: resumenActual(),
+      prueba: esPrueba()
+    });
+    const alEvento = (nombre, d) => {
+      if (gen !== generacion) return;
+      if (nombre === 'texto' && typeof d.d === 'string') {
+        if (!empezo) {
+          empezo = true;
+          conv.mensajes.push(msg);
+        }
+        if (msg.texto.length < MAX_TEXTO_IA) {
+          const trozo = d.d.slice(0, MAX_TEXTO_IA - msg.texto.length);
+          msg.texto += trozo;
+          hablarAlimentar(trozo);
+        }
+        pintarMensajes();
+      } else if (nombre === 'campos' && d.campos && typeof d.campos === 'object') {
+        const ap = aplicarCampos(d.campos, 'ia');
+        for (const c of ap.descartadas) if (descartadas.indexOf(c) < 0) descartadas.push(c);
+        pintarDatos();
+        pintarTarjeta();
+      } else if (nombre === 'accion') {
+        if (d.accion === 'informe') pideInforme = true;
+      } else if (nombre === 'fin') {
+        motivo = typeof d.motivo === 'string' ? d.motivo : 'ok';
+        mensajeFin = typeof d.mensaje === 'string' ? recortar(d.mensaje, 300) : '';
+      }
+    };
+    const r = await llamar(cuerpo, alEvento, gen);
+    if (gen !== generacion || r.cancelado) return false;
+    conv.ocupado = false;
+    conv.abortar = null;
+    const falloFlujo = r.fallo ? r : (motivo === 'error' ? { fallo: 'fin' } : null);
+    if (falloFlujo) {
+      if (empezo && !msg.texto.trim()) conv.mensajes.pop();
+      hablarFin(msg.texto);
+      if (falloFlujo.fallo === 'fin') {
+        conv.pendiente.error = true;
+        avisar(mensajeFin || TXT.interrumpida, 'riesgo');
+      } else {
+        const m = mensajeDeFallo(falloFlujo);
+        if (m.limite) conv.limite = true;
+        conv.pendiente.error = !!m.reintento;
+        if (!m.reintento) conv.pendiente = null;
+        avisar(m.texto, 'riesgo');
+      }
+      if (conv.estado !== 'hablando') ponerEstado('reposo');
+      pintarTodo();
+      return false;
+    }
+    msg.incompleto = false;
+    conv.pendiente = null;
+    if (empezo && msg.texto.trim()) conv.historial.push({ rol: 'ia', texto: recortarFinal(msg.texto.trim(), MAX_TEXTO) });
+    else if (empezo) conv.mensajes.pop();
+    hablarFin(msg.texto);
+    if (motivo === 'limite') {
+      conv.limite = true;
+      avisar(mensajeFin || TXT.limite, 'info');
+    } else if (descartadas.length) {
+      avisar('No se ha anotado: ' + descartadas.map((c) => POR_CLAVE[c].etq.toLowerCase()).join(', ') + '. Se puede corregir a mano.', 'info');
+    }
+    if (conv.estado !== 'hablando') ponerEstado('reposo');
+    if (msg.texto.trim() && (!hayDocumento() || !sintesisDisponible() || vozDeLaIa())) {
+      VALE.ui.anunciarDiscreto('¿Vale?: ' + msg.texto.trim());
+    }
+    pintarTodo();
+    if (motivo !== 'limite' && puedeCompletar()) {
+      if (pedirRegistro()) return true;
+      return completarYExplicar();
+    }
+    if (pideInforme && motivo !== 'limite') abrirInforme(true);
+    return true;
+  }
+
+  function completarYExplicar() {
+    completar();
+    return turno({ texto: FRASE_RESULTADO, sintetico: true, sinInterrumpir: true });
+  }
+
+  function pedirRegistro() {
+    try {
+      const A = VALE.acceso;
+      if (!A || typeof A.pendiente !== 'function' || !A.pendiente(proyecto(), resultado())) return false;
+      suscribirAcceso();
+      conv.registro = 'pidiendo';
+      conv.mensajes.push({ rol: 'ia', texto: TXT.pedirRegistro });
+      hablarInicio();
+      decirTodo(TXT.pedirRegistro);
+      hablarFin(TXT.pedirRegistro);
+      if (typeof A.mostrado === 'function') A.mostrado();
+      pintarTodo();
+      const campo = porId('ac-conversacion-nombre');
+      if (campo && typeof campo.focus === 'function') campo.focus({ preventScroll: false });
+      return true;
+    } catch (err) {
+      conv.registro = null;
+      if (typeof console !== 'undefined') console.error(err);
+      return false;
+    }
+  }
+
+  let suscritoAcceso = false;
+  function suscribirAcceso() {
+    try {
+      if (suscritoAcceso || !VALE.acceso || typeof VALE.acceso.alCambiar !== 'function') return;
+      suscritoAcceso = true;
+      VALE.acceso.alCambiar(alAcceso);
+    } catch (err) {
+      if (typeof console !== 'undefined') console.error(err);
+    }
+  }
+
+  function alAcceso(tipo) {
+    try {
+      if (tipo !== 'liberado' || conv.registro !== 'pidiendo') return;
+      const res = resultado();
+      const completo = !!(res && res.completo);
+      conv.registro = 'hecho';
+      pintarRegistro();
+      if (vv.activa) {
+        vvTrasRegistro();
+        return;
+      }
+      if (completo && !conv.ocupado && !conv.completa) completarYExplicar();
+    } catch (err) {
+      if (typeof console !== 'undefined') console.error(err);
+    }
+  }
+
+  function soltarRegistro() {
+    if (conv.registro !== 'pidiendo') return;
+    conv.registro = null;
+    if (vv.pausaRegistro) {
+      vv.pausaRegistro = false;
+      vvAplicarSilencio();
+    }
+    pintarRegistro();
+    pintarTodo();
+  }
+
+  function puedeCompletar() {
+    if (conv.completa) return false;
+    const res = resultado();
+    if (!res || !res.completo) return false;
+    if (!extrasPendientes().length) return true;
+    conv.rondasExtra += 1;
+    return conv.rondasExtra >= RONDAS_EXTRA;
+  }
+
+  function completar() {
+    conv.completa = true;
+    registrarEvento('conversacion_completa', 'conversacion_completa:' + conv.numero);
+    try {
+      VALE.ir('analisis', { id: 'nuevo', paso: 'R' });
+    } catch (err) {
+      if (typeof console !== 'undefined') console.error(err);
+    }
+    enfocarPanel();
+  }
+
+  function enviar(texto) {
+    const t = String(texto === undefined || texto === null ? '' : texto).trim();
+    if (!t) return false;
+    if (conv.ocupado || conv.limite || !iaActiva() || vv.activa) return false;
+    if (conv.registro === 'pidiendo') {
+      avisar(TXT.esperaRegistro, 'info');
+      return false;
+    }
+    if (mic.rec) terminarEscucha(true);
+    turno({ texto: t });
+    return true;
+  }
+
+  function reintentar() {
+    if (conv.ocupado || !conv.pendiente) return false;
+    const p = conv.pendiente;
+    turno({ texto: p.texto, sintetico: p.sintetico, reintento: true });
+    return true;
+  }
+
+  function corregir(clave, bruto) {
+    if (!Object.prototype.hasOwnProperty.call(POR_CLAVE, clave)) return false;
+    const d = POR_CLAVE[clave];
+    const v = normalizar(d, bruto);
+    if (v === undefined) {
+      conv.errorEditor = TXT.invalido;
+      pintarDatos();
+      return false;
+    }
+    const antes = proyecto().p;
+    const ap = aplicarCampos({ [clave]: v }, 'usuario');
+    if (!ap.aplicadas.length) {
+      conv.errorEditor = TXT.invalido;
+      pintarDatos();
+      return false;
+    }
+    conv.errorEditor = '';
+    conv.editando = null;
+    if (clave === 'probabilidad' && proyecto().p !== v && antes !== null) {
+      avisar('Sin línea base medida, la probabilidad máxima es del 50' + NB + '%.', 'info');
+    }
+    pintarTodo();
+    return true;
+  }
+
+  function leerEditor(d, texto) {
+    if (d.tipo === 'bool') return texto === 'true';
+    if (d.tipo === 'opc') return texto;
+    if (d.tipo === 'nivel') return Number(texto);
+    const n = F().leerNumero(texto);
+    if (n === null || typeof n !== 'number' || isNaN(n)) return undefined;
+    return d.tipo === 'frac' ? Math.round((n / 100) * 1e9) / 1e9 : n;
+  }
+
+  function vvOfrecido() {
+    try {
+      return iaActiva() && !vv.fallado && !!VALE.config && VALE.config.voz_viva === true && !!VALE.vozViva &&
+        typeof VALE.vozViva.crear === 'function' && VALE.vozViva.soportado();
+    } catch (err) {
+      return false;
+    }
+  }
+
+  function reducido() {
+    try {
+      return typeof matchMedia === 'function' && matchMedia('(prefers-reduced-motion: reduce)').matches;
+    } catch (err) {
+      return false;
+    }
+  }
+
+  function vvSilencioEfectivo() {
+    return vv.silenciado || vv.pausaRegistro;
+  }
+
+  function vvAplicarSilencio() {
+    if (vv.llamada) vv.llamada.silenciar(vvSilencioEfectivo());
+    pintarVv();
+  }
+
+  function vvCerrarVivo(rol) {
+    const m = vv.vivos[rol];
+    vv.vivos[rol] = null;
+    if (!m) return;
+    m.vivo = false;
+    const t = String(m.texto).trim();
+    if (!t) {
+      const i = conv.mensajes.indexOf(m);
+      if (i >= 0) conv.mensajes.splice(i, 1);
+      return;
+    }
+    m.texto = t;
+    conv.historial.push({ rol, texto: recortar(t, MAX_TEXTO) });
+  }
+
+  function vvSubtitulo(rol, trozo) {
+    if (rol !== 'usuario' && rol !== 'ia') return;
+    const otro = rol === 'ia' ? 'usuario' : 'ia';
+    if (vv.vivos[otro]) vvCerrarVivo(otro);
+    let m = vv.vivos[rol];
+    if (!m) {
+      m = { rol, texto: '', vivo: true };
+      vv.vivos[rol] = m;
+      conv.mensajes.push(m);
+    }
+    if (m.texto.length < MAX_TEXTO_IA) m.texto += String(trozo).slice(0, MAX_TEXTO_IA - m.texto.length);
+    vv.sub = { rol, texto: m.texto };
+    pintarMensajes();
+    pintarSubs();
+  }
+
+  function sanearArgsVoz(args) {
+    const salida = {};
+    const ignoradas = [];
+    if (!args || typeof args !== 'object') return { salida, ignoradas };
+    for (const clave of Object.keys(args)) {
+      if (!Object.prototype.hasOwnProperty.call(POR_CLAVE, clave)) {
+        ignoradas.push(clave);
+        continue;
+      }
+      const d = POR_CLAVE[clave];
+      let v = args[clave];
+      if (d.tipo === 'bool' && typeof v === 'string') v = v.trim() === 'true' ? true : (v.trim() === 'false' ? false : v);
+      if (d.tipo !== 'bool' && d.tipo !== 'opc' && typeof v === 'string') {
+        const t = v.trim();
+        if (/^-?\d{1,3}(?:\.\d{3})+(?:,\d+)?$/.test(t)) v = Number(t.replace(/\./g, '').replace(',', '.'));
+        else if (/^-?\d+(?:[.,]\d+)?$/.test(t)) v = Number(t.replace(',', '.'));
+      }
+      if ((d.tipo === 'nivel' || d.tipo === 'frac') && typeof v === 'number' && v > 1 && v <= 100) v = v / 100;
+      salida[clave] = v;
+    }
+    return { salida, ignoradas };
+  }
+
+  function vvListo() {
+    const res = resultado();
+    if (!res || !res.completo) return false;
+    if (conv.completa) return true;
+    if (!extrasPendientes().length) return true;
+    conv.rondasExtra += 1;
+    return conv.rondasExtra >= RONDAS_EXTRA;
+  }
+
+  function vvAnotar(args) {
+    const { salida, ignoradas } = sanearArgsVoz(args);
+    const ap = aplicarCampos(salida, 'ia');
+    const faltan = faltanBlanca();
+    if (faltan.length && POR_CLAVE[faltan[0]] && POR_CLAVE[faltan[0]].extra) {
+      conv.vecesPedida[faltan[0]] = (conv.vecesPedida[faltan[0]] || 0) + 1;
+    }
+    const listo = vvListo();
+    pintarDatos();
+    pintarTarjeta();
+    const r = { anotado: ap.aplicadas, faltan, listo_para_calcular: listo };
+    const descartado = ap.descartadas.concat(ignoradas);
+    if (descartado.length) r.descartado = descartado;
+    return r;
+  }
+
+  function vvRegistro() {
+    suscribirAcceso();
+    const nuevo = conv.registro !== 'pidiendo';
+    conv.registro = 'pidiendo';
+    if (!vv.pausaRegistro) {
+      vv.pausaRegistro = true;
+      vvAplicarSilencio();
+    }
+    pintarRegistro();
+    if (nuevo && VALE.acceso && typeof VALE.acceso.mostrado === 'function') VALE.acceso.mostrado();
+    pintarTodo();
+    const campo = porId('ac-conversacion-nombre');
+    if (nuevo && campo && typeof campo.focus === 'function') campo.focus({ preventScroll: false });
+    return {
+      pendiente: 'registro',
+      decir: TXT.pedirRegistro,
+      instruccion: 'Di exactamente esa frase, sin añadir nada, y espera en silencio. No hagas más preguntas ni vuelvas a llamar a pedir_resultado hasta que la página te avise de que el registro está hecho.'
+    };
+  }
+
+  function vvEntregar(res) {
+    if (conv.registro === 'pidiendo') conv.registro = 'hecho';
+    if (!conv.completa) completar();
+    const resumen = VALE.ia.resumen(res, proyecto());
+    pintarTarjeta();
+    pintarRegistro();
+    if (!resumen) return { faltan: faltanBlanca() };
+    return {
+      resultado: resumen,
+      instruccion: 'Explica el resultado de viva voz, con 90 a 140 palabras en prosa y solo con las cifras de «resultado»: la recomendación en una frase, lo que más pesa en ella, qué tendría que cumplirse para avanzar y el siguiente paso.'
+    };
+  }
+
+  function vvResultado() {
+    const res = resultado();
+    if (!res || !res.completo) return { faltan: faltanBlanca() };
+    let pendiente = false;
+    try {
+      pendiente = !!(VALE.acceso && typeof VALE.acceso.pendiente === 'function' && VALE.acceso.pendiente(proyecto(), res));
+    } catch (err) {
+      pendiente = false;
+    }
+    return pendiente ? vvRegistro() : vvEntregar(res);
+  }
+
+  function vvInforme() {
+    const res = resultado();
+    if (!conv.completa || !res || !res.completo) return { abierto: false, error: 'Todavía no hay resultado.' };
+    setTimeout(() => abrirInforme(true), 800);
+    return { abierto: true, instruccion: 'No añadas nada más, salvo como mucho una frase breve.' };
+  }
+
+  function vvHerramienta(nombre, args) {
+    if (nombre === 'anotar_datos') return vvAnotar(args);
+    if (nombre === 'pedir_resultado') return vvResultado();
+    if (nombre === 'abrir_informe') return vvInforme();
+    return { error: 'Herramienta desconocida.' };
+  }
+
+  function vvTrasRegistro() {
+    vv.pausaRegistro = false;
+    vvAplicarSilencio();
+    if (vv.llamada && typeof vv.llamada.texto === 'function') vv.llamada.texto(VALE.vozViva.TEXTOS.registroHecho);
+  }
+
+  function pintarNivel(n) {
+    const o = porId('cv-vv-orbe');
+    if (!o || !o.style) return;
+    const v = Math.max(0, Math.min(1, Number(n) || 0));
+    vv.n1 += (v - vv.n1) * 0.6;
+    vv.n2 += (v - vv.n2) * 0.3;
+    vv.n3 += (v - vv.n3) * 0.15;
+    const r = (x) => Math.round(x * 1000) / 1000;
+    o.style.setProperty('--cv-n1', String(r(vv.n1)));
+    o.style.setProperty('--cv-n2', String(r(vv.n2)));
+    o.style.setProperty('--cv-n3', String(r(vv.n3)));
+  }
+
+  function plazoTokenMs() {
+    const n = VALE.config && Number(VALE.config.voz_viva_token_ms);
+    return isFinite(n) && n > 0 ? n : 10000;
+  }
+
+  function anfitrionVv() {
+    vv.id += 1;
+    const id = vv.id;
+    const vigente = () => vv.id === id && vv.activa;
+    return {
+      pedirToken: () => VALE.ia.pedirSinContexto('/voz-viva/token', { prueba: esPrueba() }, false, plazoTokenMs()),
+      estado: (e) => {
+        if (!vigente()) return;
+        vv.estado = e;
+        pintarEstado();
+      },
+      nivel: (n) => {
+        if (vigente() && hayDocumento()) pintarNivel(reducido() ? 0 : n);
+      },
+      subtitulo: (rol, texto) => {
+        if (vigente()) vvSubtitulo(rol, texto);
+      },
+      interrumpido: () => {
+        if (!vigente()) return;
+        vvCerrarVivo('ia');
+        pintarMensajes();
+      },
+      turnoCompleto: () => {
+        if (!vigente()) return;
+        vvCerrarVivo('usuario');
+        vvCerrarVivo('ia');
+        pintarMensajes();
+      },
+      herramienta: (nombre, args) => (vigente() ? vvHerramienta(nombre, args) : undefined),
+      fallo: (motivo, detalle) => {
+        if (vv.id === id) vvFallo(motivo, detalle);
+      },
+      fin: (motivo) => {
+        if (vv.id === id) vvFin(motivo);
+      }
+    };
+  }
+
+  function vvLimpiar() {
+    vv.id += 1;
+    const habia = vv.activa;
+    vv.activa = false;
+    vv.llamada = null;
+    vv.estado = 'reposo';
+    vv.silenciado = false;
+    vv.pausaRegistro = false;
+    vvCerrarVivo('usuario');
+    vvCerrarVivo('ia');
+    vv.sub = null;
+    vv.n1 = 0;
+    vv.n2 = 0;
+    vv.n3 = 0;
+    if (habia) vv.avisoVisto = true;
+    const o = porId('cv-vv-orbe');
+    if (o && o.style) {
+      o.style.setProperty('--cv-n1', '0');
+      o.style.setProperty('--cv-n2', '0');
+      o.style.setProperty('--cv-n3', '0');
+    }
+    pintarTodo();
+  }
+
+  function vvCerrarTodo() {
+    const l = vv.llamada;
+    vv.llamada = null;
+    if (l) {
+      try {
+        l.cerrar();
+      } catch (err) {
+        if (typeof console !== 'undefined') console.error(err);
+      }
+    }
+    if (vv.activa) vvLimpiar();
+  }
+
+  function vvContinuarEnTexto() {
+    if (!conv.abierto || !iaActiva() || conv.limite || conv.completa || conv.registro === 'pidiendo' || conv.ocupado) return;
+    if (conv.historial.length === 0) turno({});
+    else turno({ texto: TXT.seguimos, sintetico: true });
+  }
+
+  function vvFallo(motivo, detalle) {
+    vvLimpiar();
+    const sinPermiso = motivo === 'microfono' && /^(NotAllowed|PermissionDenied|NotFound|Security|Overconstrained)/.test(String(detalle || ''));
+    if (sinPermiso) conv.microNo = true;
+    vv.fallado = true;
+    vv.nota = sinPermiso ? TXT.sinMicro : (motivo === 'socket' ? TXT.vvCaida : TXT.vvRespaldo);
+    pintarTodo();
+    vvContinuarEnTexto();
+  }
+
+  function vvFin(motivo) {
+    vvLimpiar();
+    vv.nota = motivo === 'tiempo' ? TXT.vvTiempo : '';
+    if (motivo === 'tiempo') vv.fallado = true;
+    pintarTodo();
+  }
+
+  function vvIniciar() {
+    if (!vvOfrecido() || vv.activa || conv.limite) return false;
+    if (conv.ocupado) {
+      avisar(TXT.vvEspera, 'info');
+      return false;
+    }
+    if (conv.registro === 'pidiendo') {
+      avisar(TXT.esperaRegistro, 'info');
+      return false;
+    }
+    if (mic.rec) terminarEscucha(true);
+    detenerSalida();
+    avisarLimpiar();
+    vv.nota = '';
+    vv.activa = true;
+    vv.estado = 'conectando';
+    vv.silenciado = false;
+    vv.pausaRegistro = false;
+    const llamada = VALE.vozViva.crear(anfitrionVv());
+    vv.llamada = llamada;
+    pintarTodo();
+    llamada.iniciar().catch((err) => {
+      if (typeof console !== 'undefined') console.error(err);
+      if (vv.llamada === llamada) vvFallo('audio', '');
+    });
+    return true;
+  }
+
+  function vvAlternarSilencio() {
+    if (!vv.activa) return;
+    vv.silenciado = !vv.silenciado;
+    vvAplicarSilencio();
+  }
+
+  function vvTerminar() {
+    if (vv.llamada) vv.llamada.terminar();
+  }
+
+  function seguro(fn) {
+    return function () {
+      try {
+        return fn.apply(null, arguments);
+      } catch (err) {
+        if (typeof console !== 'undefined') console.error(err);
+        return undefined;
+      }
+    };
+  }
+
+  function mensajesHtml() {
+    return conv.mensajes.map((m) => {
+      const ia = m.rol === 'ia';
+      return '<li class="cv-msg ' + (ia ? 'cv-msg-ia' : 'cv-msg-usuario') + (m.vivo ? ' cv-msg-vivo' : '') + '"><span class="cv-quien"><span class="oculto">' +
+        (ia ? '¿Vale?' : 'Mensaje enviado') + '</span><span aria-hidden="true">' + (ia ? '¿Vale?' : 'Mensaje') + '</span></span>' +
+        '<p class="cv-texto">' + esc(m.texto) + '</p></li>';
+    }).join('');
+  }
+
+  function fichasDatos() {
+    const p = proyecto();
+    return LISTA.filter((d) => !d.sinFicha && conocido(d, p)).map((d) => {
+      const v = d.leer(p);
+      return { clave: d.clave, etq: d.etq, texto: d.texto(v, p), valor: v };
+    });
+  }
+
+  function editorHtml(d) {
+    const p = proyecto();
+    const v = d.leer(p);
+    let campo;
+    if (d.tipo === 'opc' || d.tipo === 'bool' || d.tipo === 'nivel') {
+      const ops = d.tipo === 'bool' ? SI_NO : d.opciones;
+      campo = '<select class="campo-val" id="cv-editor-valor" data-cv-valor="1">' + ops.map((o) =>
+        '<option value="' + esc(String(o[0])) + '"' + (o[0] === v ? ' selected' : '') + '>' + esc(o[1]) + '</option>').join('') + '</select>';
+    } else {
+      const x = v === null || v === undefined ? '' : (d.tipo === 'frac' ? corto(v * 100, 5) : corto(v, 5));
+      campo = '<input type="text" class="campo-val" id="cv-editor-valor" inputmode="decimal" autocomplete="off" value="' + esc(x) + '">';
+    }
+    return '<form class="cv-editor" id="cv-editor" data-clave="' + esc(d.clave) + '" novalidate>' +
+      '<label class="campo-etq" for="cv-editor-valor">Corregir: ' + esc(d.etq) + (d.tipo === 'frac' ? ' (en %)' : '') + '</label>' +
+      '<span class="campo-caja">' + campo + '</span>' +
+      '<p class="campo-error" id="cv-editor-error"' + (conv.errorEditor ? '' : ' hidden') + '>' + esc(conv.errorEditor) + '</p>' +
+      '<span class="botones"><button type="submit" class="btn compacto">Guardar</button>' +
+      '<button type="button" class="btn secundario compacto" data-cv="cancelar-ficha">Cancelar</button></span></form>';
+  }
+
+  function datosHtml() {
+    const fichas = fichasDatos();
+    let h = '<h3 class="cv-sub" id="cv-datos-tit">Datos recogidos</h3>';
+    if (!fichas.length) return h + '<p class="cv-vacio">' + esc(TXT.sinDatos) + '</p>';
+    h += '<p class="cv-ayuda">' + esc(TXT.corregir) + '</p><ul class="cv-fichas">';
+    for (const f of fichas) {
+      h += '<li><button type="button" class="cv-ficha' + (conv.editando === f.clave ? ' cv-ficha-activa' : '') + '" data-cv="editar" data-clave="' + esc(f.clave) +
+        '" aria-label="Corregir. ' + esc(f.etq + ': ' + f.texto) + '"><span class="cv-ficha-etq">' + esc(f.etq) + ':</span> <span class="cv-ficha-val">' +
+        esc(f.texto) + '</span></button></li>';
+    }
+    h += '</ul>';
+    if (conv.editando && POR_CLAVE[conv.editando]) h += editorHtml(POR_CLAVE[conv.editando]);
+    return h;
+  }
+
+  function tarjetaHtml() {
+    const res = resultado();
+    if (!conv.completa || !res || !res.completo) return '';
+    const f = F();
+    const clase = res.VAN > 0 ? ' pos' : (res.VAN < 0 ? ' neg' : '');
+    return '<p class="etq" id="cv-tarjeta-tit">Recomendación</p>' +
+      '<p class="cv-reco">' + VALE.ui.sem(res.codigo) + '</p>' +
+      '<dl class="cv-cifras"><div><dt>VAN ajustado por riesgo</dt><dd class="' + clase.trim() + '">' + esc(f.eurSigno(res.VAN)) + '</dd></div>' +
+      '<div><dt>Recuperación</dt><dd>' + esc(f.recuperacion(res, { corta: true })) + '</dd></div></dl>' +
+      '<div class="botones"><button type="button" class="btn compacto" data-cv="informe" id="cv-informe">' + esc(TXT.informe) + '</button>' +
+      '<button type="button" class="btn secundario compacto" data-cv="detalle">Ver el detalle</button>' +
+      '<button type="button" class="btn secundario compacto" data-cv="otra">Empezar otra conversación</button></div>';
+  }
+
+  function avisosHtml() {
+    let h = '';
+    if (vvOfrecido() && (!vv.avisoVisto || vv.activa)) {
+      h += '<p class="app-aviso info cv-aviso" id="cv-aviso-privacidad">' + esc(TXT.vvPrivacidad) + '</p>';
+    } else if (!mic.avisoVisto && !conv.mensajes.some((m) => m.rol === 'usuario')) {
+      h += '<p class="app-aviso info cv-aviso" id="cv-aviso-privacidad">' + esc(microDisponible() ? TXT.privacidad : TXT.privacidadEscrito) + '</p>';
+    }
+    if (vv.nota) h += '<p class="app-aviso info cv-aviso" id="cv-aviso-vv" role="status">' + esc(vv.nota) + '</p>';
+    if (conv.aviso) {
+      h += '<div class="app-aviso' + (conv.avisoTipo === 'info' ? ' info' : '') + ' cv-aviso" role="status"><span>' + esc(conv.aviso) + '</span>';
+      if (conv.pendiente && conv.pendiente.error && !conv.ocupado) {
+        h += '<button type="button" class="btn secundario compacto" data-cv="reintentar">Reintentar</button>';
+      }
+      h += '</div>';
+    }
+    return h;
+  }
+
+  const pintarMensajes = seguro(function () {
+    const el = porId('cv-mensajes');
+    if (!el) return;
+    el.innerHTML = mensajesHtml();
+    const cuerpo = porId('cv-cuerpo');
+    if (cuerpo) cuerpo.scrollTop = cuerpo.scrollHeight;
+  });
+
+  const pintarDatos = seguro(function () {
+    const el = porId('cv-datos');
+    if (!el) return;
+    const activo = hayDocumento() ? document.activeElement : null;
+    if (conv.editando && activo && activo.id === 'cv-editor-valor' && !conv.enfocarEditor) return;
+    el.innerHTML = datosHtml();
+    if (conv.editando && conv.enfocarEditor) {
+      const campo = porId('cv-editor-valor');
+      if (campo && typeof campo.focus === 'function') campo.focus();
+    }
+    conv.enfocarEditor = false;
+  });
+
+  const pintarTarjeta = seguro(function () {
+    const el = porId('cv-tarjeta');
+    if (!el) return;
+    const h = tarjetaHtml();
+    el.hidden = !h;
+    el.innerHTML = h;
+  });
+
+  const pintarRegistro = seguro(function () {
+    const el = porId('cv-registro');
+    if (!el) return;
+    const pide = conv.registro === 'pidiendo' && !!VALE.acceso;
+    el.hidden = !pide;
+    if (!pide) {
+      el.innerHTML = '';
+      return;
+    }
+    if (!el.querySelector('[data-ac-zona]')) el.innerHTML = VALE.acceso.zonaHtml('conversacion');
+  });
+
+  const pintarAvisos = seguro(function () {
+    const el = porId('cv-avisos');
+    if (el) el.innerHTML = avisosHtml();
+  });
+
+  const pintarProvisional = seguro(function () {
+    const el = porId('cv-prov');
+    if (el) el.textContent = conv.provisional;
+  });
+
+  const pintarEstado = seguro(function () {
+    const o = porId('cv-orbe');
+    if (o) o.setAttribute('data-estado', vv.activa ? 'reposo' : conv.estado);
+    const g = porId('cv-vv-orbe');
+    if (g) g.setAttribute('data-estado', vv.activa ? vv.estado : 'reposo');
+    if (panel) panel.setAttribute('data-vv', vv.activa ? '1' : '0');
+    const e = porId('cv-estado');
+    if (e) e.textContent = textoEstado();
+    const callar = porId('cv-callar');
+    if (callar) callar.hidden = vv.activa || conv.estado !== 'hablando';
+    pintarVv();
+    pintarPie();
+  });
+
+  const pintarVv = seguro(function () {
+    const caja = porId('cv-vv');
+    if (caja) caja.hidden = !vv.activa;
+    const b = porId('cv-vv-silenciar');
+    if (b) {
+      b.setAttribute('aria-pressed', vv.silenciado ? 'true' : 'false');
+      const t = porId('cv-vv-silenciar-txt');
+      if (t) t.textContent = vv.silenciado ? TXT.vvActivar : TXT.vvSilenciar;
+      if (vv.pausaRegistro) b.setAttribute('aria-disabled', 'true');
+      else b.removeAttribute('aria-disabled');
+    }
+    pintarSubs();
+  });
+
+  const pintarSubs = seguro(function () {
+    const el = porId('cv-vv-subs');
+    if (!el) return;
+    const sub = vv.activa ? vv.sub : null;
+    let t = sub ? String(sub.texto).replace(/\s+/g, ' ').trim() : '';
+    if (t.length > 150) {
+      const corte = t.slice(t.length - 150);
+      const i = corte.indexOf(' ');
+      t = '…' + (i > 0 ? corte.slice(i + 1) : corte);
+    }
+    el.textContent = t;
+    el.setAttribute('data-rol', sub ? sub.rol : '');
+  });
+
+  function textoEstado() {
+    if (vv.activa) {
+      if (vv.estado === 'conectando') return TXT.vvConectando;
+      if (vv.estado === 'pensando') return TXT.pensando;
+      if (vv.estado === 'hablando') return TXT.hablando;
+      if (vv.pausaRegistro) return TXT.vvPausaRegistro;
+      return vv.silenciado ? TXT.vvSilencio : TXT.escuchando;
+    }
+    if (vvOfrecido() && conv.estado === 'reposo') return TXT.vvReposo;
+    if (conv.estado === 'escuchando') return TXT.escuchando;
+    if (conv.estado === 'pensando') return TXT.pensando;
+    if (conv.estado === 'hablando') return TXT.hablando;
+    return microDisponible() ? TXT.reposo : TXT.reposoSinMicro;
+  }
+
+  const pintarPie = seguro(function () {
+    const b = porId('cv-micro');
+    if (b) {
+      const escuchando = conv.estado === 'escuchando';
+      const enVivo = vvOfrecido();
+      const sin = !enVivo && !microDisponible();
+      b.setAttribute('aria-pressed', escuchando && !enVivo ? 'true' : 'false');
+      b.classList.toggle('cv-micro-activo', escuchando && !enVivo);
+      b.hidden = vv.activa || (!enVivo && !ctorReconocimiento());
+      if (sin || conv.ocupado || conv.limite) b.setAttribute('aria-disabled', 'true');
+      else b.removeAttribute('aria-disabled');
+      const t = porId('cv-micro-txt');
+      if (t) t.textContent = sin ? 'Micrófono no disponible' : (escuchando && !enVivo ? 'Enviar lo dicho' : 'Hablar');
+    }
+    const campo = porId('cv-texto');
+    if (campo) campo.disabled = !!conv.limite || vv.activa;
+    const enviarBtn = porId('cv-enviar');
+    if (enviarBtn) {
+      if (conv.ocupado || conv.limite) enviarBtn.setAttribute('aria-disabled', 'true');
+      else enviarBtn.removeAttribute('aria-disabled');
+    }
+  });
+
+  const pintarTodo = seguro(function () {
+    pintarMensajes();
+    pintarDatos();
+    pintarTarjeta();
+    pintarRegistro();
+    pintarAvisos();
+    pintarProvisional();
+    pintarEstado();
+  });
+
+  const enfocarPanel = seguro(function () {
+    const el = porId('cv-tit');
+    if (el && typeof el.focus === 'function' && panel && !panel.hidden) el.focus({ preventScroll: true });
+  });
+
+  function cascaron() {
+    return '<header class="cv-cab"><div class="cv-cab-txt"><p class="etq">Agente de Acevedo</p>' +
+      '<h2 class="cv-tit" id="cv-tit" tabindex="-1">' + esc(TXT.titulo) + '</h2></div>' +
+      '<button type="button" class="btn icono secundario" data-cv="cerrar" id="cv-cerrar" aria-label="Cerrar la conversación">' +
+      '<span class="i i-x" aria-hidden="true"></span></button></header>' +
+      '<div class="cv-cuerpo" id="cv-cuerpo">' +
+      '<p class="cv-nota">' + esc(TXT.nota) + '</p>' +
+      '<ol class="cv-mensajes" id="cv-mensajes" aria-label="Mensajes de la conversación"></ol>' +
+      '<div id="cv-avisos"></div>' +
+      '<section class="cv-datos" id="cv-datos" aria-labelledby="cv-datos-tit"></section>' +
+      '<section class="cv-tarjeta" id="cv-tarjeta" aria-labelledby="cv-tarjeta-tit" hidden></section>' +
+      '<section class="cv-registro" id="cv-registro" hidden></section>' +
+      '</div>' +
+      '<footer class="cv-pie">' +
+      '<div class="cv-vv" id="cv-vv" hidden>' +
+      '<div class="cv-vv-orbe" id="cv-vv-orbe" data-estado="reposo" aria-hidden="true"><span class="cv-vv-aro cv-vv-aro-3"></span>' +
+      '<span class="cv-vv-aro cv-vv-aro-2"></span><span class="cv-vv-aro cv-vv-aro-1"></span><span class="cv-vv-nucleo"></span></div>' +
+      '<p class="cv-vv-subs" id="cv-vv-subs" data-rol="" aria-hidden="true"></p>' +
+      '<div class="cv-vv-mando"><button type="button" class="btn secundario compacto cv-vv-boton" id="cv-vv-silenciar" data-cv="vv-silenciar" aria-pressed="false">' +
+      '<span id="cv-vv-silenciar-txt">' + esc(TXT.vvSilenciar) + '</span></button>' +
+      '<button type="button" class="btn secundario compacto cv-vv-boton" id="cv-vv-terminar" data-cv="vv-terminar">' + esc(TXT.vvTerminar) + '</button></div></div>' +
+      '<div class="cv-estado-fila"><span class="cv-orbe" id="cv-orbe" data-estado="reposo" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i></span>' +
+      '<p class="cv-estado" id="cv-estado" role="status"></p>' +
+      '<button type="button" class="btn texto compacto" data-cv="callar" id="cv-callar" hidden>Detener la voz</button></div>' +
+      '<p class="cv-prov" id="cv-prov" aria-hidden="true"></p>' +
+      '<button type="button" class="cv-micro" id="cv-micro" data-cv="micro" aria-pressed="false"><span class="cv-micro-ico" aria-hidden="true"></span>' +
+      '<span id="cv-micro-txt">Hablar</span></button>' +
+      '<form class="cv-form" id="cv-form" novalidate><label class="oculto" for="cv-texto">Escribir un mensaje</label>' +
+      '<span class="campo-caja cv-caja"><input type="text" class="campo-val" id="cv-texto" maxlength="' + MAX_TEXTO + '" autocomplete="off" placeholder="Escribir un mensaje"></span>' +
+      '<button type="submit" class="btn" id="cv-enviar">Enviar</button></form></footer>';
+  }
+
+  function asegurarProyectoNuevo(forzar) {
+    const E = VALE.estado;
+    restableciendo = true;
+    try {
+      if (forzar) E.restablecer('nuevo');
+      else if (E.proyecto('nuevo').modo !== 'simplificado') {
+        if (E.datos.activo !== 'nuevo') E.seleccionar('nuevo');
+        E.fijar('modo', 'simplificado', { origen: 'cv:ia' });
+      }
+    } finally {
+      restableciendo = false;
+    }
+  }
+
+  function mostrarPanel(visible) {
+    if (!panel) return;
+    panel.hidden = !visible;
+    if (hayDocumento()) document.documentElement.classList.toggle('cv-abierto', !!visible);
+  }
+
+  function abrir() {
+    if (!iaActiva()) return false;
+    try {
+      if (conv.abierto) {
+        enfocarPanel();
+        return true;
+      }
+      const reanudar = conv.mensajes.length > 0 || conv.historial.length > 0;
+      if (hayDocumento()) origenFoco = document.activeElement;
+      if (!reanudar) {
+        asegurarProyectoNuevo(false);
+        registrarEvento('conversacion_abierta');
+      }
+      VALE.ir('analisis', { id: 'nuevo', paso: reanudar && conv.completa ? 'R' : 'V' });
+      conv.abierto = true;
+      mostrarPanel(true);
+      despertarSintesis();
+      pintarTodo();
+      const tit = porId('cv-tit');
+      if (tit && typeof tit.focus === 'function') tit.focus({ preventScroll: true });
+      if (!reanudar) {
+        if (!vvOfrecido()) turno({});
+      } else if (conv.pendiente && conv.pendiente.error) {
+        avisar(TXT.cerrada, 'info');
+      }
+      return true;
+    } catch (err) {
+      if (typeof console !== 'undefined') console.error(err);
+      return false;
+    }
+  }
+
+  function cerrar(opciones) {
+    if (mic.rec) terminarEscucha(true);
+    vvCerrarTodo();
+    detenerSalida();
+    if (conv.ocupado) {
+      generacion += 1;
+      if (conv.abortar) {
+        try {
+          conv.abortar.abort();
+        } catch (err) {
+          conv.abortar = null;
+        }
+      }
+      conv.abortar = null;
+      conv.ocupado = false;
+      const ultima = conv.mensajes[conv.mensajes.length - 1];
+      if (ultima && ultima.rol === 'ia' && !ultima.texto.trim()) conv.mensajes.pop();
+      if (conv.pendiente) conv.pendiente.error = true;
+    }
+    ponerEstado('reposo');
+    conv.abierto = false;
+    mostrarPanel(false);
+    const conFoco = !(opciones && opciones.sinFoco);
+    const visible = (el) => !!el && el.isConnected !== false && typeof el.getClientRects === 'function' && el.getClientRects().length > 0;
+    if (conFoco && !visible(origenFoco)) origenFoco = porId('ap-proyecto-titulo');
+    if (conFoco && origenFoco && typeof origenFoco.focus === 'function' && origenFoco.isConnected !== false) {
+      try {
+        origenFoco.focus({ preventScroll: true });
+      } catch (err) {
+        origenFoco = null;
+      }
+    }
+    return true;
+  }
+
+  function reiniciarMemoria() {
+    if (mic.rec) terminarEscucha(true);
+    vvCerrarTodo();
+    vv.nota = '';
+    detenerSalida();
+    generacion += 1;
+    if (conv.abortar) {
+      try {
+        conv.abortar.abort();
+      } catch (err) {
+        conv.abortar = null;
+      }
+    }
+    while (temporizadoresResalte.length) clearTimeout(temporizadoresResalte.pop());
+    contadorConversaciones += 1;
+    const abierto = conv.abierto;
+    conv = nuevaConversacion(contadorConversaciones);
+    conv.abierto = abierto;
+    mic.rec = null;
+    mic.finales = '';
+    mic.provisional = '';
+    mic.cancelado = false;
+  }
+
+  function otra() {
+    if (!iaActiva()) return false;
+    reiniciarMemoria();
+    asegurarProyectoNuevo(true);
+    registrarEvento('conversacion_abierta');
+    try {
+      VALE.ir('analisis', { id: 'nuevo', paso: 'V' });
+    } catch (err) {
+      if (typeof console !== 'undefined') console.error(err);
+    }
+    pintarTodo();
+    if (!vvOfrecido()) turno({});
+    return true;
+  }
+
+  function abrirInforme(auto) {
+    try {
+      const res = resultado();
+      if (!conv.completa || !res || !res.completo) {
+        avisar(TXT.informeSinResultado, 'info');
+        return false;
+      }
+      if (typeof VALE.imprimirInforme !== 'function') return false;
+      if (auto === true) avisar(TXT.informeAbierto, 'info');
+      VALE.imprimirInforme();
+      return true;
+    } catch (err) {
+      if (typeof console !== 'undefined') console.error(err);
+      return false;
+    }
+  }
+
+  function verDetalle() {
+    cerrar();
+    try {
+      VALE.ir('analisis', { id: 'nuevo', paso: 'R' });
+    } catch (err) {
+      if (typeof console !== 'undefined') console.error(err);
+    }
+    return true;
+  }
+
+  const alClic = seguro(function (ev) {
+    const el = ev.target && ev.target.closest ? ev.target.closest('[data-cv]') : null;
+    if (!el) return;
+    const accion = el.getAttribute('data-cv');
+    if (accion === 'abrir') {
+      ev.preventDefault();
+      abrir();
+    } else if (accion === 'cerrar') {
+      cerrar();
+    } else if (accion === 'micro') {
+      if (el.getAttribute('aria-disabled') !== 'true') {
+        if (vvOfrecido()) vvIniciar();
+        else alternarMicro();
+      }
+    } else if (accion === 'vv-silenciar') {
+      if (el.getAttribute('aria-disabled') !== 'true') vvAlternarSilencio();
+    } else if (accion === 'vv-terminar') {
+      vvTerminar();
+    } else if (accion === 'callar') {
+      detenerSalida();
+    } else if (accion === 'informe') {
+      abrirInforme();
+    } else if (accion === 'detalle') {
+      verDetalle();
+    } else if (accion === 'otra') {
+      otra();
+    } else if (accion === 'reintentar') {
+      reintentar();
+    } else if (accion === 'editar') {
+      const clave = el.getAttribute('data-clave');
+      conv.editando = conv.editando === clave ? null : clave;
+      conv.errorEditor = '';
+      conv.enfocarEditor = !!conv.editando;
+      pintarDatos();
+    } else if (accion === 'cancelar-ficha') {
+      conv.editando = null;
+      conv.errorEditor = '';
+      pintarDatos();
+    }
+  });
+
+  const alEnviarFormulario = seguro(function (ev) {
+    const f = ev.target;
+    if (!f || !f.id) return;
+    if (f.id === 'cv-form') {
+      ev.preventDefault();
+      const campo = porId('cv-texto');
+      if (!campo) return;
+      const texto = campo.value;
+      if (enviar(texto)) campo.value = '';
+    } else if (f.id === 'cv-editor') {
+      ev.preventDefault();
+      const clave = f.getAttribute('data-clave');
+      const campo = porId('cv-editor-valor');
+      if (!clave || !campo || !POR_CLAVE[clave]) return;
+      const v = leerEditor(POR_CLAVE[clave], campo.value);
+      if (v === undefined) {
+        conv.errorEditor = TXT.invalido;
+        pintarDatos();
+        return;
+      }
+      corregir(clave, v);
+    }
+  });
+
+  const alEscribir = seguro(function (ev) {
+    const t = ev.target;
+    if (t && t.id === 'cv-texto' && (conv.estado === 'hablando' || mic.rec)) {
+      if (mic.rec) terminarEscucha(true);
+      detenerSalida();
+    }
+  });
+
+  const alTeclado = seguro(function (ev) {
+    if (ev.key === 'Escape' && conv.abierto) cerrar();
+  });
+
+  const REGISTRO_RUTAS = ['medido', 'dueno', 'm', 'control_empresa', 'horas.c', 'horas.unidad'];
+
+  function alCambiarEstado(ev) {
+    if (!ev) return;
+    if (ev.tipo === 'borrar') {
+      const abierto = conv.abierto;
+      reiniciarMemoria();
+      conv.abierto = abierto;
+      if (abierto) cerrar({ sinFoco: true });
+      return;
+    }
+    if (!conv.abierto) return;
+    if (ev.tipo === 'proyecto' && ev.id !== 'nuevo') {
+      cerrar({ sinFoco: true });
+      return;
+    }
+    if (ev.tipo === 'vista' && ev.clave === 'portada') {
+      cerrar({ sinFoco: true });
+      return;
+    }
+    if (ev.tipo === 'restablecer' && ev.id === 'nuevo') soltarRegistro();
+    if (ev.tipo === 'restablecer' && ev.id === 'nuevo' && !restableciendo) {
+      conv.tocados.clear();
+      conv.pedidaP = null;
+      conv.completa = false;
+      conv.rondasExtra = 0;
+      conv.vecesPedida = {};
+      pintarDatos();
+      pintarTarjeta();
+      return;
+    }
+    if (ev.tipo === 'datos') {
+      const origen = typeof ev.origen === 'string' ? ev.origen : '';
+      if (origen.indexOf('cv:') !== 0 && Array.isArray(ev.rutas)) {
+        for (const r of ev.rutas) {
+          if (REGISTRO_RUTAS.indexOf(r) >= 0) claveOrigenTocada([r]);
+        }
+      }
+      const actual = resultado();
+      if (conv.registro === 'pidiendo' && !(actual && actual.completo)) soltarRegistro();
+      pintarDatos();
+      pintarTarjeta();
+    }
+  }
+
+  function botonAbrir(clase, id) {
+    const b = document.createElement('button');
+    b.type = 'button';
+    b.className = clase;
+    b.id = id;
+    b.setAttribute('data-cv', 'abrir');
+    b.innerHTML = '<span class="cv-micro-ico" aria-hidden="true"></span><span>' + esc(TXT.titulo) + '</span>';
+    b.setAttribute('aria-haspopup', 'dialog');
+    return b;
+  }
+
+  function medirTeclado(ventana) {
+    const vv = ventana && ventana.visualViewport;
+    if (!vv) return 0;
+    const alto = Number(ventana.innerHeight) - Number(vv.height) - Number(vv.offsetTop || 0);
+    return isFinite(alto) && alto > 80 ? Math.round(alto) : 0;
+  }
+
+  function ajustarTeclado() {
+    try {
+      document.documentElement.style.setProperty('--cv-teclado', medirTeclado(window) + 'px');
+    } catch (err) {
+      return;
+    }
+  }
+
+  function vigilarTeclado() {
+    try {
+      const vv = window.visualViewport;
+      if (!vv || typeof vv.addEventListener !== 'function') return;
+      vv.addEventListener('resize', ajustarTeclado);
+      vv.addEventListener('scroll', ajustarTeclado);
+    } catch (err) {
+      return;
+    }
+  }
+
+  function montar() {
+    try {
+      if (montado || !hayDocumento() || !iaActiva()) return false;
+      if (typeof location !== 'undefined' && /(^|[?&])modo=escena(&|$)/.test(String(location.search || ''))) return false;
+      panel = document.createElement('section');
+      panel.id = 'cv-panel';
+      panel.className = 'cv-panel';
+      panel.hidden = true;
+      panel.setAttribute('role', 'dialog');
+      panel.setAttribute('aria-modal', 'false');
+      panel.setAttribute('aria-labelledby', 'cv-tit');
+      panel.innerHTML = cascaron();
+      document.body.appendChild(panel);
+      panel.addEventListener('submit', alEnviarFormulario);
+      panel.addEventListener('input', alEscribir);
+      panel.addEventListener('keydown', alTeclado);
+      document.addEventListener('click', alClic);
+      vigilarTeclado();
+      const portada = document.querySelector('.ap-portada-botones');
+      if (portada) portada.insertBefore(botonAbrir('btn cv-hablar', 'cv-abrir-portada'), portada.firstChild);
+      const entradilla = document.querySelector('#ap-portada .entradilla');
+      if (entradilla) entradilla.textContent = TXT.entradillaAgente;
+      const acciones = document.querySelector('.ap-cabecera-acciones');
+      if (acciones) acciones.insertBefore(botonAbrir('btn secundario compacto cv-hablar-cab', 'cv-abrir-cabecera'), acciones.firstChild);
+      VALE.alCambiar((ev) => {
+        try {
+          alCambiarEstado(ev);
+        } catch (err) {
+          if (typeof console !== 'undefined') console.error(err);
+        }
+      });
+      suscribirAcceso();
+      montado = true;
+      pintarTodo();
+      return true;
+    } catch (err) {
+      if (typeof console !== 'undefined') console.error(err);
+      return false;
+    }
+  }
+
+  VALE.conversacion = {
+    activa: iaActiva,
+    montar,
+    abrir,
+    cerrar,
+    otra,
+    verDetalle,
+    abrirInforme,
+    enviar,
+    reintentar,
+    corregir,
+    alternarMicro,
+    medirTeclado,
+    detenerVoz: detenerSalida,
+    aplicar: (campos) => aplicarCampos(campos, 'ia'),
+    campos: camposConocidos,
+    faltan: faltanBlanca,
+    fichas: fichasDatos,
+    estado: () => conv,
+    tabla: LISTA,
+    panelHtml: () => cascaron(),
+    mensajesHtml,
+    avisosHtml,
+    datosHtml,
+    tarjetaHtml,
+    partirFrases,
+    crearAnalizador,
+    vozViva: {
+      ofrecido: vvOfrecido,
+      iniciar: vvIniciar,
+      silenciar: vvAlternarSilencio,
+      terminar: vvTerminar,
+      estado: () => vv,
+      sanear: sanearArgsVoz
+    },
+    alEstado: alCambiarEstado,
+    reiniciar: () => {
+      reiniciarMemoria();
+      vv = nuevaVoz();
+      conv.abierto = false;
+      mic.avisoVisto = false;
+      if (panel) mostrarPanel(false);
+    },
+    MENSAJES: TXT
+  };
+})(globalThis.VALE = globalThis.VALE || {});
+
+(function (VALE) {
+  'use strict';
+
+  const TXT = {
+    android: 'Disponible como aplicación en este dispositivo.',
+    boton: 'Instalar la aplicación',
+    ios: 'En iPhone y iPad: pulsar Compartir y elegir «Añadir a pantalla de inicio» para usar ¿Vale? como aplicación.'
+  };
+  const SERVIDORES_LOCALES = ['localhost', '127.0.0.1', '[::1]'];
+
+  function contextoSeguro(loc) {
+    if (!loc) return false;
+    if (loc.protocol === 'https:') return true;
+    return loc.protocol === 'http:' && SERVIDORES_LOCALES.indexOf(loc.hostname) >= 0;
+  }
+
+  function esIos(ua, plataforma, puntos) {
+    if (/iPhone|iPad|iPod/.test(String(ua || ''))) return true;
+    return plataforma === 'MacIntel' && Number(puntos) > 1;
+  }
+
+  function mostrarAyudaIos(entorno) {
+    const e = entorno || {};
+    if (e.standalone) return false;
+    return esIos(e.ua, e.plataforma, e.puntos);
+  }
+
+  function registrarServiceWorker(nav, loc) {
+    try {
+      if (!nav || !('serviceWorker' in nav) || !contextoSeguro(loc)) return false;
+      const promesa = nav.serviceWorker.register('sw.js', { scope: './' });
+      if (promesa && typeof promesa.catch === 'function') promesa.catch(() => {});
+      return true;
+    } catch (err) {
+      return false;
+    }
+  }
+
+  function enModoAplicacion() {
+    try {
+      if (navigator.standalone === true) return true;
+      return typeof window.matchMedia === 'function' && window.matchMedia('(display-mode: standalone)').matches;
+    } catch (err) {
+      return false;
+    }
+  }
+
+  function montarAviso() {
+    const caja = document.getElementById('ap-instalar');
+    const texto = document.getElementById('ap-instalar-txt');
+    const boton = document.getElementById('ap-instalar-btn');
+    if (!caja || !texto || !boton || enModoAplicacion()) return;
+    let evento = null;
+    const ocultar = () => {
+      evento = null;
+      boton.hidden = true;
+      caja.hidden = true;
+    };
+    if (mostrarAyudaIos({ ua: navigator.userAgent, plataforma: navigator.platform, puntos: navigator.maxTouchPoints, standalone: false })) {
+      texto.textContent = TXT.ios;
+      caja.hidden = false;
+    }
+    window.addEventListener('beforeinstallprompt', (ev) => {
+      ev.preventDefault();
+      evento = ev;
+      texto.textContent = TXT.android;
+      boton.hidden = false;
+      caja.hidden = false;
+    });
+    window.addEventListener('appinstalled', ocultar);
+    boton.addEventListener('click', () => {
+      const guardado = evento;
+      if (!guardado) return;
+      ocultar();
+      try {
+        guardado.prompt();
+      } catch (err) {
+        return;
+      }
+    });
+  }
+
+  const iniciarOriginal = VALE.iniciar;
+  VALE.iniciar = function () {
+    const r = typeof iniciarOriginal === 'function' ? iniciarOriginal.apply(this, arguments) : undefined;
+    try {
+      registrarServiceWorker(navigator, location);
+      montarAviso();
+    } catch (err) {
+      if (typeof console !== 'undefined') console.error(err);
+    }
+    return r;
+  };
+
+  VALE.instalable = { contextoSeguro, esIos, mostrarAyudaIos, registrarServiceWorker, TXT };
 })(globalThis.VALE = globalThis.VALE || {});
 
 (function (VALE) {
