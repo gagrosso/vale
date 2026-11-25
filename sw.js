@@ -3,7 +3,7 @@
    la copia guardada. Solo atiende peticiones GET del mismo origen: nunca intercepta las del intermediario de IA ni ninguna otra de otro origen.
    La versión de la caché la fija construir.py (versión de la app y huella del index.html). */
 'use strict';
-const VERSION = '1.7-39148a4e51';
+const VERSION = '1.8-c783e3b86f';
 const CACHE = 'vale-' + VERSION;
 const ESPERA_RED_MS = 8000;
 const BASE = new URL('./', self.location.href).href;
