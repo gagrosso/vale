@@ -1436,8 +1436,8 @@ color-scheme:light;
 .ac-compacta{display:block}
 .ac-compacta .ac-form{padding:var(--esp-4);border:var(--borde);border-radius:var(--radio-2);background:var(--surface-2)}
 .ac-compacta .ac-fila{grid-template-columns:minmax(0, 1fr)}
-html.cv-teclado .ac-compacta .ac-botones{position:sticky;bottom:calc(-1 * var(--esp-4));z-index:1;margin:0 calc(-1 * var(--esp-4));padding:var(--esp-3) var(--esp-4) calc(var(--esp-3) + var(--esp-4));background:var(--surface-2);border-top:var(--borde)}
-.cv-cuerpo{scroll-padding-bottom:5rem}
+.cv-panel[data-ficha="1"] .ac-compacta .ac-botones,html.cv-teclado .ac-compacta .ac-botones{position:sticky;bottom:calc(-1 * var(--esp-4));z-index:1;margin:0 calc(-1 * var(--esp-4));padding:var(--esp-3) var(--esp-4) calc(var(--esp-3) + var(--esp-4));background:var(--surface-2);border-top:var(--borde)}
+.cv-cuerpo{scroll-padding-bottom:6rem}
 .ac-compacta .campo-etq{font-size:var(--fs-14)}
 .ac-resumen{display:flex;flex-direction:column;gap:var(--esp-3)}
 .ac-resumen-tit{display:flex;align-items:center;gap:var(--esp-2);margin:0;font-size:var(--fs-20);line-height:var(--lh-20);font-weight:700;color:var(--ink)}
@@ -1548,6 +1548,28 @@ html.cv-teclado .cv-cab{padding-block:var(--esp-2)}
 .cv-informe-listo{display:flex;flex-direction:column;gap:var(--esp-2);padding:var(--esp-3);border:var(--borde);border-radius:var(--radio-2);background:var(--surface)}
 .cv-informe-listo .cv-informe-txt{margin:0}
 .cv-informe-botones > *{flex:1 1 auto;min-width:140px;min-height:48px;display:flex;align-items:center;justify-content:center;text-align:center;text-decoration:none}
+@media (max-width:1023px){
+.cv-cuerpo{gap:var(--esp-3);scroll-padding-top:var(--esp-4)}
+#cv-avisos{display:contents}
+.cv-nota{order:-3;font-size:var(--fs-14);line-height:var(--lh-14)}
+#cv-aviso-privacidad{order:-2;margin:0;padding:var(--esp-2) var(--esp-3);font-size:var(--fs-14);line-height:var(--lh-14)}
+.cv-datos{gap:var(--esp-1)}
+.cv-sub{font-size:var(--fs-14);line-height:var(--lh-14)}
+.cv-ayuda{font-size:var(--fs-12);line-height:var(--lh-12)}
+.cv-fichas{flex-wrap:nowrap;overflow-x:auto;overscroll-behavior-x:contain;padding-bottom:var(--esp-1);scrollbar-width:thin}
+.cv-fichas > li{flex:none}
+.cv-ficha{white-space:nowrap}
+}
+@media (max-height:640px){
+.cv-panel[data-ficha="1"] .cv-pie{display:none}
+}
+@media (max-width:1023px) and (max-height:640px){
+.cv-cab{padding-block:var(--esp-2)}
+.cv-nota{display:none}
+.cv-pie{gap:var(--esp-2);padding-top:var(--esp-2);padding-bottom:var(--esp-2)}
+.cv-estado-fila{min-height:0}
+.cv-micro{min-height:48px}
+}
 .ap-nav-app{display:none}
 html.ap-app .ap-nav-app{position:fixed;left:0;right:0;bottom:0;z-index:25;display:grid;grid-template-columns:repeat(5, minmax(0, 1fr));align-items:stretch;
 height:calc(var(--nav-app-h) + env(safe-area-inset-bottom, 0px));padding:0 env(safe-area-inset-right, 0px) env(safe-area-inset-bottom, 0px) env(safe-area-inset-left, 0px);
@@ -2421,7 +2443,7 @@ display: none !important;
 
 <footer id="ap-pie" class="pie"><div class="ap-pie-in">
   <p>Diseñada para el comité de inversiones · Método VALE · Acevedo Enterprise IA</p>
-  <p class="ap-version">Versión 1.8 · 26-nov-2026</p>
+  <p class="ap-version">Versión 1.8.1 · 26-nov-2026</p>
   <p class="ap-pie-aviso">El resultado es orientativo y no sustituye al comité de inversiones.</p>
   <p id="ap-instalar" class="ap-instalar" hidden><span id="ap-instalar-txt"></span> <button type="button" id="ap-instalar-btn" class="btn texto compacto" hidden>Instalar la aplicación</button></p>
 </div></footer>
@@ -2440,7 +2462,7 @@ display: none !important;
   <div class="cajon-cuerpo ap-mas-cuerpo">
     <ul class="ap-mas-lista">
       <li><button type="button" class="ap-mas-item" data-accion="glosario" aria-haspopup="dialog" aria-controls="ap-glosario"><span class="i i-libro" aria-hidden="true"></span><span class="ap-mas-txt"><strong>Glosario</strong><span>22 términos del método</span></span></button></li>
-      <li><button type="button" class="ap-mas-item" id="ap-mas-informe" data-accion="imprimir"><span class="i i-imprimir" aria-hidden="true"></span><span class="ap-mas-txt"><strong>Informe para el comité (PDF)</strong><span id="ap-mas-informe-txt">Una página A4 con la recomendación y los supuestos</span></span></button></li>
+      <li><button type="button" class="ap-mas-item" id="ap-mas-informe" data-accion="imprimir"><span class="i i-imprimir" aria-hidden="true"></span><span class="ap-mas-txt"><strong>Informe para el comité (PDF)</strong><span id="ap-mas-informe-txt">Documento PDF en A4 con la recomendación y los supuestos</span></span></button></li>
       <li><button type="button" class="ap-mas-item" data-accion="copiar-enlace"><span class="i i-enlace" aria-hidden="true"></span><span class="ap-mas-txt"><strong>Copiar enlace</strong><span>Los datos van en el propio enlace</span></span></button></li>
       <li id="ap-mas-reunion-li" hidden><button type="button" class="ap-mas-item" data-accion="reunion"><span class="i i-calendario" aria-hidden="true"></span><span class="ap-mas-txt"><strong>Solicitar reunión</strong><span>Con el área de IA de Acevedo, a partir del resultado</span></span></button></li>
       <li id="ap-mas-instalar-li" hidden><button type="button" class="ap-mas-item" id="ap-mas-instalar" data-accion="instalar"><span class="i i-abajo" aria-hidden="true"></span><span class="ap-mas-txt"><strong>Instalar la aplicación</strong><span id="ap-mas-instalar-txt"></span></span></button></li>
@@ -2484,7 +2506,7 @@ display: none !important;
       <h3 id="ap-atajos-tit"><span class="i i-teclado" aria-hidden="true"></span>Atajos de teclado</h3>
       <ul>
         <li>Alt + 1 a Alt + 5: ir a los pasos V, A, L, E y al resultado.</li>
-        <li>Ctrl + P o ⌘ + P: imprimir el informe para el comité (el PDF se obtiene con «Informe para el comité (PDF)»).</li>
+        <li>Ctrl + P o ⌘ + P: abrir el diálogo de impresión del navegador. El informe para el comité se obtiene en PDF con «Informe para el comité (PDF)».</li>
         <li>Esc: cerrar el panel abierto.</li>
       </ul>
     </section>
@@ -8667,7 +8689,7 @@ display: none !important;
     }
     s += '<section class="re-inf-sec re-inf-firmas"><p>Responsable del indicador: ____________________</p>' +
       '<p>Fecha de revisión: ____________________</p></section>';
-    s += '<footer class="re-inf-pie">Informe para el comité de decisión · Método VALE · Acevedo Enterprise IA · Versión 1.8 · 26-nov-2026</footer>';
+    s += '<footer class="re-inf-pie">Informe para el comité de decisión · Método VALE · Acevedo Enterprise IA · Versión 1.8.1 · 26-nov-2026</footer>';
     return s + '</article>';
   }
 
@@ -8972,7 +8994,7 @@ display: none !important;
   const NBSP = ' ';
   const MENOS = '−';
   const ORIENTATIVO = 'El resultado es orientativo y no sustituye al comité de inversiones.';
-  const VERSION_PIE = 'Versión 1.8 · 26-nov-2026';
+  const VERSION_PIE = 'Versión 1.8.1 · 26-nov-2026';
   const CABECERA = 'ACEVEDO · ¿Vale? · Informe para el comité de decisión';
   const MAX_PAGINAS = 3;
 
@@ -12564,7 +12586,7 @@ display: none !important;
   const TASA_SALIDA = 24000;
   const MS_TROZO = 40;
   const ESPERA_CONFIGURACION_MS = 6000;
-  const ESPERA_APERTURA_MS = 8000;
+  const ESPERA_APERTURA_MS = 7000;
   const ESPERA_REANUDAR_MS = 1500;
   const ESPERA_RESPUESTA_MS = 15000;
   const MARGEN_DESPEDIDA_MS = 20000;
@@ -13056,33 +13078,43 @@ display: none !important;
       L.fase = 'abriendo';
       const Ctor = constructorAudio();
       if (!Ctor || !hayMicro() || !hayWs()) return fallar('audio', 'sin soporte');
-      let reanudados = [];
+      L.plazoApertura = plazo(() => {
+        if (L.fase === 'abriendo' || L.fase === 'esperando') fallar(L.flujo ? 'token' : 'microfono', 'tiempo');
+      }, ajuste('voz_viva_apertura_ms', ESPERA_APERTURA_MS));
+      let pedido;
+      try {
+        pedido = Promise.resolve(navigator.mediaDevices.getUserMedia({ audio: { channelCount: 1, echoCancellation: true, noiseSuppression: true, autoGainControl: true } }));
+      } catch (err) {
+        pedido = Promise.reject(err);
+      }
+      let reanudadoSalida = null;
       try {
         L.ctxSalida = nuevoContexto(Ctor, TASA_SALIDA);
-        L.ctxEntrada = nuevoContexto(Ctor, 0);
-        reanudados = [L.ctxSalida, L.ctxEntrada].map((c) => {
-          try {
-            return c.resume();
-          } catch (err) {
-            return null;
-          }
-        });
+        try {
+          reanudadoSalida = L.ctxSalida.resume();
+        } catch (err) {
+          reanudadoSalida = null;
+        }
         const an = L.ctxSalida.createAnalyser();
         an.fftSize = 1024;
         an.connect(L.ctxSalida.destination);
         L.analizadorSalida = an;
         L.memoriaSalida = new Float32Array(an.fftSize || 1024);
       } catch (err) {
+        pedido.then((f) => {
+          try {
+            f.getTracks().forEach((p) => p.stop());
+          } catch (e2) {
+            return;
+          }
+        }, () => {});
         return fallar('audio', 'contexto');
       }
       avisar('estado', (L.estado = 'conectando'));
       L.cuadro = pedirCuadro();
-      L.plazoApertura = plazo(() => {
-        if (L.fase === 'abriendo' || L.fase === 'esperando') fallar(L.flujo ? 'token' : 'microfono', 'tiempo');
-      }, ajuste('voz_viva_apertura_ms', ESPERA_APERTURA_MS));
       let flujo = null;
       try {
-        flujo = await navigator.mediaDevices.getUserMedia({ audio: { channelCount: 1, echoCancellation: true, noiseSuppression: true, autoGainControl: true } });
+        flujo = await pedido;
       } catch (err) {
         return fallar('microfono', err && err.name ? String(err.name) : '');
       }
@@ -13094,6 +13126,22 @@ display: none !important;
         }
         return false;
       }
+      let reanudadoEntrada = null;
+      try {
+        L.ctxEntrada = nuevoContexto(Ctor, 0);
+        try {
+          reanudadoEntrada = L.ctxEntrada.resume();
+        } catch (err) {
+          reanudadoEntrada = null;
+        }
+      } catch (err) {
+        try {
+          flujo.getTracks().forEach((p) => p.stop());
+        } catch (e2) {
+        }
+        return fallar('audio', 'contexto');
+      }
+      const reanudados = [reanudadoSalida, reanudadoEntrada];
       L.flujo = flujo;
       await esperarHasta(Promise.all(reanudados).catch(() => null), ajuste('voz_viva_reanudar_ms', ESPERA_REANUDAR_MS));
       if (L.fase !== 'abriendo') return false;
@@ -13891,6 +13939,7 @@ display: none !important;
       pedidaP: null,
       partidaSupuesta: false,
       informeListo: null,
+      verInforme: false,
       completa: false,
       registro: null,
       rondasExtra: 0,
@@ -14712,6 +14761,7 @@ display: none !important;
   }
 
   async function turno(opc) {
+    conv.verInforme = false;
     try {
       return await turnoInterno(opc || {});
     } catch (err) {
@@ -15230,8 +15280,18 @@ display: none !important;
 
   function vvContinuarEnTexto() {
     if (!conv.abierto || !iaActiva() || conv.limite || conv.completa || conv.registro === 'pidiendo' || conv.ocupado) return;
-    if (conv.historial.length === 0) turno({});
-    else turno({ texto: TXT.seguimos, sintetico: true });
+    if (conv.historial.length === 0 && conv.mensajes.length === 0) turno({});
+  }
+
+  function enfocarCampoTexto() {
+    try {
+      if (!hayDocumento() || !conv.abierto || !panel || panel.hidden || conv.registro === 'pidiendo') return;
+      if (!punteroFino() || (typeof innerWidth === 'number' && innerWidth < 1024)) return;
+      const campo = porId('cv-texto');
+      if (campo && !campo.disabled && typeof campo.focus === 'function') campo.focus({ preventScroll: true });
+    } catch (err) {
+      return;
+    }
   }
 
   function vvFallo(motivo, detalle) {
@@ -15244,6 +15304,7 @@ display: none !important;
     vv.nota = sinPermiso ? TXT.sinMicro : (motivo === 'socket' ? TXT.vvCaida : TXT.vvRespaldo);
     pintarTodo();
     vvContinuarEnTexto();
+    enfocarCampoTexto();
   }
 
   function vvFin(motivo) {
@@ -15429,12 +15490,67 @@ display: none !important;
     return h;
   }
 
+  function verUltimoMensaje() {
+    try {
+      const cuerpo = porId('cv-cuerpo');
+      const lista = porId('cv-mensajes');
+      if (!cuerpo || !lista) return;
+      const ultimo = lista.lastElementChild;
+      if (!ultimo || typeof ultimo.getBoundingClientRect !== 'function' || typeof cuerpo.getBoundingClientRect !== 'function') {
+        cuerpo.scrollTop = cuerpo.scrollHeight;
+        return;
+      }
+      if (!(cuerpo.clientHeight > 0)) return;
+      const rc = cuerpo.getBoundingClientRect();
+      const ru = ultimo.getBoundingClientRect();
+      let relleno = 0;
+      try {
+        relleno = parseFloat(getComputedStyle(cuerpo).paddingTop) || 0;
+      } catch (err) {
+        relleno = 0;
+      }
+      let destino = cuerpo.scrollTop + (ru.top - rc.top) - relleno;
+      const tarjeta = conv.verInforme ? porId('cv-informe-listo') : null;
+      if (tarjeta && typeof tarjeta.getBoundingClientRect === 'function') {
+        let rellenoAbajo = 0;
+        try {
+          rellenoAbajo = parseFloat(getComputedStyle(cuerpo).paddingBottom) || 0;
+        } catch (err2) {
+          rellenoAbajo = 0;
+        }
+        const rt = tarjeta.getBoundingClientRect();
+        const dTarjeta = cuerpo.scrollTop + (rt.bottom - rc.bottom) + rellenoAbajo;
+        const tope = cuerpo.scrollTop + (rt.top - rc.top) - relleno;
+        destino = Math.min(Math.max(destino, dTarjeta), tope);
+      }
+      destino = Math.max(0, Math.round(destino));
+      if (Math.abs(destino - cuerpo.scrollTop) > 0.5) cuerpo.scrollTop = destino;
+    } catch (err) {
+      return;
+    }
+  }
+
+  let temporizadorUltimo = null;
+  function verUltimoMensajeTras() {
+    verUltimoMensaje();
+    if (!hayDocumento() || typeof setTimeout !== 'function') return;
+    if (temporizadorUltimo) clearTimeout(temporizadorUltimo);
+    temporizadorUltimo = setTimeout(() => {
+      temporizadorUltimo = null;
+      if (conv.registro !== 'pidiendo') verUltimoMensaje();
+    }, 260);
+  }
+
   const pintarMensajes = seguro(function () {
     const el = porId('cv-mensajes');
     if (!el) return;
     el.innerHTML = mensajesHtml();
-    const cuerpo = porId('cv-cuerpo');
-    if (cuerpo) cuerpo.scrollTop = cuerpo.scrollHeight;
+    if (conv.registro === 'pidiendo') {
+      const cuerpo = porId('cv-cuerpo');
+      if (cuerpo) cuerpo.scrollTop = cuerpo.scrollHeight;
+      return;
+    }
+    verUltimoMensajeTras();
   });
 
   const pintarDatos = seguro(function () {
@@ -15830,12 +15946,9 @@ display: none !important;
       if (r && r.estado === 'listo') {
         conv.informeListo = { nombre: r.nombre, url: r.url, compartir: r.compartir === true, firma: firmaInforme() };
         avisar(TXT.informeAbierto, 'info');
+        conv.verInforme = true;
         pintarTarjeta();
-        try {
-          const t = porId('cv-informe-listo');
-          if (t && typeof t.scrollIntoView === 'function') t.scrollIntoView({ block: 'center', behavior: 'auto' });
-        } catch (e2) {
-        }
+        verUltimoMensajeTras();
       } else if (!r) {
         avisar(TXT.informeAbierto, 'info');
       }
