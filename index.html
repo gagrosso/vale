@@ -1408,7 +1408,6 @@ color-scheme:light;
 .ac-fila{display:grid;grid-template-columns:repeat(2, minmax(0, 1fr));gap:var(--esp-4)}
 .ac-campo{min-width:0}
 .ac-pista{margin:calc(-1 * var(--esp-2)) 0 0;font-size:var(--fs-14);line-height:var(--lh-14);color:var(--ink-2)}
-.ac-error-grupo{margin:calc(-1 * var(--esp-2)) 0 0}
 .ac-trampa{position:absolute;left:-10000px;top:auto;width:1px;height:1px;overflow:hidden}
 .ac-legal{margin:0;font-size:var(--fs-14);line-height:var(--lh-14);color:var(--ink-2)}
 .ac-legal a{color:var(--accent-ink);text-decoration:underline}
@@ -1489,6 +1488,9 @@ html.cv-abierto body{padding-bottom:0}
 .cv-ficha-activa{border-color:var(--accent-ink);background:var(--accent-tint)}
 .cv-ficha-etq{color:var(--ink-2)}
 .cv-ficha-val{font-weight:700}
+.cv-fichas > li{min-width:0;max-width:100%}
+.cv-ficha{max-width:100%;overflow-wrap:anywhere}
+.cv-ver-datos{align-self:flex-start}
 .cv-editor{display:flex;flex-direction:column;gap:var(--esp-2);padding:var(--esp-3);border:var(--borde);border-radius:var(--radio-2);background:var(--surface-2)}
 .cv-tarjeta{display:flex;flex-direction:column;gap:var(--esp-3);padding:var(--esp-4);border:var(--borde);border-left:var(--barra-acento) solid var(--accent);border-radius:var(--radio-2);background:var(--surface-2)}
 .cv-reco{margin:0}
@@ -1557,8 +1559,8 @@ html.cv-teclado .cv-cab{padding-block:var(--esp-2)}
 .cv-sub{font-size:var(--fs-14);line-height:var(--lh-14)}
 .cv-ayuda{font-size:var(--fs-12);line-height:var(--lh-12)}
 .cv-fichas{flex-wrap:nowrap;overflow-x:auto;overscroll-behavior-x:contain;padding-bottom:var(--esp-1);scrollbar-width:thin}
-.cv-fichas > li{flex:none}
-.cv-ficha{white-space:nowrap}
+.cv-fichas > li{flex:none;max-width:calc(100% - var(--esp-4))}
+.cv-ficha{white-space:normal;max-width:100%}
 }
 @media (max-height:640px){
 .cv-panel[data-ficha="1"] .cv-pie{display:none}
@@ -2443,7 +2445,7 @@ display: none !important;
 
 <footer id="ap-pie" class="pie"><div class="ap-pie-in">
   <p>Diseñada para el comité de inversiones · Método VALE · Acevedo Enterprise IA</p>
-  <p class="ap-version">Versión 1.8.1 · 26-nov-2026</p>
+  <p class="ap-version">Versión 1.9.0 · 26-nov-2026</p>
   <p class="ap-pie-aviso">El resultado es orientativo y no sustituye al comité de inversiones.</p>
   <p id="ap-instalar" class="ap-instalar" hidden><span id="ap-instalar-txt"></span> <button type="button" id="ap-instalar-btn" class="btn texto compacto" hidden>Instalar la aplicación</button></p>
 </div></footer>
@@ -4367,7 +4369,7 @@ display: none !important;
       'En la conversación con ¿Vale?, lo que se dice o se escribe se envía a la IA para responder y no se guarda; ' +
       'el servicio de voz del navegador convierte la voz en texto. ' +
       'El uso se registra de forma anónima (fecha, paso y recomendación). ' +
-      'Para ver el resultado de un proyecto propio se pide un nombre y un correo o teléfono. Los ejemplos se ven sin registrarse. ' +
+      'Para ver el resultado de un proyecto propio se pide un nombre y un correo electrónico; el teléfono es opcional. Los ejemplos se ven sin registrarse. ' +
       'Tras indicar los datos, este navegador recuerda durante 30 días que ya se indicaron, sin guardar los datos; «Borrar datos» lo elimina. ' +
       'Los datos de contacto solo se envían al registrarse o al solicitar una reunión.',
     confianzaRegistroOpcional: 'El cálculo se realiza en el dispositivo. ' +
@@ -4375,7 +4377,7 @@ display: none !important;
       'En la conversación con ¿Vale?, lo que se dice o se escribe se envía a la IA para responder y no se guarda; ' +
       'el servicio de voz del navegador convierte la voz en texto. ' +
       'El uso se registra de forma anónima (fecha, paso y recomendación). ' +
-      'Para ver el resultado de un proyecto propio se puede indicar un nombre y un correo o teléfono; no es obligatorio. ' +
+      'Para ver el resultado de un proyecto propio se puede indicar un nombre y un correo electrónico (el teléfono es opcional); no es obligatorio. ' +
       'Tras indicar los datos, este navegador recuerda durante 30 días que ya se indicaron, sin guardar los datos; «Borrar datos» lo elimina. ' +
       'Los datos de contacto solo se envían si se indican o si se solicita una reunión.'
   };
@@ -8689,7 +8691,7 @@ display: none !important;
     }
     s += '<section class="re-inf-sec re-inf-firmas"><p>Responsable del indicador: ____________________</p>' +
       '<p>Fecha de revisión: ____________________</p></section>';
-    s += '<footer class="re-inf-pie">Informe para el comité de decisión · Método VALE · Acevedo Enterprise IA · Versión 1.8.1 · 26-nov-2026</footer>';
+    s += '<footer class="re-inf-pie">Informe para el comité de decisión · Método VALE · Acevedo Enterprise IA · Versión 1.9.0 · 26-nov-2026</footer>';
     return s + '</article>';
   }
 
@@ -8994,7 +8996,7 @@ display: none !important;
   const NBSP = ' ';
   const MENOS = '−';
   const ORIENTATIVO = 'El resultado es orientativo y no sustituye al comité de inversiones.';
-  const VERSION_PIE = 'Versión 1.8.1 · 26-nov-2026';
+  const VERSION_PIE = 'Versión 1.9.0 · 26-nov-2026';
   const CABECERA = 'ACEVEDO · ¿Vale? · Informe para el comité de decisión';
   const MAX_PAGINAS = 3;
 
@@ -10048,10 +10050,10 @@ display: none !important;
     titulo: '¿A quién preparamos el resultado?',
     tituloCompacto: 'A quién va dirigido el resultado',
     linea: 'El resultado está calculado. Para verlo, indicar a quién va dirigido.',
-    pista: 'Basta con indicar un correo o un teléfono.',
+    pista: 'El correo es obligatorio; el teléfono, opcional.',
     nombre: 'Nombre',
     correo: 'Correo profesional',
-    telefono: 'Teléfono',
+    telefono: 'Teléfono (opcional)',
     empresa: 'Empresa (opcional)',
     comunicaciones: 'Acepto recibir comunicaciones de Acevedo sobre IA en finanzas. Baja disponible en cada envío.',
     ver: 'Ver el resultado',
@@ -10091,8 +10093,7 @@ display: none !important;
     nombre: 'Indicar el nombre (entre 2 y 80 caracteres).',
     correo: 'Indicar un correo electrónico válido (como máximo 120 caracteres).',
     telefono: 'Indicar un teléfono válido: dígitos y espacios, con el signo + solo al principio (entre 7 y 15 dígitos).',
-    empresa: 'La empresa admite entre 2 y 100 caracteres.',
-    contacto: 'Indicar un correo o un teléfono.'
+    empresa: 'La empresa admite entre 2 y 100 caracteres.'
   };
 
   const LEGAL_1 = 'Responsable: Acevedo Technology & Consulting Corporation, S.L. Finalidad: entregar el resultado de la evaluación y que el área de IA ' +
@@ -10256,10 +10257,9 @@ display: none !important;
     const telefono = limpiar(v.telefono);
     const empresa = limpiar(v.empresa);
     if (nombre.length < 2 || nombre.length > MAX.nombre) e.nombre = MSG.nombre;
-    if (correo && (correo.length > MAX.correo || !FORMA_CORREO.test(correo))) e.correo = MSG.correo;
+    if (!correo || correo.length > MAX.correo || !FORMA_CORREO.test(correo)) e.correo = MSG.correo;
     if (telefono && (telefono.length > MAX.telefono || !telefonoValido(telefono))) e.telefono = MSG.telefono;
     if (empresa && (empresa.length < 2 || empresa.length > MAX.empresa)) e.empresa = MSG.empresa;
-    if (!correo && !telefono) e.contacto = MSG.contacto;
     return e;
   }
 
@@ -10271,7 +10271,6 @@ display: none !important;
     if (CAMPOS.indexOf(campo) < 0 && campo !== 'web') return;
     ac.valores[campo] = String(valor === null || valor === undefined ? '' : valor).slice(0, campo === 'web' ? 200 : MAX[campo] + 40);
     if (ac.errores[campo]) delete ac.errores[campo];
-    if ((campo === 'correo' || campo === 'telefono') && ac.errores.contacto) delete ac.errores.contacto;
   }
 
   function avisar(tipo) {
@@ -10430,7 +10429,7 @@ display: none !important;
     detenerDictado();
     const errores = validar(ac.valores);
     ac.errores = errores;
-    const primero = ['nombre', 'correo', 'telefono', 'empresa'].filter((c) => errores[c])[0] || (errores.contacto ? 'correo' : '');
+    const primero = ['nombre', 'correo', 'telefono', 'empresa'].filter((c) => errores[c])[0] || '';
     if (primero) {
       ac.estado = 'inicial';
       ac.foco = idCampo(lugar, primero);
@@ -10461,10 +10460,11 @@ display: none !important;
     }
     const campo = r && r.estado === 400 && r.datos && typeof r.datos.campo === 'string' ? r.datos.campo : '';
     if (campo && (CAMPOS.indexOf(campo) >= 0 || campo === 'contacto')) {
+      const enCampo = campo === 'contacto' ? 'correo' : campo;
       ac.estado = 'inicial';
       ac.errores = {};
-      ac.errores[campo] = MSG[campo];
-      ac.foco = idCampo(lugar, campo === 'contacto' ? 'correo' : campo);
+      ac.errores[enCampo] = MSG[enCampo];
+      ac.foco = idCampo(lugar, enCampo);
       avisar('estado');
       return ac;
     }
@@ -10512,9 +10512,8 @@ display: none !important;
   function campoHtml(ambito, nombre, tipo, extra) {
     const id = idCampo(ambito, nombre);
     const err = ac.errores[nombre];
-    const grupo = (nombre === 'correo' || nombre === 'telefono') && ac.errores.contacto;
-    const invalido = !!(err || grupo);
-    const descrito = err ? id + '-error' : (grupo ? idCampo(ambito, 'contacto-error') : '');
+    const invalido = !!err;
+    const descrito = err ? id + '-error' : '';
     const dictando = ac.dictado && ac.dictado.campo === nombre && ac.dictado.ambito === ambito;
     const micro = dictadoDisponible()
       ? '<button type="button" class="ac-micro' + (dictando ? ' ac-micro-activo' : '') + '" data-ac-dictar="' + nombre + '" data-ac-ambito="' + ambito + '" aria-pressed="' +
@@ -10551,9 +10550,6 @@ display: none !important;
       campoHtml(ambito, 'correo', 'email', ' autocomplete="email" inputmode="email" autocapitalize="none" autocorrect="off" spellcheck="false" enterkeyhint="next"') +
       campoHtml(ambito, 'telefono', 'tel', ' autocomplete="tel" inputmode="tel" enterkeyhint="next"') + '</div>';
     s += '<p class="ac-pista" id="' + idCampo(ambito, 'pista') + '">' + esc(TXT.pista) + '</p>';
-    if (ac.errores.contacto) {
-      s += '<p class="campo-error ac-error-grupo" id="' + idCampo(ambito, 'contacto-error') + '" role="alert">' + esc(ac.errores.contacto) + '</p>';
-    }
     s += campoHtml(ambito, 'empresa', 'text', ' autocomplete="organization" autocapitalize="words" enterkeyhint="send"');
     s += '<p class="ac-dictado-msg" id="' + idCampo(ambito, 'dictado-msg') + '" role="status" aria-live="polite">' + esc(ac.dictadoMsg) + '</p>';
     s += '<div class="ac-trampa" aria-hidden="true"><input type="text" id="' + idCampo(ambito, 'web') + '" name="web" data-ac="web" tabindex="-1" autocomplete="off" value="' +
@@ -12595,7 +12591,8 @@ display: none !important;
   const PREFIJO_WS = 'wss://generativelanguage.googleapis.com/ws/';
 
   const TEXTOS = {
-    abrir: 'Empieza la conversación: saluda en una frase, di que vas a ir haciendo preguntas y pregunta qué tipo de beneficio se espera del proyecto.',
+    abrir: 'Empieza la conversación: saluda en una frase en la que te presentes y después pregunta, con estas mismas palabras: «¿Lo vemos en versión breve o en versión completa?»',
+    seguir: 'La conversación ya está empezada: no vuelvas a preguntar por la versión. Saluda en una frase breve y sigue con lo pendiente, empezando por el primer dato que falta.',
     despedida: 'El tiempo de la conversación se acaba. Despídete en una sola frase breve, sin hacer más preguntas.',
     registroHecho: 'El registro está hecho. Llama ahora a pedir_resultado y explica el resultado.'
   };
@@ -13027,7 +13024,13 @@ display: none !important;
       actualizarEstado();
       arrancarEntrada().then(() => {
         if (L.fase !== 'activa') return;
-        enviarTexto(TEXTOS.abrir);
+        let apertura = null;
+        try {
+          apertura = typeof A.apertura === 'function' ? A.apertura() : null;
+        } catch (err) {
+          apertura = null;
+        }
+        enviarTexto(typeof apertura === 'string' && apertura.trim() ? apertura : TEXTOS.abrir);
         esperarRespuesta(true);
       }).catch(() => {
         fallar('microfono', 'captura');
@@ -13753,7 +13756,11 @@ display: none !important;
   const TIEMPO_TURNO_MS = 20000;
   const ESPERA_VOZ_IA_MS = 2500;
   const RONDAS_EXTRA = 8;
+  const RONDAS_EXTRA_COMPLETA = 40;
+  const MAX_FICHAS_SIN_PLEGAR = 16;
+  const FICHAS_PLEGADAS = 8;
   const MAX_VECES_EXTRA = 2;
+  const MAX_VECES_COMPLETA = 3;
   const RESALTE_MS = 2600;
   const NIVELES = [0.3, 0.5, 0.7, 0.9];
   const FRASE_RESULTADO = 'Ya están todos los datos. Explicar el resultado.';
@@ -13806,7 +13813,11 @@ display: none !important;
     vvSilenciar: 'Silenciar micrófono',
     vvActivar: 'Activar micrófono',
     vvTerminar: 'Terminar',
-    seguimos: 'Seguimos por escrito.'
+    seguimos: 'Seguimos por escrito.',
+    supuestoMetodo: '(supuesto del método)',
+    supuestoSolo: 'supuesto del método',
+    sinImporte: 'sin importe',
+    verMenos: 'Ver menos'
   };
 
   const TIPOS = [['horas', 'Ahorro de horas'], ['ventas', 'Ventas adicionales'], ['perdidas', 'Pérdidas evitadas'], ['gasto', 'Gasto evitado']];
@@ -13856,70 +13867,251 @@ display: none !important;
     return r;
   }
 
+  const QUIEN = [['equipo_actual', 'Equipo actual'], ['personal_adicional', 'Personal adicional']];
+  const QUIEN_RUTA = { equipo_actual: 'equipo', personal_adicional: 'nueva' };
+  const PERFILES = [['primer_ano', 'Primer año'], ['regimen_estable', 'Régimen estable']];
+  const INTEGRACIONES = [['proceso', 'En el proceso'], ['asistente', 'Asistente de uso voluntario']];
+  const MADURACION = [0, 3, 6, 12].map((x) => [x, x === 0 ? 'Sin maduración' : x + NB + 'meses']);
+  const REPARTO_PERFIL = { primer_ano: { s: 0.4, r: 0.5, T: 0 }, regimen_estable: { s: 0.7, r: 0.25, T: 6 } };
+
+  function partidasTxt() {
+    const P = VALE.motor.PARTIDAS_GASTO;
+    return Object.keys(P).filter((k) => k).map((k) => [k, P[k]]);
+  }
+
+  function etqDe(opciones, v) {
+    const o = opciones.find((x) => x[0] === v);
+    return o ? o[1] : '';
+  }
+
+  function pctTxt(v) {
+    return corto(v * 100, 2) + NB + '%';
+  }
+
+  function minutosTxt(v) {
+    return corto(v) + NB + 'minutos';
+  }
+
+  function siNo(v) {
+    return v ? 'Sí' : 'No';
+  }
+
+  const esTipo = (t) => (p) => p.tipo_beneficio === t;
+  const esHoras = esTipo('horas');
+  const noHoras = (p) => !!p.tipo_beneficio && p.tipo_beneficio !== 'horas';
+  const reutilizable = (p) => !!(p.plataforma && p.plataforma.reutilizable === true);
+  const t0De = (p) => (typeof p.horas.t0 === 'number' && p.horas.t0 > 0 ? p.horas.t0 : null);
+
+  function supervisionPorOmision(p) {
+    try {
+      const M = VALE.motor;
+      const clon = M.clonar(p);
+      clon.simple.R_sup = null;
+      const n = M.normalizar(clon);
+      if (!n.P.tipo_beneficio || n.faltan.some((k) => k.indexOf('horas.') === 0)) return null;
+      const d = M.interno.derivar(n.P, { p: n.P.p === null ? 0.5 : n.P.p });
+      return typeof d.R_sup === 'number' && isFinite(d.R_sup) ? d.R_sup : null;
+    } catch (err) {
+      return null;
+    }
+  }
+
+  function aCinco(v) {
+    return Math.round(v * 20) * 5 / 100;
+  }
+
+  function rutasPerfil(v, lote) {
+    const p = proyecto();
+    const r = { 'horas.perfil': v };
+    if (v === p.horas.perfil) return r;
+    const dicho = (c) => conv.tocados.has(c) || !!(lote && lote.has(c));
+    if (!dicho('pct_automatico') && !dicho('pct_con_revision') && !dicho('meses_maduracion')) return r;
+    const d = REPARTO_PERFIL[v];
+    r['horas.s'] = dicho('pct_automatico') ? p.horas.s : d.s;
+    r['horas.r'] = dicho('pct_con_revision') ? p.horas.r : d.r;
+    r.T = dicho('meses_maduracion') ? p.T : d.T;
+    return r;
+  }
+
   const LISTA = [
-    { clave: 'tipo_beneficio', etq: 'Beneficio', tipo: 'opc', ruta: 'tipo_beneficio', opciones: TIPOS,
+    { clave: 'tipo_beneficio', etq: 'Beneficio', tipo: 'opc', ruta: 'tipo_beneficio', opciones: TIPOS, paso: 'V',
       leer: (p) => p.tipo_beneficio, texto: (v) => TIPO_TXT[v] || '' },
-    { clave: 'volumen_anual', etq: 'Volumen', tipo: 'num', min: 1, max: 1e9, ruta: 'horas.V',
-      leer: (p) => p.horas.V, texto: (v, p) => F().entero(v) + NB + VALE.ui.unidad(p, true) + ' al año' },
-    { clave: 'minutos_por_tarea', etq: 'Tiempo actual', tipo: 'num', min: 0.1, max: 10000, ruta: 'horas.t0',
-      leer: (p) => p.horas.t0, texto: (v, p) => corto(v) + NB + 'minutos por ' + VALE.ui.unidad(p, false) },
-    { clave: 'coste_hora', etq: 'Coste por hora', tipo: 'num', min: 1, max: 1000, ruta: 'horas.c', soloTocado: true,
-      rutas: (v) => ({ 'horas.c_opcion': 'otro', 'horas.c': v }),
-      extra: true, final: true, aplica: (p) => p.tipo_beneficio === 'horas',
-      leer: (p) => p.horas.c, texto: (v) => corto(v) + NB + '€' },
-    { clave: 'horas_con_valor', etq: 'Horas con impacto económico', tipo: 'frac', min: 0, max: 1, ruta: 'horas.destino.gasto', soloTocado: true,
-      rutas: destinoPorKappa, extra: true, final: true, aplica: (p) => p.tipo_beneficio === 'horas',
-      leer: (p) => kappaDe(p), texto: (v) => F().pct(v) },
-    { clave: 'unidad', etq: 'Unidad', tipo: 'opc', ruta: 'horas.unidad', soloTocado: true, sinFicha: true,
+    { clave: 'unidad', etq: 'Unidad', tipo: 'opc', ruta: 'horas.unidad', soloTocado: true, sinFicha: true, paso: 'V', aplica: esHoras,
       get opciones() { return unidadesTxt(); },
       leer: (p) => p.horas.unidad, texto: (v) => (VALE.motor.UNIDADES[v] || { singular: '' }).singular },
-    { clave: 'ventas_importe', etq: 'Ventas adicionales', tipo: 'num', min: 0, max: 1e12, ruta: 'ventas.importe',
+    { clave: 'volumen_anual', etq: 'Volumen', tipo: 'num', min: 1, max: 1e9, ruta: 'horas.V', paso: 'V', aplica: esHoras,
+      leer: (p) => p.horas.V, texto: (v, p) => F().entero(v) + NB + VALE.ui.unidad(p, true) + ' al año' },
+    { clave: 'minutos_por_tarea', etq: 'Tiempo actual', tipo: 'num', min: 0.1, max: 10000, ruta: 'horas.t0', paso: 'V', aplica: esHoras,
+      leer: (p) => p.horas.t0, texto: (v, p) => corto(v) + NB + 'minutos por ' + VALE.ui.unidad(p, false) },
+    { clave: 'coste_hora', etq: 'Coste por hora', tipo: 'num', min: 1, max: 1000, ruta: 'horas.c', soloTocado: true,
+      rutas: (v) => ({ 'horas.c_opcion': 'otro', 'horas.c': v }), marcas: ['horas.c_opcion'],
+      extra: true, aplica: esHoras, paso: 'V', supuesto: (p) => p.horas.c,
+      leer: (p) => p.horas.c, texto: (v) => corto(v) + NB + '€' },
+    { clave: 'horas_con_valor', ver: 'breve', etq: 'Horas con impacto económico', tipo: 'frac', min: 0, max: 1, ruta: 'horas.destino.gasto', soloTocado: true,
+      rutas: destinoPorKappa, marcas: ['horas.destino.crecimiento', 'horas.destino.reasignacion', 'horas.partida_gasto'],
+      extra: true, aplica: esHoras, supuesto: kappaDe,
+      leer: (p) => Math.round(kappaDe(p) * 1e4) / 1e4, texto: (v) => F().pct(v) },
+    { clave: 'quien_revisa', ver: 'completa', etq: 'Revisión de casos dudosos', tipo: 'opc', opciones: QUIEN, ruta: 'horas.quien', soloTocado: true,
+      rutas: (v) => ({ 'horas.quien': QUIEN_RUTA[v] }), aplica: esHoras, paso: 'V',
+      supuesto: (p) => (p.horas.quien === 'nueva' ? 'personal_adicional' : 'equipo_actual'),
+      leer: (p) => (p.horas.quien === 'nueva' ? 'personal_adicional' : 'equipo_actual'), texto: (v) => etqDe(QUIEN, v) },
+    { clave: 'perfil', ver: 'completa', etq: 'Distribución de tareas con IA', tipo: 'opc', opciones: PERFILES, ruta: 'horas.perfil', soloTocado: true,
+      rutas: rutasPerfil, debil: true, aplica: esHoras, paso: 'V', supuesto: (p) => p.horas.perfil,
+      leer: (p) => p.horas.perfil, texto: (v) => etqDe(PERFILES, v) },
+    { clave: 'pct_automatico', ver: 'completa', etq: 'Automático', tipo: 'frac', min: 0, max: 1, ruta: 'horas.s', soloTocado: true,
+      rutas: (v) => ({ 'horas.s': aCinco(v) }), aplica: esHoras, paso: 'V', supuesto: (p) => p.horas.s,
+      leer: (p) => p.horas.s, texto: pctTxt },
+    { clave: 'pct_con_revision', ver: 'completa', etq: 'Con revisión', tipo: 'frac', min: 0, max: 1, ruta: 'horas.r', soloTocado: true,
+      rutas: (v) => ({ 'horas.r': aCinco(v) }), aplica: esHoras, paso: 'V', supuesto: (p) => p.horas.r,
+      leer: (p) => p.horas.r, texto: pctTxt },
+    { clave: 'minutos_revision', ver: 'completa', etq: 'Tiempo de revisión', tipo: 'num', min: 0, max: 10000, ruta: 'horas.tr', aplica: esHoras, paso: 'V',
+      supuesto: (p) => (t0De(p) === null ? null : 0.3 * t0De(p)),
+      leer: (p) => p.horas.tr, texto: minutosTxt },
+    { clave: 'minutos_excepcion', ver: 'completa', etq: 'Tiempo por excepción', tipo: 'num', min: 0, max: 10000, ruta: 'horas.tx', aplica: esHoras, paso: 'V',
+      supuesto: (p) => (t0De(p) === null ? null : 1.5 * t0De(p)),
+      leer: (p) => p.horas.tx, texto: minutosTxt },
+    { clave: 'destino_gasto', ver: 'completa', etq: 'Reducción de gasto', tipo: 'frac', min: 0, max: 1, ruta: 'horas.destino.gasto', soloTocado: true,
+      rutas: (v) => ({ 'horas.destino.gasto': Math.round(v * 10) }), aplica: esHoras, paso: 'V', supuesto: (p) => p.horas.destino.gasto / 10,
+      leer: (p) => p.horas.destino.gasto / 10, texto: pctTxt },
+    { clave: 'destino_crecimiento', ver: 'completa', etq: 'Absorción del crecimiento', tipo: 'frac', min: 0, max: 1, ruta: 'horas.destino.crecimiento', soloTocado: true,
+      rutas: (v) => ({ 'horas.destino.crecimiento': Math.round(v * 10) }), aplica: esHoras, paso: 'V', supuesto: (p) => p.horas.destino.crecimiento / 10,
+      leer: (p) => p.horas.destino.crecimiento / 10, texto: pctTxt },
+    { clave: 'destino_reasignacion', ver: 'completa', etq: 'Reasignación a otras tareas', tipo: 'frac', min: 0, max: 1, ruta: 'horas.destino.reasignacion', soloTocado: true,
+      rutas: (v) => ({ 'horas.destino.reasignacion': Math.round(v * 10) }), aplica: esHoras, paso: 'V', supuesto: (p) => p.horas.destino.reasignacion / 10,
+      leer: (p) => p.horas.destino.reasignacion / 10, texto: pctTxt },
+    { clave: 'partida_gasto', ver: 'completa', etq: 'Partida de gasto que se reduce', tipo: 'opc', ruta: 'horas.partida_gasto', soloTocado: true,
+      get opciones() { return partidasTxt(); }, aplica: (p) => esHoras(p) && p.horas.destino.gasto > 0, paso: 'V',
+      leer: (p) => p.horas.partida_gasto || null, texto: (v) => VALE.motor.PARTIDAS_GASTO[v] || '' },
+    { clave: 'crecimiento_volumen', ver: 'completa', etq: 'Crecimiento anual del volumen', tipo: 'frac', min: 0, max: 1, ruta: 'horas.g', soloTocado: true,
+      aplica: (p) => esHoras(p) && p.horas.destino.crecimiento > 0, paso: 'V', supuesto: (p) => p.horas.g,
+      leer: (p) => p.horas.g, texto: (v) => pctTxt(v) + ' al año' },
+    { clave: 'cobertura_proceso', ver: 'completa', etq: 'Cobertura del proceso', tipo: 'frac', min: 0, max: 1, ruta: 'horas.k', soloTocado: true,
+      aplica: esHoras, paso: 'V', plegable: 'horas', supuesto: (p) => p.horas.k,
+      leer: (p) => p.horas.k, texto: pctTxt },
+    { clave: 'integracion', ver: 'completa', etq: 'Integración', tipo: 'opc', opciones: INTEGRACIONES, ruta: 'horas.integracion', soloTocado: true,
+      aplica: esHoras, paso: 'V', plegable: 'horas', supuesto: (p) => p.horas.integracion,
+      leer: (p) => p.horas.integracion, texto: (v) => etqDe(INTEGRACIONES, v) },
+    { clave: 'uso_asistente', ver: 'completa', etq: 'Uso efectivo del asistente', tipo: 'frac', min: 0, max: 1, ruta: 'horas.u', soloTocado: true,
+      aplica: (p) => esHoras(p) && p.horas.integracion === 'asistente', paso: 'V', plegable: 'horas', supuesto: (p) => p.horas.u,
+      leer: (p) => p.horas.u, texto: pctTxt },
+    { clave: 'muestreo_tareas_mes', ver: 'completa', etq: 'Control por muestreo', tipo: 'ent', min: 0, max: 1e9, ruta: 'horas.nm',
+      aplica: esHoras, paso: 'V', plegable: 'horas',
+      supuesto: (p) => (typeof p.horas.V === 'number' ? Math.round(Math.min(100, p.horas.s * p.horas.V / 24)) : null),
+      leer: (p) => p.horas.nm, texto: (v, p) => F().entero(v) + NB + VALE.ui.unidad(p, true) + ' al mes' },
+    { clave: 'minutos_muestreo', ver: 'completa', etq: 'Tiempo por tarea del muestreo', tipo: 'num', min: 0, max: 10000, ruta: 'horas.tm',
+      aplica: esHoras, paso: 'V', plegable: 'horas',
+      supuesto: (p) => (p.horas.tr !== null ? p.horas.tr : (t0De(p) === null ? null : 0.3 * t0De(p))),
+      leer: (p) => p.horas.tm, texto: minutosTxt },
+    { clave: 'horas_responsable_mes', ver: 'completa', etq: 'Dedicación del responsable del sistema', tipo: 'num', min: 0, max: 744, ruta: 'horas.hd', soloTocado: true,
+      aplica: esHoras, paso: 'V', plegable: 'horas', supuesto: (p) => p.horas.hd,
+      leer: (p) => p.horas.hd, texto: (v) => corto(v) + NB + 'h al mes' },
+    { clave: 'ventas_importe', etq: 'Ventas adicionales', tipo: 'num', min: 0, max: 1e12, ruta: 'ventas.importe', paso: 'V', aplica: esTipo('ventas'),
       leer: (p) => p.ventas.importe, texto: (v) => eur(v) + ' al año' },
-    { clave: 'ventas_margen', etq: 'Margen de contribución', tipo: 'frac', min: 0, max: 1, ruta: 'ventas.margen',
+    { clave: 'ventas_margen', etq: 'Margen de contribución', tipo: 'frac', min: 0, max: 1, ruta: 'ventas.margen', paso: 'V', aplica: esTipo('ventas'),
       leer: (p) => p.ventas.margen, texto: (v) => F().pct(v) },
-    { clave: 'perdidas_frecuencia', etq: 'Frecuencia de la pérdida', tipo: 'num', min: 0, max: 1000, ruta: 'perdidas.frecuencia',
+    { clave: 'perdidas_frecuencia', etq: 'Frecuencia de la pérdida', tipo: 'num', min: 0, max: 1000, ruta: 'perdidas.frecuencia', paso: 'V', aplica: esTipo('perdidas'),
       leer: (p) => p.perdidas.frecuencia, texto: (v) => corto(v, 3) + NB + (v === 1 ? 'vez' : 'veces') + ' al año' },
-    { clave: 'perdidas_impacto', etq: 'Impacto medio', tipo: 'num', min: 0, max: 1e12, ruta: 'perdidas.impacto',
+    { clave: 'perdidas_impacto', etq: 'Impacto medio', tipo: 'num', min: 0, max: 1e12, ruta: 'perdidas.impacto', paso: 'V', aplica: esTipo('perdidas'),
       leer: (p) => p.perdidas.impacto, texto: (v) => eur(v) },
-    { clave: 'perdidas_reduccion', etq: 'Reducción de la pérdida', tipo: 'frac', min: 0, max: 1, ruta: 'perdidas.reduccion',
+    { clave: 'perdidas_reduccion', etq: 'Reducción de la pérdida', tipo: 'frac', min: 0, max: 1, ruta: 'perdidas.reduccion', paso: 'V', aplica: esTipo('perdidas'),
       leer: (p) => p.perdidas.reduccion, texto: (v) => F().pct(v) },
-    { clave: 'gasto_evitado', etq: 'Gasto evitado', tipo: 'num', min: 0, max: 1e12, ruta: 'gasto.importe',
+    { clave: 'gasto_evitado', etq: 'Gasto evitado', tipo: 'num', min: 0, max: 1e12, ruta: 'gasto.importe', paso: 'V', aplica: esTipo('gasto'),
       leer: (p) => p.gasto.importe, texto: (v) => eur(v) + ' al año' },
-    { clave: 'medido', etq: 'Situación actual medida', tipo: 'bool', ruta: 'medido', soloTocado: true, extra: true,
-      leer: (p) => p.medido, texto: (v) => (v ? 'Sí' : 'No') },
-    { clave: 'responsable', etq: 'Responsable del resultado', tipo: 'bool', ruta: 'dueno', soloTocado: true, extra: true,
-      leer: (p) => p.dueno, texto: (v) => (v ? 'Sí' : 'No') },
-    { clave: 'probabilidad', etq: 'Probabilidad de éxito', tipo: 'nivel', ruta: 'p',
+    { clave: 'medido', etq: 'Situación actual medida', tipo: 'bool', ruta: 'medido', soloTocado: true, extra: true, paso: 'A',
+      supuesto: (p) => p.medido,
+      leer: (p) => p.medido, texto: siNo },
+    { clave: 'responsable', etq: 'Responsable del resultado', tipo: 'bool', ruta: 'dueno', soloTocado: true, extra: true, paso: 'A',
+      supuesto: (p) => p.dueno,
+      leer: (p) => p.dueno, texto: siNo },
+    { clave: 'probabilidad', etq: 'Probabilidad de éxito', tipo: 'nivel', ruta: 'p', paso: 'A',
       opciones: NIVELES.map((n) => [n, String(Math.round(n * 100)) + NB + '%']),
       leer: (p) => p.p, texto: (v) => F().pct(v) },
-    { clave: 'depende_de_terceros', etq: 'Depende de terceros', tipo: 'bool', ruta: 'control_empresa', soloTocado: true,
-      rutas: (v) => ({ control_empresa: !v }),
-      leer: (p) => !p.control_empresa, texto: (v) => (v ? 'Sí' : 'No') },
-    { clave: 'inversion', etq: 'Inversión inicial', tipo: 'num', min: 0, max: 1e12, ruta: 'simple.I',
+    { clave: 'depende_de_terceros', etq: 'Depende de terceros', tipo: 'bool', ruta: 'control_empresa', soloTocado: true, extra: true, paso: 'A',
+      rutas: (v) => ({ control_empresa: !v }), supuesto: (p) => !p.control_empresa,
+      leer: (p) => !p.control_empresa, texto: siNo },
+    { clave: 'inversion', ver: 'breve', etq: 'Inversión inicial', tipo: 'num', min: 0, max: 1e12, ruta: 'simple.I',
       leer: (p) => p.simple.I, texto: (v) => eur(v) },
-    { clave: 'coste_anual', etq: 'Coste anual', tipo: 'num', min: 0, max: 1e12, ruta: 'simple.R_sin_sup',
+    { clave: 'coste_anual', ver: 'breve', etq: 'Coste anual', tipo: 'num', min: 0, max: 1e12, ruta: 'simple.R_sin_sup',
       leer: (p) => p.simple.R_sin_sup, texto: (v) => eur(v) + ' al año' },
-    { clave: 'supervision_anual', etq: 'Supervisión', tipo: 'num', min: 0, max: 1e12, ruta: 'simple.R_sup',
-      extra: true, final: true, yaDado: (p) => p.simple.R_sup !== null && p.simple.R_sup !== undefined,
+    { clave: 'supervision_anual', ver: 'breve', etq: 'Supervisión', tipo: 'num', min: 0, max: 1e12, ruta: 'simple.R_sup',
+      extra: true, yaDado: (p) => p.simple.R_sup !== null && p.simple.R_sup !== undefined, supuesto: supervisionPorOmision,
       leer: (p) => p.simple.R_sup, texto: (v) => eur(v) + ' al año' },
-    { clave: 'meses_puesta_en_marcha', etq: 'Puesta en marcha', tipo: 'ent', min: 0, max: 12, ruta: 'm', soloTocado: true, extra: true,
-      leer: (p) => p.m, texto: (v) => F().meses(v) }
+    { clave: 'inversion_desarrollo', ver: 'completa', etq: 'Desarrollo e integración', tipo: 'num', min: 0, max: 1e12, ruta: 'inversion.desarrollo', paso: 'L',
+      leer: (p) => p.inversion.desarrollo, texto: (v) => eur(v) },
+    { clave: 'inversion_dedicacion', ver: 'completa', etq: 'Dedicación interna al proyecto', tipo: 'num', min: 0, max: 1e12, ruta: 'inversion.dedicacion', paso: 'L',
+      leer: (p) => p.inversion.dedicacion, texto: (v) => eur(v) },
+    { clave: 'inversion_datos', ver: 'completa', etq: 'Preparación de datos', tipo: 'num', min: 0, max: 1e12, ruta: 'inversion.datos', paso: 'L',
+      leer: (p) => p.inversion.datos, texto: (v) => eur(v) },
+    { clave: 'inversion_formacion', ver: 'completa', etq: 'Formación y gestión del cambio', tipo: 'num', min: 0, max: 1e12, ruta: 'inversion.formacion', paso: 'L',
+      leer: (p) => p.inversion.formacion, texto: (v) => eur(v) },
+    { clave: 'coste_licencias', ver: 'completa', etq: 'Licencias y servicios en la nube', tipo: 'num', min: 0, max: 1e12, ruta: 'costes.licencias', paso: 'L',
+      leer: (p) => p.costes.licencias, texto: (v) => eur(v) + ' al año' },
+    { clave: 'coste_mantenimiento', ver: 'completa', etq: 'Mantenimiento y control', tipo: 'num', min: 0, max: 1e12, ruta: 'costes.mantenimiento', paso: 'L',
+      leer: (p) => p.costes.mantenimiento, texto: (v) => eur(v) + ' al año' },
+    { clave: 'coste_por_operacion', ver: 'completa', etq: 'Coste variable por operación', tipo: 'num', min: 0, max: 1e12, ruta: 'costes.c_op', paso: 'L',
+      aplica: esHoras, leer: (p) => p.costes.c_op, texto: (v) => corto(v, 4) + NB + '€' },
+    { clave: 'coste_variable_anual', ver: 'completa', etq: 'Coste variable', tipo: 'num', min: 0, max: 1e12, ruta: 'costes.variable_anual', paso: 'L',
+      aplica: noHoras, leer: (p) => p.costes.variable_anual, texto: (v) => eur(v) + ' al año' },
+    { clave: 'supervision_euros_anuales', ver: 'completa', etq: 'Supervisión humana', tipo: 'num', min: 0, max: 1e12, ruta: 'costes.sup_eur_ano', paso: 'L',
+      rutas: (v) => ({ 'costes.sup_unidad': 'eur_ano', 'costes.sup_eur_ano': v }), aplica: noHoras, grupo: 'supervision_horas_mes',
+      yaDado: (p) => conocido(POR_CLAVE.supervision_horas_mes, p),
+      leer: (p) => (p.costes.sup_unidad === 'eur_ano' ? p.costes.sup_eur_ano : null), texto: (v) => eur(v) + ' al año' },
+    { clave: 'supervision_horas_mes', ver: 'completa', etq: 'Supervisión humana', tipo: 'num', min: 0, max: 744, ruta: 'costes.sup_h_mes', soloTocado: true, paso: 'L',
+      rutas: (v) => ({ 'costes.sup_unidad': 'h_mes', 'costes.sup_h_mes': v }), aplica: noHoras, noPreguntar: true,
+      supuesto: (p) => (p.costes.sup_h_mes === null ? VALE.motor.C.SUP_H_MES_EJEMPLO : p.costes.sup_h_mes),
+      leer: (p) => (p.costes.sup_unidad === 'h_mes' ? p.costes.sup_h_mes : null), texto: (v) => corto(v) + NB + 'h al mes' },
+    { clave: 'decide_sobre_personas', ver: 'completa', etq: 'Decisiones sobre personas físicas', tipo: 'bool', ruta: 'decide_personas', soloTocado: true, paso: 'L',
+      supuesto: (p) => !!p.decide_personas, leer: (p) => p.decide_personas, texto: siNo },
+    { clave: 'coste_cumplimiento', ver: 'completa', etq: 'Cumplimiento normativo', tipo: 'num', min: 0, max: 1e12, ruta: 'costes.cumplimiento', paso: 'L',
+      aplica: (p) => p.decide_personas === true, leer: (p) => p.costes.cumplimiento, texto: (v) => eur(v) + ' al año' },
+    { clave: 'plataforma_reutilizable', ver: 'completa', etq: 'Plataforma reutilizable', tipo: 'bool', ruta: 'plataforma.reutilizable', soloTocado: true, paso: 'L',
+      supuesto: reutilizable, leer: reutilizable, texto: siNo },
+    { clave: 'plataforma_pct_inversion', ver: 'completa', etq: 'Inversión que es plataforma', tipo: 'frac', min: 0, max: 1, ruta: 'plataforma.pct_inversion', paso: 'L',
+      aplica: reutilizable, leer: (p) => p.plataforma.pct_inversion, texto: pctTxt },
+    { clave: 'plataforma_pct_recurrente', ver: 'completa', etq: 'Coste recurrente que es plataforma', tipo: 'frac', min: 0, max: 1, ruta: 'plataforma.pct_recurrente', paso: 'L',
+      aplica: reutilizable, leer: (p) => p.plataforma.pct_recurrente, texto: pctTxt },
+    { clave: 'plataforma_casos', ver: 'completa', etq: 'Casos de uso que la compartirán', tipo: 'ent', min: 1, max: 50, ruta: 'plataforma.casos', soloTocado: true, paso: 'L',
+      aplica: reutilizable, supuesto: (p) => p.plataforma.casos, leer: (p) => p.plataforma.casos, texto: (v) => F().entero(v) + NB + 'casos de uso' },
+    { clave: 'meses_puesta_en_marcha', etq: 'Puesta en marcha', tipo: 'ent', min: 0, max: 12, ruta: 'm', soloTocado: true, extra: true, paso: 'E',
+      supuesto: (p) => p.m, leer: (p) => p.m, texto: (v) => F().meses(v) },
+    { clave: 'meses_maduracion', ver: 'completa', etq: 'Periodo de maduración', tipo: 'opcnum', opciones: MADURACION, ruta: 'T', soloTocado: true, paso: 'E',
+      supuesto: (p) => p.T, leer: (p) => p.T, texto: (v) => etqDe(MADURACION, v) },
+    { clave: 'tasa_descuento', ver: 'completa', etq: 'Tasa de descuento', tipo: 'frac', min: 0, max: 0.5, ruta: 't', soloTocado: true, paso: 'E', plegable: 'supuestos',
+      supuesto: (p) => p.t, leer: (p) => p.t, texto: pctTxt },
+    { clave: 'contingencia', ver: 'completa', etq: 'Contingencia', tipo: 'frac', min: 0, max: 1, ruta: 'contingencia', soloTocado: true, paso: 'E', plegable: 'supuestos',
+      supuesto: (p) => p.contingencia, leer: (p) => p.contingencia, texto: pctTxt },
+    { clave: 'coste_hora_supervision', ver: 'completa', etq: 'Coste por hora del personal de supervisión', tipo: 'num', min: 1, max: 1000, ruta: 'c_sup',
+      aplica: (p) => esHoras(p) || (noHoras(p) && p.costes.sup_unidad === 'h_mes'), paso: 'E', plegable: 'supuestos',
+      supuesto: (p) => (esHoras(p) ? p.horas.c : VALE.motor.C.C_INE),
+      leer: (p) => p.c_sup, texto: (v) => corto(v) + NB + '€' }
   ];
 
-  const POR_CLAVE = {};
+  const VERSIONES = [['breve', 'breve'], ['completa', 'completa']];
+  const VERSION = {
+    clave: 'version', etq: 'Versión', tipo: 'opc', opciones: VERSIONES, especial: true,
+    leer: () => conv.version, texto: (v) => v || ''
+  };
+
+  const POR_CLAVE = { version: VERSION };
   const POR_RUTA = {};
   for (const d of LISTA) {
     POR_CLAVE[d.clave] = d;
-    POR_RUTA[d.ruta] = d;
-    if (d.rutas) for (const r of Object.keys(d.rutas(d.tipo === 'bool' ? true : 1))) POR_RUTA[r] = d;
+    for (const r of [d.ruta].concat(d.marcas || [])) (POR_RUTA[r] = POR_RUTA[r] || []).push(d);
   }
-  for (const r of ['horas.destino.gasto', 'horas.destino.crecimiento', 'horas.destino.reasignacion', 'horas.partida_gasto']) POR_RUTA[r] = POR_CLAVE.horas_con_valor;
 
   const MAPA_FALTAN = {
-    tipo_beneficio: 'tipo_beneficio', 'horas.V': 'volumen_anual', 'horas.t0': 'minutos_por_tarea', 'horas.c': 'coste_hora',
-    'ventas.importe': 'ventas_importe', 'ventas.margen': 'ventas_margen', 'perdidas.frecuencia': 'perdidas_frecuencia',
-    'perdidas.impacto': 'perdidas_impacto', 'perdidas.reduccion': 'perdidas_reduccion', 'gasto.importe': 'gasto_evitado',
-    p: 'probabilidad', inversion: 'inversion', costes: 'coste_anual', supervision: 'supervision_anual'
+    breve: {
+      tipo_beneficio: 'tipo_beneficio', 'horas.V': 'volumen_anual', 'horas.t0': 'minutos_por_tarea', 'horas.c': 'coste_hora',
+      'ventas.importe': 'ventas_importe', 'ventas.margen': 'ventas_margen', 'perdidas.frecuencia': 'perdidas_frecuencia',
+      'perdidas.impacto': 'perdidas_impacto', 'perdidas.reduccion': 'perdidas_reduccion', 'gasto.importe': 'gasto_evitado',
+      p: 'probabilidad', inversion: 'inversion', costes: 'coste_anual', supervision: 'supervision_anual'
+    },
+    completa: {
+      tipo_beneficio: 'tipo_beneficio', 'horas.V': 'volumen_anual', 'horas.t0': 'minutos_por_tarea', 'horas.c': 'coste_hora',
+      'ventas.importe': 'ventas_importe', 'ventas.margen': 'ventas_margen', 'perdidas.frecuencia': 'perdidas_frecuencia',
+      'perdidas.impacto': 'perdidas_impacto', 'perdidas.reduccion': 'perdidas_reduccion', 'gasto.importe': 'gasto_evitado',
+      p: 'probabilidad', supervision: 'supervision_euros_anuales'
+    }
   };
 
   const RESALTE_ALTERNATIVO = {
@@ -13933,6 +14125,13 @@ display: none !important;
     return {
       numero,
       abierto: false,
+      version: null,
+      descartado: [],
+      descartadoEnVuelo: null,
+      recientes: [],
+      verTodos: false,
+      sinDato: new Set(),
+      brutos: {},
       mensajes: [],
       historial: [],
       tocados: new Set(),
@@ -14058,34 +14257,189 @@ display: none !important;
     return true;
   }
 
+  function versionDeModo() {
+    return proyecto().modo === 'completo' ? 'completa' : 'breve';
+  }
+
+  function versionActual() {
+    return conv.version === null ? 'breve' : versionDeModo();
+  }
+
+  function deLaVersion(d, version) {
+    return !d.ver || d.ver === version;
+  }
+
+  function listaDe(version) {
+    return LISTA.filter((d) => deLaVersion(d, version));
+  }
+
+  function reabrirSiCambia(antes) {
+    if (antes === null || conv.version === antes || !conv.completa) return;
+    conv.completa = false;
+    conv.rondasExtra = 0;
+    conv.vecesPedida = {};
+    conv.informeListo = null;
+  }
+
+  function fijarVersion(v) {
+    const E = VALE.estado;
+    const antes = conv.version;
+    conv.version = v;
+    reabrirSiCambia(antes);
+    const modo = v === 'completa' ? 'completo' : 'simplificado';
+    if (E.proyecto('nuevo').modo === modo) return;
+    if (E.datos.activo !== 'nuevo') E.seleccionar('nuevo');
+    E.fijar('modo', modo, { origen: 'cv:ia' });
+  }
+
+  function sincronizarVersion() {
+    const antes = conv.version;
+    if (conv.version !== null || versionDeModo() === 'completa') conv.version = versionDeModo();
+    reabrirSiCambia(antes);
+  }
+
+  const IMPRESCINDIBLES = ['tipo_beneficio', 'volumen_anual', 'minutos_por_tarea', 'ventas_importe', 'ventas_margen', 'perdidas_frecuencia',
+    'perdidas_impacto', 'perdidas_reduccion', 'gasto_evitado', 'probabilidad'];
+  const SIN_DATO_BREVE = ['coste_hora', 'horas_con_valor', 'medido', 'responsable', 'depende_de_terceros', 'supervision_anual', 'meses_puesta_en_marcha'];
+  const GRUPO_SUPERVISION = ['supervision_euros_anuales', 'supervision_horas_mes'];
+  const PARTIDAS_EXIGIDAS = {
+    inversion: ['inversion_desarrollo', 'inversion_dedicacion', 'inversion_datos', 'inversion_formacion'],
+    costes: ['coste_licencias', 'coste_mantenimiento', 'coste_por_operacion', 'coste_variable_anual']
+  };
+
+  function admiteSinDato(d, version) {
+    if (!d || d.especial) return false;
+    if (version === 'breve') return SIN_DATO_BREVE.indexOf(d.clave) >= 0;
+    return deLaVersion(d, 'completa') && IMPRESCINDIBLES.indexOf(d.clave) < 0;
+  }
+
+  function conGrupo(clave) {
+    return GRUPO_SUPERVISION.indexOf(clave) >= 0 ? GRUPO_SUPERVISION : [clave];
+  }
+
+  function anotarReciente(clave) {
+    const i = conv.recientes.indexOf(clave);
+    if (i >= 0) conv.recientes.splice(i, 1);
+    conv.recientes.push(clave);
+  }
+
+  function marcarSinDato(clave) {
+    for (const c of conGrupo(clave)) conv.sinDato.add(c);
+  }
+
+  function quitarSinDato(clave) {
+    for (const c of conGrupo(clave)) conv.sinDato.delete(c);
+  }
+
+  function vigente(d, p) {
+    return !(d.ver === 'completa' && d.aplica && !d.aplica(p));
+  }
+
   function camposConocidos() {
     const p = proyecto();
     const salida = {};
-    for (const d of LISTA) {
-      if (conocido(d, p)) salida[d.clave] = d.leer(p);
+    for (const d of listaDe(versionActual())) {
+      if (vigente(d, p) && conocido(d, p)) salida[d.clave] = d.leer(p);
     }
     return salida;
   }
 
+  function maxVeces() {
+    return versionActual() === 'completa' ? MAX_VECES_COMPLETA : MAX_VECES_EXTRA;
+  }
+
+  function agotado(d) {
+    if ((conv.vecesPedida[d.clave] || 0) < maxVeces()) return false;
+    marcarSinDato(d.clave);
+    return true;
+  }
+
   function extraPendiente(d, p) {
-    if (!d.extra || conv.tocados.has(d.clave)) return false;
+    if (!d.extra || conv.tocados.has(d.clave) || conv.sinDato.has(d.clave)) return false;
     if (d.aplica && !d.aplica(p)) return false;
     if (d.yaDado && d.yaDado(p)) return false;
-    return (conv.vecesPedida[d.clave] || 0) < MAX_VECES_EXTRA;
+    return !agotado(d);
+  }
+
+  function convienePreguntar(d, p) {
+    if (d.noPreguntar || (d.aplica && !d.aplica(p))) return false;
+    if (conv.sinDato.has(d.clave)) return false;
+    if (conocido(d, p) || (d.yaDado && d.yaDado(p))) return false;
+    return !agotado(d);
+  }
+
+  function exigidas(version) {
+    const res = resultado();
+    const mapa = MAPA_FALTAN[version];
+    const p = proyecto();
+    const salida = new Set();
+    for (const k of (res && res.faltan) || []) {
+      if (version === 'completa' && PARTIDAS_EXIGIDAS[k]) {
+        const partidas = PARTIDAS_EXIGIDAS[k].map((c) => POR_CLAVE[c]).filter((d) => !d.aplica || d.aplica(p));
+        const d = partidas.find((x) => !conocido(x, p) && !conv.sinDato.has(x.clave)) || partidas[0];
+        if (d) salida.add(d.clave);
+      } else if (mapa[k]) {
+        salida.add(mapa[k]);
+      }
+    }
+    return salida;
   }
 
   function extrasPendientes() {
     const p = proyecto();
+    if (versionActual() === 'completa') {
+      const ex = exigidas('completa');
+      return listaDe('completa').filter((d) => !ex.has(d.clave) && convienePreguntar(d, p)).map((d) => d.clave);
+    }
     return LISTA.filter((d) => extraPendiente(d, p)).map((d) => d.clave);
   }
 
   function faltanBlanca() {
-    const res = resultado();
-    const exigidas = new Set(((res && res.faltan) || []).map((k) => MAPA_FALTAN[k]).filter(Boolean));
+    const version = versionActual();
+    const ex = exigidas(version);
+    for (const k of ex) quitarSinDato(k);
     const extras = !conv.completa;
     const p = proyecto();
-    const entran = LISTA.filter((d) => exigidas.has(d.clave) || (extras && extraPendiente(d, p)));
-    return entran.filter((d) => !d.final).concat(entran.filter((d) => d.final)).map((d) => d.clave);
+    const pendiente = version === 'completa' ? convienePreguntar : extraPendiente;
+    return listaDe(version).filter((d) => ex.has(d.clave) || (extras && pendiente(d, p))).map((d) => d.clave);
+  }
+
+  function contarPregunta(faltan) {
+    const d = faltan.length ? POR_CLAVE[faltan[0]] : null;
+    if (!d || (conv.version === null && conv.historial.length === 0)) return;
+    const extra = versionActual() === 'completa' ? !exigidas('completa').has(d.clave) : d.extra;
+    if (extra) conv.vecesPedida[d.clave] = (conv.vecesPedida[d.clave] || 0) + 1;
+  }
+
+  function rondasMax() {
+    return versionActual() === 'completa' ? RONDAS_EXTRA_COMPLETA : RONDAS_EXTRA;
+  }
+
+  function redondearSupuesto(d, v) {
+    if (typeof v !== 'number' || !isFinite(v)) return v;
+    if (d.tipo === 'ent') return Math.round(v);
+    const f = d.tipo === 'frac' ? 1e4 : 100;
+    return Math.round(v * f) / f;
+  }
+
+  function supuestoDe(d, p) {
+    if (!d || !d.supuesto) return null;
+    const v = d.supuesto(p);
+    return v === null || v === undefined ? null : redondearSupuesto(d, v);
+  }
+
+  function supuestosDe(faltan) {
+    const salida = {};
+    const p = proyecto();
+    for (const clave of faltan) {
+      const d = POR_CLAVE[clave];
+      if (!d) continue;
+      for (const s of [d].concat(d.grupo ? [POR_CLAVE[d.grupo]] : [])) {
+        const v = supuestoDe(s, p);
+        if (v !== null) salida[s.clave] = v;
+      }
+    }
+    return salida;
   }
 
   function normalizar(d, v) {
@@ -14098,74 +14452,280 @@ display: none !important;
       const n = NIVELES.find((x) => Math.abs(x - v) < 1e-9);
       return n === undefined ? undefined : n;
     }
+    if (d.tipo === 'opcnum') {
+      const o = d.opciones.find((x) => Math.abs(x[0] - v) < 1e-9);
+      return o === undefined ? undefined : o[0];
+    }
     const x = d.tipo === 'ent' ? Math.round(v) : v;
     return x >= d.min && x <= d.max ? x : undefined;
   }
 
-  function rutasDe(d, v) {
-    return d.rutas ? d.rutas(v) : { [d.ruta]: v };
+  function rutasDe(d, v, lote) {
+    return d.rutas ? d.rutas(v, lote) : { [d.ruta]: v };
   }
 
   function claveOrigenTocada(rutas) {
     for (const r of rutas) {
-      const d = POR_RUTA[r];
-      if (d && d.soloTocado) conv.tocados.add(d.clave);
+      for (const d of POR_RUTA[r] || []) if (d.soloTocado) conv.tocados.add(d.clave);
+    }
+  }
+
+  function tiene(o, k) {
+    return Object.prototype.hasOwnProperty.call(o, k);
+  }
+
+  function componer(orden, porClave) {
+    const mapa = {};
+    for (const c of orden) {
+      const d = POR_CLAVE[c];
+      const r = porClave[c];
+      for (const k of Object.keys(r)) if (!d.debil || k === d.ruta || !tiene(mapa, k)) mapa[k] = r[k];
+    }
+    return mapa;
+  }
+
+  function descartarDelLote(lote, claves) {
+    for (const c of claves) {
+      const i = lote.orden.indexOf(c);
+      if (i < 0) continue;
+      lote.orden.splice(i, 1);
+      delete lote.porClave[c];
+      lote.descartadas.push(c);
+    }
+  }
+
+  function simulado(mapa) {
+    const p = JSON.parse(JSON.stringify(proyecto()));
+    for (const ruta of Object.keys(mapa)) {
+      const partes = ruta.split('.');
+      let o = p;
+      for (let i = 0; i < partes.length - 1; i++) {
+        if (!o[partes[i]] || typeof o[partes[i]] !== 'object') o[partes[i]] = {};
+        o = o[partes[i]];
+      }
+      o[partes[partes.length - 1]] = mapa[ruta];
+    }
+    return p;
+  }
+
+  function dicha(clave, lote) {
+    return conv.tocados.has(clave) || lote.orden.indexOf(clave) >= 0;
+  }
+
+  function bruto(lote, clave, siNoDicha) {
+    if (lote.orden.indexOf(clave) >= 0) return lote.valor[clave];
+    if (conv.tocados.has(clave) && tiene(conv.brutos, clave)) return conv.brutos[clave];
+    return siNoDicha;
+  }
+
+  function restosMayores(fracciones, unidades, total) {
+    const escala = fracciones.map((f) => Math.max(0, f) * unidades);
+    const n = escala.map((x) => Math.floor(x + 1e-9));
+    let sobran = total - n.reduce((a, x) => a + x, 0);
+    const orden = escala.map((x, i) => ({ i, resto: x - n[i] })).sort((a, b) => (Math.abs(b.resto - a.resto) < 1e-9 ? a.i - b.i : b.resto - a.resto));
+    for (const o of orden) {
+      if (sobran <= 0) break;
+      n[o.i] += 1;
+      sobran -= 1;
+    }
+    return n;
+  }
+
+  function ajustarReparto(lote) {
+    const p = proyecto();
+    const m = componer(lote.orden, lote.porClave);
+    const enLote = ['pct_automatico', 'pct_con_revision'].filter((c) => lote.orden.indexOf(c) >= 0);
+    if (!enLote.length && !tiene(m, 'horas.s')) return;
+    let s = bruto(lote, 'pct_automatico', tiene(m, 'horas.s') ? m['horas.s'] : p.horas.s);
+    let r = bruto(lote, 'pct_con_revision', tiene(m, 'horas.r') ? m['horas.r'] : p.horas.r);
+    const sDicha = dicha('pct_automatico', lote);
+    const rDicha = dicha('pct_con_revision', lote);
+    if (s + r > 1 + 1e-9) {
+      if (enLote.length === 2) return descartarDelLote(lote, enLote);
+      if (enLote[0] === 'pct_automatico' && rDicha) return descartarDelLote(lote, enLote);
+      if (enLote[0] === 'pct_con_revision' && sDicha) return descartarDelLote(lote, enLote);
+      if (rDicha && !sDicha) s = 1 - r;
+      else if (sDicha && !rDicha) r = 1 - s;
+      else return;
+    }
+    const t = restosMayores([s, r, 1 - s - r], 20, 20);
+    const destino = lote.porClave[enLote[0] || 'perfil'];
+    for (const c of enLote.slice(1)) {
+      delete lote.porClave[c]['horas.s'];
+      delete lote.porClave[c]['horas.r'];
+    }
+    destino['horas.s'] = t[0] * 5 / 100;
+    destino['horas.r'] = t[1] * 5 / 100;
+  }
+
+  const DESTINOS = ['destino_gasto', 'destino_crecimiento', 'destino_reasignacion'];
+  const TRAMO_DE = { destino_gasto: 'gasto', destino_crecimiento: 'crecimiento', destino_reasignacion: 'reasignacion' };
+  function ajustarDestino(lote) {
+    const enLote = DESTINOS.filter((c) => lote.orden.indexOf(c) >= 0);
+    if (!enLote.length) return;
+    const d = proyecto().horas.destino;
+    const m = componer(lote.orden, lote.porClave);
+    const actual = (c) => (tiene(m, 'horas.destino.' + TRAMO_DE[c]) ? m['horas.destino.' + TRAMO_DE[c]] : d[TRAMO_DE[c]]) / 10;
+    const reasDicha = dicha('destino_reasignacion', lote);
+    const g = bruto(lote, 'destino_gasto', actual('destino_gasto'));
+    const c = bruto(lote, 'destino_crecimiento', actual('destino_crecimiento'));
+    const r = reasDicha ? bruto(lote, 'destino_reasignacion', actual('destino_reasignacion')) : 1 - g - c;
+    if (r < -1e-9 || g + c + r > 1 + 1e-9) {
+      descartarDelLote(lote, enLote);
+      return;
+    }
+    const t = restosMayores([g, c, r], 10, Math.round((g + c + Math.max(0, r)) * 10));
+    for (const k of enLote.slice(1)) for (const tr of Object.values(TRAMO_DE)) delete lote.porClave[k]['horas.destino.' + tr];
+    const rutas = lote.porClave[enLote[0]];
+    rutas['horas.destino.gasto'] = t[0];
+    rutas['horas.destino.crecimiento'] = t[1];
+    rutas['horas.destino.reasignacion'] = t[2];
+  }
+
+  function rehacerPerfil(lote) {
+    if (lote.orden.indexOf('perfil') >= 0) lote.porClave.perfil = rutasPerfil(lote.valor.perfil, new Set(lote.orden));
+  }
+
+  function filtrarAplica(lote) {
+    const sim = simulado(componer(lote.orden, lote.porClave));
+    descartarDelLote(lote, lote.orden.filter((c) => {
+      const d = POR_CLAVE[c];
+      return d.ver === 'completa' && d.aplica && !d.aplica(sim);
+    }));
+  }
+
+  function ajustarLoteCompleto(lote) {
+    for (let vuelta = 0; vuelta < 5; vuelta++) {
+      const antes = lote.orden.length;
+      filtrarAplica(lote);
+      rehacerPerfil(lote);
+      ajustarReparto(lote);
+      ajustarDestino(lote);
+      if (lote.orden.length === antes) return;
     }
   }
 
   function aplicarCampos(entrada, origen) {
     const E = VALE.estado;
     const aplicadas = [];
-    const descartadas = [];
-    const mapa = {};
+    const lote = { orden: [], porClave: {}, valor: {}, descartadas: [] };
     const origenTxt = origen === 'usuario' ? 'cv:usuario' : 'cv:ia';
-    if (!entrada || typeof entrada !== 'object') return { aplicadas, descartadas };
-    for (const clave of Object.keys(entrada)) {
-      if (!Object.prototype.hasOwnProperty.call(POR_CLAVE, clave)) continue;
-      const d = POR_CLAVE[clave];
-      const v = normalizar(d, entrada[clave]);
+    if (!entrada || typeof entrada !== 'object') return { aplicadas, descartadas: lote.descartadas };
+    if (tiene(entrada, 'version')) {
+      const v = normalizar(VERSION, entrada.version);
       if (v === undefined) {
-        descartadas.push(clave);
+        lote.descartadas.push('version');
+      } else {
+        fijarVersion(v);
+        anotarReciente('version');
+        aplicadas.push('version');
+      }
+    }
+    const version = versionActual();
+    if (tiene(entrada, 'sin_dato')) {
+      const k = entrada.sin_dato;
+      const d = typeof k === 'string' && tiene(POR_CLAVE, k) ? POR_CLAVE[k] : null;
+      if (admiteSinDato(d, version)) {
+        marcarSinDato(k);
+        anotarReciente(k);
+        aplicadas.push('sin_dato');
+      } else {
+        lote.descartadas.push('sin_dato');
+      }
+    }
+    const claves = new Set(Object.keys(entrada));
+    for (const clave of Object.keys(entrada)) {
+      if (clave === 'version' || clave === 'sin_dato' || !tiene(POR_CLAVE, clave)) continue;
+      const d = POR_CLAVE[clave];
+      const v = deLaVersion(d, version) ? normalizar(d, entrada[clave]) : undefined;
+      if (v === undefined) {
+        lote.descartadas.push(clave);
         continue;
       }
-      const rutas = rutasDe(d, v);
+      const rutas = rutasDe(d, v, claves);
       const bien = Object.keys(rutas).every((r) => E.validar(r, rutas[r]).ok);
       if (!bien) {
-        descartadas.push(clave);
+        lote.descartadas.push(clave);
         continue;
       }
-      Object.assign(mapa, rutas);
-      if (Object.prototype.hasOwnProperty.call(rutas, 'horas.partida_gasto') && rutas['horas.partida_gasto'] === PARTIDA_POR_OMISION) conv.partidaSupuesta = true;
-      aplicadas.push(clave);
-      if (clave === 'probabilidad') conv.pedidaP = v;
+      lote.orden.push(clave);
+      lote.porClave[clave] = rutas;
+      lote.valor[clave] = v;
     }
-    if (!aplicadas.length) return { aplicadas, descartadas };
-    if (E.datos.activo !== 'nuevo') E.seleccionar('nuevo');
+    if (version === 'completa') ajustarLoteCompleto(lote);
+    const descartadas = lote.descartadas;
+    if (!lote.orden.length) {
+      if (aplicadas.length) pintarDatos();
+      return { aplicadas, descartadas };
+    }
+    const mapa = componer(lote.orden, lote.porClave);
+    const eraNuevo = E.datos.activo === 'nuevo';
+    if (!eraNuevo) E.seleccionar('nuevo');
+    if (version === 'completa' && eraNuevo) mostrarPasoDe(lote.orden);
     const ok = E.fijarVarios(mapa, { origen: origenTxt });
     if (!ok) {
-      return { aplicadas: [], descartadas: descartadas.concat(aplicadas) };
+      return { aplicadas, descartadas: descartadas.concat(lote.orden) };
     }
-    for (const c of aplicadas) conv.tocados.add(c);
+    for (const c of lote.orden) {
+      conv.tocados.add(c);
+      anotarReciente(c);
+      quitarSinDato(c);
+      conv.brutos[c] = lote.valor[c];
+      aplicadas.push(c);
+      const rutas = lote.porClave[c];
+      if (c === 'horas_con_valor' && tiene(rutas, 'horas.partida_gasto') && rutas['horas.partida_gasto'] === PARTIDA_POR_OMISION) conv.partidaSupuesta = true;
+      if (c === 'partida_gasto') conv.partidaSupuesta = false;
+      if (c === 'probabilidad') conv.pedidaP = mapa.p;
+    }
     const p = proyecto();
     if (p.medido && conv.pedidaP !== null && conv.pedidaP > 0.5 && p.p !== null && p.p <= 0.5) {
       E.fijar('p', conv.pedidaP, { origen: origenTxt });
       resaltar(['p']);
     }
     resaltar(Object.keys(mapa));
+    pintarDatos();
     return { aplicadas, descartadas };
   }
+
+  function mostrarPasoDe(claves) {
+    try {
+      const E = VALE.estado;
+      if (conv.completa || E.datos.activo !== 'nuevo' || E.ui.vista !== 'analisis') return;
+      let d = null;
+      for (const c of claves) if (POR_CLAVE[c] && POR_CLAVE[c].paso) d = POR_CLAVE[c];
+      if (!d) return;
+      if (d.plegable) {
+        E.fijarUi('avanzado', { [d.plegable]: true });
+        abrirPlegable(d.plegable);
+      }
+      E.fijarUi('paso', d.paso);
+    } catch (err) {
+      if (typeof console !== 'undefined') console.error(err);
+    }
+  }
+
+  function abrirPlegable(nombre) {
+    if (!hayDocumento() || typeof document.querySelector !== 'function') return;
+    const el = document.querySelector('details[data-avanzado="' + nombre + '"]');
+    if (el && !el.open) el.open = true;
+  }
+
+  const RESALTE_COMPLETO = {
+    'horas.destino.gasto': '.en-destino-tabla', 'horas.destino.crecimiento': '.en-destino-tabla', 'horas.destino.reasignacion': '.en-destino-tabla'
+  };
 
   function resaltar(rutas) {
     if (!hayDocumento()) return;
     const raiz = porId('en-raiz');
     if (!raiz || typeof raiz.querySelectorAll !== 'function') return;
     const vistas = new Set();
+    const simple = proyecto().modo === 'simplificado';
     for (const ruta of rutas) {
-      let destino = ruta;
-      let nodos = raiz.querySelectorAll('[data-ruta="' + destino + '"]');
-      if (!nodos.length && RESALTE_ALTERNATIVO[ruta]) {
-        destino = RESALTE_ALTERNATIVO[ruta];
-        nodos = raiz.querySelectorAll('[data-ruta="' + destino + '"]');
+      let nodos = raiz.querySelectorAll('[data-ruta="' + ruta + '"]');
+      if (!nodos.length && simple && RESALTE_ALTERNATIVO[ruta]) {
+        nodos = raiz.querySelectorAll('[data-ruta="' + RESALTE_ALTERNATIVO[ruta] + '"]');
+      } else if (!nodos.length && !simple && RESALTE_COMPLETO[ruta]) {
+        nodos = raiz.querySelectorAll(RESALTE_COMPLETO[ruta]);
       }
       nodos.forEach((n) => {
         let el = n;
@@ -14182,6 +14742,17 @@ display: none !important;
         }, RESALTE_MS);
         temporizadoresResalte.push(t);
       });
+    }
+    if (!simple) llevarResalteAVista(Array.from(vistas).pop());
+  }
+
+  function llevarResalteAVista(el) {
+    try {
+      if (!el || typeof el.scrollIntoView !== 'function' || !punteroFino()) return;
+      if (typeof innerWidth !== 'number' || innerWidth < 1024) return;
+      el.scrollIntoView({ block: 'center', inline: 'nearest', behavior: reducido() ? 'auto' : 'smooth' });
+    } catch (err) {
+      return;
     }
   }
 
@@ -14801,15 +15372,23 @@ display: none !important;
     hablarInicio();
     pintarTodo();
     const faltan = faltanBlanca();
-    if (!o.reintento && faltan.length && POR_CLAVE[faltan[0]] && POR_CLAVE[faltan[0]].extra) {
-      conv.vecesPedida[faltan[0]] = (conv.vecesPedida[faltan[0]] || 0) + 1;
-    }
+    if (!o.reintento) contarPregunta(faltan);
+    const historial = ventanaHistorial();
+    const ultimoUsuario = conv.historial.map((h) => h.rol).lastIndexOf('usuario');
+    const habiaAgente = conv.historial.slice(0, Math.max(0, ultimoUsuario)).some((h) => h.rol === 'ia');
+    let anotoAlgo = false;
+    const descartadoAntes = conv.descartado;
+    conv.descartado = [];
+    conv.descartadoEnVuelo = descartadoAntes;
     const cuerpo = ajustarTamano({
-      historial: ventanaHistorial(),
+      historial,
       campos: camposConocidos(),
       faltan,
       resultado: resumenActual(),
-      prueba: esPrueba()
+      prueba: esPrueba(),
+      version: conv.version,
+      supuestos: supuestosDe(faltan),
+      descartado: descartadoAntes.slice()
     });
     const alEvento = (nombre, d) => {
       if (gen !== generacion) return;
@@ -14826,7 +15405,9 @@ display: none !important;
         pintarMensajes();
       } else if (nombre === 'campos' && d.campos && typeof d.campos === 'object') {
         const ap = aplicarCampos(d.campos, 'ia');
+        if (ap.aplicadas.length) anotoAlgo = true;
         for (const c of ap.descartadas) if (descartadas.indexOf(c) < 0) descartadas.push(c);
+        for (const c of ap.descartadas) if (conv.descartado.indexOf(c) < 0) conv.descartado.push(c);
         pintarDatos();
         pintarTarjeta();
       } else if (nombre === 'accion') {
@@ -14840,8 +15421,10 @@ display: none !important;
     if (gen !== generacion || r.cancelado) return false;
     conv.ocupado = false;
     conv.abortar = null;
+    conv.descartadoEnVuelo = null;
     const falloFlujo = r.fallo ? r : (motivo === 'error' ? { fallo: 'fin' } : null);
     if (falloFlujo) {
+      for (const c of descartadoAntes) if (conv.descartado.indexOf(c) < 0) conv.descartado.push(c);
       if (empezo && !msg.texto.trim()) conv.mensajes.pop();
       hablarFin(msg.texto);
       if (falloFlujo.fallo === 'fin') {
@@ -14860,6 +15443,7 @@ display: none !important;
     }
     msg.incompleto = false;
     conv.pendiente = null;
+    if (historial.length > 0 && conv.version === null && (anotoAlgo || habiaAgente)) fijarVersion('breve');
     if (empezo && msg.texto.trim()) conv.historial.push({ rol: 'ia', texto: recortarFinal(msg.texto.trim(), MAX_TEXTO) });
     else if (empezo) conv.mensajes.pop();
     hablarFin(msg.texto);
@@ -14867,7 +15451,8 @@ display: none !important;
       conv.limite = true;
       avisar(mensajeFin || TXT.limite, 'info');
     } else if (descartadas.length) {
-      avisar('No se ha anotado: ' + descartadas.map((c) => POR_CLAVE[c].etq.toLowerCase()).join(', ') + '. Se puede corregir a mano.', 'info');
+      const etqs = descartadas.filter((c) => POR_CLAVE[c]).map((c) => POR_CLAVE[c].etq.toLowerCase());
+      if (etqs.length) avisar('No se ha anotado: ' + etqs.join(', ') + '. Se puede corregir a mano.', 'info');
     }
     if (conv.estado !== 'hablando') ponerEstado('reposo');
     if (msg.texto.trim() && (!hayDocumento() || !sintesisDisponible() || vozDeLaIa())) {
@@ -14959,7 +15544,7 @@ display: none !important;
     if (!res || !res.completo) return false;
     if (!extrasPendientes().length) return true;
     conv.rondasExtra += 1;
-    return conv.rondasExtra >= RONDAS_EXTRA;
+    return conv.rondasExtra >= rondasMax();
   }
 
   function completar() {
@@ -15021,7 +15606,7 @@ display: none !important;
   function leerEditor(d, texto) {
     if (d.tipo === 'bool') return texto === 'true';
     if (d.tipo === 'opc') return texto;
-    if (d.tipo === 'nivel') return Number(texto);
+    if (d.tipo === 'nivel' || d.tipo === 'opcnum') return Number(texto);
     const n = F().leerNumero(texto);
     if (n === null || typeof n !== 'number' || isNaN(n)) return undefined;
     return d.tipo === 'frac' ? Math.round((n / 100) * 1e9) / 1e9 : n;
@@ -15089,6 +15674,10 @@ display: none !important;
     const ignoradas = [];
     if (!args || typeof args !== 'object') return { salida, ignoradas };
     for (const clave of Object.keys(args)) {
+      if (clave === 'sin_dato') {
+        salida.sin_dato = typeof args.sin_dato === 'string' ? args.sin_dato.trim() : args.sin_dato;
+        continue;
+      }
       if (!Object.prototype.hasOwnProperty.call(POR_CLAVE, clave)) {
         ignoradas.push(clave);
         continue;
@@ -15098,7 +15687,8 @@ display: none !important;
       if (d.tipo === 'bool' && typeof v === 'string') v = v.trim() === 'true' ? true : (v.trim() === 'false' ? false : v);
       if (d.tipo !== 'bool' && d.tipo !== 'opc' && typeof v === 'string') {
         const t = v.trim();
-        if (/^-?\d{1,3}(?:\.\d{3})+(?:,\d+)?$/.test(t)) v = Number(t.replace(/\./g, '').replace(',', '.'));
+        const millares = d.tipo !== 'frac' && /^-?\d{1,3}(?:\.\d{3})+(?:,\d+)?$/.test(t) && !/^-?0\./.test(t);
+        if (millares) v = Number(t.replace(/\./g, '').replace(',', '.'));
         else if (/^-?\d+(?:[.,]\d+)?$/.test(t)) v = Number(t.replace(',', '.'));
       }
       if ((d.tipo === 'nivel' || d.tipo === 'frac') && typeof v === 'number' && v > 1 && v <= 100) v = v / 100;
@@ -15113,22 +15703,26 @@ display: none !important;
     if (conv.completa) return true;
     if (!extrasPendientes().length) return true;
     conv.rondasExtra += 1;
-    return conv.rondasExtra >= RONDAS_EXTRA;
+    return conv.rondasExtra >= rondasMax();
   }
 
   function vvAnotar(args) {
     const { salida, ignoradas } = sanearArgsVoz(args);
     const ap = aplicarCampos(salida, 'ia');
+    if (conv.version === null) fijarVersion('breve');
     const faltan = faltanBlanca();
-    if (faltan.length && POR_CLAVE[faltan[0]] && POR_CLAVE[faltan[0]].extra) {
-      conv.vecesPedida[faltan[0]] = (conv.vecesPedida[faltan[0]] || 0) + 1;
-    }
+    contarPregunta(faltan);
     const listo = vvListo();
     pintarDatos();
     pintarTarjeta();
-    const r = { anotado: ap.aplicadas, faltan, listo_para_calcular: listo };
+    const r = { anotado: ap.aplicadas };
     const descartado = ap.descartadas.concat(ignoradas);
     if (descartado.length) r.descartado = descartado;
+    r.faltan = faltan;
+    r.listo_para_calcular = listo;
+    r.version = conv.version;
+    const supuestos = supuestosDe(faltan);
+    if (Object.keys(supuestos).length) r.supuestos = supuestos;
     return r;
   }
 
@@ -15208,12 +15802,20 @@ display: none !important;
     return isFinite(n) && n > 0 ? n : 10000;
   }
 
+  function vvApertura() {
+    const T = VALE.vozViva.TEXTOS;
+    if (conv.version === null && conv.historial.length === 0 && conv.mensajes.length === 0) return T.abrir;
+    const faltan = faltanBlanca();
+    return T.seguir + ' Versión: ' + versionActual() + '.' + (faltan.length ? ' Datos que faltan, por orden: ' + faltan.slice(0, 4).join(', ') + '.' : ' No falta ningún dato.');
+  }
+
   function anfitrionVv() {
     vv.id += 1;
     const id = vv.id;
     const vigente = () => vv.id === id && vv.activa;
     return {
-      pedirToken: () => VALE.ia.pedirSinContexto('/voz-viva/token', { prueba: esPrueba() }, false, plazoTokenMs()),
+      pedirToken: () => VALE.ia.pedirSinContexto('/voz-viva/token', { prueba: esPrueba(), versiones: true }, false, plazoTokenMs()),
+      apertura: () => vvApertura(),
       estado: (e) => {
         if (!vigente()) return;
         vv.estado = e;
@@ -15372,19 +15974,37 @@ display: none !important;
     }).join('');
   }
 
+  function fichaSinDato(d, p) {
+    if (!conv.sinDato.has(d.clave) || (d.aplica && !d.aplica(p)) || (d.grupo && conv.sinDato.has(d.grupo))) return null;
+    const v = supuestoDe(d, p);
+    let texto = TXT.sinImporte;
+    if (v !== null) texto = d.texto(v, p) + ' ' + TXT.supuestoMetodo;
+    else if (d.supuesto) texto = TXT.supuestoSolo;
+    return { clave: d.clave, etq: d.etq, texto, valor: null, sinDato: true };
+  }
+
   function fichasDatos() {
     const p = proyecto();
-    return LISTA.filter((d) => !d.sinFicha && conocido(d, p)).map((d) => {
-      const v = d.leer(p);
-      return { clave: d.clave, etq: d.etq, texto: d.texto(v, p), valor: v };
-    });
+    const fichas = [];
+    for (const d of listaDe(versionActual())) {
+      if (d.sinFicha || !vigente(d, p)) continue;
+      if (conocido(d, p)) {
+        const v = d.leer(p);
+        fichas.push({ clave: d.clave, etq: d.etq, texto: d.texto(v, p), valor: v });
+      } else {
+        const f = fichaSinDato(d, p);
+        if (f) fichas.push(f);
+      }
+    }
+    if (conv.version !== null) fichas.unshift({ clave: 'version', etq: VERSION.etq, texto: VERSION.texto(conv.version), valor: conv.version });
+    return fichas;
   }
 
   function editorHtml(d) {
     const p = proyecto();
     const v = d.leer(p);
     let campo;
-    if (d.tipo === 'opc' || d.tipo === 'bool' || d.tipo === 'nivel') {
+    if (d.tipo === 'opc' || d.tipo === 'bool' || d.tipo === 'nivel' || d.tipo === 'opcnum') {
       const ops = d.tipo === 'bool' ? SI_NO : d.opciones;
       campo = '<select class="campo-val" id="cv-editor-valor" data-cv-valor="1">' + ops.map((o) =>
         '<option value="' + esc(String(o[0])) + '"' + (o[0] === v ? ' selected' : '') + '>' + esc(o[1]) + '</option>').join('') + '</select>';
@@ -15400,17 +16020,30 @@ display: none !important;
       '<button type="button" class="btn secundario compacto" data-cv="cancelar-ficha">Cancelar</button></span></form>';
   }
 
+  function fichasVisibles(fichas) {
+    if (fichas.length <= MAX_FICHAS_SIN_PLEGAR || conv.verTodos) return fichas;
+    const edad = (f) => conv.recientes.indexOf(f.clave);
+    const recientes = new Set(fichas.slice().sort((a, b) => edad(b) - edad(a)).slice(0, FICHAS_PLEGADAS).map((f) => f.clave));
+    if (conv.editando) recientes.add(conv.editando);
+    return fichas.filter((f) => recientes.has(f.clave));
+  }
+
   function datosHtml() {
     const fichas = fichasDatos();
     let h = '<h3 class="cv-sub" id="cv-datos-tit">Datos recogidos</h3>';
     if (!fichas.length) return h + '<p class="cv-vacio">' + esc(TXT.sinDatos) + '</p>';
-    h += '<p class="cv-ayuda">' + esc(TXT.corregir) + '</p><ul class="cv-fichas">';
-    for (const f of fichas) {
+    const plegable = fichas.length > MAX_FICHAS_SIN_PLEGAR;
+    h += '<p class="cv-ayuda">' + esc(TXT.corregir) + '</p><ul class="cv-fichas" id="cv-fichas">';
+    for (const f of fichasVisibles(fichas)) {
       h += '<li><button type="button" class="cv-ficha' + (conv.editando === f.clave ? ' cv-ficha-activa' : '') + '" data-cv="editar" data-clave="' + esc(f.clave) +
         '" aria-label="Corregir. ' + esc(f.etq + ': ' + f.texto) + '"><span class="cv-ficha-etq">' + esc(f.etq) + ':</span> <span class="cv-ficha-val">' +
         esc(f.texto) + '</span></button></li>';
     }
     h += '</ul>';
+    if (plegable) {
+      h += '<button type="button" class="btn texto compacto cv-ver-datos" id="cv-ver-datos" data-cv="ver-datos" aria-controls="cv-fichas" aria-expanded="' +
+        (conv.verTodos ? 'true' : 'false') + '">' + esc(conv.verTodos ? TXT.verMenos : 'Ver los ' + fichas.length + ' datos') + '</button>';
+    }
     if (conv.editando && POR_CLAVE[conv.editando]) h += editorHtml(POR_CLAVE[conv.editando]);
     return h;
   }
@@ -15558,7 +16191,17 @@ display: none !important;
     if (!el) return;
     const activo = hayDocumento() ? document.activeElement : null;
     if (conv.editando && activo && activo.id === 'cv-editor-valor' && !conv.enfocarEditor) return;
+    const fila = typeof el.querySelector === 'function' ? el.querySelector('.cv-fichas') : null;
+    const desplazado = fila ? fila.scrollLeft : 0;
+    const focoVer = !!(activo && activo.id === 'cv-ver-datos');
     el.innerHTML = datosHtml();
+    const filaNueva = typeof el.querySelector === 'function' ? el.querySelector('.cv-fichas') : null;
+    if (filaNueva && desplazado) filaNueva.scrollLeft = desplazado;
+    if (focoVer) {
+      const b = porId('cv-ver-datos');
+      if (b && typeof b.focus === 'function') b.focus({ preventScroll: true });
+    }
+    colocarTarjeta();
     if (conv.editando && conv.enfocarEditor) {
       const campo = porId('cv-editor-valor');
       if (campo && typeof campo.focus === 'function') campo.focus();
@@ -15566,12 +16209,26 @@ display: none !important;
     conv.enfocarEditor = false;
   });
 
+  function colocarTarjeta() {
+    try {
+      const t = porId('cv-tarjeta');
+      const d = porId('cv-datos');
+      if (!t || !d || !d.parentNode || typeof d.parentNode.insertBefore !== 'function') return;
+      const arriba = fichasDatos().length > MAX_FICHAS_SIN_PLEGAR;
+      if (arriba && t.nextSibling !== d) d.parentNode.insertBefore(t, d);
+      else if (!arriba && d.nextSibling !== t) d.parentNode.insertBefore(t, d.nextSibling);
+    } catch (err) {
+      return;
+    }
+  }
+
   const pintarTarjeta = seguro(function () {
     const el = porId('cv-tarjeta');
     if (!el) return;
     const h = tarjetaHtml();
     el.hidden = !h;
     el.innerHTML = h;
+    colocarTarjeta();
     if (h && typeof el.querySelectorAll === 'function') {
       el.querySelectorAll('[data-enlace]').forEach((a) => a.setAttribute('href', a.getAttribute('data-enlace')));
     }
@@ -15828,8 +16485,11 @@ display: none !important;
       const reanudar = conv.mensajes.length > 0 || conv.historial.length > 0;
       if (hayDocumento()) origenFoco = document.activeElement;
       if (!reanudar) {
+        conv.version = null;
         asegurarProyectoNuevo(false);
         registrarEvento('conversacion_abierta');
+      } else {
+        sincronizarVersion();
       }
       VALE.ir('analisis', { id: 'nuevo', paso: reanudar && conv.completa ? 'R' : 'V' });
       conv.abierto = true;
@@ -15865,6 +16525,10 @@ display: none !important;
       }
       conv.abortar = null;
       conv.ocupado = false;
+      if (conv.descartadoEnVuelo) {
+        for (const c of conv.descartadoEnVuelo) if (conv.descartado.indexOf(c) < 0) conv.descartado.push(c);
+        conv.descartadoEnVuelo = null;
+      }
       const ultima = conv.mensajes[conv.mensajes.length - 1];
       if (ultima && ultima.rol === 'ia' && !ultima.texto.trim()) conv.mensajes.pop();
       if (conv.pendiente) conv.pendiente.error = true;
@@ -16011,6 +16675,9 @@ display: none !important;
       conv.errorEditor = '';
       conv.enfocarEditor = !!conv.editando;
       pintarDatos();
+    } else if (accion === 'ver-datos') {
+      conv.verTodos = !conv.verTodos;
+      pintarDatos();
     } else if (accion === 'cancelar-ficha') {
       conv.editando = null;
       conv.errorEditor = '';
@@ -16055,7 +16722,9 @@ display: none !important;
   });
 
   const REGISTRO_RUTAS = ['medido', 'dueno', 'm', 'control_empresa', 'horas.c', 'horas.unidad',
-    'horas.destino.gasto', 'horas.destino.crecimiento', 'horas.destino.reasignacion', 'horas.partida_gasto'];
+    'horas.destino.gasto', 'horas.destino.crecimiento', 'horas.destino.reasignacion', 'horas.partida_gasto',
+    'horas.quien', 'horas.perfil', 'horas.s', 'horas.r', 'horas.g', 'horas.k', 'horas.integracion', 'horas.u', 'horas.hd',
+    'costes.sup_h_mes', 'decide_personas', 'plataforma.reutilizable', 'plataforma.casos', 'T', 't', 'contingencia'];
 
   function alCambiarEstado(ev) {
     if (!ev) return;
@@ -16065,6 +16734,14 @@ display: none !important;
       conv.abierto = abierto;
       if (abierto) cerrar({ sinFoco: true });
       return;
+    }
+    if (ev.tipo === 'datos' && ev.id === 'nuevo' && Array.isArray(ev.rutas) && String(ev.origen || '').indexOf('cv:') !== 0) {
+      for (const r of ev.rutas) {
+        for (const d of POR_RUTA[r] || []) {
+          quitarSinDato(d.clave);
+          delete conv.brutos[d.clave];
+        }
+      }
     }
     if (!conv.abierto) return;
     if (ev.tipo === 'proyecto' && ev.id !== 'nuevo') {
@@ -16084,6 +16761,16 @@ display: none !important;
       conv.rondasExtra = 0;
       conv.vecesPedida = {};
       conv.informeListo = null;
+      conv.sinDato.clear();
+      conv.brutos = {};
+      if (conv.version === 'completa') fijarVersion('completa');
+      else sincronizarVersion();
+      pintarDatos();
+      pintarTarjeta();
+      return;
+    }
+    if (ev.tipo === 'carga' && ev.id === 'nuevo') {
+      sincronizarVersion();
       pintarDatos();
       pintarTarjeta();
       return;
@@ -16094,6 +16781,7 @@ display: none !important;
         for (const r of ev.rutas) {
           if (REGISTRO_RUTAS.indexOf(r) >= 0) claveOrigenTocada([r]);
         }
+        if (ev.id === 'nuevo' && ev.rutas.indexOf('modo') >= 0) sincronizarVersion();
       }
       conv.informeListo = null;
       const actual = resultado();
